@@ -3252,3 +3252,1945 @@ Memory consumption went from 305.4 MB to 297.2 MB.
 Total: 16.917146 ms (FindLiveObjects: 0.794125 ms CreateObjectMapping: 1.926420 ms MarkObjects: 8.192929 ms  DeleteObjects: 6.001703 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 614.078113 seconds.
+  path: Assets/@Game/Domain/Scenes/InGameScene.unity
+  artifactKey: Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/Scenes/InGameScene.unity using Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '90134150ebe7ce5bb34042a3a2c172f2') in 0.002063808 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.848635 seconds.
+  path: Assets/@Game/Domain/Scenes/InGameScene.unity
+  artifactKey: Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/Scenes/InGameScene.unity using Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'dd824bd0d33ca5a65bd018640b3c10e2') in 0.289071095 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 71.633996 seconds.
+  path: Assets/Settings/DefaultVolumeProfile.asset
+  artifactKey: Guid(ab09877e2e707104187f6f83e2f62510) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/Settings/DefaultVolumeProfile.asset using Guid(ab09877e2e707104187f6f83e2f62510) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '72d68d17f9e3ab3a14f4744b1969a875') in 0.040080205 seconds
+Number of updated asset objects reloaded before import = 20Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.343466 seconds.
+  path: Assets/@Framework/Managers/Core/UIManager.cs
+  artifactKey: Guid(773f7fb85c453864a8ecadede3167d64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Managers/Core/UIManager.cs using Guid(773f7fb85c453864a8ecadede3167d64) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '307ba0d3b10613335aad69c30a800f33') in 0.000672444 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.526643 seconds.
+  path: Assets/@Framework/Controllers/Stats/Stats.cs
+  artifactKey: Guid(46e6dc3adb5824d4faaffc22c7ac7aa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Controllers/Stats/Stats.cs using Guid(46e6dc3adb5824d4faaffc22c7ac7aa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '007bdf75d710a0e47171673a8bdcbe86') in 0.000557566 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.328562 seconds.
+  path: Assets/@Framework/UI/Popup/UI_ToastPopup.cs
+  artifactKey: Guid(fc0e95dc92c7f4d449f9e2454b939c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/UI/Popup/UI_ToastPopup.cs using Guid(fc0e95dc92c7f4d449f9e2454b939c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b2fec87e020945a4f60876c6ca62108c') in 0.000581077 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 31.462253 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye
+  artifactKey: Guid(e5e23f5794c9a4904b66a40eb22f1e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye using Guid(e5e23f5794c9a4904b66a40eb22f1e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0902a20f11d88b6e96e5338cc6d3f6c5') in 0.000616824 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.895893 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye
+  artifactKey: Guid(e5e23f5794c9a4904b66a40eb22f1e64) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye using Guid(e5e23f5794c9a4904b66a40eb22f1e64) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'ac2d905fbaabfca6c5133656bd866995') in 0.003833474 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.579537 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI
+  artifactKey: Guid(d2b0e5c47012b4c87b3a3d26e130a566) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI using Guid(d2b0e5c47012b4c87b3a3d26e130a566) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b13dbee1d29877fb8d3d74c128bf5d9e') in 0.000585912 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.906905 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI
+  artifactKey: Guid(d2b0e5c47012b4c87b3a3d26e130a566) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI using Guid(d2b0e5c47012b4c87b3a3d26e130a566) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5f69dea4a3b808ffb2cedf1e578118c3') in 0.003829596 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 490.069009 seconds.
+  path: Assets/@Framework/Shaders
+  artifactKey: Guid(24203e6849aca493d99873aeecf339f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders using Guid(24203e6849aca493d99873aeecf339f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '53682d83c5605ba0153cfef36ba65a43') in 0.000584265 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.900554 seconds.
+  path: Assets/@Framework/Shaders
+  artifactKey: Guid(24203e6849aca493d99873aeecf339f6) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders using Guid(24203e6849aca493d99873aeecf339f6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '1a79c9b2652bb669418ce65466db1372') in 0.00434027 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 30.797989 seconds.
+  path: Assets/@Framework/Shaders/InverseMask.shader
+  artifactKey: Guid(488c2383983ca4054801538e89682322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/InverseMask.shader using Guid(488c2383983ca4054801538e89682322) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2b2d588ccb138a7f05553e5ba9717861') in 0.024162433 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.671857 seconds.
+  path: Assets/@Framework/Shaders/InverseMask.shader
+  artifactKey: Guid(488c2383983ca4054801538e89682322) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/InverseMask.shader using Guid(488c2383983ca4054801538e89682322) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd9529ec2fa5dfc0b9537dfe7b24fa412') in 0.010680169 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.205901 seconds.
+  path: Assets/@Framework/Shaders/Test.mat
+  artifactKey: Guid(84c52a70f64454f29b124ee4fb7fd830) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/Test.mat using Guid(84c52a70f64454f29b124ee4fb7fd830) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '2be43630d494dc773ea842bed458a655') in 0.032361575 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 206.559947 seconds.
+  path: Assets/@Framework/Shaders/InverseMask.shader
+  artifactKey: Guid(488c2383983ca4054801538e89682322) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/InverseMask.shader using Guid(488c2383983ca4054801538e89682322) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5dde33f53e3591871154573f92e5a48c') in 0.002219492 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.924943 seconds.
+  path: Assets/@Framework/Shaders/InverseMask.shader
+  artifactKey: Guid(488c2383983ca4054801538e89682322) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/InverseMask.shader using Guid(488c2383983ca4054801538e89682322) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '2a7fb3e9384eb471cc1c5338f58857c3') in 0.0044094 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (10.1 MB). Loaded Objects now: 7861.
+Memory consumption went from 313.9 MB to 303.8 MB.
+Total: 14.934068 ms (FindLiveObjects: 0.750958 ms CreateObjectMapping: 1.407061 ms MarkObjects: 7.079538 ms  DeleteObjects: 5.695240 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 415.125206 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs
+  artifactKey: Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs using Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'f373708eb29bbd50a2070cd952878dde') in 0.041081934 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.126934 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs
+  artifactKey: Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs using Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '968382385b1b62dc6faebb6cd5c51b21') in 0.00056704 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.724 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.336 seconds
+Domain Reload Profiling: 3069ms
+	BeginReloadAssembly (362ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (156ms)
+	RebuildCommonClasses (72ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (1238ms)
+		LoadAssemblies (840ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (497ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (449ms)
+			ResolveRequiredComponents (26ms)
+	FinalizeReload (1336ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (988ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (207ms)
+			ProcessInitializeOnLoadAttributes (673ms)
+			ProcessInitializeOnLoadMethodAttributes (96ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7158 unused Assets / (10.0 MB). Loaded Objects now: 7867.
+Memory consumption went from 306.3 MB to 296.3 MB.
+Total: 15.264298 ms (FindLiveObjects: 0.950615 ms CreateObjectMapping: 1.319413 ms MarkObjects: 6.756991 ms  DeleteObjects: 6.235949 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 24.943277 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs
+  artifactKey: Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs using Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '37a010ed1f10e40c3ce879b365e012ea') in 0.002566697 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.64 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7153 unused Assets / (9.5 MB). Loaded Objects now: 7868.
+Memory consumption went from 306.4 MB to 296.9 MB.
+Total: 15.452944 ms (FindLiveObjects: 0.781681 ms CreateObjectMapping: 1.723741 ms MarkObjects: 6.950082 ms  DeleteObjects: 5.995899 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 92.137248 seconds.
+  path: Assets/@Framework/Shaders/NewMonoBehaviourScript.cs
+  artifactKey: Guid(f6e711248e54748dd95166f731c2598f) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/NewMonoBehaviourScript.cs using Guid(f6e711248e54748dd95166f731c2598f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7a11e0935a05848e4cbbf68717992d27') in 0.373816154 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/@Framework/Shaders/NewMonoBehaviourScript.cs
+  artifactKey: Guid(f6e711248e54748dd95166f731c2598f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/NewMonoBehaviourScript.cs using Guid(f6e711248e54748dd95166f731c2598f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c10558543cbd6ea3d579368b4776c14b') in 0.000575992 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7152 unused Assets / (9.5 MB). Loaded Objects now: 7867.
+Memory consumption went from 313.1 MB to 303.6 MB.
+Total: 16.091880 ms (FindLiveObjects: 0.905120 ms CreateObjectMapping: 1.920290 ms MarkObjects: 6.813202 ms  DeleteObjects: 6.451820 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.196 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.162 seconds
+Domain Reload Profiling: 2363ms
+	BeginReloadAssembly (314ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (139ms)
+	RebuildCommonClasses (74ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (751ms)
+		LoadAssemblies (495ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (345ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (301ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1163ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (910ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (205ms)
+			ProcessInitializeOnLoadAttributes (609ms)
+			ProcessInitializeOnLoadMethodAttributes (85ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7158 unused Assets / (9.9 MB). Loaded Objects now: 7873.
+Memory consumption went from 306.6 MB to 296.7 MB.
+Total: 16.032001 ms (FindLiveObjects: 0.766160 ms CreateObjectMapping: 2.089295 ms MarkObjects: 7.258637 ms  DeleteObjects: 5.916697 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 31.697189 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs
+  artifactKey: Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs using Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'c3ba19ca0c5ec92857f10ce8d790a463') in 0.286169103 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.956366 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7ccee0e16264f350c2e6021095a8f427') in 0.025738792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.691907 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd2338098d41f388d25227fcd0571ca62') in 0.01077339 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.467728 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '60ae39b9a45d426204f0fc20d0277792') in 0.005319827 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.904496 seconds.
+  path: Assets/@Framework/Shaders/InverseHoleMask_Mat.mat
+  artifactKey: Guid(330b33eacadd74065befabe5c16fad08) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/InverseHoleMask_Mat.mat using Guid(330b33eacadd74065befabe5c16fad08) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4e67c29c624b97122104c1b6a08a69cd') in 0.037405255 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000084 seconds.
+  path: Assets/@Framework/Shaders/Test.mat
+  artifactKey: Guid(84c52a70f64454f29b124ee4fb7fd830) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/Test.mat using Guid(84c52a70f64454f29b124ee4fb7fd830) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '65201eb3bc0c62c2c12f397272d6e358') in 0.047943081 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.178055 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '78132a01fcc218cf965af744a19795df') in 0.001425766 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (7.0 MB). Loaded Objects now: 7874.
+Memory consumption went from 314.8 MB to 307.8 MB.
+Total: 16.146029 ms (FindLiveObjects: 0.899586 ms CreateObjectMapping: 1.635882 ms MarkObjects: 8.007940 ms  DeleteObjects: 5.601108 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 273.818188 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '6b7d24d67482ed387c2bdd9eba2591ee') in 0.005303475 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs
+  artifactKey: Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs using Guid(7d5f11389ad474e8d8c2fac324745a43) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '8b334e993822aa3c55526333ebb6ffc8') in 0.007942803 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.196 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.111 seconds
+Domain Reload Profiling: 2312ms
+	BeginReloadAssembly (309ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (140ms)
+	RebuildCommonClasses (65ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (768ms)
+		LoadAssemblies (512ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (343ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (303ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1112ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (856ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (188ms)
+			ProcessInitializeOnLoadAttributes (570ms)
+			ProcessInitializeOnLoadMethodAttributes (86ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.7 MB). Loaded Objects now: 7880.
+Memory consumption went from 307.5 MB to 297.8 MB.
+Total: 14.538791 ms (FindLiveObjects: 0.739598 ms CreateObjectMapping: 1.571633 ms MarkObjects: 6.575099 ms  DeleteObjects: 5.651377 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 70.103308 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cfee182ebad00ee8d4b10f0c56359d36') in 0.034078067 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.539643 seconds.
+  path: Assets/@Framework/Shaders/InverseHoleMask_Mat.mat
+  artifactKey: Guid(330b33eacadd74065befabe5c16fad08) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/InverseHoleMask_Mat.mat using Guid(330b33eacadd74065befabe5c16fad08) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e6d03193902c28b9980ee988ef151779') in 0.303279455 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000085 seconds.
+  path: Assets/@Game/Domain/Scenes/InGameScene.unity
+  artifactKey: Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/Scenes/InGameScene.unity using Guid(58e2abbb6c1b645a4ae97fd834e70f20) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'ea53cee249fdd3749ad7539b937176ba') in 0.007442418 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.209918 seconds.
+  path: Assets/@Framework/Shaders/test 1.mat
+  artifactKey: Guid(e22e623e24f514828ad5bb2e100083bf) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/test 1.mat using Guid(e22e623e24f514828ad5bb2e100083bf) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '36a136c2f756b5119fb7829f05669739') in 0.026344012 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 131.163530 seconds.
+  path: Assets/@Framework/Shaders/UIInverseHoleMask.shader
+  artifactKey: Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Framework/Shaders/UIInverseHoleMask.shader using Guid(7e8dcc48d696f4e478db7be4f6ee1a11) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '2f44e9aed95e9a76efd79741450f37f9') in 0.009454605 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.147 seconds
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.209 seconds
+Domain Reload Profiling: 2361ms
+	BeginReloadAssembly (313ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (141ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (713ms)
+		LoadAssemblies (455ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (346ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (309ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1210ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (950ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (199ms)
+			ProcessInitializeOnLoadAttributes (626ms)
+			ProcessInitializeOnLoadMethodAttributes (114ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (23ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.7 MB). Loaded Objects now: 7886.
+Memory consumption went from 308.0 MB to 298.3 MB.
+Total: 16.481133 ms (FindLiveObjects: 0.809738 ms CreateObjectMapping: 1.711868 ms MarkObjects: 7.380871 ms  DeleteObjects: 6.577452 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.143 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.196 seconds
+Domain Reload Profiling: 2344ms
+	BeginReloadAssembly (300ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (124ms)
+	RebuildCommonClasses (68ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (721ms)
+		LoadAssemblies (449ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (362ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (323ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1197ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (942ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (196ms)
+			ProcessInitializeOnLoadAttributes (629ms)
+			ProcessInitializeOnLoadMethodAttributes (105ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (21ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 1.32 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.5 MB). Loaded Objects now: 7892.
+Memory consumption went from 308.5 MB to 299.0 MB.
+Total: 15.771441 ms (FindLiveObjects: 0.898933 ms CreateObjectMapping: 1.742323 ms MarkObjects: 7.001482 ms  DeleteObjects: 6.127487 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.58 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (9.7 MB). Loaded Objects now: 7893.
+Memory consumption went from 308.8 MB to 299.1 MB.
+Total: 14.601621 ms (FindLiveObjects: 0.755622 ms CreateObjectMapping: 1.650498 ms MarkObjects: 6.665274 ms  DeleteObjects: 5.529116 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 258.026964 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '15ec13efc6634ec6d34ee339fa608d38') in 0.002268939 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.020626 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(2089858483,192608db42251d675da83286b1cce702)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '22cbafb39d5a07ed4bf326d0cd9098d6') in 0.309358616 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.347 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.386 seconds
+Domain Reload Profiling: 2738ms
+	BeginReloadAssembly (327ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (154ms)
+	RebuildCommonClasses (76ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (888ms)
+		LoadAssemblies (599ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (378ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (334ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (1387ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1114ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (250ms)
+			ProcessInitializeOnLoadAttributes (748ms)
+			ProcessInitializeOnLoadMethodAttributes (103ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 1.05 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.8 MB). Loaded Objects now: 7899.
+Memory consumption went from 309.2 MB to 299.4 MB.
+Total: 14.297453 ms (FindLiveObjects: 0.968055 ms CreateObjectMapping: 1.392989 ms MarkObjects: 6.356151 ms  DeleteObjects: 5.578907 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 15.800732 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.003798314 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000097 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.0008632 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.128430 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.00066147 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.064455 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000598848 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.062971 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000496524 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.167595 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000494108 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.166863 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000575436 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.070877 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000497923 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.167415 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000545105 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.169078 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.003066271 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.144734 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000587655 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.165010 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000536101 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:26Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.073024 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.001239063 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.062532 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000674923 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.164128 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000505363 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.063757 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000673486 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.160609 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000561056 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.163083 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000641425 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.166315 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000601669 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.168103 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000568943 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.346873 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.00052165 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038419 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.000727819 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000974 seconds.
+  path: Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs
+  artifactKey: Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs using Guid(88ca02abd939348d4ad88438a845add6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00000000000000000000000000000000') in 0.00063989 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+  ERROR: Build asset version error: assets/@game/domain/worldobjects/eye/ui/pointmover.cs in SourceAssetDB has modification time of '2025-10-28T16:24:18Z' while content on disk has modification time of '2025-10-28T16:24:37Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (9.9 MB). Loaded Objects now: 7899.
+Memory consumption went from 309.4 MB to 299.5 MB.
+Total: 16.160743 ms (FindLiveObjects: 0.833377 ms CreateObjectMapping: 1.780978 ms MarkObjects: 6.959016 ms  DeleteObjects: 6.585996 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.145 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.155 seconds
+Domain Reload Profiling: 2305ms
+	BeginReloadAssembly (297ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (127ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (729ms)
+		LoadAssemblies (451ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (364ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (320ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (1156ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (896ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (211ms)
+			ProcessInitializeOnLoadAttributes (585ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.7 MB). Loaded Objects now: 7905.
+Memory consumption went from 309.6 MB to 299.9 MB.
+Total: 17.864206 ms (FindLiveObjects: 0.781668 ms CreateObjectMapping: 1.538219 ms MarkObjects: 8.554143 ms  DeleteObjects: 6.988977 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.121 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.180 seconds
+Domain Reload Profiling: 2305ms
+	BeginReloadAssembly (288ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (119ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (710ms)
+		LoadAssemblies (454ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (344ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (307ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1181ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (932ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (603ms)
+			ProcessInitializeOnLoadMethodAttributes (109ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (23ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.8 MB). Loaded Objects now: 7911.
+Memory consumption went from 310.2 MB to 300.4 MB.
+Total: 16.961545 ms (FindLiveObjects: 0.945282 ms CreateObjectMapping: 1.659196 ms MarkObjects: 7.616729 ms  DeleteObjects: 6.738863 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.74 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (6.4 MB). Loaded Objects now: 7911.
+Memory consumption went from 310.4 MB to 304.0 MB.
+Total: 18.581269 ms (FindLiveObjects: 0.992157 ms CreateObjectMapping: 1.862420 ms MarkObjects: 8.183167 ms  DeleteObjects: 7.542328 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 215.488949 seconds.
+  path: Assets/InputSystem_Actions.inputactions
+  artifactKey: Guid(052faaac586de48259a63d0c4782560b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/InputSystem_Actions.inputactions using Guid(052faaac586de48259a63d0c4782560b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6a5f0d982793c018da557ae5a6da305c') in 0.049541906 seconds
+Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 19
+
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7154 unused Assets / (5.0 MB). Loaded Objects now: 7911.
+Memory consumption went from 310.8 MB to 305.8 MB.
+Total: 22.170584 ms (FindLiveObjects: 0.798179 ms CreateObjectMapping: 1.775788 ms MarkObjects: 12.637694 ms  DeleteObjects: 6.957484 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.162 seconds
+Refreshing native plugins compatible for Editor in 0.50 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.181 seconds
+Domain Reload Profiling: 2348ms
+	BeginReloadAssembly (302ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (130ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (738ms)
+		LoadAssemblies (471ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (356ms)
+			TypeCache.Refresh (17ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (308ms)
+			ResolveRequiredComponents (22ms)
+	FinalizeReload (1182ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (931ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (617ms)
+			ProcessInitializeOnLoadMethodAttributes (94ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.56 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.9 MB). Loaded Objects now: 7917.
+Memory consumption went from 310.7 MB to 300.8 MB.
+Total: 14.160420 ms (FindLiveObjects: 0.758182 ms CreateObjectMapping: 1.399035 ms MarkObjects: 6.398066 ms  DeleteObjects: 5.603781 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.138 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.157 seconds
+Domain Reload Profiling: 2299ms
+	BeginReloadAssembly (305ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (122ms)
+	RebuildCommonClasses (69ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (709ms)
+		LoadAssemblies (460ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (349ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (311ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1157ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (917ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (203ms)
+			ProcessInitializeOnLoadAttributes (611ms)
+			ProcessInitializeOnLoadMethodAttributes (89ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.4 MB). Loaded Objects now: 7923.
+Memory consumption went from 311.4 MB to 302.0 MB.
+Total: 16.844488 ms (FindLiveObjects: 0.921047 ms CreateObjectMapping: 1.735879 ms MarkObjects: 7.862165 ms  DeleteObjects: 6.324158 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.169 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.221 seconds
+Domain Reload Profiling: 2395ms
+	BeginReloadAssembly (346ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (119ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (702ms)
+		LoadAssemblies (504ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (341ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (304ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1222ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (952ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (614ms)
+			ProcessInitializeOnLoadMethodAttributes (117ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (24ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.58 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7160 unused Assets / (9.0 MB). Loaded Objects now: 7929.
+Memory consumption went from 312.0 MB to 303.0 MB.
+Total: 17.637211 ms (FindLiveObjects: 0.860442 ms CreateObjectMapping: 1.947349 ms MarkObjects: 7.723249 ms  DeleteObjects: 7.104982 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.181 seconds
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.176 seconds
+Domain Reload Profiling: 2362ms
+	BeginReloadAssembly (342ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (120ms)
+	RebuildCommonClasses (70ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (712ms)
+		LoadAssemblies (504ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (346ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (309ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1177ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (928ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (205ms)
+			ProcessInitializeOnLoadAttributes (625ms)
+			ProcessInitializeOnLoadMethodAttributes (86ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.6 MB). Loaded Objects now: 7935.
+Memory consumption went from 312.2 MB to 302.5 MB.
+Total: 15.130404 ms (FindLiveObjects: 0.822045 ms CreateObjectMapping: 1.475637 ms MarkObjects: 7.039356 ms  DeleteObjects: 5.792271 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.98 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7153 unused Assets / (6.5 MB). Loaded Objects now: 7935.
+Memory consumption went from 312.4 MB to 305.8 MB.
+Total: 15.962962 ms (FindLiveObjects: 0.892349 ms CreateObjectMapping: 2.307239 ms MarkObjects: 7.245489 ms  DeleteObjects: 5.516704 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.212 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.144 seconds
+Domain Reload Profiling: 2361ms
+	BeginReloadAssembly (317ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (127ms)
+	RebuildCommonClasses (68ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (41ms)
+	LoadAllAssembliesAndSetupDomain (767ms)
+		LoadAssemblies (495ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (376ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (330ms)
+			ResolveRequiredComponents (24ms)
+	FinalizeReload (1145ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (893ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (197ms)
+			ProcessInitializeOnLoadAttributes (599ms)
+			ProcessInitializeOnLoadMethodAttributes (86ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.8 MB). Loaded Objects now: 7941.
+Memory consumption went from 312.8 MB to 303.1 MB.
+Total: 15.616338 ms (FindLiveObjects: 0.735684 ms CreateObjectMapping: 1.786088 ms MarkObjects: 7.097540 ms  DeleteObjects: 5.995816 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.313 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.324 seconds
+Domain Reload Profiling: 2641ms
+	BeginReloadAssembly (360ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (181ms)
+	RebuildCommonClasses (74ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (47ms)
+	LoadAllAssembliesAndSetupDomain (810ms)
+		LoadAssemblies (535ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (370ms)
+			TypeCache.Refresh (12ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (331ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1325ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1055ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (207ms)
+			ProcessInitializeOnLoadAttributes (725ms)
+			ProcessInitializeOnLoadMethodAttributes (111ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 11.10 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (10.1 MB). Loaded Objects now: 7947.
+Memory consumption went from 313.5 MB to 303.3 MB.
+Total: 17.856825 ms (FindLiveObjects: 0.801757 ms CreateObjectMapping: 1.868649 ms MarkObjects: 7.046480 ms  DeleteObjects: 8.138335 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7153 unused Assets / (10.0 MB). Loaded Objects now: 7947.
+Memory consumption went from 313.6 MB to 303.6 MB.
+Total: 16.557272 ms (FindLiveObjects: 0.883212 ms CreateObjectMapping: 1.884941 ms MarkObjects: 7.366314 ms  DeleteObjects: 6.421365 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.178 seconds
+Refreshing native plugins compatible for Editor in 0.53 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.176 seconds
+Domain Reload Profiling: 2360ms
+	BeginReloadAssembly (303ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (129ms)
+	RebuildCommonClasses (68ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (751ms)
+		LoadAssemblies (485ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (357ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (314ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1177ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (923ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (198ms)
+			ProcessInitializeOnLoadAttributes (613ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 1.69 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.8 MB). Loaded Objects now: 7953.
+Memory consumption went from 314.0 MB to 304.2 MB.
+Total: 14.027665 ms (FindLiveObjects: 0.766593 ms CreateObjectMapping: 1.363455 ms MarkObjects: 6.432499 ms  DeleteObjects: 5.461783 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.146 seconds
+Refreshing native plugins compatible for Editor in 0.58 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.171 seconds
+Domain Reload Profiling: 2323ms
+	BeginReloadAssembly (304ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (119ms)
+	RebuildCommonClasses (70ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (718ms)
+		LoadAssemblies (464ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (354ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (316ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1172ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (924ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (207ms)
+			ProcessInitializeOnLoadAttributes (614ms)
+			ProcessInitializeOnLoadMethodAttributes (90ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.7 MB). Loaded Objects now: 7959.
+Memory consumption went from 314.6 MB to 304.9 MB.
+Total: 17.843405 ms (FindLiveObjects: 0.920720 ms CreateObjectMapping: 2.321683 ms MarkObjects: 7.532535 ms  DeleteObjects: 7.067229 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7153 unused Assets / (9.9 MB). Loaded Objects now: 7959.
+Memory consumption went from 314.9 MB to 305.0 MB.
+Total: 15.553385 ms (FindLiveObjects: 0.831061 ms CreateObjectMapping: 1.566021 ms MarkObjects: 6.785849 ms  DeleteObjects: 6.369059 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.138 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.161 seconds
+Domain Reload Profiling: 2304ms
+	BeginReloadAssembly (301ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (128ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (716ms)
+		LoadAssemblies (462ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (341ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (300ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1162ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (907ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (195ms)
+			ProcessInitializeOnLoadAttributes (608ms)
+			ProcessInitializeOnLoadMethodAttributes (93ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.6 MB). Loaded Objects now: 7965.
+Memory consumption went from 315.2 MB to 305.6 MB.
+Total: 14.857324 ms (FindLiveObjects: 0.970367 ms CreateObjectMapping: 1.555882 ms MarkObjects: 6.735068 ms  DeleteObjects: 5.594824 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.128 seconds
+Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.182 seconds
+Domain Reload Profiling: 2315ms
+	BeginReloadAssembly (296ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (120ms)
+	RebuildCommonClasses (69ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (709ms)
+		LoadAssemblies (461ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (342ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (306ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (1183ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (926ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (199ms)
+			ProcessInitializeOnLoadAttributes (609ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.6 MB). Loaded Objects now: 7971.
+Memory consumption went from 315.9 MB to 306.2 MB.
+Total: 17.113122 ms (FindLiveObjects: 0.865720 ms CreateObjectMapping: 1.847673 ms MarkObjects: 7.496135 ms  DeleteObjects: 6.902455 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-R224-R5HC-GJ4Y-W46P-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: 2025-12-04T16:12:29Z
+[Licensing::Module] License group:
+  Id: 14568735583244-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.236 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Native extension for OSXStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.166 seconds
+Domain Reload Profiling: 2406ms
+	BeginReloadAssembly (352ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (143ms)
+	RebuildCommonClasses (88ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (739ms)
+		LoadAssemblies (493ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (361ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (323ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1167ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (923ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (613ms)
+			ProcessInitializeOnLoadMethodAttributes (91ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7159 unused Assets / (9.5 MB). Loaded Objects now: 7977.
+Memory consumption went from 316.5 MB to 307.0 MB.
+Total: 15.747592 ms (FindLiveObjects: 0.788372 ms CreateObjectMapping: 1.637690 ms MarkObjects: 6.902945 ms  DeleteObjects: 6.417469 ms)
+
+Prepare: number of updated asset objects reloaded= 0

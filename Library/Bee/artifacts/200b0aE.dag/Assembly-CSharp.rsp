@@ -486,6 +486,8 @@
 "Assets/@Framework/Utils/Util.cs"
 "Assets/@Game/Contexts/Contexts.cs"
 "Assets/@Game/Data/Data.Contents.cs"
+"Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs"
+"Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs"
 "Assets/@Game/Utils/Define.Contents.cs"
 -langversion:9.0
 /deterministic
