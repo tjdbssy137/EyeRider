@@ -48,7 +48,51 @@
     <Analyzer Include="/Volumes/imation i9/E_Unity/6000.2.9f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/TutorialInfo/Scripts/Readme.cs" />
+    <Compile Include="Assets/@Game/Utils/Define.Contents.cs" />
+    <Compile Include="Assets/@Framework/Utils/PriorityQueue.cs" />
+    <Compile Include="Assets/@Framework/Controllers/EventHandler/GO_EventHandler.cs" />
+    <Compile Include="Assets/@Framework/Utils/Define.Core.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/PoolOptions.cs" />
+    <Compile Include="Assets/@Framework/Data/Data.Core.cs.cs" />
+    <Compile Include="Assets/@Framework/Utils/Extension.cs" />
+    <Compile Include="Assets/@Framework/Utils/Util.cs" />
+    <Compile Include="Assets/@Framework/UI/Popup/UI_LoadingPopup.cs" />
+    <Compile Include="Assets/@Framework/UI/UI_Base.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/TimeManager.cs" />
+    <Compile Include="Assets/@Game/Data/Data.Contents.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/RandomManager.cs" />
+    <Compile Include="Assets/@Framework/Utils/PhysicsUtil.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/ResourceManager.cs" />
+    <Compile Include="Assets/@Game/Contexts/Contexts.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/SceneManagerEx.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/UIManager.cs" />
+    <Compile Include="Assets/@Framework/UI/Popup/UI_Popup.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/EventManager.cs" />
+    <Compile Include="Assets/@Framework/Managers/Contents/DataManager.cs" />
+    <Compile Include="Assets/@Framework/Controllers/BaseObject.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/SoundManager.cs" />
+    <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
+    <Compile Include="Assets/@Framework/Managers/Managers.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/PoolManager.cs" />
+    <Compile Include="Assets/@Framework/UI/Scene/UI_Scene.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/LocalizationManager.cs" />
+    <Compile Include="Assets/@Framework/Input/IInputSystem.cs" />
+    <Compile Include="Assets/@Framework/UI/Popup/UI_ToastPopup.cs" />
+    <Compile Include="Assets/@Framework/Utils/Define.Contents.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/WebManager.cs" />
+    <Compile Include="Assets/@Framework/Managers/Contents/GameManager.cs" />
+    <Compile Include="Assets/@Framework/Utils/InitBase.cs" />
+    <Compile Include="Assets/@Framework/Contexts/UserContext.cs" />
+    <Compile Include="Assets/@Framework/Managers/Contents/ObjectManager.cs" />
+    <Compile Include="Assets/@Framework/Managers/Core/InputManagerEx.cs" />
+    <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
+    <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
+    <Compile Include="Assets/@Framework/Controllers/Stats/Stats.cs" />
+    <Compile Include="Assets/@Framework/Scenes/BaseScene.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/@Framework/Plugins/UniRx/ReadMe.txt" />
+    <None Include="Assets/@Framework/Plugins/0.Types.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -563,6 +607,14 @@
       <HintPath>Library/PackageCache/com.unity.collections@aea9d3bd5e19/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="0.Types">
+      <HintPath>Assets/@Framework/Plugins/0.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Volumes/imation i9/E_Unity/6000.2.9f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
       <Private>False</Private>
@@ -1071,6 +1123,10 @@
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1095,6 +1151,10 @@
       <HintPath>Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
       <Private>False</Private>
@@ -1109,6 +1169,10 @@
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
@@ -1159,6 +1223,10 @@
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1169,6 +1237,10 @@
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Profiling.Core">
+      <HintPath>Library/ScriptAssemblies/Unity.Profiling.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
@@ -1247,12 +1319,17 @@
       <HintPath>Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UniRx.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

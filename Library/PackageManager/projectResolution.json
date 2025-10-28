@@ -9,6 +9,16 @@
     "/Volumes/imation i9/E_Unity/6000.2.9f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
+    "com.unity.addressables@2.7.4": {
+      "name": "com.unity.addressables",
+      "displayName": "Addressables",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.addressables@38fa2290d5f2",
+      "fingerprint": "38fa2290d5f25ebb9652038b354454a5b064846e",
+      "editorCompatibility": "2023.1.0a1",
+      "version": "2.7.4",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.ai.navigation@2.0.9": {
       "name": "com.unity.ai.navigation",
       "displayName": "AI Navigation",
@@ -375,6 +385,46 @@
       "source": "builtin",
       "testable": false
     },
+    "com.unity.nuget.newtonsoft-json@3.2.0": {
+      "name": "com.unity.nuget.newtonsoft-json",
+      "displayName": "Newtonsoft Json",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9",
+      "fingerprint": "95b30b0db5c928b17e2a948bedb6cc3417c42db9",
+      "editorCompatibility": "2018.4.0a1",
+      "version": "3.2.0",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.toonshader@0.10.2-preview": {
+      "name": "com.unity.toonshader",
+      "displayName": "Unity Toon Shader",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.toonshader@7cafc07da4c2",
+      "fingerprint": "7cafc07da4c2be13a1c39a03828c2d6ea5d6e741",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "0.10.2-preview",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.render-pipelines.core@17.2.0": {
+      "name": "com.unity.render-pipelines.core",
+      "displayName": "Scriptable Render Pipeline Core",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.render-pipelines.core@04755ad51d99",
+      "fingerprint": "04755ad51d99c8dd3ab30506e3040c19433ec456",
+      "editorCompatibility": "6000.2.0a1",
+      "version": "17.2.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.film-internal-utilities@0.18.4-preview": {
+      "name": "com.unity.film-internal-utilities",
+      "displayName": "Film Internal Utilities",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.film-internal-utilities@5f3dfda50b42",
+      "fingerprint": "5f3dfda50b42ab64faf23d539371ede13b122918",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "0.18.4-preview",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.modules.subsystems@1.0.0": {
       "name": "com.unity.modules.subsystems",
       "displayName": "Subsystems",
@@ -401,16 +451,6 @@
       "source": "builtin",
       "testable": false
     },
-    "com.unity.render-pipelines.core@17.2.0": {
-      "name": "com.unity.render-pipelines.core",
-      "displayName": "Scriptable Render Pipeline Core",
-      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.render-pipelines.core@04755ad51d99",
-      "fingerprint": "04755ad51d99c8dd3ab30506e3040c19433ec456",
-      "editorCompatibility": "6000.2.0a1",
-      "version": "17.2.0",
-      "source": "builtin",
-      "testable": false
-    },
     "com.unity.shadergraph@17.2.0": {
       "name": "com.unity.shadergraph",
       "displayName": "Shader Graph",
@@ -431,13 +471,23 @@
       "source": "builtin",
       "testable": false
     },
-    "com.unity.searcher@4.9.3": {
-      "name": "com.unity.searcher",
-      "displayName": "Searcher",
-      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.searcher@1e17ce91558d",
-      "fingerprint": "1e17ce91558d1d9127554adc03d275f39a7466a2",
-      "editorCompatibility": "2019.1.0a1",
-      "version": "4.9.3",
+    "com.unity.profiling.core@1.0.2": {
+      "name": "com.unity.profiling.core",
+      "displayName": "Unity Profiling Core API",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.profiling.core@aac7b93912bc",
+      "fingerprint": "aac7b93912bc5df5fe06b04ff1b758493cdc2346",
+      "editorCompatibility": "2020.1.0a1",
+      "version": "1.0.2",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.scriptablebuildpipeline@2.4.3": {
+      "name": "com.unity.scriptablebuildpipeline",
+      "displayName": "Scriptable Build Pipeline",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.scriptablebuildpipeline@ca3e2d96aa2f",
+      "fingerprint": "ca3e2d96aa2f5008ce6077b88d9be0e522b990be",
+      "editorCompatibility": "2023.1.0a1",
+      "version": "2.4.3",
       "source": "registry",
       "testable": false
     },
@@ -479,6 +529,16 @@
       "editorCompatibility": "2023.3.0b1",
       "version": "1.0.1",
       "source": "builtin",
+      "testable": false
+    },
+    "com.unity.searcher@4.9.3": {
+      "name": "com.unity.searcher",
+      "displayName": "Searcher",
+      "resolvedPath": "/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Library/PackageCache/com.unity.searcher@1e17ce91558d",
+      "fingerprint": "1e17ce91558d1d9127554adc03d275f39a7466a2",
+      "editorCompatibility": "2019.1.0a1",
+      "version": "4.9.3",
+      "source": "registry",
       "testable": false
     },
     "com.unity.nuget.mono-cecil@1.11.5": {
