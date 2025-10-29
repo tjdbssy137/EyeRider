@@ -8,6 +8,15 @@ public class PointMover : UI_Base
     public RectTransform _canvasRect;
     public float _moveSpeed = 200f;
 
+    public override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
+        
+        
+        return true;
+    }
+
     void Update()
     {
         Vector2 delta = Vector2.zero;

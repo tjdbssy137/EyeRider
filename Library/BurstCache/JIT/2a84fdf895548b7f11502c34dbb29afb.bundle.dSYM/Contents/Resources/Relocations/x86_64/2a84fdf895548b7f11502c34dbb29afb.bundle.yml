@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotigmeqef3.jza/2a84fdf895548b7f11502c34dbb29afb.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aot18y5c5vm.kko/2a84fdf895548b7f11502c34dbb29afb.bundle'
 relocations:
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_Unity.Burst.Intrinsics.X86+Avx, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.mm256_load_ps(System.Void*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 ptr) -> Unity.Burst.Intrinsics.v256, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null_1eab16c7c0dd73fa5cb9a67517c299a7 from Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x80, symBinAddr: 0x4F0, symSize: 0x20 }
   - { offset: 0x3C, size: 0x8, addend: 0x0, symName: '_Unity.Burst.Intrinsics.X86+Avx, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.mm256_loadu_si256(System.Void*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 ptr) -> Unity.Burst.Intrinsics.v256, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null_f3929a88ab4a454ae4a2412bbf1a97b7 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0xA0, symBinAddr: 0x510, symSize: 0x20 }

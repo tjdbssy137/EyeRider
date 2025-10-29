@@ -3,9 +3,8 @@ using UnityEngine;
 public partial class Contexts
 {
     #region Contents
-    // private BattleRushContext _battleRush = new BattleRushContext();
-
-    // public static BattleRushContext BattleRush { get { return Instance?._battleRush; } }
+    private CarContext _car = new CarContext();
+    public static CarContext Car { get { return Instance?._car; } }
     #endregion
     private static void Init_Game()
     {

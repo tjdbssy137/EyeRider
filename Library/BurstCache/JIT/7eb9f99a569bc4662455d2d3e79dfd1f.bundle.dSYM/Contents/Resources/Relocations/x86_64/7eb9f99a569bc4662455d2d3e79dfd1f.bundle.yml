@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aothji74puc.8xf/7eb9f99a569bc4662455d2d3e79dfd1f.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotmbk93yz1.22v/7eb9f99a569bc4662455d2d3e79dfd1f.bundle'
 relocations:
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.Equals(System.Int32*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 obj) -> System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_3dd852f0c003d3d61ae9f784376fc1ad from mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089', symObjAddr: 0x1C0, symBinAddr: 0x630, symSize: 0x20 }
   - { offset: 0x3C, size: 0x8, addend: 0x0, symName: '_System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.GetHashCode(System.Int32*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 this) -> System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_3dd852f0c003d3d61ae9f784376fc1ad from mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089', symObjAddr: 0x1E0, symBinAddr: 0x650, symSize: 0x20 }

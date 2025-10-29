@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotl9g268uj.dn9/de10481039b0f2e981a3d93a8d048165.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotee16gqw4.dyv/de10481039b0f2e981a3d93a8d048165.bundle'
 relocations:
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_System.IntPtr, netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51.op_Explicit(System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value) -> System.Void*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_eb78f79c888bcc5a5986ab3373f0ff67 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x190, symBinAddr: 0x600, symSize: 0x20 }
   - { offset: 0x3C, size: 0x8, addend: 0x0, symName: '_System.IntPtr, netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51.op_Inequality(System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value1, System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value2) -> System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_eb78f79c888bcc5a5986ab3373f0ff67 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x1B0, symBinAddr: 0x620, symSize: 0x30 }

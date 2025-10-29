@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotovu7ik5a.7t8/954bd4d7290cdd42d665ab15cc53d5a7.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotzl1jbpgy.w7b/954bd4d7290cdd42d665ab15cc53d5a7.bundle'
 relocations:
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_System.IntPtr, netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51.op_Explicit(System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value) -> System.Void*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_eb78f79c888bcc5a5986ab3373f0ff67 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x130, symBinAddr: 0x5A0, symSize: 0x20 }
   - { offset: 0x3C, size: 0x8, addend: 0x0, symName: '_Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.CheckWriteAndThrow(Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null handle) -> System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_eb78f79c888bcc5a5986ab3373f0ff67 from UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x150, symBinAddr: 0x5C0, symSize: 0x80 }

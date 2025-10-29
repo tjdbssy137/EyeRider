@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotmedx465u.8wm/df25e804e5cba3435792dd7bcbf3eb93.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aot027kp32z.cfp/df25e804e5cba3435792dd7bcbf3eb93.bundle'
 relocations:
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089.CompareTo(System.Int32*, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 this, System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value) -> System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_eb78f79c888bcc5a5986ab3373f0ff67 from mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089', symObjAddr: 0x80, symBinAddr: 0x4F0, symSize: 0x40 }
   - { offset: 0x3C, size: 0x8, addend: 0x0, symName: '_Unity.Collections.CollectionHelper, Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.Log2Floor(System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 value) -> System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_f3929a88ab4a454ae4a2412bbf1a97b7 from Unity.Collections, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0xC0, symBinAddr: 0x530, symSize: 0x30 }

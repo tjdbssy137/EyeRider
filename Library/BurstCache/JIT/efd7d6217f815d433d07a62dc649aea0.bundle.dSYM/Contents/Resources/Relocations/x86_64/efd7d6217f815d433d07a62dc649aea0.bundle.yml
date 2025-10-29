@@ -1,6 +1,6 @@
 ---
 triple:          'x86_64-apple-darwin'
-binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aot0dn6iiwt.bqy/efd7d6217f815d433d07a62dc649aea0.bundle'
+binary-path:     '/Volumes/imation i9/GitHubData/EyeRider/EyeRider/Temp/Burst/burst-aotuuamsl2n.3ir/efd7d6217f815d433d07a62dc649aea0.bundle'
 relocations:
   - { offset: 0x1E, size: 0x8, addend: 0x0, symName: '_Unity.Burst.Intrinsics.X86+DoSetCSRTrampoline_0000013C$BurstDirectCall, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.GetFunctionPointer() -> System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_1eab16c7c0dd73fa5cb9a67517c299a7 from Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x30, symBinAddr: 0x370, symSize: 0x20 }
   - { offset: 0x2B, size: 0x8, addend: 0x0, symName: '_Unity.Burst.Intrinsics.X86+DoSetCSRTrampoline_0000013C$BurstDirectCall, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.GetFunctionPointer() -> System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089_1eab16c7c0dd73fa5cb9a67517c299a7 from Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null', symObjAddr: 0x30, symBinAddr: 0x370, symSize: 0x20 }
