@@ -1,0 +1,46 @@
+
+# ============ macOS ============
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+.Spotlight-V100
+.Trashes
+
+# ============ Unity ============
+# Cache & temporary files
+Library/
+Temp/
+Obj/
+bin/
+
+# Build results
+Build/
+*.apk
+*.aab
+*.exe
+*.app
+*.xcodeproj
+
+# User-specific files
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Log files
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Environment / personal settings
+*.env
