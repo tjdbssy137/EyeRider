@@ -489,6 +489,9 @@
 "Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs"
 "Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs"
 "Assets/@Game/Utils/Define.Contents.cs"
+"Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs"
+"Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs"
+"Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs"
 -langversion:9.0
 /deterministic
 /optimize+

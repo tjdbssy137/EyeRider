@@ -463,6 +463,7 @@
 -analyzer:"/Volumes/imation i9/E_Unity/6000.2.9f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"/Volumes/imation i9/E_Unity/6000.2.9f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/@Framework/Editor/DataTransformer.cs"
+"Assets/PROMETEO - Car Controller/Editor/PrometeoEditor.cs"
 -langversion:9.0
 /deterministic
 /optimize+

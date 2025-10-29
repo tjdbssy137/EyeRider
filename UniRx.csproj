@@ -84,8 +84,8 @@
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Observable.ErrorHandling.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Scan.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Operators/SubscribeOnMainThread.cs" />
-    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/TakeLast.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Notifiers/ScheduledNotifier.cs" />
+    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/TakeLast.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableRectTransformTrigger.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableTransformChangedTrigger.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableInitializePotentialDragTrigger.cs" />
@@ -148,8 +148,8 @@
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/System/IObservable.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Concat.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/MainThreadScheduler.cs" />
-    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/CancellationToken.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/InspectorDisplayDrawer.cs" />
+    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/CancellationToken.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableLateUpdateTrigger.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Observable.Time.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/LifetimeDisposableExtensions.cs" />
@@ -159,8 +159,8 @@
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Disposables/ICancelable.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/OperatorObserverBase.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Notifiers/CountNotifier.cs" />
-    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Never.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Take.cs" />
+    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Never.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/ObserveExtensions.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/System/IProgress.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableJointTrigger.cs" />
@@ -191,8 +191,8 @@
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableTriggerBase.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/ToList.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableEndDragTrigger.cs" />
-    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Materialize.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Schedulers/IScheduler.cs" />
+    <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Operators/Materialize.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/Operators/DelayFrame.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/Observable.Concatenate.cs" />
     <Compile Include="Assets/@Framework/Plugins/UniRx/Scripts/UnityEngineBridge/UnityEventExtensions.cs" />
@@ -788,6 +788,10 @@
       <HintPath>Library/PackageCache/com.unity.ext.nunit@031a54704bff/net40/unity-custom/nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="0.Types">
+      <HintPath>Assets/@Framework/Plugins/0.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library/PackageCache/com.unity.collab-proxy@1e5e48aff19d/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
@@ -816,6 +820,10 @@
       <HintPath>Library/PackageCache/com.unity.visualscripting@b4d700247d4b/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library/PackageCache/com.unity.visualscripting@b4d700247d4b/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll</HintPath>
       <Private>False</Private>
@@ -826,14 +834,6 @@
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Library/PackageCache/com.unity.collections@aea9d3bd5e19/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="0.Types">
-      <HintPath>Assets/@Framework/Plugins/0.Types.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9/Runtime/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">

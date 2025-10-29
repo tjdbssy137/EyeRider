@@ -51,6 +51,7 @@
     <Compile Include="Assets/@Game/Utils/Define.Contents.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Eye/UI/PointMover.cs" />
     <Compile Include="Assets/@Framework/Utils/PriorityQueue.cs" />
+    <Compile Include="Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs" />
     <Compile Include="Assets/@Framework/Controllers/EventHandler/GO_EventHandler.cs" />
     <Compile Include="Assets/@Framework/Utils/Define.Core.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolOptions.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets/@Framework/Managers/Core/SceneManagerEx.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/UIManager.cs" />
     <Compile Include="Assets/@Framework/UI/Popup/UI_Popup.cs" />
+    <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/EventManager.cs" />
     <Compile Include="Assets/@Framework/Managers/Contents/DataManager.cs" />
     <Compile Include="Assets/@Framework/Controllers/BaseObject.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
     <Compile Include="Assets/@Framework/Managers/Managers.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolManager.cs" />
+    <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs" />
     <Compile Include="Assets/@Framework/UI/Scene/UI_Scene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/LocalizationManager.cs" />
     <Compile Include="Assets/@Framework/Input/IInputSystem.cs" />
@@ -96,6 +99,7 @@
     <None Include="Assets/@Framework/Plugins/UniRx/ReadMe.txt" />
     <None Include="Assets/@Framework/Plugins/0.Types.dll" />
     <None Include="Assets/@Framework/Shaders/UIInverseHoleMask.shader" />
+    <None Include="Assets/PROMETEO - Car Controller/Fonts/Licence.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -594,6 +598,10 @@
       <HintPath>Library/PackageCache/com.unity.ext.nunit@031a54704bff/net40/unity-custom/nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="0.Types">
+      <HintPath>Assets/@Framework/Plugins/0.Types.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.IO.Hashing">
       <HintPath>Library/PackageCache/com.unity.collections@aea9d3bd5e19/Unity.Collections.Tests/System.IO.Hashing/System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
@@ -602,20 +610,16 @@
       <HintPath>Library/PackageCache/com.unity.visualscripting@b4d700247d4b/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9/Runtime/Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library/PackageCache/com.unity.nuget.mono-cecil@d78732e851eb/Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Library/PackageCache/com.unity.collections@aea9d3bd5e19/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="0.Types">
-      <HintPath>Assets/@Framework/Plugins/0.Types.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library/PackageCache/com.unity.nuget.newtonsoft-json@95b30b0db5c9/Runtime/Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1150,32 +1154,32 @@
       <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Addressables">
       <HintPath>Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>Library/ScriptAssemblies/PPv2URPConverters.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.FilmInternalUtilities">
+      <HintPath>Library/ScriptAssemblies/Unity.FilmInternalUtilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
@@ -1186,8 +1190,8 @@
       <HintPath>Library/ScriptAssemblies/Unity.Toonshader.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.FilmInternalUtilities">
-      <HintPath>Library/ScriptAssemblies/Unity.FilmInternalUtilities.dll</HintPath>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
@@ -1218,16 +1222,16 @@
       <HintPath>Library/ScriptAssemblies/Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -1254,12 +1258,12 @@
       <HintPath>Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Profiling.Core">
       <HintPath>Library/ScriptAssemblies/Unity.Profiling.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
