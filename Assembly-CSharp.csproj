@@ -59,6 +59,7 @@
     <Compile Include="Assets/@Framework/Utils/Extension.cs" />
     <Compile Include="Assets/@Framework/Utils/Util.cs" />
     <Compile Include="Assets/@Framework/UI/Popup/UI_LoadingPopup.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Car/CarController+Event.cs" />
     <Compile Include="Assets/@Framework/UI/UI_Base.cs" />
     <Compile Include="Assets/@Game/Contexts/CarContext.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs" />
