@@ -1,10 +1,9 @@
 
+
 # ============ macOS ============
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Thumbnails
 ._*
 .Spotlight-V100
 .Trashes
@@ -33,6 +32,7 @@ Build/
 *.pidb
 *.booproj
 *.svd
+*.bin
 
 # Log files
 *.log
@@ -44,3 +44,4 @@ Desktop.ini
 
 # Environment / personal settings
 *.env
+
