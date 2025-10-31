@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcdbfa0ca25a4495adfe99431a5e6c8, type: 3}
+  m_Name: LoadCorner_1Data
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  DataTemplateId: 0
+  LoadPrefab: {fileID: 6742690555942608937, guid: 4113c4746ee794d039a1b474bb70459c, type: 3}
+  Direction: 2
