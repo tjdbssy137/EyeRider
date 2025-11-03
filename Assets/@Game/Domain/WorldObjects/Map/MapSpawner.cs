@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MapSpawner : BaseObject
 {
-    public Queue<GameObject> _loadStorage;
+    public Queue<Map> _loadStorage;
     private int _lastSpawnPosX = 0;
     private int _lastSpawnPosZ = 0;
     private int _maxMapCapacity = 10;
@@ -31,6 +31,8 @@ public class MapSpawner : BaseObject
     {
         base.SetInfo(dataTemplate);
         _mapCount = Managers.Data.MapDatas.Count;
+
+        
     }
     
     private void RandomMap()
