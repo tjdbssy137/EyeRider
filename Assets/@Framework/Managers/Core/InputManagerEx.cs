@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class InputManagerEx
 {
@@ -9,14 +10,14 @@ public class InputManagerEx
 
     public void OnUpdate()
     {
-        if (Input.anyKey && KeyAction != null)
+        if (Keyboard.current.anyKey.isPressed && KeyAction != null)
         {
             KeyAction?.Invoke();
         }
 
         if (MouseAction != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 this.MouseAction.Invoke(Define.EMouseEvent.Press);
                 _mousePressed = true;

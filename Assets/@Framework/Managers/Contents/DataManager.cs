@@ -13,15 +13,14 @@ public interface ILoader<Key, Value>
 
 public class DataManager
 {
-    public Dictionary<int, Data.LocalizationData> LocalizationDic { get; private set; } = new Dictionary<int, Data.LocalizationData>();
+    //public Dictionary<int, Data.LocalizationData> LocalizationDic { get; private set; } = new Dictionary<int, Data.LocalizationData>();
     public Dictionary<int, MapData> MapDatas { get; private set; } = new Dictionary<int, MapData>();
 
     public void Init()
     {
-        LocalizationDic = LoadJson<Data.LocalizationDataLoader, int, Data.LocalizationData>("LocalizationData").MakeDict();
-        // TestDic = LoadJson<Data.TestDataLoader, int, Data.TestData>("TestData").MakeDict();
+        //LocalizationDic = LoadJson<Data.LocalizationDataLoader, int, Data.LocalizationData>("LocalizationData").MakeDict();
     }
-    
+
     public void LoadAll()
     {
         MapDatas = Managers.Resource.LoadAllByType<MapData>().ToDictionary(x => x.DataTemplateId);
