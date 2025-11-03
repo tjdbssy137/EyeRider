@@ -24,6 +24,6 @@ public class Map : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
-
+        
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcdbfa0ca25a4495adfe99431a5e6c8, type: 3}
   m_Name: LoadProbs_1Data
   m_EditorClassIdentifier: Assembly-CSharp::MapData
-  DataTemplateId: 0
+  DataTemplateId: 2
   LoadPrefab: {fileID: 6380842917662340480, guid: 23a17f51fdcda4235be5ce1e02b0812c, type: 3}
   Direction: 0
