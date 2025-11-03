@@ -13,13 +13,37 @@ public class ResourceManager
 
 	#region Load Resource
 	public T Load<T>(string key) where T : Object
+    {
+        if (_resources.TryGetValue(key, out Object resource))
+            return resource as T;
+
+        return null;
+    }
+
+    public List<T> LoadAll<T>(string keyPrefix) where T : Object
+    {
+        var list = new List<T>();
+        foreach (var kvp in _resources)
+        {
+            if (kvp.Key.StartsWith(keyPrefix) && kvp.Value is T t)
+                list.Add(t);
+        }
+        return list;
+    }
+
+	public List<T> LoadAllByType<T>() where T : Object
 	{
-		if (_resources.TryGetValue(key, out Object resource))
-			return resource as T;
-
-		return null;
+		var list = new List<T>();
+		foreach (var kvp in _resources)
+		{
+			if (kvp.Value is T data)
+			{
+				list.Add(data);
+			}
+		}
+		return list;
 	}
-
+	
 	public GameObject Instantiate(string key, Transform parent = null, bool pooling = false)
 	{
 		GameObject prefab = Load<GameObject>(key);

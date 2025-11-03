@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,11 +14,17 @@ public interface ILoader<Key, Value>
 public class DataManager
 {
     public Dictionary<int, Data.LocalizationData> LocalizationDic { get; private set; } = new Dictionary<int, Data.LocalizationData>();
+    public Dictionary<int, MapData> MapDatas { get; private set; } = new Dictionary<int, MapData>();
 
     public void Init()
     {
         LocalizationDic = LoadJson<Data.LocalizationDataLoader, int, Data.LocalizationData>("LocalizationData").MakeDict();
         // TestDic = LoadJson<Data.TestDataLoader, int, Data.TestData>("TestData").MakeDict();
+    }
+    
+    public void LoadAll()
+    {
+        MapDatas = Managers.Resource.LoadAllByType<MapData>().ToDictionary(x => x.DataTemplateId);
     }
 
 	private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
