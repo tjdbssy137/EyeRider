@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 465988761799151145}
   - component: {fileID: 8915838233697326036}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3718869662865609180}
+  - component: {fileID: -8099323192402033922}
   m_Layer: 0
   m_Name: LoadProbs_2
   m_TagString: Untagged
@@ -151,6 +152,19 @@ Transform:
   - {fileID: 4729727123937924501}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8099323192402033922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8078731578108797171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa3fdffd86f43e7a398b27a8ca42e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Map
+  _collider: {fileID: 8915838233697326036}
 --- !u!1001 &1029807596965384227
 PrefabInstance:
   m_ObjectHideFlags: 0

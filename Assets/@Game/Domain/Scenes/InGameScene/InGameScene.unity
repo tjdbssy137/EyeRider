@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Load_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -631,6 +635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Load_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -799,6 +807,10 @@ PrefabInstance:
     - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
       propertyPath: m_Name
       value: Load_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1141,6 +1153,10 @@ PrefabInstance:
     - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
       propertyPath: m_Name
       value: Load_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270171392778284007, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
+      propertyPath: m_Name
+      value: Collider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

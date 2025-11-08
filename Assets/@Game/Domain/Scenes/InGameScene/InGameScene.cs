@@ -21,8 +21,7 @@ public class InGameScene : BaseScene
         {
             Debug.LogError("Camera is NULL");
         }
-
-
+        
         LoadResources();
         return true;
     }
@@ -35,6 +34,11 @@ public class InGameScene : BaseScene
 
      public void SettingSceneObject()
     {
+        GameObject mapSpawner = new GameObject("@MapSpawner");
+        _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
+        _mapSpawner.OnSpawn();
+        _mapSpawner.SetInfo(0);
+        
         _eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
