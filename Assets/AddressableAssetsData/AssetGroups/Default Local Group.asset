@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: be4fec0dfd53d4d2ca3d4bf43aaf0b86
   m_SerializeEntries:
   - m_GUID: 23a17f51fdcda4235be5ce1e02b0812c
-    m_Address: LoadProbs_1
+    m_Address: RoadProbs_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -28,13 +28,13 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4113c4746ee794d039a1b474bb70459c
-    m_Address: LoadCorner_1
+    m_Address: RoadCorner_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4ab718d5a5fc74685b290b4b108b8667
-    m_Address: Load_1
+    m_Address: Road_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -51,8 +51,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91c60f7c0d8204dd5a07c21acecc5a51
+    m_Address: RoadCorner_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d06429c4c533d46f7af84bec0b7812ce
-    m_Address: LoadProbs_2
+    m_Address: RoadProbs_2
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

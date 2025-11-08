@@ -5,8 +5,8 @@ using UnityEditor;
 public class MapData : ScriptableObject
 {
     public int DataTemplateId;
-    public GameObject LoadPrefab;
-    public LoadDirection Direction = LoadDirection.none;
+    public GameObject RoadPrefab;
+    public RoadDirection Direction = RoadDirection.none;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -30,7 +30,7 @@ public class MapData : ScriptableObject
 #endif
 }
 
-public enum LoadDirection
+public enum RoadDirection
 {
     none,
     Left,

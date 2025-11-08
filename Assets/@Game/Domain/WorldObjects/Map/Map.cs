@@ -20,7 +20,8 @@ public class Map : BaseObject
             .Subscribe(_ =>
             {
                 Managers.Object.Despawn(this);
-                Contexts.Map.OnSpawnMap.OnNext(Unit.Default);
+                Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
             })
             .AddTo(this);
 		return true;
@@ -38,6 +39,6 @@ public class Map : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
-        
+
     }
 }

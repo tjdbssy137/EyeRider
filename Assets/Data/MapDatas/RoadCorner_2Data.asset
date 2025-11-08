@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdcdbfa0ca25a4495adfe99431a5e6c8, type: 3}
-  m_Name: LoadProbs_1Data
+  m_Name: RoadCorner_2Data
   m_EditorClassIdentifier: Assembly-CSharp::MapData
-  DataTemplateId: 2
-  LoadPrefab: {fileID: 6380842917662340480, guid: 23a17f51fdcda4235be5ce1e02b0812c, type: 3}
-  Direction: 0
+  DataTemplateId: 4
+  RoadPrefab: {fileID: 6742690555942608937, guid: 91c60f7c0d8204dd5a07c21acecc5a51, type: 3}
+  Direction: 1

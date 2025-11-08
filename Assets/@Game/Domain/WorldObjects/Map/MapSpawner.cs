@@ -4,30 +4,40 @@ using UniRx;
 
 public class MapSpawner : BaseObject
 {
-    private Queue<Map> _loadStorage;
-    private int _lastSpawnPosX = 1;
-    private int _lastSpawnPosZ = 0;
+    private Queue<Map> _roadStorage;
+    private int _lastSpawnPosX = 0;
+    private int _lastSpawnPosZ = 1;
+    private float _lastSpawnAngle = 0;
     private const int _maxMapCapacity = 10;
     private const int MAP_SIZE = 100;
     private int _mapCount = 0;
     private GameObject _spawnParent;
-    private LoadDirection _lastDirection = LoadDirection.none;
+
+    private Vector3 _lastSpawnPos;
+    private Quaternion _lastSpawnRot;
 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
-        _loadStorage = new Queue<Map>();
+        _roadStorage = new Queue<Map>();
         _spawnParent = new GameObject("@Map");
-        
-        Contexts.Map.OnSpawnMap
+
+        Contexts.Map.OnSpawnRoad
             .Subscribe(_ =>
             {
-                if(_loadStorage.Count <= _maxMapCapacity)
+                if (_roadStorage.Count <= _maxMapCapacity)
                 {
-                    RandomMap();                
+                    RandomMap();
                 }
+            })
+            .AddTo(this);
+
+        Contexts.Map.OnDeSpawnRoad
+            .Subscribe(_ =>
+            {
+                _roadStorage.Dequeue();
             })
             .AddTo(this);
         return true;
@@ -45,7 +55,10 @@ public class MapSpawner : BaseObject
     {
         base.SetInfo(dataTemplate);
         _mapCount = Managers.Data.MapDatas.Count;
-        Contexts.Map.OnSpawnMap.OnNext(Unit.Default);
+
+        _lastSpawnPos = new Vector3(_lastSpawnPosX * MAP_SIZE, 0f, _lastSpawnPosZ * MAP_SIZE);
+        _lastSpawnRot = Quaternion.Euler(0f, _lastSpawnAngle, 0f);
+        Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
         Debug.Log("SetInfo MAP");
     }
 
@@ -59,51 +72,59 @@ public class MapSpawner : BaseObject
 
         int index = Random.Range(0, _mapCount);
         var mapData = Managers.Data.MapDatas[index];
+        string roadName = mapData.RoadPrefab.name;
+        Map m = Managers.Object.Spawn<Map>(roadName, _lastSpawnPos, 0, mapData.DataTemplateId, _spawnParent.transform);
 
-        // mapData.Direction 은 '이 맵을 다음에 어떻게 놓을지'라는 의미로 사용한다고 가정
-        Vector3 spawnPos = GetSpawnPositionForDirection(mapData.Direction, out int nextX, out int nextZ);
-
-        string name = mapData.LoadPrefab.name;
-        _lastDirection = mapData.Direction;
-
-        Map m = Managers.Object.Spawn<Map>(name, spawnPos, 0, 0, _spawnParent.transform);
         m.transform.SetParent(_spawnParent.transform, false);
-        _loadStorage.Enqueue(m);
+        m.transform.rotation = _lastSpawnRot;
 
-        // 상태(인덱스)는 여기서 한 번만 업데이트
-        _lastSpawnPosX = nextX;
-        _lastSpawnPosZ = _lastSpawnPosZ + 1; // 항상 앞으로 한 칸 이동
-
-        // 큐 용량 초과 시 가장 오래된 맵 제거
-        if (_maxMapCapacity < _loadStorage.Count)
+        _roadStorage.Enqueue(m);
+        GetNextSpawnPositionAndRotation(mapData.Direction);
+        if (_roadStorage.Count < _maxMapCapacity)
         {
-            Map oldMap = _loadStorage.Dequeue();
-            Managers.Object.Despawn(oldMap);
-        }
-
-        if (_loadStorage.Count < _maxMapCapacity)
-        {
-            Contexts.Map.OnSpawnMap.OnNext(Unit.Default);
+            Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
         }
     }
-    private Vector3 GetSpawnPositionForDirection(LoadDirection direction, out int nextX, out int nextZ)
+
+    private void GetNextSpawnPositionAndRotation(RoadDirection directionForThisMap)
     {
-        // 현재 인덱스 사용
-        int currentX = _lastSpawnPosX;
-        int currentZ = _lastSpawnPosZ;
+        // 현재 각도(도)와 위치를 사용
+        float angle = _lastSpawnAngle;
+        Vector3 currentPos = _lastSpawnPos;
 
-        // 방향에 따라 X 인덱스만 조정(Left: -1, Right: +1, none: same)
-        if (direction == LoadDirection.Left) currentX -= 1;
-        else if (direction == LoadDirection.Right) currentX += 1;
-        // direction == none -> currentX 그대로
+        // 현재 forward (월드 기준)
+        Vector3 currentForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
-        // 항상 앞으로(다음 맵)는 Z + 1 이라 가정 (원하면 -1으로 바꿔도 됨)
-        // 여기서는 spawn 위치를 '현재 인덱스' 기준으로 계산하고, 
-        // next 인덱스를 반환해서 호출자가 상태로 반영하게 함
-        nextX = currentX;
-        nextZ = currentZ; // spawn 할 때는 아직 Z를 증가시키지 않고 위치 결정만 함
+        if (directionForThisMap == RoadDirection.Right)
+        {
+            // 오른쪽으로 꺾음: 각도를 +90으로 변경한 후, 그 방향으로 전진
+            angle += 90f;
+            // normalize angle to [-180,180] or [0,360] if you like
+        }
+        else if (directionForThisMap == RoadDirection.Left)
+        {
+            // 왼쪽으로 꺾음: 각도를 -90으로 변경한 후, 그 방향으로 전진
+            angle -= 90f;
+        }
+        else // none == straight
+        {
+            // 각도 유지 (straight)
+        }
 
-        return new Vector3(nextX * MAP_SIZE, 0, nextZ * MAP_SIZE);
+        // 새 forward (각도를 바꾼 뒤의 forward) — 중요한 부분: 코너 프리팹이 새 방향을 향하게 하려면
+        Vector3 newForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+
+        // 다음 위치: 전진 벡터 방향으로 한 칸(MAP_SIZE)
+        Vector3 nextPos = currentPos + newForward * MAP_SIZE;
+        Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
+
+        // 업데이트
+        _lastSpawnPos = nextPos;
+        _lastSpawnRot = nextRot;
+        _lastSpawnAngle = Mathf.Repeat(angle, 360f);
+
+        // none인 경우는 변경하지 않음(직진 유지)
     }
+
 
 }
