@@ -106,12 +106,12 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 12.64
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &7548332519735589228
@@ -126,3 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751e9d3c564cc40d2b259f5b95ec9796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Eye
+  _moveSpeed: 5
+  _capsuleCollider: {fileID: 5380277463857425928}

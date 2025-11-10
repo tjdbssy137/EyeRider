@@ -8,6 +8,9 @@ public partial class Contexts
 
     private MapContext _map = new MapContext();
     public static MapContext Map { get { return Instance?._map; } }
+
+    private InGameContext _inGame = new InGameContext();
+    public static InGameContext InGame { get { return Instance?._inGame; } }
     
     #endregion
     private static void Init_Game()
