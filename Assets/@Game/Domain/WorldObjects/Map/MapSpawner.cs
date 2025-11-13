@@ -2,51 +2,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
+/// <summary>
+/// MapSpawner: blueprint 기반으로 동작
+/// - MapPlanner로 blueprint를 생성(SetInfo에서)
+/// - 내부 Queue는 _maxMapCapacity만큼 유지
+/// - Map이 Despawn되면 blueprint 다음 인덱스 스폰
+/// </summary>
 public class MapSpawner : BaseObject
 {
     private Queue<Map> _roadStorage;
-    private int _lastSpawnPosX = 0;
-    private int _lastSpawnPosZ = 1;
-    private float _lastSpawnAngle = 0;
-    private const int _maxMapCapacity = 10;
+    private GameObject _spawnParent;
+
     private const int MAP_SIZE = 100;
     private int _mapCount = 0;
-    private GameObject _spawnParent;
+
+    // planner / blueprint
+    private MapPlanner _planner;
+    private List<MapPlanner.PathNode> _blueprint = new List<MapPlanner.PathNode>();
+    private int _blueprintIndex = 0;
+
+    [SerializeField] private int _maxMapCapacity = 10; // inspector에서 조절 가능
+    [SerializeField] private int _plannerGridW = 100;
+    [SerializeField] private int _plannerGridH = 100;
+    [SerializeField] private int _desiredBlueprintLength = 200;
+    [SerializeField] private int _startDir = 0; // 0 = +Z
 
     private Vector3 _lastSpawnPos;
     private Quaternion _lastSpawnRot;
+    private float _lastSpawnAngle = 0f;
+
+    private Dictionary<Tile, MapData> _mapDataByTile = new Dictionary<Tile, MapData>();
 
     public override bool Init()
     {
-        if (base.Init() == false)
-            return false;
+        if (base.Init() == false) return false;
 
         _roadStorage = new Queue<Map>();
         _spawnParent = new GameObject("@Map");
 
-        Contexts.Map.OnSpawnRoad
-            .Subscribe(_ =>
-            {
-                if (_roadStorage.Count <= _maxMapCapacity)
-                {
-                    RandomMap();
-                }
-            })
-            .AddTo(this);
+        // MapData 매핑
+        foreach (var md in Managers.Data.MapDatas.Values)
+        {
+            if (md.Direction == RoadDirection.none) _mapDataByTile[Tile.Straight] = md;
+            else if (md.Direction == RoadDirection.Left) _mapDataByTile[Tile.Left] = md;
+            else if (md.Direction == RoadDirection.Right) _mapDataByTile[Tile.Right] = md;
+        }
 
+        // 이벤트: 맵이 despawn되면 queue pop + 다음 blueprint 채우기
         Contexts.Map.OnDeSpawnRoad
             .Subscribe(_ =>
             {
-                _roadStorage.Dequeue();
+                if (_roadStorage.Count > 0)
+                {
+                    _roadStorage.Dequeue();
+                }
+                SpawnUntilCapacity();
             })
             .AddTo(this);
-        return true;
-    }
-
-    public override bool OnSpawn()
-    {
-        if (base.OnSpawn() == false)
-            return false;
 
         return true;
     }
@@ -56,12 +68,83 @@ public class MapSpawner : BaseObject
         base.SetInfo(dataTemplate);
         _mapCount = Managers.Data.MapDatas.Count;
 
-        _lastSpawnPos = new Vector3(_lastSpawnPosX * MAP_SIZE, 0f, _lastSpawnPosZ * MAP_SIZE);
-        _lastSpawnRot = Quaternion.Euler(0f, _lastSpawnAngle, 0f);
+        _lastSpawnPos = new Vector3(0f, 0f, MAP_SIZE); // 기본 위치 (원한다면 변경)
+        _lastSpawnRot = Quaternion.Euler(0f, 0f, 0f);
+        _lastSpawnAngle = 0f;
+
+        // Planner 생성 및 blueprint 제작
+        _planner = new MapPlanner(_plannerGridW, _plannerGridH, MAP_SIZE);
+        Vector2Int startCell = new Vector2Int(_plannerGridW / 2, _plannerGridH / 2);
+        bool ok = _planner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
+
+        if (!ok)
+        {
+            Debug.LogWarning("[MapSpawner] Planner failed to generate blueprint. Blueprint cleared.");
+            _blueprint.Clear();
+            _blueprintIndex = 0;
+        }
+        else
+        {
+            _blueprint = new List<MapPlanner.PathNode>(_planner.PathOrder);
+            _blueprintIndex = 0;
+            Debug.Log($"[MapSpawner] Blueprint generated with {_blueprint.Count} nodes.");
+            // spawn up to capacity
+            SpawnUntilCapacity();
+        }
+
+        // 기존 흐름과 호환되게 이벤트 트리거(원래 네 코드에서 했던 것 유지)
         Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
         Debug.Log("SetInfo MAP");
     }
 
+    private void SpawnUntilCapacity()
+    {
+        while (_roadStorage.Count < _maxMapCapacity && _blueprintIndex < _blueprint.Count)
+        {
+            SpawnFromBlueprintAt(_blueprintIndex);
+            _blueprintIndex++;
+        }
+    }
+
+    private void SpawnFromBlueprintAt(int index)
+    {
+        if (index < 0 || index >= _blueprint.Count) return;
+
+        var node = _blueprint[index];
+
+        if (!_mapDataByTile.TryGetValue(node.tile, out MapData md))
+        {
+            Debug.LogError($"[MapSpawner] No MapData for Tile {node.tile}. Skipping node {index}.");
+            return;
+        }
+
+        int outgoingDir = node.dir & 3;
+        int prefabBaseFacing = Mathf.Clamp(md.BaseFacing, 0, 3);
+        int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
+        float angle = deltaTurns * 90f;
+
+        Vector3 spawnWorld = _planner.CellToWorld(node.cell);
+
+        string roadName = md.RoadPrefab.name;
+        Map m = Managers.Object.Spawn<Map>(roadName, spawnWorld, 0, md.DataTemplateId, _spawnParent.transform);
+        if (m == null)
+        {
+            Debug.LogError($"[MapSpawner] Failed to spawn prefab {roadName}");
+            return;
+        }
+        m.transform.SetParent(_spawnParent.transform, false);
+        m.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+        _roadStorage.Enqueue(m);
+
+        _lastSpawnPos = spawnWorld;
+        _lastSpawnRot = Quaternion.Euler(0f, angle, 0f);
+        _lastSpawnAngle = angle;
+
+        Debug.Log($"[MapSpawner] Spawned blueprint node {index} prefab={roadName} cell={node.cell} dir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
+    }
+
+    // 기존 RandomMap 유지(필요하면 사용)
     private void RandomMap()
     {
         if (_mapCount == 0)
@@ -86,45 +169,18 @@ public class MapSpawner : BaseObject
         }
     }
 
+    // 기존 위치/회전 업데이트 (보조용)
     private void GetNextSpawnPositionAndRotation(RoadDirection directionForThisMap)
     {
-        // 현재 각도(도)와 위치를 사용
         float angle = _lastSpawnAngle;
         Vector3 currentPos = _lastSpawnPos;
-
-        // 현재 forward (월드 기준)
-        Vector3 currentForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-
-        if (directionForThisMap == RoadDirection.Right)
-        {
-            // 오른쪽으로 꺾음: 각도를 +90으로 변경한 후, 그 방향으로 전진
-            angle += 90f;
-            // normalize angle to [-180,180] or [0,360] if you like
-        }
-        else if (directionForThisMap == RoadDirection.Left)
-        {
-            // 왼쪽으로 꺾음: 각도를 -90으로 변경한 후, 그 방향으로 전진
-            angle -= 90f;
-        }
-        else // none == straight
-        {
-            // 각도 유지 (straight)
-        }
-
-        // 새 forward (각도를 바꾼 뒤의 forward) — 중요한 부분: 코너 프리팹이 새 방향을 향하게 하려면
+        if (directionForThisMap == RoadDirection.Right) angle += 90f;
+        else if (directionForThisMap == RoadDirection.Left) angle -= 90f;
         Vector3 newForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-
-        // 다음 위치: 전진 벡터 방향으로 한 칸(MAP_SIZE)
         Vector3 nextPos = currentPos + newForward * MAP_SIZE;
         Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
-
-        // 업데이트
         _lastSpawnPos = nextPos;
         _lastSpawnRot = nextRot;
         _lastSpawnAngle = Mathf.Repeat(angle, 360f);
-
-        // none인 경우는 변경하지 않음(직진 유지)
     }
-
-
 }

@@ -7,6 +7,8 @@ public class MapData : ScriptableObject
     public int DataTemplateId;
     public GameObject RoadPrefab;
     public RoadDirection Direction = RoadDirection.none;
+    [Tooltip("Prefab's model default facing: 0=+Z,1=+X,2=-Z,3=-X")]
+    public int BaseFacing = 0;
 
 #if UNITY_EDITOR
     private void OnValidate()

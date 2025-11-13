@@ -1,8 +1,13 @@
-// MapPlanner.cs (디버그 강화)
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// MapPlanner: grid 기반의 blueprint 생성기
+/// - Tile enum: Empty / Straight / Left / Right
+/// - GeneratePath(startCell, startDir, length) 으로 PathOrder 생성
+/// - CellToWorld / GetGrid 등 디버깅/시각화용 API 포함
+/// </summary>
 public enum Tile : byte
 {
     Empty = 0,
@@ -66,7 +71,6 @@ public class MapPlanner
         return dir & 3;
     }
 
-    // 디버그 요약 덤프: 작은 그리드는 전체 출력, 큰 그리드는 통계만 출력
     public void DumpGridSummary()
     {
         int used = 0;
@@ -92,35 +96,37 @@ public class MapPlanner
 
     public Tile[,] GetGrid() => _grid;
 
-    // GeneratePath with detailed debug
-    // Replace the existing GeneratePath with this improved version
-public bool GeneratePath(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps = 100000)
-{
-    // Outer retry strategy: try multiple seeds/length reductions if initial generation fails.
-    int maxRetries = 5;
-    int attemptLength = length;
-    int baseSeed = Environment.TickCount;
-    for (int retry = 0; retry < maxRetries; retry++)
+    /// <summary>
+    /// Public GeneratePath: 여러 번 재시도 + 길이 축소 전략 포함
+    /// </summary>
+    public bool GeneratePath(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps = 100000)
     {
-        int seed = baseSeed + retry * 10007;
-        _rng = new System.Random(seed);
+        int maxRetries = 6;
+        int attemptLength = length;
+        int baseSeed = Environment.TickCount;
+        for (int retry = 0; retry < maxRetries; retry++)
+        {
+            int seed = baseSeed + retry * 10007;
+            _rng = new System.Random(seed);
 
-        Debug.Log($"[MapPlanner] GeneratePath attempt {retry+1}/{maxRetries}, seed={seed}, targetLength={attemptLength}");
+            Debug.Log($"[MapPlanner] GeneratePath attempt {retry + 1}/{maxRetries}, seed={seed}, targetLength={attemptLength}");
 
-        bool ok = GeneratePathOnce(startCell, startDir, attemptLength, maxBacktrackSteps);
-        if (ok) return true;
+            bool ok = GeneratePathOnce(startCell, startDir, attemptLength, maxBacktrackSteps);
+            if (ok) return true;
 
-        // Reduce the target length slightly and retry, to avoid dead ends.
-        attemptLength = Mathf.Max(4, (int)(attemptLength * 0.9f));
-        Debug.LogWarning($"[MapPlanner] Retry: reducing targetLength -> {attemptLength}");
+            // Reduce the target length slightly and retry
+            attemptLength = Mathf.Max(4, (int)(attemptLength * 0.88f));
+            Debug.LogWarning($"[MapPlanner] Retry: reducing targetLength -> {attemptLength}");
+        }
+
+        Debug.LogWarning("[MapPlanner] All retries failed in GeneratePath.");
+        DumpGridSummary();
+        return false;
     }
 
-    Debug.LogWarning("[MapPlanner] All retries failed in GeneratePath.");
-    DumpGridSummary();
-    return false;
-}
-
-    // helper method - single attempt using weighted choices (more straights)
+    /// <summary>
+    /// Single attempt: weighted choices (heavy straight bias) + backtracking
+    /// </summary>
     private bool GeneratePathOnce(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps)
     {
         PathOrder.Clear();
@@ -134,13 +140,14 @@ public bool GeneratePath(Vector2Int startCell, int startDir, int length, int max
             return false;
         }
 
-        // Weighted choices: Straight more likely to avoid self-blocking
+        // STRAIGHT HEAVY WEIGHTED CHOICES (adjust counts to tune behavior)
         Tile[] weightedChoices = new Tile[] {
-        Tile.Straight, Tile.Straight, Tile.Straight, // 3x straight
-        Tile.Left, Tile.Left,                         // 2x left
-        Tile.Right                                     // 1x right
-        // => P(straight)=3/6=50%, left=2/6~33%, right=1/6~17% (adjust as needed)
-    };
+            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+            Tile.Straight, Tile.Straight,  // 10x straight ~ 83%
+            Tile.Left,                       // 1x left
+            Tile.Right                       // 1x right
+        };
 
         Stack<(Vector2Int cell, int dir, Tile[] choices, int choiceIndex)> stack =
             new Stack<(Vector2Int, int, Tile[], int)>();
@@ -158,9 +165,7 @@ public bool GeneratePath(Vector2Int startCell, int startDir, int length, int max
         {
             DebugTryCount++;
 
-            // create a shuffled weighted choices array copy for this decision point
             Tile[] choices = (Tile[])weightedChoices.Clone();
-            // Fisher-Yates shuffle
             for (int i = 0; i < choices.Length; i++)
             {
                 int j = _rng.Next(i, choices.Length);
@@ -174,16 +179,9 @@ public bool GeneratePath(Vector2Int startCell, int startDir, int length, int max
                 int nextDir = ApplyTileToDir(curDir, choice);
                 Vector2Int nextCell = curCell + DirToOffset(nextDir);
 
-                // quick debug log for first few tries only to avoid flooding
-                if (DebugTryCount < 50 || (DebugTryCount % 10000) == 0)
-                {
-                    Debug.Log($"[MapPlanner] Try#{DebugTryCount} choice {choice} -> nextCell {nextCell} inBounds={InBounds(nextCell)} occupied={(InBounds(nextCell) ? (_grid[nextCell.x, nextCell.y] != Tile.Empty).ToString() : "out")}");
-                }
-
                 if (!InBounds(nextCell)) continue;
                 if (_grid[nextCell.x, nextCell.y] != Tile.Empty) continue;
 
-                // Accept this choice
                 stack.Push((curCell, curDir, choices, i));
                 curCell = nextCell;
                 curDir = nextDir;
@@ -226,5 +224,4 @@ public bool GeneratePath(Vector2Int startCell, int startDir, int length, int max
         DumpGridSummary();
         return true;
     }
-
 }
