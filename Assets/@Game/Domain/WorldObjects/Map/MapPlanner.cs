@@ -2,12 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// MapPlanner: grid 기반의 blueprint 생성기
-/// - Tile enum: Empty / Straight / Left / Right
-/// - GeneratePath(startCell, startDir, length) 으로 PathOrder 생성
-/// - CellToWorld / GetGrid 등 디버깅/시각화용 API 포함
-/// </summary>
 public enum Tile : byte
 {
     Empty = 0,
@@ -96,9 +90,6 @@ public class MapPlanner
 
     public Tile[,] GetGrid() => _grid;
 
-    /// <summary>
-    /// Public GeneratePath: 여러 번 재시도 + 길이 축소 전략 포함
-    /// </summary>
     public bool GeneratePath(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps = 100000)
     {
         int maxRetries = 6;
@@ -124,9 +115,6 @@ public class MapPlanner
         return false;
     }
 
-    /// <summary>
-    /// Single attempt: weighted choices (heavy straight bias) + backtracking
-    /// </summary>
     private bool GeneratePathOnce(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps)
     {
         PathOrder.Clear();
