@@ -3,11 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UniRx;
 
-/// <summary>
-/// MapSpawner (수정본) — RandomMap() 및 Blueprint 스폰에서
-/// 프리팹 회전 계산 후 Left/Right 타일일 경우 -90도 보정 적용.
-/// 프로젝트의 Managers, Map, MapData, RoadDirection, Contexts 등은 기존과 동일하다고 가정합니다.
-/// </summary>
 public class MapSpawner : BaseObject
 {
     private Queue<Map> _roadStorage;
@@ -129,22 +124,23 @@ public class MapSpawner : BaseObject
             return;
         }
 
-        int outgoingDir = node.dir & 3;
+        int enterDir = node.dir & 3;
+        int outgoingDir = ApplyTileToDir(enterDir, node.tile);
+
         int prefabBaseFacing = Mathf.Clamp(md.BaseFacing, 0, 3);
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
+        Debug.Log($"[MapSpawner] Before {index} prefab={md.RoadPrefab.name} cell={node.cell} enterDir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
 
-        // ====== 여기서 Left/Right 타일이면 -90도 보정 적용 ======
         if (md.Direction == RoadDirection.Right)
         {
-            angle -= 90f;
+            angle -= 180f;
         }
         if (md.Direction == RoadDirection.Left)
         {
-            angle += 90f;
+            angle += 180f;
         }
         angle = Mathf.Repeat(angle, 360f);
-        // ====================================================
 
         Vector3 spawnWorld = _planner.CellToWorld(node.cell);
 
@@ -159,10 +155,9 @@ public class MapSpawner : BaseObject
         _lastSpawnRot = Quaternion.Euler(0f, angle, 0f);
         _lastSpawnAngle = angle;
 
-        Debug.Log($"[MapSpawner] Spawned blueprint node {index} prefab={roadName} cell={node.cell} dir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
+        Debug.Log($"[MapSpawner] After {index} prefab={roadName} cell={node.cell} enterDir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
     }
 
-    // ---------- 수정된 RandomMap (동일 보정 적용) ----------
     private void RandomMap()
     {
         if (_mapCount == 0)
@@ -190,14 +185,15 @@ public class MapSpawner : BaseObject
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
 
-        // ====== Left/Right 보정: -90도 적용 ======
-        if (mapData.Direction != RoadDirection.none)
+        if (mapData.Direction == RoadDirection.Right)
         {
-            angle -= 90f;
+            angle -= 180f;
+        }
+        if (mapData.Direction == RoadDirection.Left)
+        {
+            angle += 180f;
         }
         angle = Mathf.Repeat(angle, 360f);
-        // =======================================
-
         Vector3 spawnWorld = _lastSpawnPos;
 
         string roadName = mapData.RoadPrefab.name;
@@ -243,6 +239,15 @@ public class MapSpawner : BaseObject
         _lastSpawnAngle = Mathf.Repeat(angle, 360f);
     }
 
+    // Planner 와 동일한 규칙: Left = -90, Right = +90
+    private int ApplyTileToDir(int dir, Tile tile)
+    {
+        dir &= 3;
+        if (tile == Tile.Left) return (dir + 3) & 3;
+        if (tile == Tile.Right) return (dir + 1) & 3;
+        return dir;
+    }
+
     // 유틸: 0:+Z, 1:+X, 2:-Z, 3:-X
     private Vector3 DirIndexToVector(int dir)
     {
@@ -253,17 +258,5 @@ public class MapSpawner : BaseObject
             case 2: return Vector3.back;
             default: return Vector3.left;
         }
-    }
-
-    public void SpawnRandomOnce()
-    {
-        RandomMap();
-    }
-
-    public void SetStart(Vector3 startPos, float startAngle = 0f)
-    {
-        _lastSpawnPos = startPos;
-        _lastSpawnAngle = Mathf.Repeat(startAngle, 360f);
-        _lastSpawnRot = Quaternion.Euler(0f, _lastSpawnAngle, 0f);
     }
 }

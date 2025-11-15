@@ -115,101 +115,103 @@ public class MapPlanner
         return false;
     }
 
+    
     private bool GeneratePathOnce(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps)
-    {
-        PathOrder.Clear();
-        Array.Clear(_grid, 0, _grid.Length);
-        DebugTryCount = 0;
-        DebugBacktrackCount = 0;
+{
+    PathOrder.Clear();
+    Array.Clear(_grid, 0, _grid.Length);
+    DebugTryCount = 0;
+    DebugBacktrackCount = 0;
 
-        if (!InBounds(startCell))
+    if (!InBounds(startCell))
+    {
+        Debug.LogError("[MapPlanner] StartCell out of bounds: " + startCell);
+        return false;
+    }
+
+    // 직진 가중치 많이 준 선택지 (코너 빈도는 여기서 조절)
+    Tile[] weightedChoices = new Tile[]
+    {
+        Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+        Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+        Tile.Straight, Tile.Straight,     // 10개 = 직진
+        Tile.Left,                        // 1개 = 왼쪽
+        Tile.Right                        // 1개 = 오른쪽
+    };
+
+    Vector2Int curCell = startCell;
+    int curDir = startDir & 3;
+
+    int steps = 0;
+
+    while (steps < length)
+    {
+        DebugTryCount++;
+
+        // 이미 타일이 있는 셀이라면 여기에 또 놓을 수 없음 → 이번 시도 실패
+        if (_grid[curCell.x, curCell.y] != Tile.Empty)
         {
-            Debug.LogError("[MapPlanner] StartCell out of bounds: " + startCell);
+            Debug.LogWarning("[MapPlanner] Current cell already used, dead end.");
+            DumpGridSummary();
             return false;
         }
 
-        // STRAIGHT HEAVY WEIGHTED CHOICES (adjust counts to tune behavior)
-        Tile[] weightedChoices = new Tile[] {
-            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
-            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
-            Tile.Straight, Tile.Straight,  // 10x straight ~ 83%
-            Tile.Left,                       // 1x left
-            Tile.Right                       // 1x right
-        };
-
-        Stack<(Vector2Int cell, int dir, Tile[] choices, int choiceIndex)> stack =
-            new Stack<(Vector2Int, int, Tile[], int)>();
-
-        Vector2Int curCell = startCell;
-        int curDir = startDir & 3;
-
-        SetTile(curCell, Tile.Straight);
-        PathOrder.Add(new PathNode { cell = curCell, tile = Tile.Straight, dir = curDir });
-
-        int steps = 1;
-        int backtrackCounter = 0;
-
-        while (steps < length)
+        // 선택지 복사 + 셔플
+        Tile[] choices = (Tile[])weightedChoices.Clone();
+        for (int i = 0; i < choices.Length; i++)
         {
-            DebugTryCount++;
-
-            Tile[] choices = (Tile[])weightedChoices.Clone();
-            for (int i = 0; i < choices.Length; i++)
-            {
-                int j = _rng.Next(i, choices.Length);
-                Tile tmp = choices[i]; choices[i] = choices[j]; choices[j] = tmp;
-            }
-
-            bool moved = false;
-            for (int i = 0; i < choices.Length; i++)
-            {
-                Tile choice = choices[i];
-                int nextDir = ApplyTileToDir(curDir, choice);
-                Vector2Int nextCell = curCell + DirToOffset(nextDir);
-
-                if (!InBounds(nextCell)) continue;
-                if (_grid[nextCell.x, nextCell.y] != Tile.Empty) continue;
-
-                stack.Push((curCell, curDir, choices, i));
-                curCell = nextCell;
-                curDir = nextDir;
-                SetTile(curCell, choice);
-                PathOrder.Add(new PathNode { cell = curCell, tile = choice, dir = curDir });
-                steps++;
-                moved = true;
-                break;
-            }
-
-            if (!moved)
-            {
-                DebugBacktrackCount++;
-                if (stack.Count == 0)
-                {
-                    Debug.LogWarning("[MapPlanner] No moves available and stack empty -> fail to generate path (single attempt).");
-                    DumpGridSummary();
-                    return false;
-                }
-
-                var top = stack.Pop();
-                var last = PathOrder[PathOrder.Count - 1];
-                SetTile(last.cell, Tile.Empty);
-                PathOrder.RemoveAt(PathOrder.Count - 1);
-                steps--;
-                curCell = top.cell;
-                curDir = top.dir;
-
-                backtrackCounter++;
-                if (backtrackCounter > maxBacktrackSteps)
-                {
-                    Debug.LogWarning($"[MapPlanner] Exceeded maxBacktrackSteps ({maxBacktrackSteps}) -> abort attempt.");
-                    DumpGridSummary();
-                    return false;
-                }
-            }
+            int j = _rng.Next(i, choices.Length);
+            (choices[i], choices[j]) = (choices[j], choices[i]);
         }
 
-        Debug.Log($"[MapPlanner] GeneratePathOnce succeeded. Nodes={PathOrder.Count}, Tries={DebugTryCount}, Backtracks={DebugBacktrackCount}");
-        DumpGridSummary();
-        return true;
+        bool moved = false;
+
+        for (int i = 0; i < choices.Length; i++)
+        {
+            Tile choice = choices[i];
+
+            // 1) 현재 방향(curDir)과 타일(choice)을 기준으로 출구 방향 계산
+            int exitDir = ApplyTileToDir(curDir, choice);
+
+            // 2) 그 방향으로 한 칸 나간 다음 셀
+            Vector2Int nextCell = curCell + DirToOffset(exitDir);
+
+            // 3) 경계 밖이거나, 이미 사용된 셀로 이동하려 하면 스킵
+            if (!InBounds(nextCell)) continue;
+            if (_grid[nextCell.x, nextCell.y] != Tile.Empty) continue;
+
+            // 4) ✅ "현재 셀(curCell)" 에 타일을 찍는다
+            SetTile(curCell, choice);
+
+            // dir = 이 타일을 지나고 난 "출구 방향"
+            PathOrder.Add(new PathNode
+            {
+                cell = curCell,
+                tile = choice,
+                dir  = exitDir & 3
+            });
+
+            steps++;
+
+            // 5) 다음 루프는 nextCell 에서 시작
+            curCell = nextCell;
+            curDir  = exitDir & 3;
+
+            moved = true;
+            break;
+        }
+
+        if (!moved)
+        {
+            Debug.LogWarning("[MapPlanner] Dead end: no valid moves from " + curCell);
+            DumpGridSummary();
+            return false;
+        }
     }
+
+    Debug.Log($"[MapPlanner] GeneratePathOnce succeeded. Nodes={PathOrder.Count}, Tries={DebugTryCount}, Backtracks={DebugBacktrackCount}");
+    DumpGridSummary();
+    return true;
+}
+
 }
