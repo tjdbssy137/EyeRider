@@ -54,18 +54,25 @@
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs" />
     <Compile Include="Assets/@Framework/Controllers/EventHandler/GO_EventHandler.cs" />
     <Compile Include="Assets/@Framework/Utils/Define.Core.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Map/WorldMover.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolOptions.cs" />
     <Compile Include="Assets/@Framework/Data/Data.Core.cs.cs" />
+    <Compile Include="Assets/@Game/Contexts/MapContext.cs" />
     <Compile Include="Assets/@Framework/Utils/Extension.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Map/MapPlanner.cs" />
     <Compile Include="Assets/@Framework/Utils/Util.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Map/Map.cs" />
     <Compile Include="Assets/@Framework/UI/Popup/UI_LoadingPopup.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Eye/Eye.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Car/CarController+Event.cs" />
     <Compile Include="Assets/@Framework/UI/UI_Base.cs" />
+    <Compile Include="Assets/Data/ScriptableObjects/MapData.cs" />
     <Compile Include="Assets/@Game/Contexts/CarContext.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Eye/UI/HoleMaskController.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/TimeManager.cs" />
     <Compile Include="Assets/@Game/Data/Data.Contents.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/RandomManager.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Car/Car.cs" />
     <Compile Include="Assets/@Framework/Utils/PhysicsUtil.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/VehicleCamera.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/ResourceManager.cs" />
@@ -73,12 +80,16 @@
     <Compile Include="Assets/@Framework/Managers/Core/SceneManagerEx.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/UIManager.cs" />
     <Compile Include="Assets/@Framework/UI/Popup/UI_Popup.cs" />
+    <Compile Include="Assets/@Game/Contexts/InGameContext.cs" />
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Map/MapSpawner.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/EventManager.cs" />
     <Compile Include="Assets/@Framework/Managers/Contents/DataManager.cs" />
     <Compile Include="Assets/@Framework/Controllers/BaseObject.cs" />
+    <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/Input_InGameScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/SoundManager.cs" />
     <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
+    <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/InGameScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Managers.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolManager.cs" />
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs" />
@@ -96,6 +107,7 @@
     <Compile Include="Assets/@Framework/Managers/Core/InputManagerEx.cs" />
     <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
     <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraChase.cs" />
     <Compile Include="Assets/@Framework/Controllers/Stats/Stats.cs" />
     <Compile Include="Assets/@Framework/Scenes/BaseScene.cs" />
   </ItemGroup>
@@ -1142,6 +1154,10 @@
       <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Splines.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1178,12 +1194,16 @@
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
@@ -1192,10 +1212,6 @@
     </Reference>
     <Reference Include="Unity.Toonshader">
       <HintPath>Library/ScriptAssemblies/Unity.Toonshader.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
@@ -1212,6 +1228,14 @@
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cinemachine.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Cinemachine.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>Library/ScriptAssemblies/Unity.Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Editor">
@@ -1322,10 +1346,6 @@
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Collections.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1334,12 +1354,24 @@
       <HintPath>Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.Settings.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>Library/ScriptAssemblies/Unity.Splines.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Addressables.Editor">

@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
