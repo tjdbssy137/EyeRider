@@ -132,7 +132,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HolePos: {r: 0.68179244, g: 0.76208967, b: 0, a: 0}
+    - _HolePos: {r: 0.4524904, g: 0.65, b: 0, a: 0}
     - _HoleSize: {r: 0.46296296, g: 0.26041666, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

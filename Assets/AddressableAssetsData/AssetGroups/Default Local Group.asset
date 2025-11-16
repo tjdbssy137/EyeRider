@@ -63,6 +63,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f033469f4866f481389508c65be1a78a
+    m_Address: CameraFollowPoint
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 57331050c806a4ef1927a5d77dcc49f6, type: 2}
   m_SchemaSet:

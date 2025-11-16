@@ -6,10 +6,10 @@ public class InGameScene : BaseScene
 {
     private Car _car;
     private Eye _eye;
+    private CameraFollowPoint _cameraFollowPoint;
     private CinemachineCamera _camera;
     public GameObject _spawnPoint;
     private MapSpawner _mapSpawner;
-
     public override bool Init()
     {
         if (base.Init() == false)
@@ -42,13 +42,9 @@ public class InGameScene : BaseScene
         _eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
-        GameObject cameraFollowPoint = _car.transform.Find("CameraFollowPoint").gameObject;
-        
-        if (cameraFollowPoint == null)
-        {
-            Debug.LogError("cameraFollowPoint is NULL");
-        }
-        _camera.Target.TrackingTarget = cameraFollowPoint.transform;
+        // _cameraFollowPoint = Managers.Object.Spawn<CameraFollowPoint>(_spawnPoint.transform.position, 0, 0);
+        // _cameraFollowPoint.SettingCar(_car);
+        _camera.Target.TrackingTarget = _car.transform;
     }
 
 
