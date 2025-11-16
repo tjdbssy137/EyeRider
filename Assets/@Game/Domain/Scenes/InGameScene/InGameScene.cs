@@ -42,8 +42,13 @@ public class InGameScene : BaseScene
         _eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
+        GameObject CameraFollowPoint = _car.transform.Find("CameraFollowPoint").gameObject;
 
-        _camera.Target.TrackingTarget = _car.transform;
+        if (CameraFollowPoint == null)
+        {
+            Debug.LogError("CameraFollowPoint is NULL");
+        }
+        _camera.Target.TrackingTarget = CameraFollowPoint.transform;
     }
 
 

@@ -6,6 +6,7 @@ using UniRx.Triggers;
 public class Map : BaseObject
 {
     public BoxCollider _collider;
+    private MapData _data;
     public override bool Init()
 	{
 		if (base.Init() == false)
@@ -24,6 +25,7 @@ public class Map : BaseObject
                 Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
             })
             .AddTo(this);
+
 		return true;
 	}
 	
@@ -39,6 +41,25 @@ public class Map : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
+        _data = Managers.Data.MapDatas.GetValueOrDefault(dataTemplate);
 
+        _collider.OnCollisionEnterAsObservable()
+            .Where(collision => collision.gameObject.CompareTag("Player"))
+            .Subscribe(_ =>
+            {
+                if(_data.Direction == RoadDirection.none)
+                {
+                    return;
+                }
+                if(_data.Direction == RoadDirection.Right)
+                {
+                    Contexts.InGame.OnEnterCorner.OnNext(90);
+                }
+                if(_data.Direction == RoadDirection.Left)
+                {
+                    Contexts.InGame.OnEnterCorner.OnNext(-90);
+                }
+            })
+            .AddTo(this);
     }
 }

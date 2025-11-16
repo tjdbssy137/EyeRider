@@ -79,15 +79,17 @@ public partial class CarController : BaseObject
         }
         if (Keyboard.current.aKey.wasReleasedThisFrame) //if (Keyboard.current.aKey.wasReleasedThisFrame)
         {
-            this.HorizontalMove(Vector3.left);
+            //this.HorizontalMove(Vector3.left);
             //float left = -1;
-            //this.Steer(-90);
+            this.Steer(-90);
+            //Contexts.InGame.OnEnterCorner.OnNext(-90); // 작동 ㄴ
         }
-        if (Keyboard.current.dKey.isPressed) //if (Keyboard.current.dKey.wasReleasedThisFrame)
+        if (Keyboard.current.dKey.wasReleasedThisFrame) //if (Keyboard.current.dKey.wasReleasedThisFrame)
         {
-            this.HorizontalMove(Vector3.right);
+            //this.HorizontalMove(Vector3.right);
             //float right = 1;
-            //this.Steer(90);
+            this.Steer(90);
+            //Contexts.InGame.OnEnterCorner.OnNext(90);
         }
     }
 
