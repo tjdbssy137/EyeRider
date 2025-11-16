@@ -9,15 +9,19 @@ public partial class CarController : BaseObject
     private float _fuelAmount = 100;
     private float _condition = 100;
     [Range(10, 120)]
-    public float _verticalSpeed = 40;
+    public float _verticalDefaultSpeed = 40;
+    private float _verticalAccelerationSpeed = 0;
+    public float _maxAcceleration = 20f;
+    public float _accelPerSec = 30f;
+    public float _decelPerSec = 40f;
+    private bool _isAccelerateKeyPressed = false;
+
     [Range(10, 120)]
     public float _horizontalSpeed = 15;
     [Range(10, 120)]
     public float _reverseSpeed = 20;
     [Range(10, 120)]
     public float _turnSpeed = 100;
-
-
 
     private bool _isRotating = false;
     private float _rotLerpTime = 0f;
@@ -55,6 +59,25 @@ public partial class CarController : BaseObject
             .Subscribe(_ =>
             {
                 InputKeyBoard();
+                VerticalMove();
+                Accelerate();
+                if (_isRotating)
+                {
+                    _rotLerpTime += Time.fixedDeltaTime;
+                    float t = Mathf.Clamp01(_rotLerpTime / _rotDuration);
+
+                    float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
+                    Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
+                    _rigidbody.MoveRotation(newRot);
+
+                    if (1f <= t)
+                    {
+                        Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
+                        _rigidbody.MoveRotation(finalRot);
+                        _isRotating = false;
+                        WheelEffect(_isRotating);
+                    }
+                }
             }).AddTo(_disposables);
         
         Contexts.InGame.OnEnterCorner.Subscribe(degrees =>
@@ -67,52 +90,21 @@ public partial class CarController : BaseObject
 
     private void InputKeyBoard()
     {
-        if (Keyboard.current.wKey.isPressed)
+        _isAccelerateKeyPressed = Keyboard.current.wKey.isPressed;
+        if (_isAccelerateKeyPressed)
         {
-            this.Accelerate();
             WheelEffect(false);
         }
-        if (Keyboard.current.sKey.isPressed)
+    
+        if (Keyboard.current.aKey.isPressed)
         {
-            this.Reverse();
-            WheelEffect(false);
+            float left = -1;
+            this.HorizontalMove(left);
         }
-        if (Keyboard.current.aKey.isPressed) //if (Keyboard.current.aKey.wasReleasedThisFrame)
+        if (Keyboard.current.dKey.isPressed)
         {
-            this.HorizontalMove(Vector3.left);
-            //float left = -1;
-            //this.Steer(-90);
-            //Contexts.InGame.OnEnterCorner.OnNext(-90); // 작동 ㄴ
-        }
-        if (Keyboard.current.dKey.isPressed) //if (Keyboard.current.dKey.wasReleasedThisFrame)
-        {
-            this.HorizontalMove(Vector3.right);
-            //float right = 1;
-            //this.Steer(90);
-            //Contexts.InGame.OnEnterCorner.OnNext(90);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        InputKeyBoard();
-
-        if (_isRotating)
-        {
-            _rotLerpTime += Time.fixedDeltaTime;
-            float t = Mathf.Clamp01(_rotLerpTime / _rotDuration);
-
-            float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
-            Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
-            _rigidbody.MoveRotation(newRot);
-
-            if (1f <= t)
-            {
-                Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
-                _rigidbody.MoveRotation(finalRot);
-                _isRotating = false;
-                WheelEffect(_isRotating);
-            }
+            float right = 1;
+            this.HorizontalMove(right);
         }
     }
 
@@ -123,10 +115,14 @@ public partial class CarController : BaseObject
 #region Move
     private void Accelerate()
     {
-        _frontLeftMesh.transform.localRotation = Quaternion.identity;
-        _frontRightMesh.transform.localRotation = Quaternion.identity;
-        Vector3 move = (_rigidbody.rotation * Vector3.forward) * _verticalSpeed * Time.fixedDeltaTime;
-        _rigidbody.MovePosition(_rigidbody.position + move);
+        float targetAccel = _isAccelerateKeyPressed ? _maxAcceleration : 0f;
+        float rate = _isAccelerateKeyPressed ? _accelPerSec : _decelPerSec;
+
+        _verticalAccelerationSpeed = Mathf.MoveTowards(
+            _verticalAccelerationSpeed,
+            targetAccel,
+            rate * Time.fixedDeltaTime
+        );
     }
     private void Reverse()
     {
@@ -135,9 +131,20 @@ public partial class CarController : BaseObject
         Vector3 move = (_rigidbody.rotation * transform.forward * -1) * _reverseSpeed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + move);
     }
-    private void HorizontalMove(Vector3 direction)
+    private void VerticalMove()
     {
-        Vector3 move = direction * _horizontalSpeed * Time.fixedDeltaTime;
+        float speed =_verticalDefaultSpeed + _verticalAccelerationSpeed;
+        Vector3 move = (_rigidbody.rotation * Vector3.forward) * speed * Time.fixedDeltaTime;
+        _rigidbody.MovePosition(_rigidbody.position + move);
+    }
+    private void HorizontalMove(float dir)
+    {
+        if (Mathf.Approximately(dir, 0f))
+            return;
+
+        Vector3 sideDir = _rigidbody.rotation * Vector3.right;
+        Vector3 move = sideDir * dir * _horizontalSpeed * Time.fixedDeltaTime;
+
         _rigidbody.MovePosition(_rigidbody.position + move);
         WheelEffect(true);
     }
@@ -150,7 +157,6 @@ public partial class CarController : BaseObject
         _targetYaw = Mathf.Repeat(_startYaw + degrees, 360f);
 
         // Quaternion targetRot = Quaternion.Euler(0f, direction * 40f, 0f);
-
         // _currentWheelRotation = Quaternion.RotateTowards(
         //     _currentWheelRotation, 
         //     targetRot, 

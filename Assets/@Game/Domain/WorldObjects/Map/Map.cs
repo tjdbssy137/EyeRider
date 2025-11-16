@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System;
 
 public class Map : BaseObject
 {
@@ -20,11 +21,24 @@ public class Map : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                Managers.Object.Despawn(this);
-                Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-                Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
+                var car = Contexts.InGame.Car;
+                if (car == null)
+                {
+                    Debug.LogWarning("car is NULL");
+                    return;
+                }
+
+                float dist = Vector3.Distance(transform.position, car.transform.position);
+
+                if (20f <= dist)
+                {
+                    Managers.Object.Despawn(this);
+                    Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                    Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
+                }
             })
-            .AddTo(this);
+            .AddTo(_disposables);
+        
 
 		return true;
 	}

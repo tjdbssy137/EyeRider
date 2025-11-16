@@ -24,6 +24,7 @@ public class Car : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
+        Contexts.InGame.Car = this;
         
     }
 }
