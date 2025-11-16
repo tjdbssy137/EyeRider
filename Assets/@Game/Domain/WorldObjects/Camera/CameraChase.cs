@@ -22,10 +22,6 @@ public class CameraChase : BaseObject
         {
             return false;
         }
-		Contexts.InGame.OnEnterCorner.Subscribe(degrees =>
-        {
-            
-        }).AddTo(_disposables);
 
         return true;
     }

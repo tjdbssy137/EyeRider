@@ -1,5 +1,6 @@
 public class Car : BaseObject
 {
+    CarController _carController;
     public override bool Init()
 	{
 		if (base.Init() == false)
@@ -15,6 +16,9 @@ public class Car : BaseObject
             return false;
         }
 
+        _carController = this.gameObject.GetComponent<CarController>();
+        _carController.OnSpawn();
+        _carController.SetInfo(0);
         return true;
     }
     public override void SetInfo(int dataTemplate)
