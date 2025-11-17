@@ -21,5 +21,4 @@ public partial class InGameContext
     public bool AKey { get; set; }
     public bool SKey { get; set; }
     public bool DKey { get; set; }
-
 }

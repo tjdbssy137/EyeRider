@@ -24,7 +24,9 @@ public class PointMover : UI_Base
     [Tooltip("입력 방향이 폭풍의 눈 방향과 얼마나 비슷해야 '끌어당기기'로 인정할지 (1=완전 같음, 0=-반대)")]
     [Range(-1f, 1f)]
     public float _directionThreshold = 0.3f; // 0.3 정도면 대충 같은 쪽
-
+    
+    [Header("차 쪽으로 가까워지는 정도")]
+    public float _approachSpeed = 80f; // 값은 나중에 감으로 조절
     private Vector2 _randomPos;      // 랜덤 이동 기준 위치 (캔버스 중앙 기준)
     private Vector2 _randomTarget;   // 랜덤 목적지
     private Vector2 _inputOffset;    // 입력 때문에 생기는 추가 오프셋
@@ -100,19 +102,24 @@ public class PointMover : UI_Base
 
                 if (dot > _directionThreshold)
                 {
-                    // 폭풍의 눈을 "차 쪽(센터)으로" 끌어당김
-                    // stormPos가 (차→폭풍의 눈 이니까)
-                    // 그 반대(-stormPos)가 "폭풍의 눈→차" 방향이다.
-                    Vector2 stormToCar = -stormPos;
+                    // stormPos: 차(0,0) -> 폭풍의 눈 방향
+                    Vector2 stormToCar = -stormPos; // 폭풍의 눈 -> 차 방향
 
-                    // 현재 거리의 일부만큼만 당겨오기 (inputPullFactor 만큼)
+                    // 1) 기존처럼 "자석 느낌"의 일시적인 오프셋(조금만 남기고 싶으면 factor를 줄여도 됨)
                     Vector2 pull = stormToCar * _inputPullFactor;
-
                     targetOffset = pull;
+
+                    // 2) 여기서부터가 핵심: 폭풍의 눈 기준 위치 자체를 조금씩 차 쪽으로 이동
+                    //    입력 방향이 얼마나 잘 맞는지(dot) 비율을 이용해서 강도 조절
+                    float align = Mathf.InverseLerp(_directionThreshold, 1f, dot); // 0~1
+
+                    Vector2 approachDir = stormToCar.normalized;      // 폭풍의 눈 -> 차 방향 단위 벡터
+                    _randomPos += approachDir * _approachSpeed * dt * align;
                 }
                 else
                 {
-                    // 입력이 반대 방향이면 끌어당기지 않고, 서서히 0으로 복귀
+                    // 입력 방향이 다르거나 반대쪽이면,
+                    // 자석 느낌은 서서히 풀리게(기존처럼 targetOffset은 0쪽으로 향하게)
                     targetOffset = Vector2.zero;
                 }
             }
@@ -139,6 +146,7 @@ public class PointMover : UI_Base
         finalPos.y = Mathf.Clamp(finalPos.y, -halfH, halfH);
 
         _point.anchoredPosition = finalPos;
+
     }
 
     private Vector2 ReadInputDirection()
