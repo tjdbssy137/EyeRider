@@ -16,30 +16,6 @@ public class Map : BaseObject
         {
             Debug.Log("_collider is NULL");
         }
-
-        _collider.OnCollisionExitAsObservable()
-            .Where(collision => collision.gameObject.CompareTag("Player"))
-            .Subscribe(_ =>
-            {
-                var car = Contexts.InGame.Car;
-                if (car == null)
-                {
-                    Debug.LogWarning("car is NULL");
-                    return;
-                }
-
-                float dist = Vector3.Distance(transform.position, car.transform.position);
-
-                if (20f <= dist)
-                {
-                    Managers.Object.Despawn(this);
-                    Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-                    Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
-                }
-            })
-            .AddTo(_disposables);
-        
-
 		return true;
 	}
 	
@@ -49,7 +25,30 @@ public class Map : BaseObject
         {
             return false;
         }
+        _collider.OnCollisionExitAsObservable()
+            .Where(collision => collision.gameObject.CompareTag("Player"))
+            .Subscribe(_ =>
+            {
+                Managers.Object.Despawn(this);
+                Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                //Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
+                // var car = Contexts.InGame.Car;
+                // if (car == null)
+                // {
+                //     Debug.LogWarning("car is NULL");
+                //     return;
+                // }
 
+                // float dist = Vector3.Distance(transform.position, car.transform.position);
+
+                // if (20f <= dist)
+                // {
+                //     Managers.Object.Despawn(this);
+                //     Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                //     Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
+                // }
+            })
+            .AddTo(_disposables);
         return true;
     }
     public override void SetInfo(int dataTemplate)

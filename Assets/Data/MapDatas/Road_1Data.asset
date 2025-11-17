@@ -15,3 +15,4 @@ MonoBehaviour:
   DataTemplateId: 0
   RoadPrefab: {fileID: 8025727416505397532, guid: 4ab718d5a5fc74685b290b4b108b8667, type: 3}
   Direction: 0
+  BaseFacing: 0
