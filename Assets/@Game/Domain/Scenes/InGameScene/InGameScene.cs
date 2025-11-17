@@ -6,7 +6,6 @@ public class InGameScene : BaseScene
 {
     private Car _car;
     private Eye _eye;
-    private CameraFollowPoint _cameraFollowPoint;
     private CinemachineCamera _camera;
     public GameObject _spawnPoint;
     private MapSpawner _mapSpawner;
@@ -21,7 +20,8 @@ public class InGameScene : BaseScene
         {
             Debug.LogError("Camera is NULL");
         }
-        
+        this.InputSystem = new Input_InGameScene();
+        this.InputSystem.Init();
         LoadResources();
         return true;
     }

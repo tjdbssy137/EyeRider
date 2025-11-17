@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UniRx;
 
 public class PointMover : UI_Base
@@ -144,19 +143,15 @@ public class PointMover : UI_Base
 
     private Vector2 ReadInputDirection()
     {
-        var keyboard = Keyboard.current;
-        if (keyboard == null)
-            return Vector2.zero;
-
         Vector2 dir = Vector2.zero;
 
         // A / D → 좌우
-        if (keyboard.aKey.isPressed) dir.x -= 1f;
-        if (keyboard.dKey.isPressed) dir.x += 1f;
+        if (Contexts.InGame.AKey) dir.x -= 1f;
+        if (Contexts.InGame.DKey) dir.x += 1f;
 
-        // W / S → 위/아래 (전/후 느낌)
-        if (keyboard.wKey.isPressed) dir.y += 1f;
-        if (keyboard.sKey.isPressed) dir.y -= 1f;
+        // W / S → 위/아래
+        if (Contexts.InGame.WKey) dir.y += 1f;
+        if (Contexts.InGame.SKey) dir.y -= 1f;
 
         return dir;
     }

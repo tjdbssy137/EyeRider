@@ -1,6 +1,5 @@
 using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UniRx;
 using System;
 
@@ -14,7 +13,7 @@ public partial class CarController : BaseObject
     public float _maxAcceleration = 20f;
     public float _accelPerSec = 30f;
     public float _decelPerSec = 40f;
-    private bool _isAccelerateKeyPressed = false;
+    //private bool _isAccelerateKeyPressed = false;
 
     [Range(10, 120)]
     public float _horizontalSpeed = 15;
@@ -58,7 +57,7 @@ public partial class CarController : BaseObject
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
-                InputKeyBoard();
+                //InputKeyBoard();
                 VerticalMove();
                 Accelerate();
                 if (_isRotating)
@@ -79,7 +78,13 @@ public partial class CarController : BaseObject
                     }
                 }
             }).AddTo(_disposables);
-        
+
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                InputKeyBoard(); 
+            }).AddTo(_disposables);
+
         Contexts.InGame.OnEnterCorner.Subscribe(degrees =>
         {
             this.Steer(degrees);
@@ -90,18 +95,18 @@ public partial class CarController : BaseObject
 
     private void InputKeyBoard()
     {
-        _isAccelerateKeyPressed = Keyboard.current.wKey.isPressed;
-        if (_isAccelerateKeyPressed)
+        //_isAccelerateKeyPressed = Keyboard.current.wKey.isPressed;
+        if (Contexts.InGame.WKey)
         {
             WheelEffect(false);
         }
     
-        if (Keyboard.current.aKey.isPressed)
+        if (Contexts.InGame.AKey)
         {
             float left = -1;
             this.HorizontalMove(left);
         }
-        if (Keyboard.current.dKey.isPressed)
+        if (Contexts.InGame.DKey)
         {
             float right = 1;
             this.HorizontalMove(right);
@@ -115,8 +120,8 @@ public partial class CarController : BaseObject
 #region Move
     private void Accelerate()
     {
-        float targetAccel = _isAccelerateKeyPressed ? _maxAcceleration : 0f;
-        float rate = _isAccelerateKeyPressed ? _accelPerSec : _decelPerSec;
+        float targetAccel = Contexts.InGame.WKey ? _maxAcceleration : 0f;
+        float rate = Contexts.InGame.WKey ? _accelPerSec : _decelPerSec;
 
         _verticalAccelerationSpeed = Mathf.MoveTowards(
             _verticalAccelerationSpeed,
