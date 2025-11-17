@@ -57,7 +57,7 @@ public partial class CarController : BaseObject
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
-                //InputKeyBoard();
+                InputKeyBoard();
                 VerticalMove();
                 Accelerate();
                 if (_isRotating)
@@ -79,12 +79,6 @@ public partial class CarController : BaseObject
                 }
             }).AddTo(_disposables);
 
-        this.UpdateAsObservable()
-            .Subscribe(_ =>
-            {
-                InputKeyBoard(); 
-            }).AddTo(_disposables);
-
         Contexts.InGame.OnEnterCorner.Subscribe(degrees =>
         {
             this.Steer(degrees);
@@ -95,21 +89,19 @@ public partial class CarController : BaseObject
 
     private void InputKeyBoard()
     {
-        //_isAccelerateKeyPressed = Keyboard.current.wKey.isPressed;
-        if (Contexts.InGame.WKey)
-        {
-            WheelEffect(false);
-        }
-    
         if (Contexts.InGame.AKey)
         {
             float left = -1;
             this.HorizontalMove(left);
         }
-        if (Contexts.InGame.DKey)
+        else if (Contexts.InGame.DKey)
         {
             float right = 1;
             this.HorizontalMove(right);
+        }
+        else
+        {
+            WheelEffect(false);
         }
     }
 

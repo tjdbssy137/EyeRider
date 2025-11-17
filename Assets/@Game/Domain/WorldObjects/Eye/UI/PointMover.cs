@@ -1,5 +1,6 @@
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
 
 public class PointMover : UI_Base
 {
@@ -11,7 +12,7 @@ public class PointMover : UI_Base
     public float _randomMoveSpeed = 200f;
 
     [Tooltip("몇 초마다 새로운 랜덤 목적지를 잡을지")]
-    public float _randomTargetInterval = 2f;
+    public float _randomTargetInterval = 2f; // 나중엔 이 시간도 랜덤으로.
 
     [Header("입력 기반 끌림 설정")]
     [Tooltip("입력 방향이 폭풍의눈 쪽을 향할 때, 얼마나 많이 차 쪽으로 끌어당길지 (0~1 비율)")]
@@ -23,13 +24,23 @@ public class PointMover : UI_Base
 
     [Tooltip("입력 방향이 폭풍의 눈 방향과 얼마나 비슷해야 '끌어당기기'로 인정할지 (1=완전 같음, 0=-반대)")]
     [Range(-1f, 1f)]
-    public float _directionThreshold = 0.3f; // 0.3 정도면 대충 같은 쪽
-    
-    [Header("차 쪽으로 가까워지는 정도")]
-    public float _approachSpeed = 80f; // 값은 나중에 감으로 조절
-    private Vector2 _randomPos;      // 랜덤 이동 기준 위치 (캔버스 중앙 기준)
-    private Vector2 _randomTarget;   // 랜덤 목적지
-    private Vector2 _inputOffset;    // 입력 때문에 생기는 추가 오프셋
+    public float _directionThreshold = 0.45f; // 0.3 정도면 대충 같은 쪽
+
+    [Header("거리 기반 접근/이탈 속도")]
+    public float _approachSpeed = 70f; // 차 쪽으로
+    public float _repelSpeed = 120f;    // 차에서 멀어지게
+
+    [Header("좌우 전용 접근/이탈 속도")]
+    public float _sideApproachSpeed = 80f; // 중앙(0) 쪽으로
+    public float _sideRepelSpeed = 120f;     // 좌/우로 더 멀어지게
+
+    // ==========================
+    // 내부 상태
+    // ==========================
+    private Vector2 _randomPos;
+    private Vector2 _randomTarget;
+    private Vector2 _inputOffset;
+    private Vector2 _targetOffset;
 
     public override bool Init()
     {
@@ -45,11 +56,17 @@ public class PointMover : UI_Base
         _randomPos = _point.anchoredPosition;
         _randomTarget = _randomPos;
         _inputOffset = Vector2.zero;
+        _targetOffset = Vector2.zero;
 
         // 일정 시간마다 랜덤 목적지 갱신
         Observable.Interval(System.TimeSpan.FromSeconds(_randomTargetInterval))
             .Subscribe(_ => SetRandomTarget())
             .AddTo(this);
+
+        this.UpdateAsObservable().Subscribe(_=>
+        {
+            Move();
+        }).AddTo(this);
 
         return true;
     }
@@ -66,79 +83,149 @@ public class PointMover : UI_Base
         _randomTarget = new Vector2(x, y);
     }
 
-    private void Update()
+    private void Move()
     {
         float dt = Time.deltaTime;
 
-        // ==========================
-        // 1) 랜덤 이동 업데이트
-        // ==========================
+        //랜덤 이동
+        UpdateRandomPosition(dt);
+
+        //입력 방향 계산
+        Vector2 inputDir = ReadInputDirection();
+
+        if (0.0001f < inputDir.sqrMagnitude)
+        {
+            //앞뒤 접근/이탈
+            HandleForwardApproachRepel(inputDir, dt);
+
+            //좌우 접근/이탈
+            HandleSideApproachRepel(inputDir, dt);
+        }
+        else
+        {
+            // 입력이 없으면 오프셋 목표를 0으로
+            _targetOffset = Vector2.zero;
+        }
+
+        //오프셋 Lerp
+        UpdateInputOffset(dt);
+
+        //최종 위치 적용 + 클램프
+        ApplyFinalPosition();
+    }
+
+    private void UpdateRandomPosition(float dt)
+    {
         _randomPos = Vector2.MoveTowards(
             _randomPos,
             _randomTarget,
             _randomMoveSpeed * dt
         );
+    }
 
-        // ==========================
-        // 2) Car 이동키 기반 "끌어당김" 계산
-        // ==========================
-        Vector2 inputDir = ReadInputDirection(); // WASD → (-1~1, -1~1)
-
-        Vector2 targetOffset = Vector2.zero;
-
-        if (inputDir.sqrMagnitude > 0.0001f)
+    private void HandleForwardApproachRepel(Vector2 inputDir, float dt)
+    {
+        Vector2 stormPos = _randomPos; // 차(0,0) 기준 폭풍의 눈 위치
+        if (stormPos.sqrMagnitude <= 0.0001f)
         {
-            Vector2 inputNorm = inputDir.normalized;
+            _targetOffset = Vector2.zero;
+            return;
+        }
 
-            // 현재 폭풍의 눈 위치 (랜덤 기준) – 차는 화면 중앙(0,0)이라고 가정
-            Vector2 stormPos = _randomPos;       // 차 기준 폭풍의 눈 위치
-            if (stormPos.sqrMagnitude > 0.0001f)
-            {
-                Vector2 carToStorm = stormPos.normalized; // 차→폭풍의 눈 방향
+        Vector2 inputNorm = inputDir.normalized;
+        Vector2 carToStorm = stormPos.normalized; // 차 -> 폭풍의 눈 방향
+        float dot = Vector2.Dot(inputNorm, carToStorm);
 
-                // 입력 방향이 폭풍의 눈 방향을 얼마나 향하고 있는지 (코사인 값)
-                float dot = Vector2.Dot(inputNorm, carToStorm);
-                // dot > 0 이면 "폭풍의 눈 쪽으로 핸들을 꺾었다" 는 뜻
+        if (_directionThreshold < dot)
+        {
+            // 1) 자동차가 폭풍의 눈 방향으로 움직일 때 → 가까워짐
+            Vector2 stormToCar = -stormPos; // 폭풍의 눈 -> 차 방향
 
-                if (dot > _directionThreshold)
-                {
-                    // stormPos: 차(0,0) -> 폭풍의 눈 방향
-                    Vector2 stormToCar = -stormPos; // 폭풍의 눈 -> 차 방향
+            // 자석 느낌(일시적인 오프셋)
+            _targetOffset = stormToCar * _inputPullFactor;
 
-                    // 1) 기존처럼 "자석 느낌"의 일시적인 오프셋(조금만 남기고 싶으면 factor를 줄여도 됨)
-                    Vector2 pull = stormToCar * _inputPullFactor;
-                    targetOffset = pull;
+            // 기준 위치 자체를 차 쪽으로 이동
+            float align = Mathf.InverseLerp(_directionThreshold, 1f, dot); // 0~1
+            Vector2 approachDir = stormToCar.normalized;
 
-                    // 2) 여기서부터가 핵심: 폭풍의 눈 기준 위치 자체를 조금씩 차 쪽으로 이동
-                    //    입력 방향이 얼마나 잘 맞는지(dot) 비율을 이용해서 강도 조절
-                    float align = Mathf.InverseLerp(_directionThreshold, 1f, dot); // 0~1
+            _randomPos += approachDir * _approachSpeed * dt * align;
+        }
+        else if (dot < -_directionThreshold)
+        {
+            // 2) 자동차가 폭풍의 눈의 반대 방향으로 움직일 때 → 멀어짐
+            float repelAlign = Mathf.InverseLerp(-1f, -_directionThreshold, dot); // 0~1
+            Vector2 repelDir = carToStorm; // 차 -> 폭풍의 눈 방향으로 밀어냄
 
-                    Vector2 approachDir = stormToCar.normalized;      // 폭풍의 눈 -> 차 방향 단위 벡터
-                    _randomPos += approachDir * _approachSpeed * dt * align;
-                }
-                else
-                {
-                    // 입력 방향이 다르거나 반대쪽이면,
-                    // 자석 느낌은 서서히 풀리게(기존처럼 targetOffset은 0쪽으로 향하게)
-                    targetOffset = Vector2.zero;
-                }
-            }
+            _randomPos += repelDir * _repelSpeed * dt * repelAlign;
+
+            // 반대 방향일 땐 자석 오프셋은 제거
+            _targetOffset = Vector2.zero;
         }
         else
         {
-            // 입력이 없으면 오프셋을 0으로 복귀
-            targetOffset = Vector2.zero;
+            // 3) 그 사이 각도(대충 옆으로 움직일 때) → 중립
+            _targetOffset = Vector2.zero;
+        }
+    }
+
+    private void HandleSideApproachRepel(Vector2 inputDir, float dt)
+    {
+        Vector2 stormPos = _randomPos;
+
+        float sideInput = Mathf.Sign(inputDir.x);
+
+        if (Mathf.Abs(sideInput) <= 0.01f)
+        {
+            return;
         }
 
-        // 오프셋을 부드럽게 따라가게
-        _inputOffset = Vector2.Lerp(_inputOffset, targetOffset, _inputFollowSpeed * dt);
+        // 폭풍의 눈이 화면 어느 쪽에 있는지
+        float stormSide = 0f;
+        const float sideDeadZone = 5f;
 
-        // ==========================
-        // 3) 최종 위치 = 랜덤 + 입력 오프셋
-        // ==========================
+        if (sideDeadZone < stormPos.x)
+        {
+            stormSide = 1f;
+        }
+        else if (stormPos.x < -sideDeadZone)
+        {
+            stormSide = -1f;
+        }
+
+        if (Mathf.Abs(stormSide) <= 0.01f)
+        {
+            return;
+        }
+
+        // 같은 방향 → 중앙(0) 쪽으로 붙어가는 느낌
+        if (0f < sideInput * stormSide)
+        {
+            _randomPos.x = Mathf.MoveTowards(
+                _randomPos.x,
+                0f,
+                _sideApproachSpeed * dt
+            );
+        }
+        // 반대 방향 → 더 멀어지는 느낌
+        else if (sideInput * stormSide < 0f)
+        {
+            _randomPos.x += stormSide * _sideRepelSpeed * dt;
+        }
+    }
+
+    private void UpdateInputOffset(float dt)
+    {
+        _inputOffset = Vector2.Lerp(
+            _inputOffset,
+            _targetOffset,
+            _inputFollowSpeed * dt
+        );
+    }
+
+    private void ApplyFinalPosition()
+    {
         Vector2 finalPos = _randomPos + _inputOffset;
 
-        // 캔버스 안으로 클램프
         float halfW = _canvasRect.rect.width * 0.5f;
         float halfH = _canvasRect.rect.height * 0.5f;
 
@@ -146,20 +233,29 @@ public class PointMover : UI_Base
         finalPos.y = Mathf.Clamp(finalPos.y, -halfH, halfH);
 
         _point.anchoredPosition = finalPos;
-
     }
 
     private Vector2 ReadInputDirection()
     {
         Vector2 dir = Vector2.zero;
 
-        // A / D → 좌우
-        if (Contexts.InGame.AKey) dir.x -= 1f;
-        if (Contexts.InGame.DKey) dir.x += 1f;
+        if (Contexts.InGame.AKey)
+        {
+            dir.x -= 1f;
+        }
+        if (Contexts.InGame.DKey)
+        {
+            dir.x += 1f;
+        }
 
-        // W / S → 위/아래
-        if (Contexts.InGame.WKey) dir.y += 1f;
-        if (Contexts.InGame.SKey) dir.y -= 1f;
+        if (Contexts.InGame.WKey)
+        {
+            dir.y += 1f;
+        }
+        if (Contexts.InGame.SKey)
+        {
+            dir.y -= 1f;
+        }
 
         return dir;
     }

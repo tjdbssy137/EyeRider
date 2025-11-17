@@ -5,6 +5,7 @@ Shader "UI/InverseHoleMask"
         _MainTex ("Main Texture", 2D) = "white" {}
         _HolePos ("Hole Position", Vector) = (0.5, 0.5, 0, 0)
         _HoleSize ("Hole Size", Vector) = (0.1, 0.1, 0, 0)
+        _BackgroundAlpha ("Background Alpha", Range(0, 1)) = 1
     }
     SubShader
     {
@@ -27,6 +28,7 @@ Shader "UI/InverseHoleMask"
 
             float4 _HolePos;
             float4 _HoleSize;
+            float _BackgroundAlpha;    // 추가
 
             struct appdata_t
             {
@@ -52,12 +54,13 @@ Shader "UI/InverseHoleMask"
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
-                // 화면 비율 보정: HolePos와 HoleSize를 0~1 UV 단위로 처리
                 float2 diff = (i.uv - _HolePos.xy) / _HoleSize.xy;
                 float dist = length(diff);
 
-                if (dist < 0.5) // 반경 기준
+                if (dist < 0.5)
                     col.a = 0;
+
+                col.a *= _BackgroundAlpha;
 
                 return col;
             }
