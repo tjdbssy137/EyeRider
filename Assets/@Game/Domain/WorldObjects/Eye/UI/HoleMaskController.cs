@@ -1,15 +1,40 @@
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HoleMaskController : InitBase
+public class HoleMaskController : UI_Base
 {
     [Range(0f, 1f)]
     public float _backgroundAlpha = 1f;
     public Image _backgroundImage;
     public RectTransform _point; // 움직이는 점
     public RectTransform _canvasRect;
+    public RectTransform _eyeImages;
+
+    public float _rotateSpeed = 15f;
+
+    public override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
+
+        this.UpdateAsObservable().Subscribe( _ =>
+        {
+            Move();
+            RotateEyeCloud();
+        }).AddTo(this);
+
+        return true;
+    }
 
     void Update()
+    {
+        Move();
+        RotateEyeCloud();
+    }
+
+    private void Move()
     {
         if (_backgroundImage != null && _backgroundImage.material != null)
         {
@@ -23,5 +48,10 @@ public class HoleMaskController : InitBase
 
         _backgroundImage.material.SetVector("_HolePos", uvPos);
         _backgroundImage.material.SetVector("_HoleSize", pointSize);
+    }
+
+    private void RotateEyeCloud()
+    {
+        _eyeImages.Rotate(0f, 0f, _rotateSpeed * Time.deltaTime);
     }
 }
