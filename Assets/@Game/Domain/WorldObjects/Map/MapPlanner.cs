@@ -27,7 +27,10 @@ public class MapPlanner
 
     public MapPlanner(int width = 100, int height = 100, int cellSize = 100, int? seed = null)
     {
-        if (width <= 0 || height <= 0) throw new ArgumentException("Invalid map size");
+        if (width <= 0 || height <= 0)
+        {
+            throw new ArgumentException("Invalid map size");
+        }
         _width = width;
         _height = height;
         _cellSize = cellSize;
@@ -117,101 +120,101 @@ public class MapPlanner
 
     
     private bool GeneratePathOnce(Vector2Int startCell, int startDir, int length, int maxBacktrackSteps)
-{
-    PathOrder.Clear();
-    Array.Clear(_grid, 0, _grid.Length);
-    DebugTryCount = 0;
-    DebugBacktrackCount = 0;
-
-    if (!InBounds(startCell))
     {
-        Debug.LogError("[MapPlanner] StartCell out of bounds: " + startCell);
-        return false;
-    }
+        PathOrder.Clear();
+        Array.Clear(_grid, 0, _grid.Length);
+        DebugTryCount = 0;
+        DebugBacktrackCount = 0;
 
-    // 직진 가중치 많이 준 선택지 (코너 빈도는 여기서 조절)
-    Tile[] weightedChoices = new Tile[]
-    {
-        Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
-        Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
-        Tile.Straight, Tile.Straight,     // 10개 = 직진
-        Tile.Left,                        // 1개 = 왼쪽
-        Tile.Right                        // 1개 = 오른쪽
-    };
-
-    Vector2Int curCell = startCell;
-    int curDir = startDir & 3;
-
-    int steps = 0;
-
-    while (steps < length)
-    {
-        DebugTryCount++;
-
-        // 이미 타일이 있는 셀이라면 여기에 또 놓을 수 없음 → 이번 시도 실패
-        if (_grid[curCell.x, curCell.y] != Tile.Empty)
+        if (!InBounds(startCell))
         {
-            Debug.LogWarning("[MapPlanner] Current cell already used, dead end.");
-            DumpGridSummary();
+            Debug.LogError("[MapPlanner] StartCell out of bounds: " + startCell);
             return false;
         }
 
-        // 선택지 복사 + 셔플
-        Tile[] choices = (Tile[])weightedChoices.Clone();
-        for (int i = 0; i < choices.Length; i++)
+        // 직진 가중치 많이 준 선택지 (코너 빈도는 여기서 조절)
+        Tile[] weightedChoices = new Tile[]
         {
-            int j = _rng.Next(i, choices.Length);
-            (choices[i], choices[j]) = (choices[j], choices[i]);
-        }
+            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+            Tile.Straight, Tile.Straight, Tile.Straight, Tile.Straight,
+            Tile.Straight, Tile.Straight,     // 10개 = 직진
+            Tile.Left,                        // 1개 = 왼쪽
+            Tile.Right                        // 1개 = 오른쪽
+        };
 
-        bool moved = false;
+        Vector2Int curCell = startCell;
+        int curDir = startDir & 3;
 
-        for (int i = 0; i < choices.Length; i++)
+        int steps = 0;
+
+        while (steps < length)
         {
-            Tile choice = choices[i];
+            DebugTryCount++;
 
-            // 1) 현재 방향(curDir)과 타일(choice)을 기준으로 출구 방향 계산
-            int exitDir = ApplyTileToDir(curDir, choice);
-
-            // 2) 그 방향으로 한 칸 나간 다음 셀
-            Vector2Int nextCell = curCell + DirToOffset(exitDir);
-
-            // 3) 경계 밖이거나, 이미 사용된 셀로 이동하려 하면 스킵
-            if (!InBounds(nextCell)) continue;
-            if (_grid[nextCell.x, nextCell.y] != Tile.Empty) continue;
-
-            // 4) ✅ "현재 셀(curCell)" 에 타일을 찍는다
-            SetTile(curCell, choice);
-
-            // dir = 이 타일을 지나고 난 "출구 방향"
-            PathOrder.Add(new PathNode
+            // 이미 타일이 있는 셀이라면 여기에 또 놓을 수 없음 → 이번 시도 실패
+            if (_grid[curCell.x, curCell.y] != Tile.Empty)
             {
-                cell = curCell,
-                tile = choice,
-                dir  = exitDir & 3
-            });
+                Debug.LogWarning("[MapPlanner] Current cell already used, dead end.");
+                DumpGridSummary();
+                return false;
+            }
 
-            steps++;
+            // 선택지 복사 + 셔플
+            Tile[] choices = (Tile[])weightedChoices.Clone();
+            for (int i = 0; i < choices.Length; i++)
+            {
+                int j = _rng.Next(i, choices.Length);
+                (choices[i], choices[j]) = (choices[j], choices[i]);
+            }
 
-            // 5) 다음 루프는 nextCell 에서 시작
-            curCell = nextCell;
-            curDir  = exitDir & 3;
+            bool moved = false;
 
-            moved = true;
-            break;
+            for (int i = 0; i < choices.Length; i++)
+            {
+                Tile choice = choices[i];
+
+                // 1) 현재 방향(curDir)과 타일(choice)을 기준으로 출구 방향 계산
+                int exitDir = ApplyTileToDir(curDir, choice);
+
+                // 2) 그 방향으로 한 칸 나간 다음 셀
+                Vector2Int nextCell = curCell + DirToOffset(exitDir);
+
+                // 3) 경계 밖이거나, 이미 사용된 셀로 이동하려 하면 스킵
+                if (!InBounds(nextCell)) continue;
+                if (_grid[nextCell.x, nextCell.y] != Tile.Empty) continue;
+
+                // 4) ✅ "현재 셀(curCell)" 에 타일을 찍는다
+                SetTile(curCell, choice);
+
+                // dir = 이 타일을 지나고 난 "출구 방향"
+                PathOrder.Add(new PathNode
+                {
+                    cell = curCell,
+                    tile = choice,
+                    dir  = exitDir & 3
+                });
+
+                steps++;
+
+                // 5) 다음 루프는 nextCell 에서 시작
+                curCell = nextCell;
+                curDir  = exitDir & 3;
+
+                moved = true;
+                break;
+            }
+
+            if (!moved)
+            {
+                Debug.LogWarning("[MapPlanner] Dead end: no valid moves from " + curCell);
+                DumpGridSummary();
+                return false;
+            }
         }
 
-        if (!moved)
-        {
-            Debug.LogWarning("[MapPlanner] Dead end: no valid moves from " + curCell);
-            DumpGridSummary();
-            return false;
-        }
+        Debug.Log($"[MapPlanner] GeneratePathOnce succeeded. Nodes={PathOrder.Count}, Tries={DebugTryCount}, Backtracks={DebugBacktrackCount}");
+        DumpGridSummary();
+        return true;
     }
-
-    Debug.Log($"[MapPlanner] GeneratePathOnce succeeded. Nodes={PathOrder.Count}, Tries={DebugTryCount}, Backtracks={DebugBacktrackCount}");
-    DumpGridSummary();
-    return true;
-}
 
 }

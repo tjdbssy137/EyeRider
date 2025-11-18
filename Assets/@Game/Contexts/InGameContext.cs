@@ -11,14 +11,17 @@ public partial class InGameContext
 
     public Car Car { get; set; }
 
-    // Input
-    public Subject<bool> OnWkey = new Subject<bool>();
-    public Subject<bool> OnAKey = new Subject<bool>();
-    public Subject<bool> OnSKey = new Subject<bool>();
-    public Subject<bool> OnDKey = new Subject<bool>();
 
+    // Map Generate
+    public Subject<bool> OnSuccessGeneratedMapPath = new Subject<bool>();
+    public MapPlanner MapPlanner { get; set; }
+    public int MAP_SIZE { get; set; }
+
+    // Input
     public bool WKey { get; set; }
     public bool AKey { get; set; }
     public bool SKey { get; set; }
     public bool DKey { get; set; }
+
+
 }

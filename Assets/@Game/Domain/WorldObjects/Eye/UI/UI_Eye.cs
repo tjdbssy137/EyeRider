@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UI_Eye : UI_Base
 {
-    private enum Objects
+    private enum GameObjects
     {
         Controller        
     }
@@ -13,12 +13,12 @@ public class UI_Eye : UI_Base
         if (base.Init() == false)
 			return false;
 
-        BindObjects(typeof(GameObject));
-        _pointMover = GetObject((int)Objects.Controller).GetComponent<PointMover>();
+        BindObjects(typeof(GameObjects));
+        _pointMover = GetObject((int)GameObjects.Controller).GetComponent<PointMover>();
         _pointMover.Init();
-        _holeMaskController = GetObject((int)Objects.Controller).GetComponent<HoleMaskController>();
+        _holeMaskController = GetObject((int)GameObjects.Controller).GetComponent<HoleMaskController>();
         _holeMaskController.Init();
-        
+
 		return true;
     }
 }

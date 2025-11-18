@@ -8,18 +8,12 @@ public class MapSpawner : BaseObject
     private Queue<Map> _roadStorage;
     private GameObject _spawnParent;
 
-    private const int MAP_SIZE = 100;
     private int _mapCount = 0;
 
-    private MapPlanner _planner;
     private List<MapPlanner.PathNode> _blueprint = new List<MapPlanner.PathNode>();
     private int _blueprintIndex = 0;
 
     [SerializeField] private int _maxMapCapacity = 10;
-    [SerializeField] private int _plannerGridW = 100;
-    [SerializeField] private int _plannerGridH = 100;
-    [SerializeField] private int _desiredBlueprintLength = 200;
-    [SerializeField] private int _startDir = 0; // 0 = +Z
 
     private Vector3 _lastSpawnPos;
     private Quaternion _lastSpawnRot;
@@ -34,7 +28,7 @@ public class MapSpawner : BaseObject
         _roadStorage = new Queue<Map>();
         _spawnParent = new GameObject("@Map");
 
-        if (Managers.Data?.MapDatas != null)
+        if (Managers.Data.MapDatas != null)
         {
             foreach (var md in Managers.Data.MapDatas.Values)
             {
@@ -56,13 +50,33 @@ public class MapSpawner : BaseObject
         Contexts.Map.OnDeSpawnRoad
             .Subscribe(_ =>
             {
-                if (_roadStorage.Count > 0)
+                if (0 < _roadStorage.Count)
                 {
                     _roadStorage.Dequeue();
                 }
                 SpawnUntilCapacity();
             })
-            .AddTo(this);
+            .AddTo(_disposables);
+
+        Contexts.InGame.OnSuccessGeneratedMapPath
+            .Subscribe(result =>
+            {
+                if (!result)
+                {
+                    Debug.LogWarning("[MapSpawner] Planner failed to generate blueprint. Blueprint cleared.");
+                    _blueprint.Clear();
+                    _blueprintIndex = 0;
+                }
+                else
+                {
+                    _blueprint = new List<MapPlanner.PathNode>(Contexts.InGame.MapPlanner.PathOrder);
+                    _blueprintIndex = 0;
+                    Debug.Log($"[MapSpawner] Blueprint generated with {_blueprint.Count} nodes.");
+                    SpawnUntilCapacity();
+                }
+
+                Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
+            }).AddTo(_disposables);
 
         return true;
     }
@@ -72,29 +86,9 @@ public class MapSpawner : BaseObject
         base.SetInfo(dataTemplate);
         _mapCount = Managers.Data.MapDatas.Count;
 
-        _lastSpawnPos = new Vector3(0f, 0f, MAP_SIZE);
+        _lastSpawnPos = new Vector3(0f, 0f, Contexts.InGame.MAP_SIZE);
         _lastSpawnRot = Quaternion.Euler(0f, 0f, 0f);
         _lastSpawnAngle = 0f;
-
-        _planner = new MapPlanner(_plannerGridW, _plannerGridH, MAP_SIZE);
-        Vector2Int startCell = new Vector2Int(_plannerGridW / 2, _plannerGridH / 2);
-        bool ok = _planner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
-
-        if (!ok)
-        {
-            Debug.LogWarning("[MapSpawner] Planner failed to generate blueprint. Blueprint cleared.");
-            _blueprint.Clear();
-            _blueprintIndex = 0;
-        }
-        else
-        {
-            _blueprint = new List<MapPlanner.PathNode>(_planner.PathOrder);
-            _blueprintIndex = 0;
-            Debug.Log($"[MapSpawner] Blueprint generated with {_blueprint.Count} nodes.");
-            SpawnUntilCapacity();
-        }
-
-        Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
         Debug.Log("SetInfo MAP");
     }
 
@@ -114,7 +108,10 @@ public class MapSpawner : BaseObject
 
     private void SpawnFromBlueprintAt(int index)
     {
-        if (index < 0 || index >= _blueprint.Count) return;
+        if (index < 0 || _blueprint.Count <= index)
+        {
+            return;
+        }
 
         var node = _blueprint[index];
 
@@ -142,7 +139,7 @@ public class MapSpawner : BaseObject
         }
         angle = Mathf.Repeat(angle, 360f);
 
-        Vector3 spawnWorld = _planner.CellToWorld(node.cell);
+        Vector3 spawnWorld = Contexts.InGame.MapPlanner.CellToWorld(node.cell);
 
         string roadName = md.RoadPrefab.name;
         Map m = Managers.Object.Spawn<Map>(roadName, spawnWorld, 0, md.DataTemplateId, _spawnParent.transform);
@@ -162,7 +159,7 @@ public class MapSpawner : BaseObject
     {
         if (_mapCount == 0)
         {
-            Debug.LogWarning("[MapSpawner] _mapCount is 0 - no MapDatas available");
+            Debug.LogWarning("[MapSpawner] MapDatas is NULL");
             return;
         }
 
@@ -210,7 +207,7 @@ public class MapSpawner : BaseObject
         _roadStorage.Enqueue(m);
 
         Vector3 newForward = DirIndexToVector(outgoingDir);
-        Vector3 nextPos = spawnWorld + newForward * MAP_SIZE;
+        Vector3 nextPos = spawnWorld + newForward * Contexts.InGame.MAP_SIZE;
         Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
 
         _lastSpawnPos = nextPos;
@@ -232,14 +229,13 @@ public class MapSpawner : BaseObject
         if (directionForThisMap == RoadDirection.Right) angle += 90f;
         else if (directionForThisMap == RoadDirection.Left) angle -= 90f;
         Vector3 newForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-        Vector3 nextPos = currentPos + newForward * MAP_SIZE;
+        Vector3 nextPos = currentPos + newForward * Contexts.InGame.MAP_SIZE;
         Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
         _lastSpawnPos = nextPos;
         _lastSpawnRot = nextRot;
         _lastSpawnAngle = Mathf.Repeat(angle, 360f);
     }
 
-    // Planner 와 동일한 규칙: Left = -90, Right = +90
     private int ApplyTileToDir(int dir, Tile tile)
     {
         dir &= 3;
@@ -248,7 +244,6 @@ public class MapSpawner : BaseObject
         return dir;
     }
 
-    // 유틸: 0:+Z, 1:+X, 2:-Z, 3:-X
     private Vector3 DirIndexToVector(int dir)
     {
         switch (dir & 3)
