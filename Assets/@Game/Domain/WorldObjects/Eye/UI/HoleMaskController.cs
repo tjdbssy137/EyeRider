@@ -27,13 +27,7 @@ public class HoleMaskController : UI_Base
 
         return true;
     }
-
-    // void Update()
-    // {
-    //     Move();
-    //     RotateEyeCloud();
-    // }
-
+    
     private void Move()
     {
         if (_backgroundImage != null && _backgroundImage.material != null)

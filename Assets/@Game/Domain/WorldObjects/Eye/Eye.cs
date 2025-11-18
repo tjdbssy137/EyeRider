@@ -49,7 +49,7 @@ public class Eye : BaseObject
         .Subscribe(_ =>
         {
             // eye에서 자동차가 벗어났을 시
-            Contexts.InGame.OnEyeExit.OnNext(Unit.Default);
+            Contexts.InGame.OnExitEye.OnNext(Unit.Default);
         }).AddTo(_disposables);
 
         Observable

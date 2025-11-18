@@ -33,6 +33,8 @@ public class PointMover : UI_Base
     [Header("좌우 전용 접근/이탈 속도")]
     public float _sideApproachSpeed = 80f; // 중앙(0) 쪽으로
     public float _sideRepelSpeed = 120f;     // 좌/우로 더 멀어지게
+    private Camera _camera;
+    private Transform _car;
 
     // ==========================
     // 내부 상태
@@ -65,8 +67,14 @@ public class PointMover : UI_Base
         this.UpdateAsObservable().Subscribe(_=>
         {
             Move();
+            CheckCarInsideEye();
         }).AddTo(this);
 
+        _camera = Object.FindFirstObjectByType<Camera>();
+        if(_camera == null)
+        {
+            Debug.LogWarning("_camera is NULL");
+        }
         return true;
     }
 
@@ -121,6 +129,36 @@ public class PointMover : UI_Base
             _randomMoveSpeed * dt
         );
     }
+
+    private void CheckCarInsideEye()
+    {
+        if (_car == null)
+        {
+            _car = Contexts.InGame.Car.GetComponent<Transform>();       
+        }
+
+        Vector3 carScreen = _camera.WorldToScreenPoint(_car.position);
+        Vector2 carPos = new Vector2(carScreen.x, carScreen.y);
+
+        Vector2 eyeScreenPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
+
+        float radius = (_point.sizeDelta.x * _point.lossyScale.x) * 0.6f;
+
+        float dist = Vector2.Distance(carPos, eyeScreenPos);
+        bool nowInside = dist <= radius;
+
+        //Debug.Log($"radius : {radius}, dist : {dist}, inside : {nowInside}");
+
+        if (!nowInside)
+        {
+            Contexts.InGame.OnExitEye.OnNext(Unit.Default);
+        }
+        else
+        {
+            Contexts.InGame.OnEnterEye.OnNext(Unit.Default);
+        }
+    }
+
 
     private void HandleForwardApproachRepel(Vector2 inputDir, float dt)
     {

@@ -84,6 +84,19 @@ public partial class CarController : BaseObject
             this.Steer(degrees);
         }).AddTo(_disposables);
 
+
+        Contexts.InGame.OnExitEye
+        .Subscribe(_=>
+        {
+            //Debug.Log("OnExitEye");
+        }).AddTo(this);
+
+        Contexts.InGame.OnEnterEye
+        .Subscribe(_=>
+        {
+            //Debug.Log("OnEnterEye");
+        }).AddTo(this);
+
         return true;
     }
 

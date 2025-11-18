@@ -60,7 +60,7 @@ public class Map : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                Debug.Log("OnCollisionEnterAsObservable");
+                //Debug.Log("OnCollisionEnterAsObservable");
                 if(_data.Direction == RoadDirection.none)
                 {
                     return;
