@@ -34,16 +34,17 @@ public class InGameScene : BaseScene
 
      public void SettingSceneObject()
     {
+        UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
+        ui_InGameScene.SetInfo();
+        
         GameObject mapSpawner = new GameObject("@MapSpawner");
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
         
-        _eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
+        //_eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
-        // _cameraFollowPoint = Managers.Object.Spawn<CameraFollowPoint>(_spawnPoint.transform.position, 0, 0);
-        // _cameraFollowPoint.SettingCar(_car);
         _camera.Target.TrackingTarget = _car.transform;
     }
 

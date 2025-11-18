@@ -28,11 +28,11 @@ public class HoleMaskController : UI_Base
         return true;
     }
 
-    void Update()
-    {
-        Move();
-        RotateEyeCloud();
-    }
+    // void Update()
+    // {
+    //     Move();
+    //     RotateEyeCloud();
+    // }
 
     private void Move()
     {

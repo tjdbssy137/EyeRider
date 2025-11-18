@@ -49,7 +49,7 @@ public class PointMover : UI_Base
 
         if (_point == null || _canvasRect == null)
         {
-            Debug.LogWarning("PointMover: RectTransform 참조를 설정해주세요.");
+            Debug.LogWarning("PointMover is NULL");
             return false;
         }
 
@@ -58,7 +58,6 @@ public class PointMover : UI_Base
         _inputOffset = Vector2.zero;
         _targetOffset = Vector2.zero;
 
-        // 일정 시간마다 랜덤 목적지 갱신
         Observable.Interval(System.TimeSpan.FromSeconds(_randomTargetInterval))
             .Subscribe(_ => SetRandomTarget())
             .AddTo(this);
