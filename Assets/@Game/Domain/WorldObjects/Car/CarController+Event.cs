@@ -8,10 +8,11 @@ public partial class CarController : BaseObject
     private float _shakeLerpSpeed = 2f;  
     private float _controlDifficulty = 0f; 
     public float ControlDifficulty {get { return _controlDifficulty; }}
-
+    private float _damage;
     public void DistancePenalty(float distance)
     {
         float target = 0f;
+        _damage = 0;
         if(distance <= 10)
         {
             target = 0.2f;
@@ -40,5 +41,6 @@ public partial class CarController : BaseObject
         _animator.SetFloat("Distance", normalizedValue);
 
         _controlDifficulty = normalizedValue;
+        _damage = 10 * target;
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Assets/@Game/Data/Data.Contents.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/RandomManager.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Car/Car.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Car/UI_Car.cs" />
     <Compile Include="Assets/@Framework/Utils/PhysicsUtil.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/VehicleCamera.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/ResourceManager.cs" />

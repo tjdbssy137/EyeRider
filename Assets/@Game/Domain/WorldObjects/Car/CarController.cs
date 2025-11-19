@@ -5,15 +5,12 @@ using System;
 
 public partial class CarController : BaseObject
 {
-    private float _fuelAmount = 100;
-    private float _condition = 100;
     [Range(10, 120)]
     public float _verticalDefaultSpeed = 40;
     private float _verticalAccelerationSpeed = 0;
     public float _maxAcceleration = 20f;
     public float _accelPerSec = 30f;
     public float _decelPerSec = 40f;
-    //private bool _isAccelerateKeyPressed = false;
 
     [Range(10, 120)]
     public float _horizontalSpeed = 15;
@@ -95,6 +92,7 @@ public partial class CarController : BaseObject
         .Subscribe(distance =>
         {
             this.DistancePenalty(distance);
+            Contexts.InGame.Car.DamageCondition(_damage);
             //Debug.Log("OnExitEye");
         }).AddTo(this);
 
