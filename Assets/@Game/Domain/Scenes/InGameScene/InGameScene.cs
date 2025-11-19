@@ -50,10 +50,10 @@ public class InGameScene : BaseScene
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
         
-        //_eye = Managers.Object.Spawn<Eye>(_spawnPoint.transform.position, 0, 0);
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
-        _camera.Target.TrackingTarget = _car.transform;
+        Transform cameraTargetObject = _car.transform.Find("CameraTargetObject");
+        _camera.Target.TrackingTarget = cameraTargetObject;
 
         // Map Generate
         Contexts.InGame.MAP_SIZE = 100;

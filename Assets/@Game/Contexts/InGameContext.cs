@@ -7,7 +7,7 @@ public partial class InGameContext
     public Subject<Unit> OnEndGame { get; private set; } = new Subject<Unit>();
 
     // EYE
-    public Subject<Unit> OnExitEye { get; private set; } = new Subject<Unit>();
+    public Subject<float> OnExitEye { get; private set; } = new Subject<float>();
     public Subject<Unit> OnEnterEye { get; private set; } = new Subject<Unit>();
 
 

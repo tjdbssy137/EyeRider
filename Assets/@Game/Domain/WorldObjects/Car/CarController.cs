@@ -42,7 +42,13 @@ public partial class CarController : BaseObject
 
         if (_rigidbody == null)
         {
-            Debug.LogWarning("_rigidbody id NULL");
+            Debug.LogWarning("_rigidbody is NULL");
+        }
+
+        _animator = this.GetComponentInChildren<Animator>();
+        if (_animator == null)
+        {
+            Debug.LogWarning("_animator is NULL");
         }
         return true;
     }
@@ -86,14 +92,16 @@ public partial class CarController : BaseObject
 
 
         Contexts.InGame.OnExitEye
-        .Subscribe(_=>
+        .Subscribe(distance =>
         {
+            this.DistancePenalty(distance);
             //Debug.Log("OnExitEye");
         }).AddTo(this);
 
         Contexts.InGame.OnEnterEye
         .Subscribe(_=>
         {
+            _animator.SetFloat("Distance", 0);
             //Debug.Log("OnEnterEye");
         }).AddTo(this);
 
@@ -102,15 +110,25 @@ public partial class CarController : BaseObject
 
     private void InputKeyBoard()
     {
+        float horizontal = 0f;
+
         if (Contexts.InGame.AKey)
         {
-            float left = -1;
-            this.HorizontalMove(left);
+            horizontal = -1f;
         }
         else if (Contexts.InGame.DKey)
         {
-            float right = 1;
-            this.HorizontalMove(right);
+            horizontal = 1f;
+        }
+
+        if (0f < _shakeIntensity)
+        {
+            horizontal += UnityEngine.Random.Range(-_shakeIntensity, _shakeIntensity);
+        }
+
+        if (0.01f < Mathf.Abs(horizontal))
+        {
+                HorizontalMove(horizontal);
         }
         else
         {
@@ -125,15 +143,14 @@ public partial class CarController : BaseObject
 #region Move
     private void Accelerate()
     {
-        float targetAccel = Contexts.InGame.WKey ? _maxAcceleration : 0f;
+        float scale = 1f - ControlDifficulty;
+
+        float targetAccel = Contexts.InGame.WKey ? (_maxAcceleration * scale) : 0f;
         float rate = Contexts.InGame.WKey ? _accelPerSec : _decelPerSec;
 
-        _verticalAccelerationSpeed = Mathf.MoveTowards(
-            _verticalAccelerationSpeed,
-            targetAccel,
-            rate * Time.fixedDeltaTime
-        );
+        _verticalAccelerationSpeed = Mathf.MoveTowards(_verticalAccelerationSpeed, targetAccel, rate * Time.fixedDeltaTime);
     }
+
     private void Reverse()
     {
         _frontLeftMesh.transform.localRotation = Quaternion.identity;
@@ -150,14 +167,20 @@ public partial class CarController : BaseObject
     private void HorizontalMove(float dir)
     {
         if (Mathf.Approximately(dir, 0f))
+        {
             return;
+        }
+
+        float scale = 1f - ControlDifficulty;
+        float newDir = dir * scale;
 
         Vector3 sideDir = _rigidbody.rotation * Vector3.right;
-        Vector3 move = sideDir * dir * _horizontalSpeed * Time.fixedDeltaTime;
+        Vector3 move = sideDir * newDir * _horizontalSpeed * Time.fixedDeltaTime;
 
         _rigidbody.MovePosition(_rigidbody.position + move);
         WheelEffect(true);
     }
+
     public void Steer(float degrees)
     {
         _isRotating = true;

@@ -151,7 +151,9 @@ public class PointMover : UI_Base
 
         if (!nowInside)
         {
-            Contexts.InGame.OnExitEye.OnNext(Unit.Default);
+            float resultDistance = Mathf.Abs(dist-radius);
+            Debug.Log($"resultDistance : {resultDistance}");
+            Contexts.InGame.OnExitEye.OnNext(resultDistance);
         }
         else
         {
