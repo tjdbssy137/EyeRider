@@ -54,7 +54,6 @@
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs" />
     <Compile Include="Assets/@Framework/Controllers/EventHandler/GO_EventHandler.cs" />
     <Compile Include="Assets/@Framework/Utils/Define.Core.cs" />
-    <Compile Include="Assets/@Game/Domain/WorldObjects/Map/WorldMover.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolOptions.cs" />
     <Compile Include="Assets/@Framework/Data/Data.Core.cs.cs" />
     <Compile Include="Assets/@Game/Contexts/MapContext.cs" />
@@ -86,8 +85,10 @@
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Map/MapSpawner.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/EventManager.cs" />
+    <Compile Include="Assets/Layer Lab/GUI Pro-CasualGame/Extensions/UIParticle/UIParticleSystem.cs" />
     <Compile Include="Assets/@Framework/Managers/Contents/DataManager.cs" />
     <Compile Include="Assets/@Framework/Controllers/BaseObject.cs" />
+    <Compile Include="Assets/WorldMover.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/Input_InGameScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/SoundManager.cs" />
     <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
@@ -117,6 +118,10 @@
   <ItemGroup>
     <None Include="Assets/@Framework/Plugins/UniRx/ReadMe.txt" />
     <None Include="Assets/@Framework/Plugins/0.Types.dll" />
+    <None Include="Assets/Layer Lab/GUI Pro-CasualGame/Extensions/UIParticle/hidden particle.shader" />
+    <None Include="Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Shader &amp; Materials/UIAdditive.shader" />
+    <None Include="Assets/Layer Lab/GUI Pro-CasualGame/+README+/LayerLab_UserAssetGuide.txt" />
+    <None Include="Assets/Layer Lab/GUI Pro-CasualGame/ResourcesData/Shader &amp; Materials/MobileAdditive.shader" />
     <None Include="Assets/@Framework/Shaders/UIInverseHoleMask.shader" />
     <None Include="Assets/PROMETEO - Car Controller/Fonts/Licence.txt" />
   </ItemGroup>
