@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8985373d894d64987abcab5cd7fe34dd
+    m_Address: UI_InGameScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8db09348b7a8d4db0ba912544a484a97
     m_Address: Assets/Data/MapDatas
     m_ReadOnly: 0
@@ -53,6 +59,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91c60f7c0d8204dd5a07c21acecc5a51
     m_Address: RoadCorner_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2387102641d745a7ac566e0b6a5f534
+    m_Address: UI_Eye
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
