@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerEx
 {
-	public BaseScene CurrentScene { get { return GameObject.FindObjectOfType<BaseScene>(); } }
+	public BaseScene CurrentScene { get { return UnityEngine.Object.FindFirstObjectByType<BaseScene>(); } }
 	public Action<Define.EScene> OnSceneChanged = null;
 
 	public void LoadScene(Define.EScene type)

@@ -114,7 +114,6 @@
     <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
     <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraChase.cs" />
-    <Compile Include="Assets/@Game/Domain/WorldObjects/FuelCan/FuelCan.cs" />
     <Compile Include="Assets/@Framework/Controllers/Stats/Stats.cs" />
     <Compile Include="Assets/@Framework/Scenes/BaseScene.cs" />
   </ItemGroup>
