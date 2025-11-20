@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b5c9cd8cc7e5430c876b75cb9495013
+    m_Address: UI_MainMenuScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4113c4746ee794d039a1b474bb70459c
     m_Address: RoadCorner_1
     m_ReadOnly: 0

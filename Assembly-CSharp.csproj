@@ -90,6 +90,7 @@
     <Compile Include="Assets/@Framework/Managers/Contents/DataManager.cs" />
     <Compile Include="Assets/@Framework/Controllers/BaseObject.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/Input_InGameScene.cs" />
+    <Compile Include="Assets/@Game/Domain/Scenes/MainMenuScene/UI_MainMenuScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/SoundManager.cs" />
     <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/InGameScene.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets/@Framework/Contexts/UserContext.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/UI_InGameScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Contents/ObjectManager.cs" />
+    <Compile Include="Assets/@Game/Domain/Scenes/MainMenuScene/MainMenuScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/InputManagerEx.cs" />
     <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
     <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
