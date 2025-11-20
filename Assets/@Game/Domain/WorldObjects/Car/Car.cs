@@ -6,9 +6,34 @@ public class Car : BaseObject
 {
     CarController _carController;
 
-    public float Fuel { get; private set; } = 100f;
-    public float Condition { get; private set; } = 100f;
-    private float _fuelConsumptionRate = 10;
+    private float _fuelConsumptionRate = 50;
+    public Subject<(float, float)> OnConditionChanged { get; private set; } = new Subject<(float, float)>();
+    public Subject<(float, float)> OnFuelChanged { get; private set; } = new Subject<(float, float)>();
+
+    public float Condition
+    {
+        get => _condition;
+        set
+        {
+            float oldCondition = _condition;
+            _condition = Mathf.Clamp(value, 0.0f, 100);
+            OnConditionChanged.OnNext((oldCondition, _condition));
+        }
+    }
+    private float _condition;
+
+    public float Fuel
+    {
+        get => _fuel;
+        set
+        {
+            float oldFuel = _fuel;
+            Debug.Log($"oldFuel : {oldFuel}");
+            _fuel = Mathf.Clamp(value, 0.0f, 100);
+            OnFuelChanged.OnNext((oldFuel, _fuel));
+        }
+    }
+    private float _fuel;
     
     public override bool Init()
 	{
@@ -33,21 +58,26 @@ public class Car : BaseObject
         _carController.OnSpawn();
         _carController.SetInfo(0);
 
+        Condition = 100;
+        Fuel = 100;
+
         Observable.Interval(TimeSpan.FromSeconds(1.5f))
             .Subscribe(_ => 
                 ConsumeFuel()
             ).AddTo(_disposables); 
+
+        Contexts.InGame.Car = this;
+        this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
         return true;
     }
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
-        Contexts.InGame.Car = this;
     }
 
     public void ConsumeFuel()
     {
-        Fuel -= _fuelConsumptionRate * Time.deltaTime;
+        Fuel -= 10;
     }
 
     public void RefillFuel(float fuel)
@@ -61,6 +91,6 @@ public class Car : BaseObject
     }
     public void RepairCondition(float recover)
     {
-        Condition += recover;
+        Fuel += recover;
     }
 }

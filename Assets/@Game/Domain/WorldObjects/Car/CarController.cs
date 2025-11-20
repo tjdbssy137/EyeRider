@@ -94,14 +94,20 @@ public partial class CarController : BaseObject
             this.DistancePenalty(distance);
             Contexts.InGame.Car.DamageCondition(_damage);
             //Debug.Log("OnExitEye");
-        }).AddTo(this);
+        }).AddTo(_disposables);
 
         Contexts.InGame.OnEnterEye
         .Subscribe(_=>
         {
             _animator.SetFloat("Distance", 0);
             //Debug.Log("OnEnterEye");
-        }).AddTo(this);
+        }).AddTo(_disposables);
+
+        Contexts.InGame.OnStartGame
+        .Subscribe(_=>
+        {
+            
+        }).AddTo(_disposables);
 
         return true;
     }

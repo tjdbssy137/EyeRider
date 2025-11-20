@@ -73,7 +73,6 @@
     <Compile Include="Assets/@Game/Data/Data.Contents.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/RandomManager.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Car/Car.cs" />
-    <Compile Include="Assets/@Game/Domain/WorldObjects/Car/UI_Car.cs" />
     <Compile Include="Assets/@Framework/Utils/PhysicsUtil.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/VehicleCamera.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/ResourceManager.cs" />
@@ -108,12 +107,14 @@
     <Compile Include="Assets/@Framework/Utils/InitBase.cs" />
     <Compile Include="Assets/@Framework/Contexts/UserContext.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/UI_InGameScene.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Car/UI/UI_Car.cs" />
     <Compile Include="Assets/@Framework/Managers/Contents/ObjectManager.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/MainMenuScene/MainMenuScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/InputManagerEx.cs" />
     <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
     <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraChase.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/FuelCan/FuelCan.cs" />
     <Compile Include="Assets/@Framework/Controllers/Stats/Stats.cs" />
     <Compile Include="Assets/@Framework/Scenes/BaseScene.cs" />
   </ItemGroup>

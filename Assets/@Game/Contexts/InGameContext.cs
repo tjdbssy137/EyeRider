@@ -1,5 +1,6 @@
 using UnityEngine;
 using UniRx;
+using System;
 
 public partial class InGameContext
 {
@@ -26,6 +27,21 @@ public partial class InGameContext
     public bool AKey { get; set; }
     public bool SKey { get; set; }
     public bool DKey { get; set; }
+
+    // play Timer
+    // private float _runStartTime = 0f;
+    // public float RunStartTime
+    // {
+    //     get { return _runStartTime; }
+    //     private set { _runStartTime = value; }
+    // }
+    // public void StartGame()
+    // {
+    //     _runStartTime = Time.unscaledTime;
+    // }
+    public bool IsGameOver { get; set; }
+    public bool IsPaused { get; set; }
+    public int MaxRunTime { get; set; }
 
 
 }
