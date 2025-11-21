@@ -142,10 +142,10 @@ public class PointMover : UI_Base
 
         Vector2 eyeScreenPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
 
-        float radius = (_point.sizeDelta.x * _point.lossyScale.x) * 0.6f;
+        float radius = (_point.rect.width * 0.5f) * _point.lossyScale.x;
 
         float dist = Vector2.Distance(carPos, eyeScreenPos);
-        bool nowInside = dist <= radius;
+        bool nowInside = dist <= radius + 10;
 
         //Debug.Log($"radius : {radius}, dist : {dist}, inside : {nowInside}");
 

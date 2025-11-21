@@ -91,7 +91,7 @@ public partial class CarController : BaseObject
         Contexts.InGame.OnExitEye
         .Subscribe(distance =>
         {
-            this.DistancePenalty(distance);
+            _damage = this.DistancePenalty(distance);
             Contexts.InGame.Car.DamageCondition(_damage);
             //Debug.Log("OnExitEye");
         }).AddTo(_disposables);

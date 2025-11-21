@@ -9,23 +9,23 @@ public partial class CarController : BaseObject
     private float _controlDifficulty = 0f; 
     public float ControlDifficulty {get { return _controlDifficulty; }}
     private float _damage;
-    public void DistancePenalty(float distance)
+    public float DistancePenalty(float distance)
     {
         float target = 0f;
-        _damage = 0;
-        if(distance <= 10)
+        
+        if(distance <= 30)
         {
             target = 0.2f;
         }
-        else if(distance <= 30)
+        else if(distance <= 70)
         {
             target = 0.4f;
         }
-        else if(distance <= 50)
+        else if(distance <= 90)
         {
             target = 0.6f;
         }
-        else if(distance <= 70)
+        else if(distance <= 100)
         {
             target = 0.8f;
         }
@@ -41,6 +41,6 @@ public partial class CarController : BaseObject
         _animator.SetFloat("Distance", normalizedValue);
 
         _controlDifficulty = normalizedValue;
-        _damage = 10 * target;
+        return 10 * target;
     }
 }
