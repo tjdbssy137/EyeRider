@@ -19,6 +19,12 @@ public class MainMenuScene : BaseScene
 
     void LoadResources()
     {
+        if (Managers.Resource.IsPreloadDone)
+        {
+            OnResourceLoaded();
+            return;
+        }
+        
         Managers.Resource.LoadAllAsync<Object>("PreLoad", async (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count}/{totalCount}");
@@ -26,6 +32,7 @@ public class MainMenuScene : BaseScene
             if (count == totalCount)
             {
                 await Awaitable.MainThreadAsync(); // 메인 스레드 보장
+                Managers.Resource.MarkPreloadDone();
                 OnResourceLoaded();
             }
         });

@@ -12,6 +12,14 @@ public class ResourceManager
 	private Dictionary<string, AsyncOperationHandle> _handles = new Dictionary<string, AsyncOperationHandle>();
 
 	#region Load Resource
+
+	public bool IsPreloadDone { get; private set; } = false;
+
+    public void MarkPreloadDone()
+    {
+        IsPreloadDone = true;
+    }
+	
 	public T Load<T>(string key) where T : Object
     {
         if (_resources.TryGetValue(key, out Object resource))

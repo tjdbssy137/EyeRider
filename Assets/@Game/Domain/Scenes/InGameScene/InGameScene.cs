@@ -2,6 +2,8 @@ using Unity.Cinemachine;
 using UnityEngine;
 using System.Collections;
 using UnityEditor.Rendering.LookDev;
+using UniRx.Triggers;
+using UniRx;
 
 public class InGameScene : BaseScene
 {
@@ -17,6 +19,8 @@ public class InGameScene : BaseScene
     private int _desiredBlueprintLength = 200;
     private int _startDir = 0; // 0 = +Z
 
+    private float _elapsedRunTime = 0f;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -30,6 +34,16 @@ public class InGameScene : BaseScene
         }
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
+
+        Contexts.InGame.OnStartGame
+        .Take(1)
+        .SelectMany(_ => this.UpdateAsObservable())
+        .Subscribe(_ =>
+        {
+            UpdateRun();
+        })
+        .AddTo(_disposables);
+
         LoadResources();
         return true;
     }
@@ -61,11 +75,19 @@ public class InGameScene : BaseScene
         Vector2Int startCell = new Vector2Int(_plannerGridW / 2, _plannerGridH / 2);
         bool ok = Contexts.InGame.MapPlanner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
         Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
-    }
 
+        // GameStart Time Check
+        Contexts.InGame.OnStartGame.OnNext(Unit.Default);
+    }
 
     void LoadResources()
     {
+        if (Managers.Resource.IsPreloadDone)
+        {
+            OnResourceLoaded();
+            return;
+        }
+        
         Managers.Resource.LoadAllAsync<Object>("PreLoad", async (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count}/{totalCount}");
@@ -73,8 +95,31 @@ public class InGameScene : BaseScene
             if (count == totalCount)
             {
                 await Awaitable.MainThreadAsync(); // 메인 스레드 보장
+                Managers.Resource.MarkPreloadDone();
                 OnResourceLoaded();
             }
         });
     }
+
+    private void UpdateRun()
+    {
+        if (Contexts.InGame.IsGameOver)
+        {
+            return;
+        }
+
+        if (Contexts.InGame.IsPaused)
+        {
+            return;
+        }
+
+        _elapsedRunTime += Time.unscaledDeltaTime;
+
+        if (80f <= _elapsedRunTime)
+        {
+            Contexts.InGame.IsGameOver = true;
+            //ShowGameOverUI();
+        }
+    }
+
 }
