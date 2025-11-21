@@ -28,6 +28,7 @@ public partial class CarController : BaseObject
         else if(distance <= 100)
         {
             target = 0.8f;
+            
         }
         else
         {

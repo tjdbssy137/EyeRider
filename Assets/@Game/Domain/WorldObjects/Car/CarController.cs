@@ -32,6 +32,9 @@ public partial class CarController : BaseObject
     public ParticleSystem _RLWParticleSystem;
     public ParticleSystem _RRWParticleSystem;
 
+    private bool _isOutside = false;
+    private float _lastDistance = 0f;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -91,16 +94,27 @@ public partial class CarController : BaseObject
         Contexts.InGame.OnExitEye
         .Subscribe(distance =>
         {
-            _damage = this.DistancePenalty(distance);
-            Contexts.InGame.Car.DamageCondition(_damage);
+            _isOutside = true;
+            _lastDistance = distance;
             //Debug.Log("OnExitEye");
         }).AddTo(_disposables);
 
         Contexts.InGame.OnEnterEye
-        .Subscribe(_=>
+        .Subscribe(_ =>
         {
+            _isOutside = false;
             _animator.SetFloat("Distance", 0);
             //Debug.Log("OnEnterEye");
+        }).AddTo(_disposables);
+
+        Observable.Interval(TimeSpan.FromSeconds(0.2f))
+        .Subscribe(_ =>
+        {
+            if (_isOutside)
+            {
+                float dmg = DistancePenalty(_lastDistance);
+                Contexts.InGame.Car.DamageCondition(dmg);
+            }
         }).AddTo(_disposables);
 
         Contexts.InGame.OnStartGame

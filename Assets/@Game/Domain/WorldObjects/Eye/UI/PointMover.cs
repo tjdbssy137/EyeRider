@@ -130,36 +130,38 @@ public class PointMover : UI_Base
         );
     }
 
+    private bool _wasInside = true;
     private void CheckCarInsideEye()
     {
         if (_car == null)
         {
-            _car = Contexts.InGame.Car.GetComponent<Transform>();       
+            _car = Contexts.InGame.Car.GetComponent<Transform>();
         }
 
         Vector3 carScreen = _camera.WorldToScreenPoint(_car.position);
         Vector2 carPos = new Vector2(carScreen.x, carScreen.y);
-
         Vector2 eyeScreenPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
 
         float radius = (_point.rect.width * 0.5f) * _point.lossyScale.x;
-
+        
         float dist = Vector2.Distance(carPos, eyeScreenPos);
-        bool nowInside = dist <= radius + 10;
-
+        bool nowInside = dist <= radius;
+        
         //Debug.Log($"radius : {radius}, dist : {dist}, inside : {nowInside}");
-
-        if (!nowInside)
+        
+        if (_wasInside && !nowInside)
         {
-            float resultDistance = Mathf.Abs(dist-radius);
-            Debug.Log($"resultDistance : {resultDistance}");
+            float resultDistance = Mathf.Abs(dist - radius);
             Contexts.InGame.OnExitEye.OnNext(resultDistance);
         }
-        else
+        else if (!_wasInside && nowInside)
         {
             Contexts.InGame.OnEnterEye.OnNext(Unit.Default);
         }
+
+        _wasInside = nowInside;
     }
+
 
 
     private void HandleForwardApproachRepel(Vector2 inputDir, float dt)

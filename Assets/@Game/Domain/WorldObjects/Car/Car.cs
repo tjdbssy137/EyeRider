@@ -91,6 +91,6 @@ public class Car : BaseObject
     }
     public void RepairCondition(float recover)
     {
-        Fuel += recover;
+        Condition += recover;
     }
 }

@@ -2,6 +2,7 @@ using System.Threading;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using DG.Tweening;
 
 public class UI_Car : UI_Base
 {
@@ -11,9 +12,11 @@ public class UI_Car : UI_Base
         In_Fuel,
     }
 
-    Canvas _worldCanvas;
-    Camera _mainCam;
+    private Canvas _worldCanvas;
+    private Camera _mainCam;
 
+    private Tween _conditionTween;
+    private Tween _fuelTween;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -42,14 +45,17 @@ public class UI_Car : UI_Base
         Contexts.InGame.Car.OnConditionChanged
         .Subscribe(newCondition =>
         {
-            GetImage((int)Images.In_Condition).fillAmount = newCondition.Item2/100;
+            float target = newCondition.Item2 / 100f;
+            _conditionTween?.Kill();
+            _conditionTween = GetImage((int)Images.In_Condition).DOFillAmount(target, 0.5f).SetEase(Ease.OutCubic);
         }).AddTo(this);
 
-        
         Contexts.InGame.Car.OnFuelChanged
         .Subscribe(newFuel =>
-        {                
-            GetImage((int)Images.In_Fuel).fillAmount = newFuel.Item2/100;
+        {
+            float target = newFuel.Item2 / 100f;
+            _fuelTween?.Kill();
+            _fuelTween = GetImage((int)Images.In_Fuel).DOFillAmount(target, 0.5f).SetEase(Ease.OutCubic);
         }).AddTo(this);
     }
 
