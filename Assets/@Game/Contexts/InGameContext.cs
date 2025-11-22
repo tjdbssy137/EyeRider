@@ -44,4 +44,6 @@ public partial class InGameContext
     public int MaxRunTime { get; set; }
 
 
+    public Subject<Vector3> CurrentMapXZ {get; set;} = new Subject<Vector3>();
+
 }

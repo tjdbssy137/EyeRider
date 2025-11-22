@@ -35,10 +35,14 @@ public partial class CarController : BaseObject
     private bool _isOutside = false;
     private float _lastDistance = 0f;
 
+    private Vector3 _center;
+
     public override bool Init()
     {
         if (base.Init() == false)
+        {
             return false;
+        }
 
         if (_rigidbody == null)
         {
@@ -52,13 +56,13 @@ public partial class CarController : BaseObject
         }
         return true;
     }
+
     public override bool OnSpawn()
     {
         if (false == base.OnSpawn())
         {
             return false;
         }
-        Debug.Log("CarController On");
 
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
@@ -70,11 +74,9 @@ public partial class CarController : BaseObject
                 {
                     _rotLerpTime += Time.fixedDeltaTime;
                     float t = Mathf.Clamp01(_rotLerpTime / _rotDuration);
-
                     float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
                     Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
                     _rigidbody.MoveRotation(newRot);
-
                     if (1f <= t)
                     {
                         Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
@@ -85,43 +87,41 @@ public partial class CarController : BaseObject
                 }
             }).AddTo(_disposables);
 
-        Contexts.InGame.OnEnterCorner.Subscribe(degrees =>
-        {
-            this.Steer(degrees);
-        }).AddTo(_disposables);
-
+        Contexts.InGame.OnEnterCorner
+            .Subscribe(degrees =>
+            {
+                this.Steer(degrees);
+            }).AddTo(_disposables);
 
         Contexts.InGame.OnExitEye
-        .Subscribe(distance =>
-        {
-            _isOutside = true;
-            _lastDistance = distance;
-            //Debug.Log("OnExitEye");
-        }).AddTo(_disposables);
+            .Subscribe(distance =>
+            {
+                _isOutside = true;
+                _lastDistance = distance;
+            }).AddTo(_disposables);
 
         Contexts.InGame.OnEnterEye
-        .Subscribe(_ =>
-        {
-            _isOutside = false;
-            _animator.SetFloat("Distance", 0);
-            //Debug.Log("OnEnterEye");
-        }).AddTo(_disposables);
+            .Subscribe(_ =>
+            {
+                _isOutside = false;
+                _animator.SetFloat("Distance", 0);
+            }).AddTo(_disposables);
 
         Observable.Interval(TimeSpan.FromSeconds(0.2f))
-        .Subscribe(_ =>
-        {
-            if (_isOutside)
+            .Subscribe(_ =>
             {
-                float dmg = DistancePenalty(_lastDistance);
-                Contexts.InGame.Car.DamageCondition(dmg);
-            }
-        }).AddTo(_disposables);
+                if (_isOutside)
+                {
+                    float dmg = DistancePenalty(_lastDistance);
+                    Contexts.InGame.Car.DamageCondition(dmg);
+                }
+            }).AddTo(_disposables);
 
-        Contexts.InGame.OnStartGame
-        .Subscribe(_=>
-        {
-            
-        }).AddTo(_disposables);
+        Contexts.InGame.CurrentMapXZ
+            .Subscribe(mapPos =>
+            {
+                _center = mapPos;
+            }).AddTo(_disposables);
 
         return true;
     }
@@ -146,7 +146,7 @@ public partial class CarController : BaseObject
 
         if (0.01f < Mathf.Abs(horizontal))
         {
-                HorizontalMove(horizontal);
+            HorizontalMove(horizontal);
         }
         else
         {
@@ -154,48 +154,54 @@ public partial class CarController : BaseObject
         }
     }
 
-    public override void SetInfo(int dataTemplate)
-    {
-        base.SetInfo(dataTemplate);
-    }
-#region Move
     private void Accelerate()
     {
         float scale = 1f - ControlDifficulty;
-
         float targetAccel = Contexts.InGame.WKey ? (_maxAcceleration * scale) : 0f;
         float rate = Contexts.InGame.WKey ? _accelPerSec : _decelPerSec;
-
         _verticalAccelerationSpeed = Mathf.MoveTowards(_verticalAccelerationSpeed, targetAccel, rate * Time.fixedDeltaTime);
     }
 
-    private void Reverse()
-    {
-        _frontLeftMesh.transform.localRotation = Quaternion.identity;
-        _frontRightMesh.transform.localRotation = Quaternion.identity;
-        Vector3 move = (_rigidbody.rotation * transform.forward * -1) * _reverseSpeed * Time.fixedDeltaTime;
-        _rigidbody.MovePosition(_rigidbody.position + move);
-    }
     private void VerticalMove()
     {
-        float speed =_verticalDefaultSpeed + _verticalAccelerationSpeed;
+        float speed = _verticalDefaultSpeed + _verticalAccelerationSpeed;
         Vector3 move = (_rigidbody.rotation * Vector3.forward) * speed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + move);
     }
+
     private void HorizontalMove(float dir)
     {
-        if (Mathf.Approximately(dir, 0f))
+        float scale = 1f - ControlDifficulty;
+        float newDir = dir * scale;
+        Vector3 sideDir = _rigidbody.transform.right;
+        Vector3 move = sideDir * newDir * _horizontalSpeed * Time.fixedDeltaTime;
+
+        Vector3 radius = _rigidbody.position - _center;
+        radius.y = 0f;
+
+        float distSide = Vector3.Dot(radius, _rigidbody.transform.right);
+        float absSide = Mathf.Abs(distSide);
+
+        float boundary = 40f;
+        float t = absSide / boundary;
+        float decay = 1f;
+
+        if (distSide < 0f && dir < 0f)
         {
+            decay = Mathf.Clamp01(1f - t);
+        }
+        else if (0f < distSide && 0f < dir)
+        {
+            decay = Mathf.Clamp01(1f - t);
+        }
+
+        if (decay <= 0f)
+        {
+            _rigidbody.MovePosition(_rigidbody.position);
             return;
         }
 
-        float scale = 1f - ControlDifficulty;
-        float newDir = dir * scale;
-
-        Vector3 sideDir = _rigidbody.rotation * Vector3.right;
-        Vector3 move = sideDir * newDir * _horizontalSpeed * Time.fixedDeltaTime;
-
-        _rigidbody.MovePosition(_rigidbody.position + move);
+        _rigidbody.MovePosition(_rigidbody.position + move * decay);
         WheelEffect(true);
     }
 
@@ -203,26 +209,11 @@ public partial class CarController : BaseObject
     {
         _isRotating = true;
         _rotLerpTime = 0f;
-
         _startYaw = _rigidbody.rotation.eulerAngles.y;
         _targetYaw = Mathf.Repeat(_startYaw + degrees, 360f);
-
-        // Quaternion targetRot = Quaternion.Euler(0f, direction * 40f, 0f);
-        // _currentWheelRotation = Quaternion.RotateTowards(
-        //     _currentWheelRotation, 
-        //     targetRot, 
-        //     _turnSpeed * Time.fixedDeltaTime
-        // );
-
-        // _frontLeftMesh.transform.localRotation = _currentWheelRotation;
-        // _frontRightMesh.transform.localRotation = _currentWheelRotation;
-        
-        // float turn = direction * _turnSpeed * Time.fixedDeltaTime;
-        // Quaternion quaternion = _rigidbody.rotation * Quaternion.Euler(0f, turn, 0f);
-        // _rigidbody.MoveRotation(quaternion);
         WheelEffect(_isRotating);
     }
-#endregion
+
     private void WheelEffect(bool isDrifting)
     {
         if (isDrifting)
@@ -236,10 +227,4 @@ public partial class CarController : BaseObject
             _RRWParticleSystem.Stop();
         }
     }
-    private void ConsumeFuel()
-    {
-        //_fuelAmount -= fuelConsumptionRate * Time.deltaTime;
-    }
-
-
 }

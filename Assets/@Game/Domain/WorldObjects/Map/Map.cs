@@ -61,6 +61,7 @@ public class Map : BaseObject
             .Subscribe(_ =>
             {
                 //Debug.Log("OnCollisionEnterAsObservable");
+                Contexts.InGame.CurrentMapXZ.OnNext(this.transform.position);
                 if(_data.Direction == RoadDirection.none)
                 {
                     return;
