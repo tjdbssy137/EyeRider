@@ -33,13 +33,6 @@ public class InGameScene : BaseScene
         {
             Debug.LogError("Camera is NULL");
         }
-
-        Camera camera = Object.FindFirstObjectByType<Camera>();
-        _cameraChase = camera.gameObject.GetOrAddComponent<CameraChase>();
-        if (_cameraChase == null)
-        {
-            Debug.LogError("_cameraChase is NULL");
-        }
         
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
@@ -75,8 +68,19 @@ public class InGameScene : BaseScene
         
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
-        Transform cameraTargetObject = _car.transform.Find("CameraTargetObject");
-        _camera.Target.TrackingTarget = cameraTargetObject;
+        // Transform cameraRoot = _car.transform.Find("CameraRoot");
+        // Transform cameraTargetObject = cameraRoot.transform.Find("CameraTargetObject");
+
+        // _cameraChase = cameraRoot.gameObject.GetOrAddComponent<CameraChase>();
+
+        // _camera.Target.TrackingTarget = cameraTargetObject;
+
+
+        _camera.Target.LookAtTarget = _car.transform.Find("CameraTargetObject");
+        GameObject followCamRoot = new GameObject("@FollowCamRoot");
+        _camera.Target.TrackingTarget = followCamRoot.transform;
+        _cameraChase = followCamRoot.gameObject.GetOrAddComponent<CameraChase>();
+
 
         // Map Generate
         Contexts.InGame.MAP_SIZE = 100;

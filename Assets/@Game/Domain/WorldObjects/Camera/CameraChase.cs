@@ -1,21 +1,12 @@
-
-using UniRx.Triggers;
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
 
 public class CameraChase : BaseObject
 {
-    public float _halfWidth = 10;
-
+    public float _leftLimit = -40f;
+    public float _rightLimit = 40f;
     private Transform _car;
-
-    public override bool Init()
-    {
-        if (base.Init() == false)
-            return false;
-
-        return true;
-    }
 
     public override bool OnSpawn()
     {
@@ -23,52 +14,38 @@ public class CameraChase : BaseObject
             return false;
 
         _car = Contexts.InGame.Car.transform;
-		if(_car == null)
+
+        if (_car == null)
         {
-            Debug.Log("_car is NULL");
+            Debug.Log("_car is null");
         }
+
         this.LateUpdateAsObservable()
             .Subscribe(_ =>
             {
-                CameraMove();
+                Chase();
             }).AddTo(_disposables);
 
         return true;
     }
 
-    private void CameraMove()
-    {
-        Vector3 carPos = _car.position;
+    private void Chase()
+	{
+		Vector3 right = _car.transform.right;
+		Vector3 forward = _car.transform.forward; 
 
-        // 자동차의 좌우축
-        Vector3 right = _car.right;
-        right.y = 0;
-        right.Normalize();
+		Vector3 offset = transform.position - _car.position;
 
-        // CameraTarget이 car을 따라가고 싶은 목표 위치
-        Vector3 desiredPos = carPos;
+		float localRight = Vector3.Dot(offset, right);
+		float localForward = Vector3.Dot(offset, forward);
 
-        // 현재 CameraTarget → Car 방향
-        Vector3 toCar = carPos - transform.position;
+		localRight = Mathf.Clamp(localRight, _leftLimit, _rightLimit);
+		
+		Vector3 desired =
+			_car.position +
+			right * localRight +
+			forward * localForward;
 
-        // 좌우 방향 거리
-        float lateral = Vector3.Dot(toCar, right);
-
-        // 좌우 Clamp
-        float clampedLateral = Mathf.Clamp(lateral, -_halfWidth, _halfWidth);
-
-        // Clamp 보정값
-        float correction = clampedLateral - lateral;
-
-        // X축 보정 (좌우만 제한)
-        Vector3 newPos = transform.position + right * correction;
-
-        // 전진/후진은 Car 따라감
-        newPos.z = carPos.z;
-
-        // 높이도 Car 따라감
-        newPos.y = carPos.y;
-
-        transform.position = newPos;
-    }
+		transform.position = desired;
+	}
 }
