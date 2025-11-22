@@ -10,6 +10,7 @@ public class InGameScene : BaseScene
     private Car _car;
     private Eye _eye;
     private CinemachineCamera _camera;
+    CameraChase _cameraChase;
     public GameObject _spawnPoint;
     private MapSpawner _mapSpawner;
 
@@ -32,6 +33,14 @@ public class InGameScene : BaseScene
         {
             Debug.LogError("Camera is NULL");
         }
+
+        Camera camera = Object.FindFirstObjectByType<Camera>();
+        _cameraChase = camera.gameObject.GetOrAddComponent<CameraChase>();
+        if (_cameraChase == null)
+        {
+            Debug.LogError("_cameraChase is NULL");
+        }
+        
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
 
@@ -78,6 +87,9 @@ public class InGameScene : BaseScene
 
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
+
+        _cameraChase.OnSpawn();
+        _cameraChase.SetInfo(0);
     }
 
     void LoadResources()

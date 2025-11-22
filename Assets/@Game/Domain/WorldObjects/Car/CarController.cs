@@ -67,6 +67,14 @@ public partial class CarController : BaseObject
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
+                if(Contexts.InGame.IsGameOver)
+                {
+                    return;
+                }
+                if(Contexts.InGame.IsPaused)
+                {
+                    return;
+                }
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
@@ -182,7 +190,7 @@ public partial class CarController : BaseObject
         float distSide = Vector3.Dot(radius, _rigidbody.transform.right);
         float absSide = Mathf.Abs(distSide);
 
-        float boundary = 40f;
+        float boundary = 40f; // 맵 반쪽 좌우 사이즈의 80%
         float t = absSide / boundary;
         float decay = 1f;
 
