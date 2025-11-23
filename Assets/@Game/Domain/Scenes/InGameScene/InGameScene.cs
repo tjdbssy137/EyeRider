@@ -138,7 +138,8 @@ public class InGameScene : BaseScene
 
         if (80f <= _elapsedRunTime)
         {
-            Contexts.InGame.IsGameOver = true;
+            Debug.Log("Contexts.InGame.IsGameOver = true;");
+            //Contexts.InGame.IsGameOver = true;
             //ShowGameOverUI();
         }
     }

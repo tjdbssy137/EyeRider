@@ -50,79 +50,75 @@ public class CameraFollowController : BaseObject
         _cameraTarget = _car.transform.Find("CameraTargetObject");
     }
 
-    private void UpdateCamera()
+
+private void UpdateCamera()
+{
+    if(_car == null)
     {
-        if(_car == null)
-        {
-            return;
-        }
-
-        if(_cameraTarget == null)
-        {
-            return;
-        }
-
-        // ---------------------------------------
-        // 1) 자동차의 수평 forward/right만 사용
-        // ---------------------------------------
-        Vector3 flatForward = _car.forward;
-        flatForward.y = 0f;
-        flatForward.Normalize();
-
-        // ---------------------------------------
-        // 2) 탑뷰 + 뒤 오프셋
-        // ---------------------------------------
-        Vector3 desiredPos =
-            _car.position
-            + (-flatForward * 5f)     // 뒤로 거리감
-            + (Vector3.up * 30f);     // 탑뷰
-
-        // ---------------------------------------
-        // 3) 흔들림 제거용 스무딩
-        // ---------------------------------------
-        _smoothPos = Vector3.Lerp(
-            _smoothPos,
-            desiredPos,
-            Time.deltaTime * _followDamping
-        );
-
-        // ---------------------------------------
-        // 4) 좌우 바운더리 클램프 (X축만)
-        // ---------------------------------------
-        float leftLimit = _center.x - _sideLimit;
-        float rightLimit = _center.x + _sideLimit;
-
-        Vector3 clampPos = _smoothPos;
-
-        if(clampPos.x < leftLimit)
-        {
-            clampPos.x = leftLimit;
-        }
-        else if(rightLimit < clampPos.x)
-        {
-            clampPos.x = rightLimit;
-        }
-
-        transform.position = clampPos;
-
-        // ---------------------------------------
-        // 5) 회전: Yaw만 따라가고 Pitch 고정
-        // ---------------------------------------
-        Vector3 dir = _car.position - clampPos;
-        dir.y = 0f;
-        dir.Normalize();
-
-        float targetYaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-
-        _currentYaw = Mathf.LerpAngle(
-            _currentYaw,
-            targetYaw,
-            Time.deltaTime * _rotateDamping
-        );
-
-        float pitch = 55f;
-
-        Quaternion finalRot = Quaternion.Euler(pitch, _currentYaw, 0f);
-        transform.rotation = finalRot;
+        return;
     }
+
+    // ---------------------------------------
+    // 1) 자동차의 수평 forward만 사용
+    // ---------------------------------------
+    Vector3 flatForward = _car.forward;
+    flatForward.y = 0f;
+    flatForward.Normalize();
+
+    // ---------------------------------------
+    // 2) 기본 desired pos
+    // ---------------------------------------
+    Vector3 desiredPos =
+        _car.position
+        + (-flatForward * 5f)
+        + (Vector3.up * 30f);
+
+    // ---------------------------------------
+    // 3) 스무딩
+    // ---------------------------------------
+    _smoothPos = Vector3.Lerp(
+        _smoothPos,
+        desiredPos,
+        Time.deltaTime * _followDamping
+    );
+
+    // ---------------------------------------
+    // 4) 좌우 바운더리: 스무딩 값 자체를 클램프
+    // ---------------------------------------
+    float leftLimit = _center.x - _sideLimit;
+    float rightLimit = _center.x + _sideLimit;
+
+    if(_smoothPos.x < leftLimit)
+    {
+        _smoothPos.x = leftLimit;
+    }
+    else if(rightLimit < _smoothPos.x)
+    {
+        _smoothPos.x = rightLimit;
+    }
+
+    // transform에 최종 적용
+    transform.position = _smoothPos;
+
+    // ---------------------------------------
+    // 5) 회전: 반드시 클램프되기 전 방향 기반으로!
+    // ---------------------------------------
+    Vector3 yawDir = _car.position - _smoothPos;
+    yawDir.y = 0f;
+    yawDir.Normalize();
+
+    float targetYaw = Mathf.Atan2(yawDir.x, yawDir.z) * Mathf.Rad2Deg;
+
+    _currentYaw = Mathf.LerpAngle(
+        _currentYaw,
+        targetYaw,
+        Time.deltaTime * _rotateDamping
+    );
+
+    float pitch = 55f;
+
+    Quaternion finalRot = Quaternion.Euler(pitch, _currentYaw, 0f);
+    transform.rotation = finalRot;
+}
+
 }
