@@ -4,9 +4,14 @@ using UniRx.Triggers;
 
 public class CameraChase : BaseObject
 {
-    public float _leftLimit = -40f;
-    public float _rightLimit = 40f;
-    private Transform _car;
+    [Header("자동차 Transform")]
+    public Transform _car;
+
+    [Header("좌우 경계 (자동차 기준 로컬 좌/우)")]
+    public float _maxSide = 40f;
+
+    [Header("중심점 (Map이 설정하는 자동차 기준 중심)")]
+    public Vector3 _center;
 
     public override bool OnSpawn()
     {
@@ -26,26 +31,70 @@ public class CameraChase : BaseObject
                 Chase();
             }).AddTo(_disposables);
 
+        Contexts.InGame.CurrentMapXZ
+        .Subscribe(mapPos =>
+        {
+            _center = mapPos;
+        }).AddTo(_disposables);
+
         return true;
     }
 
     private void Chase()
 	{
-		Vector3 right = _car.transform.right;
-		Vector3 forward = _car.transform.forward; 
+		if (_car == null)
+        {
+            Debug.LogWarning("[CameraClampDebug] Car is NULL");
+            return;
+        }
 
-		Vector3 offset = transform.position - _car.position;
+        // 카메라 현재 위치
+        Vector3 camPos = transform.position;
 
-		float localRight = Vector3.Dot(offset, right);
-		float localForward = Vector3.Dot(offset, forward);
+        // 자동차 기준 radius(좌우 판별용)
+        Vector3 radius = camPos - _center;
+        radius.y = 0f;
 
-		localRight = Mathf.Clamp(localRight, _leftLimit, _rightLimit);
-		
-		Vector3 desired =
-			_car.position +
-			right * localRight +
-			forward * localForward;
+        // 자동차의 Right(좌우 기준 축)
+        Vector3 right = _car.transform.right;
 
-		transform.position = desired;
+        // 자동차 기준 좌우 거리
+        float distSide = Vector3.Dot(radius, right);
+
+        // 정규화된 비율
+        float t = Mathf.Abs(distSide) / _maxSide;
+
+        // 디버그 로그
+        Debug.Log(
+            $"[CameraClampDebug]" +
+            $"\n CarPos={_car.position}" +
+            $"\n CamPos={camPos}" +
+            $"\n Center={_center}" +
+            $"\n CarRight={right}" +
+            $"\n radius(local)={radius}" +
+            $"\n distSide={distSide}" +
+            $"\n |distSide|={Mathf.Abs(distSide)}" +
+            $"\n maxSide={_maxSide}" +
+            $"\n ratio(t)={t}" +
+            $"\n OUTSIDE?={(Mathf.Abs(distSide) > _maxSide)}"
+        );
+
+        // 경계 넘었으면 보정
+        if (distSide < -_maxSide)
+        {
+            float correction = -_maxSide - distSide;
+            camPos += right * correction;
+
+            Debug.Log($"[CameraClampDebug] → LEFT OUTSIDE | correction={correction} | newCamPos={camPos}");
+            transform.position = camPos;
+        }
+        else if (distSide > _maxSide)
+        {
+            float correction = _maxSide - distSide;
+            camPos += right * correction;
+
+            Debug.Log($"[CameraClampDebug] → RIGHT OUTSIDE | correction={correction} | newCamPos={camPos}");
+            transform.position = camPos;
+        }
 	}
 }

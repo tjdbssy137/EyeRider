@@ -50,7 +50,7 @@ public class Car : BaseObject
             return false;
         }
 
-        _carController = this.gameObject.GetComponent<CarController>();
+        _carController = this.gameObject.GetOrAddComponent<CarController>();
         if(_carController != null)
         {
             Debug.LogWarning("_carController is NULL");

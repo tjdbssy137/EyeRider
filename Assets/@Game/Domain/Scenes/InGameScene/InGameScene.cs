@@ -28,11 +28,11 @@ public class InGameScene : BaseScene
             return false;
 
         // 카메라 먼저 찾기
-        _camera = Object.FindFirstObjectByType<CinemachineCamera>();
-        if (_camera == null)
-        {
-            Debug.LogError("Camera is NULL");
-        }
+        // _camera = Object.FindFirstObjectByType<CinemachineCamera>();
+        // if (_camera == null)
+        // {
+        //     Debug.LogError("Camera is NULL");
+        // }
         
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
@@ -69,17 +69,22 @@ public class InGameScene : BaseScene
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
         // Transform cameraRoot = _car.transform.Find("CameraRoot");
-        // Transform cameraTargetObject = cameraRoot.transform.Find("CameraTargetObject");
+        //Transform cameraTargetObject = _car.transform.Find("CameraTargetObject");
 
         // _cameraChase = cameraRoot.gameObject.GetOrAddComponent<CameraChase>();
 
-        // _camera.Target.TrackingTarget = cameraTargetObject;
+        //_camera.Target.TrackingTarget = cameraTargetObject;
 
-
-        _camera.Target.LookAtTarget = _car.transform.Find("CameraTargetObject");
-        GameObject followCamRoot = new GameObject("@FollowCamRoot");
-        _camera.Target.TrackingTarget = followCamRoot.transform;
-        _cameraChase = followCamRoot.gameObject.GetOrAddComponent<CameraChase>();
+        // _camera.Target.LookAtTarget = _car.transform.Find("CameraTargetObject");
+        // GameObject followCamRoot = new GameObject("@FollowCamRoot");
+        // _camera.Target.TrackingTarget = followCamRoot.transform;
+        
+        Camera cam = Object.FindFirstObjectByType<Camera>();
+        if (cam == null)
+        {
+            Debug.LogError("cam is NULL");
+        }
+        CameraFollowController controller = cam.gameObject.GetOrAddComponent<CameraFollowController>();
 
 
         // Map Generate
@@ -92,8 +97,8 @@ public class InGameScene : BaseScene
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
 
-        _cameraChase.OnSpawn();
-        _cameraChase.SetInfo(0);
+        controller.OnSpawn();
+        controller.SetInfo(0);
     }
 
     void LoadResources()
