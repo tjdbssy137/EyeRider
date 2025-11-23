@@ -58,9 +58,16 @@ public class CameraFollowController : BaseObject
             Time.fixedDeltaTime * _rotateDamping
         );
 
-        Quaternion smoothRot = Quaternion.Euler(0f, _smoothYaw, 0f);
+        Quaternion camRot = Quaternion.Euler(0f, _smoothYaw, 0f);
 
-        Vector3 desiredPos = _car.position + smoothRot * new Vector3(0f, 0f, -5f) + new Vector3(0f, 25f, 0f);
+        float height = 25f;
+        float back = 5f;
+
+        Vector3 desiredOffset =
+            camRot * new Vector3(0f, 0f, -back)
+            + new Vector3(0f, height, 0f);
+
+        Vector3 desiredPos = _car.position + desiredOffset;
 
         if (!_initialized)
         {
@@ -68,26 +75,32 @@ public class CameraFollowController : BaseObject
             _smoothPos = desiredPos;
         }
 
-        _smoothPos = Vector3.Lerp(
+        Vector3 nextPos = Vector3.Lerp(
             _smoothPos,
             desiredPos,
             Time.fixedDeltaTime * _followDamping
         );
 
-        float dist = Vector3.Dot(_smoothPos - _center, _worldRight);
+        float dist = Vector3.Dot(nextPos - _center, _worldRight);
+        float absDist = Mathf.Abs(dist);
 
-        if (dist < -_sideLimit)
-        {
-            _smoothPos = _center + _worldRight * -_sideLimit;
-        }
-        else if (_sideLimit < dist)
-        {
-            _smoothPos = _center + _worldRight * _sideLimit;
-        }
+        // 경계에 가까울수록 더 강하게 감쇠
+        float t = absDist / _sideLimit;
+        float decay = Mathf.Clamp01(1f - t);
+
+        // dist의 부호대로 movement를 줄임
+        Vector3 move = nextPos - _smoothPos;
+        Vector3 rightComponent = Vector3.Project(move, _worldRight);
+        Vector3 nonRight = move - rightComponent;
+
+        Vector3 limitedMove = nonRight + rightComponent * decay;
+
+        _smoothPos += limitedMove;
 
         transform.position = _smoothPos;
 
         float pitch = 55f;
         transform.rotation = Quaternion.Euler(pitch, _smoothYaw, 0f);
     }
+
 }
