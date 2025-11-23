@@ -67,25 +67,15 @@ public class InGameScene : BaseScene
         _mapSpawner.SetInfo(0);
         
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
-        Debug.Log($"_camera: {_camera}, _car: {_car}, _eye: {_eye}");
-        // Transform cameraRoot = _car.transform.Find("CameraRoot");
-        //Transform cameraTargetObject = _car.transform.Find("CameraTargetObject");
 
-        // _cameraChase = cameraRoot.gameObject.GetOrAddComponent<CameraChase>();
-
-        //_camera.Target.TrackingTarget = cameraTargetObject;
-
-        // _camera.Target.LookAtTarget = _car.transform.Find("CameraTargetObject");
-        // GameObject followCamRoot = new GameObject("@FollowCamRoot");
-        // _camera.Target.TrackingTarget = followCamRoot.transform;
-        
         Camera cam = Object.FindFirstObjectByType<Camera>();
         if (cam == null)
         {
             Debug.LogError("cam is NULL");
         }
         CameraFollowController controller = cam.gameObject.GetOrAddComponent<CameraFollowController>();
-
+        controller.OnSpawn();
+        controller.SetInfo(0);
 
         // Map Generate
         Contexts.InGame.MAP_SIZE = 100;
@@ -96,9 +86,6 @@ public class InGameScene : BaseScene
 
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
-
-        controller.OnSpawn();
-        controller.SetInfo(0);
     }
 
     void LoadResources()

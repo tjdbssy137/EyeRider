@@ -14,20 +14,35 @@ public class CameraFollowController : BaseObject
     private float _smoothYaw = 0f;
     private bool _initialized = false;
 
+    private Vector3 _worldRight;
+    private Vector3 _worldForward;
+
     public override bool OnSpawn()
     {
         if (!base.OnSpawn()) return false;
 
         _car = Contexts.InGame.Car.transform;
+        if (_car == null)
+        {
+            Debug.Log("_car is NULL");
+        }
+
+        Contexts.InGame.WorldRightDir
+            .Subscribe(r => _worldRight = r)
+            .AddTo(_disposables);
+
+        Contexts.InGame.WorldForwardDir
+            .Subscribe(f => _worldForward = f)
+            .AddTo(_disposables);
 
         this.FixedUpdateAsObservable()
             .Subscribe(_ => UpdateCamera())
             .AddTo(_disposables);
 
         Contexts.InGame.CurrentMapXZ
-            .Subscribe(xz =>
+            .Subscribe(mapPos =>
             {
-                _center = xz;
+                _center = mapPos;
             }).AddTo(_disposables);
 
         return true;
@@ -35,11 +50,8 @@ public class CameraFollowController : BaseObject
 
     private void UpdateCamera()
     {
-        if (_car == null) return;
-
         float carYaw = _car.rotation.eulerAngles.y;
 
-        // 회전 자체도 부드럽게
         _smoothYaw = Mathf.LerpAngle(
             _smoothYaw,
             carYaw,
@@ -48,10 +60,7 @@ public class CameraFollowController : BaseObject
 
         Quaternion smoothRot = Quaternion.Euler(0f, _smoothYaw, 0f);
 
-        Vector3 desiredPos =
-            (_car.position +
-            smoothRot * new Vector3(0f, 0f, -5f) +
-            new Vector3(0f, 20f, 0f));
+        Vector3 desiredPos = _car.position + smoothRot * new Vector3(0f, 0f, -5f) + new Vector3(0f, 25f, 0f);
 
         if (!_initialized)
         {
@@ -65,11 +74,16 @@ public class CameraFollowController : BaseObject
             Time.fixedDeltaTime * _followDamping
         );
 
-        float left = _center.x - _sideLimit;
-        float right = _center.x + _sideLimit;
+        float dist = Vector3.Dot(_smoothPos - _center, _worldRight);
 
-        if (_smoothPos.x < left) _smoothPos.x = left;
-        else if (right < _smoothPos.x) _smoothPos.x = right;
+        if (dist < -_sideLimit)
+        {
+            _smoothPos = _center + _worldRight * -_sideLimit;
+        }
+        else if (_sideLimit < dist)
+        {
+            _smoothPos = _center + _worldRight * _sideLimit;
+        }
 
         transform.position = _smoothPos;
 

@@ -28,7 +28,7 @@ public class Car : BaseObject
         set
         {
             float oldFuel = _fuel;
-            Debug.Log($"oldFuel : {oldFuel}");
+            //Debug.Log($"oldFuel : {oldFuel}");
             _fuel = Mathf.Clamp(value, 0.0f, 100);
             OnFuelChanged.OnNext((oldFuel, _fuel));
         }
@@ -50,13 +50,17 @@ public class Car : BaseObject
             return false;
         }
 
+        Contexts.InGame.Car = this;
         _carController = this.gameObject.GetOrAddComponent<CarController>();
-        if(_carController != null)
+        if(_carController == null)
         {
             Debug.LogWarning("_carController is NULL");
         }
         _carController.OnSpawn();
         _carController.SetInfo(0);
+
+        Contexts.InGame.WorldForwardDir.OnNext(Vector3.forward);
+        Contexts.InGame.WorldRightDir.OnNext(Vector3.right);
 
         Condition = 100;
         Fuel = 100;
@@ -66,7 +70,6 @@ public class Car : BaseObject
                 ConsumeFuel()
             ).AddTo(_disposables); 
 
-        Contexts.InGame.Car = this;
         this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
         return true;
     }

@@ -45,5 +45,9 @@ public partial class InGameContext
 
 
     public Subject<Vector3> CurrentMapXZ {get; set;} = new Subject<Vector3>();
+    public BehaviorSubject<Vector3> WorldForwardDir = new BehaviorSubject<Vector3>(Vector3.forward);
+    public BehaviorSubject<Vector3> WorldRightDir = new BehaviorSubject<Vector3>(Vector3.right);
+
+
 
 }

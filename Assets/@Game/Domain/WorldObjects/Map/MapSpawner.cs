@@ -33,17 +33,11 @@ public class MapSpawner : BaseObject
             foreach (var md in Managers.Data.MapDatas.Values)
             {
                 if (md.Direction == RoadDirection.none)
-                {
                     _mapDataByTile[Tile.Straight] = md;
-                }
                 else if (md.Direction == RoadDirection.Left)
-                {
                     _mapDataByTile[Tile.Left] = md;
-                }
                 else if (md.Direction == RoadDirection.Right)
-                {
                     _mapDataByTile[Tile.Right] = md;
-                }
             }
         }
 
@@ -63,7 +57,6 @@ public class MapSpawner : BaseObject
             {
                 if (!result)
                 {
-                    Debug.LogWarning("[MapSpawner] Planner failed to generate blueprint. Blueprint cleared.");
                     _blueprint.Clear();
                     _blueprintIndex = 0;
                 }
@@ -71,12 +64,12 @@ public class MapSpawner : BaseObject
                 {
                     _blueprint = new List<MapPlanner.PathNode>(Contexts.InGame.MapPlanner.PathOrder);
                     _blueprintIndex = 0;
-                    Debug.Log($"[MapSpawner] Blueprint generated with {_blueprint.Count} nodes.");
                     SpawnUntilCapacity();
                 }
 
                 Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
-            }).AddTo(_disposables);
+            })
+            .AddTo(_disposables);
 
         return true;
     }
@@ -127,32 +120,26 @@ public class MapSpawner : BaseObject
         int prefabBaseFacing = Mathf.Clamp(md.BaseFacing, 0, 3);
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
-        Debug.Log($"[MapSpawner] Before {index} prefab={md.RoadPrefab.name} cell={node.cell} enterDir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
 
-        if (md.Direction == RoadDirection.Right)
-        {
-            angle -= 180f;
-        }
-        if (md.Direction == RoadDirection.Left)
-        {
-            angle += 180f;
-        }
+        if (md.Direction == RoadDirection.Right) angle -= 180f;
+        if (md.Direction == RoadDirection.Left) angle += 180f;
         angle = Mathf.Repeat(angle, 360f);
 
         Vector3 spawnWorld = Contexts.InGame.MapPlanner.CellToWorld(node.cell);
 
         string roadName = md.RoadPrefab.name;
+
         Map m = Managers.Object.Spawn<Map>(roadName, spawnWorld, 0, md.DataTemplateId, _spawnParent.transform);
         m.transform.SetParent(_spawnParent.transform, false);
         m.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+        m.SetDirection(outgoingDir);
 
         _roadStorage.Enqueue(m);
 
         _lastSpawnPos = spawnWorld;
         _lastSpawnRot = Quaternion.Euler(0f, angle, 0f);
         _lastSpawnAngle = angle;
-
-        Debug.Log($"[MapSpawner] After {index} prefab={roadName} cell={node.cell} enterDir={node.dir} angle={angle} queueCount={_roadStorage.Count}");
     }
 
     private void RandomMap()
@@ -171,7 +158,6 @@ public class MapSpawner : BaseObject
             return;
         }
 
-        // 현재 바라보는 방향: 0=+Z, 1=+X, 2=-Z, 3=-X
         int currentDir = Mathf.RoundToInt(_lastSpawnAngle / 90f) & 3;
 
         int outgoingDir = currentDir;
@@ -182,15 +168,10 @@ public class MapSpawner : BaseObject
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
 
-        if (mapData.Direction == RoadDirection.Right)
-        {
-            angle -= 180f;
-        }
-        if (mapData.Direction == RoadDirection.Left)
-        {
-            angle += 180f;
-        }
+        if (mapData.Direction == RoadDirection.Right) angle -= 180f;
+        if (mapData.Direction == RoadDirection.Left) angle += 180f;
         angle = Mathf.Repeat(angle, 360f);
+
         Vector3 spawnWorld = _lastSpawnPos;
 
         string roadName = mapData.RoadPrefab.name;
@@ -204,35 +185,16 @@ public class MapSpawner : BaseObject
         m.transform.SetParent(_spawnParent.transform, false);
         m.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+        // ★ 추가 — 이 맵에 방향 기록
+        m.SetDirection(outgoingDir);
+
         _roadStorage.Enqueue(m);
 
         Vector3 newForward = DirIndexToVector(outgoingDir);
         Vector3 nextPos = spawnWorld + newForward * Contexts.InGame.MAP_SIZE;
-        Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
 
         _lastSpawnPos = nextPos;
-        _lastSpawnRot = nextRot;
-        _lastSpawnAngle = Mathf.Repeat(angle, 360f);
-
-        Debug.Log($"[MapSpawner] Random spawned '{roadName}' idx:{idx} dir:{mapData.Direction} outgoing:{outgoingDir} baseFacing:{prefabBaseFacing} angle:{angle} nextPos:{_lastSpawnPos} queue:{_roadStorage.Count}");
-
-        if (_roadStorage.Count < _maxMapCapacity)
-        {
-            Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
-        }
-    }
-
-    private void GetNextSpawnPositionAndRotation(RoadDirection directionForThisMap)
-    {
-        float angle = _lastSpawnAngle;
-        Vector3 currentPos = _lastSpawnPos;
-        if (directionForThisMap == RoadDirection.Right) angle += 90f;
-        else if (directionForThisMap == RoadDirection.Left) angle -= 90f;
-        Vector3 newForward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
-        Vector3 nextPos = currentPos + newForward * Contexts.InGame.MAP_SIZE;
-        Quaternion nextRot = Quaternion.Euler(0f, angle, 0f);
-        _lastSpawnPos = nextPos;
-        _lastSpawnRot = nextRot;
+        _lastSpawnRot = Quaternion.Euler(0f, angle, 0f);
         _lastSpawnAngle = Mathf.Repeat(angle, 360f);
     }
 

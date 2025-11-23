@@ -37,6 +37,10 @@ public partial class CarController : BaseObject
 
     private Vector3 _center;
 
+    // ★ 추가: 도로 기준 방향 캐싱
+    private Vector3 _worldForward;
+    private Vector3 _worldRight;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -64,6 +68,15 @@ public partial class CarController : BaseObject
             return false;
         }
 
+        // ★ 추가 — 도로 방향 subscribe
+        Contexts.InGame.WorldRightDir
+            .Subscribe(r => _worldRight = r)
+            .AddTo(_disposables);
+
+        Contexts.InGame.WorldForwardDir
+            .Subscribe(f => _worldForward = f)
+            .AddTo(_disposables);
+
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -75,9 +88,11 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
+
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
+
                 if (_isRotating)
                 {
                     _rotLerpTime += Time.fixedDeltaTime;
@@ -85,6 +100,7 @@ public partial class CarController : BaseObject
                     float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
                     Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
                     _rigidbody.MoveRotation(newRot);
+
                     if (1f <= t)
                     {
                         Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
@@ -131,6 +147,10 @@ public partial class CarController : BaseObject
                 _center = mapPos;
             }).AddTo(_disposables);
 
+        if(_center == Vector3.zero)
+        {
+            _center = _rigidbody.position;
+        }
         return true;
     }
 
@@ -173,24 +193,25 @@ public partial class CarController : BaseObject
     private void VerticalMove()
     {
         float speed = _verticalDefaultSpeed + _verticalAccelerationSpeed;
+
         Vector3 move = (_rigidbody.rotation * Vector3.forward) * speed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + move);
     }
 
+    // ★ 좌우 이동 — 도로 기준 right를 사용하도록 완전 수정
     private void HorizontalMove(float dir)
     {
         float scale = 1f - ControlDifficulty;
         float newDir = dir * scale;
+
         Vector3 sideDir = _rigidbody.transform.right;
         Vector3 move = sideDir * newDir * _horizontalSpeed * Time.fixedDeltaTime;
 
-        Vector3 radius = _rigidbody.position - _center;
-        radius.y = 0f;
-
-        float distSide = Vector3.Dot(radius, _rigidbody.transform.right);
+        // ★ 도로 기준 좌우 거리 계산
+        float distSide = Vector3.Dot(_rigidbody.position - _center, _worldRight);
         float absSide = Mathf.Abs(distSide);
 
-        float boundary = 40f; // 맵 반쪽 좌우 사이즈의 80%
+        float boundary = 40f;
         float t = absSide / boundary;
         float decay = 1f;
 
@@ -210,6 +231,7 @@ public partial class CarController : BaseObject
         }
 
         _rigidbody.MovePosition(_rigidbody.position + move * decay);
+
         WheelEffect(true);
     }
 
@@ -219,6 +241,7 @@ public partial class CarController : BaseObject
         _rotLerpTime = 0f;
         _startYaw = _rigidbody.rotation.eulerAngles.y;
         _targetYaw = Mathf.Repeat(_startYaw + degrees, 360f);
+
         WheelEffect(_isRotating);
     }
 

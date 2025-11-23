@@ -8,49 +8,44 @@ public class Map : BaseObject
 {
     public BoxCollider _collider;
     private MapData _data;
+
+    // ★ 추가 — 이 맵이 가진 방향값 (0=+Z,1=+X,2=-Z,3=-X)
+    public int DirectionIndex { get; private set; }
+    public void SetDirection(int dir)
+    {
+        DirectionIndex = dir & 3;
+    }
+
     public override bool Init()
-	{
-		if (base.Init() == false)
-			return false;
+    {
+        if (base.Init() == false)
+            return false;
         if (_collider == null)
         {
             Debug.Log("_collider is NULL");
         }
-		return true;
-	}
-	
-	public override bool OnSpawn()
+        return true;
+    }
+    
+    public override bool OnSpawn()
     {
-		if (false == base.OnSpawn())
+        if (false == base.OnSpawn())
         {
             return false;
         }
+
         _collider.OnCollisionExitAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
                 Managers.Object.Despawn(this);
                 Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-                //Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
-                // var car = Contexts.InGame.Car;
-                // if (car == null)
-                // {
-                //     Debug.LogWarning("car is NULL");
-                //     return;
-                // }
-
-                // float dist = Vector3.Distance(transform.position, car.transform.position);
-
-                // if (20f <= dist)
-                // {
-                //     Managers.Object.Despawn(this);
-                //     Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-                //     Contexts.Map.OnSpawnRoad.OnNext(Unit.Default);
-                // }
             })
             .AddTo(_disposables);
+
         return true;
     }
+
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
@@ -60,21 +55,40 @@ public class Map : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                //Debug.Log("OnCollisionEnterAsObservable");
+                //Debug.Log($"_data : {_data.RoadPrefab.name}");
+
                 Contexts.InGame.CurrentMapXZ.OnNext(this.transform.position);
-                if(_data.Direction == RoadDirection.none)
+
+                Vector3 forward = DirIndexToVector(DirectionIndex);
+                Vector3 right = new Vector3(forward.z, 0f, -forward.x);
+
+                Contexts.InGame.WorldForwardDir.OnNext(forward);
+                Contexts.InGame.WorldRightDir.OnNext(right);
+
+                if (_data.Direction == RoadDirection.none)
                 {
                     return;
                 }
-                if(_data.Direction == RoadDirection.Right)
+                if (_data.Direction == RoadDirection.Right)
                 {
                     Contexts.InGame.OnEnterCorner.OnNext(90);
                 }
-                if(_data.Direction == RoadDirection.Left)
+                if (_data.Direction == RoadDirection.Left)
                 {
                     Contexts.InGame.OnEnterCorner.OnNext(-90);
                 }
             })
             .AddTo(this);
+    }
+
+    private Vector3 DirIndexToVector(int dir)
+    {
+        switch (dir & 3)
+        {
+            case 0: return Vector3.forward; // +Z
+            case 1: return Vector3.right; // +X
+            case 2: return Vector3.back; // -Z
+            default: return Vector3.left; // -X
+        }
     }
 }
