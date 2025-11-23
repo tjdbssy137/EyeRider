@@ -7,7 +7,7 @@ public class CameraFollowController : BaseObject
     [SerializeField] private Transform _car;
     [SerializeField] private float _followDamping = 12f;
     [SerializeField] private float _rotateDamping = 8f;
-    [SerializeField] private float _sideLimit = 40f;
+    [SerializeField] private float _sideLimit = 15f;
 
     private Vector3 _center;
     private Vector3 _smoothPos;
@@ -69,7 +69,7 @@ public class CameraFollowController : BaseObject
 
         Vector3 desiredPos = _car.position + desiredOffset;
 
-        if (!_initialized)
+        if(!_initialized)
         {
             _initialized = true;
             _smoothPos = desiredPos;
@@ -84,18 +84,68 @@ public class CameraFollowController : BaseObject
         float dist = Vector3.Dot(nextPos - _center, _worldRight);
         float absDist = Mathf.Abs(dist);
 
-        // 경계에 가까울수록 더 강하게 감쇠
         float t = absDist / _sideLimit;
         float decay = Mathf.Clamp01(1f - t);
 
-        // dist의 부호대로 movement를 줄임
         Vector3 move = nextPos - _smoothPos;
         Vector3 rightComponent = Vector3.Project(move, _worldRight);
         Vector3 nonRight = move - rightComponent;
 
         Vector3 limitedMove = nonRight + rightComponent * decay;
 
-        _smoothPos += limitedMove;
+        Vector3 newPos = _smoothPos + limitedMove;
+
+        if(_worldRight.x < 0.99f && _worldRight.z < 0.99f)
+        {
+            _smoothPos = newPos;
+        }
+        else
+        {
+            if(0.99f < _worldRight.z || _worldRight.z < -0.99f)
+            {
+                float camZ = newPos.z;
+                float centerZ = _center.z;
+                float minZ = centerZ - _sideLimit;
+                float maxZ = centerZ + _sideLimit;
+
+                if(camZ < minZ)
+                {
+                    camZ = minZ;
+                }
+
+                if(maxZ < camZ)
+                {
+                    camZ = maxZ;
+                }
+
+                newPos.z = camZ;
+                _smoothPos = newPos;
+            }
+            else if(0.99f < _worldRight.x || _worldRight.x < -0.99f)
+            {
+                float camX = newPos.x;
+                float centerX = _center.x;
+                float minX = centerX - _sideLimit;
+                float maxX = centerX + _sideLimit;
+
+                if(camX < minX)
+                {
+                    camX = minX;
+                }
+
+                if(maxX < camX)
+                {
+                    camX = maxX;
+                }
+
+                newPos.x = camX;
+                _smoothPos = newPos;
+            }
+            else
+            {
+                _smoothPos = newPos;
+            }
+        }
 
         transform.position = _smoothPos;
 
