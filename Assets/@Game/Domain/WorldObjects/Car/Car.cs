@@ -59,9 +59,6 @@ public class Car : BaseObject
         _carController.OnSpawn();
         _carController.SetInfo(0);
 
-        Contexts.InGame.WorldForwardDir.OnNext(Vector3.forward);
-        Contexts.InGame.WorldRightDir.OnNext(Vector3.right);
-
         Condition = 100;
         Fuel = 100;
 

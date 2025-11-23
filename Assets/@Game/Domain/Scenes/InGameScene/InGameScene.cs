@@ -8,9 +8,7 @@ using UniRx;
 public class InGameScene : BaseScene
 {
     private Car _car;
-    private Eye _eye;
     private CinemachineCamera _camera;
-    CameraChase _cameraChase;
     public GameObject _spawnPoint;
     private MapSpawner _mapSpawner;
 

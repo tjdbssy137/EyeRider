@@ -75,6 +75,39 @@ public class PointMover : UI_Base
         {
             Debug.LogWarning("_camera is NULL");
         }
+        Observable.NextFrame()
+        .Subscribe(_ =>
+        {
+            if (_camera == null)
+            {
+                _camera = Object.FindFirstObjectByType<Camera>();
+            }
+
+            if (_car == null)
+            {
+                _car = Contexts.InGame.Car.GetComponent<Transform>();
+            }
+            
+            Vector3 carScreen = _camera.WorldToScreenPoint(_car.position);
+
+            Vector2 uiPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _canvasRect,
+                new Vector2(carScreen.x, carScreen.y),
+                null,
+                out uiPos
+            );
+
+            _point.anchoredPosition = uiPos;
+            _randomPos = uiPos;
+            _randomTarget = uiPos;
+            _inputOffset = Vector2.zero;
+            _targetOffset = Vector2.zero;
+
+            CheckCarInsideEye();
+        })
+        .AddTo(this);
+
         return true;
     }
 
@@ -130,7 +163,7 @@ public class PointMover : UI_Base
         );
     }
 
-    private bool _wasInside = true;
+    private bool _wasInside = false;
     private void CheckCarInsideEye()
     {
         if (_car == null)

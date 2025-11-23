@@ -151,6 +151,10 @@ public partial class CarController : BaseObject
         {
             _center = _rigidbody.position;
         }
+
+        _isOutside = false;
+        _shakeIntensity = 0f;
+
         return true;
     }
 
@@ -180,6 +184,7 @@ public partial class CarController : BaseObject
         {
             WheelEffect(false);
         }
+        Debug.Log($"horizontal : {horizontal}");
     }
 
     private void Accelerate()
@@ -201,6 +206,7 @@ public partial class CarController : BaseObject
     // ★ 좌우 이동 — 도로 기준 right를 사용하도록 완전 수정
     private void HorizontalMove(float dir)
     {
+        //Debug.Log("HorizontalMove");
         float scale = 1f - ControlDifficulty;
         float newDir = dir * scale;
 

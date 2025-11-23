@@ -38,6 +38,8 @@ public class Map : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
+                //Debug.Log($"OnCollisionExitAsObservable map={this.name}, pos={transform.position}");
+
                 Managers.Object.Despawn(this);
                 Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
             })
@@ -55,13 +57,13 @@ public class Map : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                //Debug.Log($"_data : {_data.RoadPrefab.name}");
+                //Debug.Log($"OnCollisionEnterAsObservable map={this.name}, pos={transform.position}");
 
                 Contexts.InGame.CurrentMapXZ.OnNext(this.transform.position);
 
                 Vector3 forward = DirIndexToVector(DirectionIndex);
                 Vector3 right = new Vector3(forward.z, 0f, -forward.x);
-
+                
                 Contexts.InGame.WorldForwardDir.OnNext(forward);
                 Contexts.InGame.WorldRightDir.OnNext(right);
 

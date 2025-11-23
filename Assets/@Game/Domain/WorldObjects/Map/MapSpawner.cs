@@ -79,7 +79,7 @@ public class MapSpawner : BaseObject
         base.SetInfo(dataTemplate);
         _mapCount = Managers.Data.MapDatas.Count;
 
-        _lastSpawnPos = new Vector3(0f, 0f, Contexts.InGame.MAP_SIZE);
+        _lastSpawnPos = new Vector3(0f, 0f, 0);
         _lastSpawnRot = Quaternion.Euler(0f, 0f, 0f);
         _lastSpawnAngle = 0f;
         Debug.Log("SetInfo MAP");
@@ -132,7 +132,6 @@ public class MapSpawner : BaseObject
         Map m = Managers.Object.Spawn<Map>(roadName, spawnWorld, 0, md.DataTemplateId, _spawnParent.transform);
         m.transform.SetParent(_spawnParent.transform, false);
         m.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
         m.SetDirection(outgoingDir);
 
         _roadStorage.Enqueue(m);
