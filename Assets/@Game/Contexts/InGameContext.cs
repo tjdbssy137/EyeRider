@@ -13,6 +13,7 @@ public partial class InGameContext
 
 
     public Subject<float> OnEnterCorner { get; private set; } = new Subject<float>();   
+    public Subject<Unit> OnExitCorner { get; private set; } = new Subject<Unit>();   
 
     public Car Car { get; set; }
 

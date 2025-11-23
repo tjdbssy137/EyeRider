@@ -88,27 +88,10 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
-
+                UpdateRotation();
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
-
-                if (_isRotating)
-                {
-                    _rotLerpTime += Time.fixedDeltaTime;
-                    float t = Mathf.Clamp01(_rotLerpTime / _rotDuration);
-                    float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
-                    Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
-                    _rigidbody.MoveRotation(newRot);
-
-                    if (1f <= t)
-                    {
-                        Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
-                        _rigidbody.MoveRotation(finalRot);
-                        _isRotating = false;
-                        WheelEffect(_isRotating);
-                    }
-                }
             }).AddTo(_disposables);
 
         Contexts.InGame.OnEnterCorner
@@ -184,7 +167,7 @@ public partial class CarController : BaseObject
         {
             WheelEffect(false);
         }
-        Debug.Log($"horizontal : {horizontal}");
+        //Debug.Log($"horizontal : {horizontal}");
     }
 
     private void Accelerate()
@@ -197,9 +180,13 @@ public partial class CarController : BaseObject
 
     private void VerticalMove()
     {
-        float speed = _verticalDefaultSpeed + _verticalAccelerationSpeed;
+        float baseSpeed = _verticalDefaultSpeed + _verticalAccelerationSpeed;
 
-        Vector3 move = (_rigidbody.rotation * Vector3.forward) * speed * Time.fixedDeltaTime;
+        float curveBoost = _isRotating ? (baseSpeed * 0.25f) : 0f;
+
+        float finalSpeed = baseSpeed + curveBoost;
+
+        Vector3 move = (_rigidbody.rotation * Vector3.forward) * finalSpeed * Time.fixedDeltaTime;
         _rigidbody.MovePosition(_rigidbody.position + move);
     }
 
@@ -250,6 +237,30 @@ public partial class CarController : BaseObject
 
         WheelEffect(_isRotating);
     }
+
+    // 회전 상태 업데이트
+private void UpdateRotation()
+{
+    if (_isRotating == false)
+        return;
+
+    _rotLerpTime += Time.fixedDeltaTime;
+    float t = Mathf.Clamp01(_rotLerpTime / _rotDuration);
+
+    float currentYaw = Mathf.LerpAngle(_startYaw, _targetYaw, t);
+    Quaternion newRot = Quaternion.Euler(0f, currentYaw, 0f);
+    _rigidbody.MoveRotation(newRot);
+
+    if (1f <= t)
+    {
+        Quaternion finalRot = Quaternion.Euler(0f, _targetYaw, 0f);
+        _rigidbody.MoveRotation(finalRot);
+
+        _isRotating = false;
+        WheelEffect(false);
+    }
+}
+
 
     private void WheelEffect(bool isDrifting)
     {

@@ -80,6 +80,7 @@
     <Compile Include="Assets/@Framework/Managers/Core/SceneManagerEx.cs" />
     <Compile Include="Assets/@Game/Domain/WorldObjects/Eye/UI/UI_Eye.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/UIManager.cs" />
+    <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraRigFollowController.cs" />
     <Compile Include="Assets/@Framework/UI/Popup/UI_Popup.cs" />
     <Compile Include="Assets/@Game/Contexts/InGameContext.cs" />
     <Compile Include="Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs" />
@@ -92,7 +93,6 @@
     <Compile Include="Assets/@Game/Domain/Scenes/MainMenuScene/UI_MainMenuScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/SoundManager.cs" />
     <Compile Include="Assets/@Framework/UI/UI_EventHandler.cs" />
-    <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraClampExtension.cs" />
     <Compile Include="Assets/@Game/Domain/Scenes/InGameScene/InGameScene.cs" />
     <Compile Include="Assets/@Framework/Managers/Managers.cs" />
     <Compile Include="Assets/@Framework/Managers/Core/PoolManager.cs" />
@@ -115,7 +115,6 @@
     <Compile Include="Assets/@Framework/Managers/Core/InputManagerEx.cs" />
     <Compile Include="Assets/@Framework/Contexts/Contexts.cs" />
     <Compile Include="Assets/@Framework/Debug/DebugDraw.cs" />
-    <Compile Include="Assets/@Game/Domain/WorldObjects/Camera/CameraChase.cs" />
     <Compile Include="Assets/@Framework/Controllers/Stats/Stats.cs" />
     <Compile Include="Assets/@Framework/Scenes/BaseScene.cs" />
   </ItemGroup>

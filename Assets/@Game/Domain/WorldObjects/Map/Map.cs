@@ -42,6 +42,18 @@ public class Map : BaseObject
 
                 Managers.Object.Despawn(this);
                 Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                if (_data.Direction == RoadDirection.none)
+                {
+                    return;
+                }
+                if (_data.Direction == RoadDirection.Right)
+                {
+                    Contexts.InGame.OnExitCorner.OnNext(Unit.Default);
+                }
+                if (_data.Direction == RoadDirection.Left)
+                {
+                    Contexts.InGame.OnExitCorner.OnNext(Unit.Default);
+                }
             })
             .AddTo(_disposables);
 

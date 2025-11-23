@@ -66,12 +66,22 @@ public class InGameScene : BaseScene
         
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
 
-        Camera cam = Object.FindFirstObjectByType<Camera>();
-        if (cam == null)
+        // Camera cam = Object.FindFirstObjectByType<Camera>();
+        // if (cam == null)
+        // {
+        //     Debug.LogError("cam is NULL");
+        // }
+        // CameraFollowController controller = cam.gameObject.GetOrAddComponent<CameraFollowController>();
+        // controller.OnSpawn();
+        // controller.SetInfo(0);
+
+        GameObject rigObj = GameObject.Find("CameraRig");
+        if (rigObj == null)
         {
-            Debug.LogError("cam is NULL");
+            Debug.LogWarning("[CameraRigFinder] CameraRig 오브젝트를 찾을 수 없습니다.");
+            return;
         }
-        CameraFollowController controller = cam.gameObject.GetOrAddComponent<CameraFollowController>();
+        CameraRigFollowController controller = rigObj.gameObject.GetOrAddComponent<CameraRigFollowController>();
         controller.OnSpawn();
         controller.SetInfo(0);
 
