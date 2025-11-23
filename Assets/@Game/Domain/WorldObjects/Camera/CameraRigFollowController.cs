@@ -18,6 +18,8 @@ public class CameraRigFollowController : BaseObject
     private Vector3 _worldForward;
 
     private bool _inCorner = false;
+    private int _cornerCount = 0;
+
 
     public override bool OnSpawn()
     {
@@ -44,16 +46,29 @@ public class CameraRigFollowController : BaseObject
             }).AddTo(_disposables);
 
         Contexts.InGame.OnEnterCorner
-            .Subscribe(_ =>
-            {
-                _inCorner = true;
-            }).AddTo(_disposables);
+        .Subscribe(_ =>
+        {
+            _cornerCount = _cornerCount + 1;
+            _inCorner = true;
+        })
+        .AddTo(_disposables);
 
         Contexts.InGame.OnExitCorner
-            .Subscribe(_ =>
+        .Subscribe(_ =>
+        {
+            _cornerCount = _cornerCount - 1;
+            if (_cornerCount < 0)
+            {
+                _cornerCount = 0;
+            }
+
+            if (_cornerCount == 0)
             {
                 _inCorner = false;
-            }).AddTo(_disposables);
+            }
+        })
+        .AddTo(_disposables);
+
 
         this.FixedUpdateAsObservable()
             .Subscribe(_ => UpdateCamera())
