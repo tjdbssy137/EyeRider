@@ -121,8 +121,8 @@ public class MapSpawner : BaseObject
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
 
-        if (md.Direction == RoadDirection.Right) angle -= 180f;
-        if (md.Direction == RoadDirection.Left) angle += 180f;
+        // if (md.Direction == RoadDirection.Right) angle -= 180f;
+        // if (md.Direction == RoadDirection.Left) angle += 180f;
         angle = Mathf.Repeat(angle, 360f);
 
         Vector3 spawnWorld = Contexts.InGame.MapPlanner.CellToWorld(node.cell);
@@ -167,8 +167,8 @@ public class MapSpawner : BaseObject
         int deltaTurns = (outgoingDir - prefabBaseFacing + 4) & 3;
         float angle = deltaTurns * 90f;
 
-        if (mapData.Direction == RoadDirection.Right) angle -= 180f;
-        if (mapData.Direction == RoadDirection.Left) angle += 180f;
+        // if (mapData.Direction == RoadDirection.Right) angle -= 180f;
+        // if (mapData.Direction == RoadDirection.Left) angle += 180f;
         angle = Mathf.Repeat(angle, 360f);
 
         Vector3 spawnWorld = _lastSpawnPos;

@@ -57,7 +57,6 @@ public class CameraRigFollowController : BaseObject
         {
             _inCorner = false;
             Debug.Log($"_inCorner : {_inCorner}");
-
         })
         .AddTo(_disposables);
 
