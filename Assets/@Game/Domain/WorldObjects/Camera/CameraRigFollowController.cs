@@ -48,24 +48,18 @@ public class CameraRigFollowController : BaseObject
         Contexts.InGame.OnEnterCorner
         .Subscribe(_ =>
         {
-            _cornerCount = _cornerCount + 1;
+            //_cornerCount = _cornerCount + 1;
             _inCorner = true;
+            Debug.Log($"Contexts.InGame.OnEnterCorner : {_cornerCount}, _inCorner : {_inCorner}");
         })
         .AddTo(_disposables);
 
         Contexts.InGame.OnExitCorner
         .Subscribe(_ =>
         {
-            _cornerCount = _cornerCount - 1;
-            if (_cornerCount < 0)
-            {
-                _cornerCount = 0;
-            }
+            _inCorner = false;
+            Debug.Log($"Contexts.InGame.OnExitCorner : {_cornerCount}, _inCorner : {_inCorner}");
 
-            if (_cornerCount == 0)
-            {
-                _inCorner = false;
-            }
         })
         .AddTo(_disposables);
 
