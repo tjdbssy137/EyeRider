@@ -39,13 +39,13 @@ public partial class CarController : BaseObject
 
     private bool _pendingRotation = false;
     private float _pendingDegrees = 0f;
+    private float _disableCorrectionTimer = 0f;
+    private Vector3 _targetCenter;
+
 
     public override bool Init()
     {
-        if (false == base.Init())
-        {
-            return false;
-        }
+
 
         if (_rigidbody == null)
         {
@@ -77,8 +77,11 @@ public partial class CarController : BaseObject
             .AddTo(_disposables);
 
         Contexts.InGame.CurrentMapXZ
-            .Subscribe(pos => _center = pos)
-            .AddTo(_disposables);
+           .Subscribe(pos =>
+           {
+               _targetCenter = pos;
+           })
+           .AddTo(_disposables);
 
         if (_center == Vector3.zero)
         {
@@ -88,13 +91,24 @@ public partial class CarController : BaseObject
         Contexts.InGame.OnEnterCorner
             .Subscribe(deg =>
             {
+                _rigidbody.linearVelocity = Vector3.zero;
+                _rigidbody.angularVelocity = Vector3.zero;
+
+                Vector3 f = transform.forward;
+                f.y = 0f;
+                transform.forward = f.normalized;
+
+                Vector3 r = transform.right;
+                r.y = 0f;
+                transform.right = r.normalized;
+
                 _pendingRotation = true;
                 _pendingDegrees = deg;
 
-                Observable.Timer(TimeSpan.FromSeconds(0.12f))
+                Observable.Timer(TimeSpan.FromSeconds(0.08f))
                     .Subscribe(__ =>
                     {
-                        if (true == _pendingRotation)
+                        if (_pendingRotation)
                         {
                             _pendingRotation = false;
                             this.Steer(_pendingDegrees);
@@ -103,6 +117,7 @@ public partial class CarController : BaseObject
                     .AddTo(_disposables);
             })
             .AddTo(_disposables);
+
 
         Contexts.InGame.OnExitEye
             .Subscribe(dist =>
@@ -145,6 +160,13 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
+                if (0f < _disableCorrectionTimer)
+                {
+                    _disableCorrectionTimer -= Time.fixedDeltaTime;
+                }
+
+                _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
+
 
                 UpdateRotation();
                 InputKeyBoard();
@@ -186,11 +208,6 @@ public partial class CarController : BaseObject
 
     private void Accelerate()
     {
-        if (_isRotating)
-        {
-            return;
-        }
-
         float scale = 1f - ControlDifficulty;
         float target = 0f;
 
@@ -273,6 +290,7 @@ public partial class CarController : BaseObject
 
         _startYaw = _rigidbody.rotation.eulerAngles.y;
         _targetYaw = Mathf.Repeat(_startYaw + degrees, 360f);
+        _disableCorrectionTimer = 0.2f;
 
         WheelEffect(true);
     }
@@ -305,6 +323,9 @@ public partial class CarController : BaseObject
 
     private void ApplyCornerCorrection()
     {
+        if (_disableCorrectionTimer > 0f)
+            return;
+
         float distSide = Vector3.Dot(_rigidbody.position - _center, _worldRight);
         float clamped = Mathf.Clamp(distSide, -40f, 40f);
         float diff = clamped - distSide;

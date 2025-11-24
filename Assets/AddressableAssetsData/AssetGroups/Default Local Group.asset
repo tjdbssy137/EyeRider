@@ -33,12 +33,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4113c4746ee794d039a1b474bb70459c
-    m_Address: RoadCorner_1
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4ab718d5a5fc74685b290b4b108b8667
     m_Address: Road_1
     m_ReadOnly: 0
@@ -47,6 +41,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62649d33c4afe4ea693d60a1c6ba2d7f
     m_Address: Eye
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e67256c8112d4edd8594fc728e3f722
+    m_Address: RoadCorner_1
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

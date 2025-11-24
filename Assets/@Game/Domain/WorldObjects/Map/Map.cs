@@ -56,7 +56,7 @@ public class Map : BaseObject
 
                 Vector3 forward = DirIndexToVector(DirectionIndex);
                 Vector3 right = new Vector3(forward.z, 0f, -forward.x);
-                
+
                 Contexts.InGame.WorldForwardDir.OnNext(forward);
                 Contexts.InGame.WorldRightDir.OnNext(right);
 
@@ -64,14 +64,15 @@ public class Map : BaseObject
                 {
                     Contexts.InGame.OnExitCorner.OnNext(Unit.Default);
                 }
-                if (_data.Direction == RoadDirection.Right)
+                else if (_data.Direction == RoadDirection.Right)
                 {
                     Contexts.InGame.OnEnterCorner.OnNext(90);
                 }
-                if (_data.Direction == RoadDirection.Left)
+                else if (_data.Direction == RoadDirection.Left)
                 {
                     Contexts.InGame.OnEnterCorner.OnNext(-90);
                 }
+
             })
             .AddTo(_disposables);
 

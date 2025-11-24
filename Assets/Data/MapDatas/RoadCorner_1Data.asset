@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RoadCorner_1Data
   m_EditorClassIdentifier: Assembly-CSharp::MapData
   DataTemplateId: 1
-  RoadPrefab: {fileID: 6742690555942608937, guid: 4113c4746ee794d039a1b474bb70459c, type: 3}
+  RoadPrefab: {fileID: 2672160970487235680, guid: 7e67256c8112d4edd8594fc728e3f722, type: 3}
   Direction: 2
+  BaseFacing: 0
