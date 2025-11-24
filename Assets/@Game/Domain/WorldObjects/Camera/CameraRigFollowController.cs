@@ -18,8 +18,6 @@ public class CameraRigFollowController : BaseObject
     private Vector3 _worldForward;
 
     private bool _inCorner = false;
-    private int _cornerCount = 0;
-
 
     public override bool OnSpawn()
     {
@@ -50,7 +48,7 @@ public class CameraRigFollowController : BaseObject
         {
             //_cornerCount = _cornerCount + 1;
             _inCorner = true;
-            Debug.Log($"Contexts.InGame.OnEnterCorner : {_cornerCount}, _inCorner : {_inCorner}");
+            Debug.Log($"_inCorner : {_inCorner}");
         })
         .AddTo(_disposables);
 
@@ -58,7 +56,7 @@ public class CameraRigFollowController : BaseObject
         .Subscribe(_ =>
         {
             _inCorner = false;
-            Debug.Log($"Contexts.InGame.OnExitCorner : {_cornerCount}, _inCorner : {_inCorner}");
+            Debug.Log($"_inCorner : {_inCorner}");
 
         })
         .AddTo(_disposables);
@@ -104,16 +102,30 @@ public class CameraRigFollowController : BaseObject
             Time.fixedDeltaTime * _followDamping
         );
 
-        // 코너 도는 동안은 바운더리 계산 OFF
         float pitch =0;
-        if(_inCorner)
+        if (_inCorner)
         {
+            float yawDiff = Mathf.Abs(Mathf.DeltaAngle(_smoothYaw, _car.rotation.eulerAngles.y));
+
+            if (yawDiff < 0.1f)
+            {
+                //회전 시작 전
+                transform.position = _smoothPos;
+
+                pitch = 55f;
+                transform.rotation = Quaternion.Euler(pitch, _smoothYaw, 0f);
+                return;
+            }
+
+            //회전이 실제로 시작됨
             _smoothPos = nextPos;
             transform.position = _smoothPos;
-            pitch = 55f;
-            transform.rotation = Quaternion.Euler(pitch, _smoothYaw, 0f);
+
+            float pitch2 = 55f;
+            transform.rotation = Quaternion.Euler(pitch2, _smoothYaw, 0f);
             return;
         }
+
 
         float dist = Vector3.Dot(nextPos - _center, _worldRight);
         float absDist = Mathf.Abs(dist);
@@ -185,5 +197,4 @@ public class CameraRigFollowController : BaseObject
         pitch = 55f;
         transform.rotation = Quaternion.Euler(pitch, _smoothYaw, 0f);
     }
-
 }

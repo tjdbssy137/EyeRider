@@ -46,14 +46,6 @@ public class Map : BaseObject
             })
             .AddTo(_disposables);
 
-        return true;
-    }
-
-    public override void SetInfo(int dataTemplate)
-    {
-        base.SetInfo(dataTemplate);
-        _data = Managers.Data.MapDatas.GetValueOrDefault(dataTemplate);
-
         _collider.OnCollisionEnterAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
@@ -81,7 +73,16 @@ public class Map : BaseObject
                     Contexts.InGame.OnEnterCorner.OnNext(-90);
                 }
             })
-            .AddTo(this);
+            .AddTo(_disposables);
+
+        return true;
+    }
+
+    public override void SetInfo(int dataTemplate)
+    {
+        base.SetInfo(dataTemplate);
+        _data = Managers.Data.MapDatas.GetValueOrDefault(dataTemplate);
+
     }
 
     private Vector3 DirIndexToVector(int dir)
