@@ -7,7 +7,7 @@ public partial class CarController : BaseObject
 {
     [Range(10, 120)] public float _verticalDefaultSpeed = 40;
     private float _verticalAccelerationSpeed = 0;
-    public float _maxAcceleration = 20f;
+    public float _maxAcceleration = 30f;
     public float _accelPerSec = 30f;
     public float _decelPerSec = 40f;
 
@@ -160,21 +160,21 @@ public partial class CarController : BaseObject
     {
         float horizontal = 0f;
 
-        if (true == Contexts.InGame.AKey)
+        if (Contexts.InGame.AKey)
         {
             horizontal = -1f;
         }
-        else if (true == Contexts.InGame.DKey)
+        else if (Contexts.InGame.DKey)
         {
             horizontal = 1f;
         }
 
-        if (_shakeIntensity > 0f)
+        if (0f < _shakeIntensity)
         {
             horizontal += UnityEngine.Random.Range(-_shakeIntensity, _shakeIntensity);
         }
 
-        if (Mathf.Abs(horizontal) > 0.01f)
+        if (0.01f < Mathf.Abs(horizontal))
         {
             HorizontalMove(horizontal);
         }
@@ -186,13 +186,40 @@ public partial class CarController : BaseObject
 
     private void Accelerate()
     {
-        float scale = 1f - ControlDifficulty;
-        float target = Contexts.InGame.WKey ? (_maxAcceleration * scale) : 0f;
-        float rate = Contexts.InGame.WKey ? _accelPerSec : _decelPerSec;
+        if (_isRotating)
+        {
+            return;
+        }
 
-        _verticalAccelerationSpeed =
-            Mathf.MoveTowards(_verticalAccelerationSpeed, target, rate * Time.fixedDeltaTime);
+        float scale = 1f - ControlDifficulty;
+        float target = 0f;
+
+        if (Contexts.InGame.WKey)
+        {
+            // 전진 가속
+            target = _maxAcceleration * scale;
+        }
+        else if (Contexts.InGame.SKey)
+        {
+            // 후진 가속
+            target = -_maxAcceleration * scale;
+        }
+        else
+        {
+            // 키 안 누르면 0 쪽으로 복귀
+            target = 0f;
+        }
+
+        float rate = _decelPerSec;
+
+        if (0f < target && _verticalAccelerationSpeed < target)
+        {
+            rate = _accelPerSec;
+        }
+
+        _verticalAccelerationSpeed = Mathf.MoveTowards(_verticalAccelerationSpeed, target, rate * Time.fixedDeltaTime);
     }
+
 
     private void VerticalMove()
     {
