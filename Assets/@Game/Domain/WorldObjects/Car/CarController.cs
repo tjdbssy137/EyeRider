@@ -45,7 +45,8 @@ public partial class CarController : BaseObject
 
     public override bool Init()
     {
-
+        if (base.Init() == false)
+            return false;
 
         if (_rigidbody == null)
         {

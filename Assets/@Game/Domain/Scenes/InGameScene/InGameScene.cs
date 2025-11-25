@@ -26,11 +26,11 @@ public class InGameScene : BaseScene
             return false;
 
         // 카메라 먼저 찾기
-        // _camera = Object.FindFirstObjectByType<CinemachineCamera>();
-        // if (_camera == null)
-        // {
-        //     Debug.LogError("Camera is NULL");
-        // }
+        _camera = Object.FindFirstObjectByType<CinemachineCamera>();
+        if (_camera == null)
+        {
+            Debug.LogError("Camera is NULL");
+        }
         
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
@@ -65,7 +65,11 @@ public class InGameScene : BaseScene
         _mapSpawner.SetInfo(0);
         
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
-
+        CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
+        _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
+        carSideClampAnchor.Init();
+        carSideClampAnchor.OnSpawn();
+      
         // Camera cam = Object.FindFirstObjectByType<Camera>();
         // if (cam == null)
         // {
@@ -75,15 +79,16 @@ public class InGameScene : BaseScene
         // controller.OnSpawn();
         // controller.SetInfo(0);
 
-        GameObject rigObj = GameObject.Find("CameraRig");
-        if (rigObj == null)
-        {
-            Debug.LogWarning("[CameraRigFinder] CameraRig 오브젝트를 찾을 수 없습니다.");
-            return;
-        }
-        CameraRigFollowController controller = rigObj.gameObject.GetOrAddComponent<CameraRigFollowController>();
-        controller.OnSpawn();
-        controller.SetInfo(0);
+
+        // GameObject rigObj = GameObject.Find("CameraRig");
+        // if (rigObj == null)
+        // {
+        //     Debug.LogWarning("[CameraRigFinder] CameraRig 오브젝트를 찾을 수 없습니다.");
+        //     return;
+        // }
+        // CameraRigFollowController controller = rigObj.gameObject.GetOrAddComponent<CameraRigFollowController>();
+        // controller.OnSpawn();
+        // controller.SetInfo(0);
 
         // Map Generate
         Contexts.InGame.MAP_SIZE = 100;
