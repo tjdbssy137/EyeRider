@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: be4fec0dfd53d4d2ca3d4bf43aaf0b86
   m_SerializeEntries:
+  - m_GUID: 016ef91be39c2450eb31589a367ba2f5
+    m_Address: Assets/Data/ItemData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23a17f51fdcda4235be5ce1e02b0812c
     m_Address: RoadProbs_1
     m_ReadOnly: 0
@@ -29,6 +35,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b5c9cd8cc7e5430c876b75cb9495013
     m_Address: UI_MainMenuScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46498d84130fe4ef1b81608939029229
+    m_Address: Assets/Data/ObstacleData
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

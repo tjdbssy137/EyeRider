@@ -6,7 +6,7 @@ using UniRx.Triggers;
 public class Obstacle : BaseObject
 {
     public BoxCollider _collider;
-
+    public ObstacleData _data;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -46,5 +46,10 @@ public class Obstacle : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
+        Managers.Data.ObstacleData.TryGetValue(dataTemplate, out _data);
+        if(_data == null)
+        {
+            Debug.LogWarning("_data is NULL");
+        }
     }
 }

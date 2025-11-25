@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   _collider: {fileID: 3388308412835423671}
+  _data: {fileID: 0}
 --- !u!65 &3388308412835423671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,9 +120,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.038192, y: 0.49899012, z: 0.8223572}
-  m_Center: {x: -0.0000009834766, y: 0, z: 0.4195326}
+  m_Size: {x: 1.038192, y: 0.49899012, z: 0.8054634}
+  m_Center: {x: -0.0000009536743, y: -1.0234716e-15, z: 0.42797947}

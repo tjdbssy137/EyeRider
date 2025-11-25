@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GasCan_ItemData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   DataTemplateId: 0
-  ItemPrefab: {fileID: 0}
-  Type: 0
-  Value: 0
+  ItemPrefab: {fileID: 2987199031161620587, guid: da8a36a1cec594e8f9d7ba067b1f6cbf, type: 3}
+  Type: 1
+  Value: 20
