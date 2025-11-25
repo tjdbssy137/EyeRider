@@ -15,6 +15,8 @@ public class DataManager
 {
     //public Dictionary<int, Data.LocalizationData> LocalizationDic { get; private set; } = new Dictionary<int, Data.LocalizationData>();
     public Dictionary<int, MapData> MapDatas { get; private set; } = new Dictionary<int, MapData>();
+    public Dictionary<int, ObstacleData> ObstacleData { get; private set; } = new Dictionary<int, ObstacleData>();
+    public Dictionary<int, ItemData> ItemData { get; private set; } = new Dictionary<int, ItemData>();
 
     public void Init()
     {
@@ -24,6 +26,8 @@ public class DataManager
     public void LoadAll()
     {
         MapDatas = Managers.Resource.LoadAllByType<MapData>().ToDictionary(x => x.DataTemplateId);
+        ObstacleData = Managers.Resource.LoadAllByType<ObstacleData>().ToDictionary(x => x.DataTemplateId);
+        ItemData = Managers.Resource.LoadAllByType<ItemData>().ToDictionary(x => x.DataTemplateId);
     }
 
 	private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

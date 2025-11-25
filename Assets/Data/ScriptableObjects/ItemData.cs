@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEditor;
 
-[CreateAssetMenu(fileName = "MapData", menuName = "Scriptable Objects/MapData")]
-public class MapData : ScriptableObject
+[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+public class ItemData : ScriptableObject
 {
     public int DataTemplateId;
-    public GameObject RoadPrefab;
-    public RoadDirection Direction = RoadDirection.None;
-    public int BaseFacing = 0;
-
+    public GameObject ItemPrefab;
+    public ItemType Type;
+    public float Value;
+    
 #if UNITY_EDITOR
     private void OnValidate()
     {
         if (DataTemplateId != 0)
             return;
 
-        string[] guids = AssetDatabase.FindAssets("t:MapData");
+        string[] guids = AssetDatabase.FindAssets("t:ItemData");
         int count = guids.Length;
 
         string path = AssetDatabase.GetAssetPath(this);
@@ -25,15 +25,17 @@ public class MapData : ScriptableObject
         {
             DataTemplateId = index;
             EditorUtility.SetDirty(this);
-            Debug.Log($"[MapData] 자동 ID 할당: {DataTemplateId} ({name})");
+            Debug.Log($"[ItemData] 자동 ID 할당: {DataTemplateId} ({name})");
         }
     }
 #endif
 }
 
-public enum RoadDirection
+public enum ItemType
 {
     None,
-    Left,
-    Right
+    Fuel,
+    Repair,
+    Magnet,
+    Coin
 }

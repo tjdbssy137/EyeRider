@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 733e3a4642ce743efa7aa49e0a0ff46c
+    m_Address: TrafficBarrier
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e67256c8112d4edd8594fc728e3f722
     m_Address: RoadCorner_1
     m_ReadOnly: 0
@@ -75,8 +81,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc8aa73245627428aa98e3e28915b4d3
+    m_Address: TrafficCone
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d06429c4c533d46f7af84bec0b7812ce
     m_Address: RoadProbs_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da8a36a1cec594e8f9d7ba067b1f6cbf
+    m_Address: GasCan
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

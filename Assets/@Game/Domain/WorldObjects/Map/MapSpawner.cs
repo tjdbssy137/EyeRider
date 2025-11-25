@@ -32,7 +32,7 @@ public class MapSpawner : BaseObject
         {
             foreach (var md in Managers.Data.MapDatas.Values)
             {
-                if (md.Direction == RoadDirection.none)
+                if (md.Direction == RoadDirection.None)
                     _mapDataByTile[Tile.Straight] = md;
                 else if (md.Direction == RoadDirection.Left)
                     _mapDataByTile[Tile.Left] = md;

@@ -60,7 +60,7 @@ public class Map : BaseObject
                 Contexts.InGame.WorldForwardDir.OnNext(forward);
                 Contexts.InGame.WorldRightDir.OnNext(right);
 
-                if (_data.Direction == RoadDirection.none)
+                if (_data.Direction == RoadDirection.None)
                 {
                     Contexts.InGame.OnExitCorner.OnNext(Unit.Default);
                 }
