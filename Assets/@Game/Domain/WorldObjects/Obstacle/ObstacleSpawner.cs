@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : BaseObject
 {
-    private int _allowedRange = 22;
+    private int _allowedRange = 25;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -39,13 +39,11 @@ public class ObstacleSpawner : BaseObject
             Debug.Log($"data is NULL");
             return;
         }
-
         int randomX = Random.Range((int)transform.position.x - _allowedRange,(int)transform.position.x + _allowedRange);
         int randomZ = Random.Range((int)transform.position.z - _allowedRange,(int)transform.position.z + _allowedRange);
         Vector3 pos = new Vector3(randomX, transform.position.y, randomZ);
         Obstacle item = Managers.Object.Spawn<Obstacle>(data.ObstaclePrefab.name, pos, 0, data.DataTemplateId);
-        item.transform.rotation = Quaternion.Euler(-90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-
+        float y = Random.Range(0, 180);
+        item.transform.rotation = Quaternion.Euler(0, y, 0);
     }
-
 }

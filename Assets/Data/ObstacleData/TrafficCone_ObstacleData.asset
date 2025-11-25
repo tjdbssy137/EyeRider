@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrafficCone_ObstacleData
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
   DataTemplateId: 1
-  ObstaclePrefab: {fileID: 8820591155660726830, guid: cc8aa73245627428aa98e3e28915b4d3, type: 3}
+  ObstaclePrefab: {fileID: 8769195251560704961, guid: 98a297198a371466d992563be3591913, type: 3}
   Type: 1
   Items: []
   ItemWeights: []
