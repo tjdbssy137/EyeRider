@@ -12,11 +12,11 @@ public class CameraSideAnchorController : BaseObject
 
     private float _currentLocalX;
     private float _smoothVel;
+    
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
-
 
         return true;
     }
@@ -44,11 +44,11 @@ public class CameraSideAnchorController : BaseObject
 
         return true;
     }
+    
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
     }
-
 
     private void CaculateDistance()
     {

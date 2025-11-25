@@ -106,8 +106,8 @@ public partial class CarController : BaseObject
                 _pendingRotation = true;
                 _pendingDegrees = deg;
 
-                Observable.Timer(TimeSpan.FromSeconds(0.08f))
-                    .Subscribe(__ =>
+                Observable.Timer(TimeSpan.FromSeconds(0.1f))
+                    .Subscribe(_ =>
                     {
                         if (_pendingRotation)
                         {
@@ -167,7 +167,6 @@ public partial class CarController : BaseObject
                 }
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
-
 
                 UpdateRotation();
                 InputKeyBoard();
