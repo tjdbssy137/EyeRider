@@ -7,6 +7,7 @@ public class Obstacle : BaseObject
 {
     public BoxCollider _collider;
     public ObstacleData _data;
+    public float _destroyDistance = 80;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -27,7 +28,6 @@ public class Obstacle : BaseObject
             .Subscribe(_ =>
             {
                 
-                
             })
             .AddTo(_disposables);
 
@@ -36,11 +36,26 @@ public class Obstacle : BaseObject
             .Subscribe(_ =>
             {
                 
-
             })
             .AddTo(_disposables);
 
-        return true;
+        Transform car = Contexts.InGame.Car.transform;
+        this.UpdateAsObservable()
+            .Subscribe(_=>
+            {
+                Vector3 toObstacle = transform.position - car.position;
+
+                float dot = Vector3.Dot(car.forward, toObstacle);
+
+                float distance = toObstacle.magnitude;
+
+                if(dot < 0 && _destroyDistance <= distance)
+                {
+                    Managers.Resource.Destroy(gameObject);
+                }
+
+            }).AddTo(_disposables);
+            return true;
     }
     
     public override void SetInfo(int dataTemplate)

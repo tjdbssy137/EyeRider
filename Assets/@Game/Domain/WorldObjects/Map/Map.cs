@@ -40,9 +40,8 @@ public class Map : BaseObject
             {
                 //Debug.Log($"OnCollisionExitAsObservable map={this.name}, pos={transform.position}");
                 
-                Managers.Object.Despawn(this);
+                Managers.Resource.Destroy(this.gameObject);
                 Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-                
             })
             .AddTo(_disposables);
 
@@ -83,9 +82,10 @@ public class Map : BaseObject
     {
         base.SetInfo(dataTemplate);
         _data = Managers.Data.MapDatas.GetValueOrDefault(dataTemplate);
+        Contexts.InGame.OnSpawnMap.OnNext(this.transform);
 
     }
-
+ 
     private Vector3 DirIndexToVector(int dir)
     {
         switch (dir & 3)

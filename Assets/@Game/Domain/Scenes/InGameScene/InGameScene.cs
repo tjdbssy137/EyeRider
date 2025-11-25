@@ -11,7 +11,7 @@ public class InGameScene : BaseScene
     private CinemachineCamera _camera;
     public GameObject _spawnPoint;
     private MapSpawner _mapSpawner;
-
+    private ObstacleSpawner _obstacleSpawner;
 
     private int _plannerGridW = 100;
     private int _plannerGridH = 100;
@@ -63,6 +63,11 @@ public class InGameScene : BaseScene
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
+        
+        GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
+        _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
+        _obstacleSpawner.OnSpawn();
+        _obstacleSpawner.SetInfo(0);
         
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();

@@ -22,6 +22,7 @@ public partial class InGameContext
     public Subject<bool> OnSuccessGeneratedMapPath = new Subject<bool>();
     public MapPlanner MapPlanner { get; set; }
     public int MAP_SIZE { get; set; }
+    public Subject<Transform> OnSpawnMap {get; set;} = new Subject<Transform>();
 
     // Input
     public bool WKey { get; set; }
@@ -48,7 +49,5 @@ public partial class InGameContext
     public Subject<Vector3> CurrentMapXZ {get; set;} = new Subject<Vector3>();
     public BehaviorSubject<Vector3> WorldForwardDir = new BehaviorSubject<Vector3>(Vector3.forward);
     public BehaviorSubject<Vector3> WorldRightDir = new BehaviorSubject<Vector3>(Vector3.right);
-
-
 
 }

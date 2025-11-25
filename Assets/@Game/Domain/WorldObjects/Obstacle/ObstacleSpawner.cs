@@ -1,8 +1,9 @@
+using UniRx;
 using UnityEngine;
 
 public class ObstacleSpawner : BaseObject
 {
-    private int _allowedRange = 30;
+    private int _allowedRange = 22;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -17,7 +18,11 @@ public class ObstacleSpawner : BaseObject
         {
             return false;
         }
-
+        Contexts.InGame.OnSpawnMap
+            .Subscribe(transform =>
+            {
+                SpawnItem(transform);
+            }).AddTo(_disposables);
         return true;
     }
     
@@ -26,7 +31,7 @@ public class ObstacleSpawner : BaseObject
         base.SetInfo(dataTemplate);
     }
 
-    private void SpawnItem(Vector3 position)
+    private void SpawnItem(Transform transform)
     {
         int randomSpawn = Random.Range(0, Managers.Data.ObstacleData.Count);
         if (!Managers.Data.ObstacleData.TryGetValue(randomSpawn, out ObstacleData data))
@@ -35,10 +40,12 @@ public class ObstacleSpawner : BaseObject
             return;
         }
 
-        int randomX = Random.Range((int)position.x - _allowedRange,(int)position.x + _allowedRange);
-        int randomZ = Random.Range((int)position.z - _allowedRange,(int)position.z + _allowedRange);
-        Vector3 pos = new Vector3(randomX, position.y, randomZ);
+        int randomX = Random.Range((int)transform.position.x - _allowedRange,(int)transform.position.x + _allowedRange);
+        int randomZ = Random.Range((int)transform.position.z - _allowedRange,(int)transform.position.z + _allowedRange);
+        Vector3 pos = new Vector3(randomX, transform.position.y, randomZ);
         Obstacle item = Managers.Object.Spawn<Obstacle>(data.ObstaclePrefab.name, pos, 0, data.DataTemplateId);
+        item.transform.rotation = Quaternion.Euler(-90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
     }
 
 }
