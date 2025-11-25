@@ -12,7 +12,12 @@ public class CameraSideAnchorController : BaseObject
 
     private float _currentLocalX;
     private float _smoothVel;
-    
+    private float _currentLocalZ;
+    private float _smoothVelZ;
+
+    private float _forwardDamping = 0.7f;
+    private float _forwardAmplitude = 0.8f;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -53,7 +58,6 @@ public class CameraSideAnchorController : BaseObject
     private void CaculateDistance()
     {
         float lateral = Vector3.Dot((_center - _parentTransform.position), _parentTransform.right);
-
         float clampedX = Mathf.Clamp(lateral, -_sideLimit, _sideLimit);
 
         _currentLocalX = Mathf.SmoothDamp(
@@ -63,8 +67,21 @@ public class CameraSideAnchorController : BaseObject
             1f / _damping
         );
 
+        float speed = Contexts.Car.VerticalAccelerationSpeed;
+        float targetZ = speed * _forwardAmplitude;
+
+        _currentLocalZ = Mathf.SmoothDamp(
+            _currentLocalZ,
+            targetZ,
+            ref _smoothVelZ,
+            1f / _forwardDamping
+        );
+
         Vector3 lp = transform.localPosition;
         lp.x = _currentLocalX;
+        lp.z = _currentLocalZ;
         transform.localPosition = lp;
     }
+
+
 }

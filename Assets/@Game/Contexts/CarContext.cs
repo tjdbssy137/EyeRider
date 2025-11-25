@@ -8,4 +8,5 @@ public partial class CarContext
 
     //public float Fuel = Contexts.InGame.Car.Fuel;
     //public float Condition = Contexts.InGame.Car.Condition;
+    public float VerticalAccelerationSpeed { get; set; } 
 }

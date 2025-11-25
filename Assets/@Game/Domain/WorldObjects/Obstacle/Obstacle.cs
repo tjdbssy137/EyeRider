@@ -8,6 +8,7 @@ public class Obstacle : BaseObject
     public BoxCollider _collider;
     public ObstacleData _data;
     public float _destroyDistance = 80;
+    
     public override bool Init()
     {
         if (base.Init() == false)

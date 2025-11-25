@@ -6,7 +6,7 @@ using System;
 public partial class CarController : BaseObject
 {
     [Range(10, 120)] public float _verticalDefaultSpeed = 40;
-    private float _verticalAccelerationSpeed = 0;
+    
     public float _maxAcceleration = 30f;
     public float _accelPerSec = 30f;
     public float _decelPerSec = 40f;
@@ -219,7 +219,7 @@ public partial class CarController : BaseObject
         else if (Contexts.InGame.SKey)
         {
             // 후진 가속
-            target = -_maxAcceleration * scale;
+            target = -_maxAcceleration * 0.5f * scale;
         }
         else
         {
@@ -229,18 +229,18 @@ public partial class CarController : BaseObject
 
         float rate = _decelPerSec;
 
-        if (0f < target && _verticalAccelerationSpeed < target)
+        if (0f < target && Contexts.Car.VerticalAccelerationSpeed < target)
         {
             rate = _accelPerSec;
         }
 
-        _verticalAccelerationSpeed = Mathf.MoveTowards(_verticalAccelerationSpeed, target, rate * Time.fixedDeltaTime);
+        Contexts.Car.VerticalAccelerationSpeed = Mathf.MoveTowards(Contexts.Car.VerticalAccelerationSpeed, target, rate * Time.fixedDeltaTime);
     }
 
 
     private void VerticalMove()
     {
-        float baseSpeed = _verticalDefaultSpeed + _verticalAccelerationSpeed;
+        float baseSpeed = _verticalDefaultSpeed + Contexts.Car.VerticalAccelerationSpeed;
         float curveBoost = _isRotating ? (baseSpeed * 0.25f) : 0f;
         float finalSpeed = baseSpeed + curveBoost;
 
