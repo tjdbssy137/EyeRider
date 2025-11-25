@@ -36,13 +36,16 @@ public class PointMover : UI_Base
     private Camera _camera;
     private Transform _car;
 
-    // ==========================
-    // 내부 상태
-    // ==========================
     private Vector2 _randomPos;
     private Vector2 _randomTarget;
     private Vector2 _inputOffset;
     private Vector2 _targetOffset;
+
+    
+    private AnimationCurve _speedCurve = AnimationCurve.Linear(0, 1, 1, 2);
+    private AnimationCurve _pullCurve = AnimationCurve.Linear(0, 0.5f, 1, 1.2f);
+    private AnimationCurve _approachCurve = AnimationCurve.Linear(0, 1, 1, 2);
+    private AnimationCurve _repelCurve = AnimationCurve.Linear(0, 1, 1, 2);
 
     public override bool Init()
     {
@@ -75,6 +78,7 @@ public class PointMover : UI_Base
         {
             Debug.LogWarning("_camera is NULL");
         }
+
         Observable.NextFrame()
         .Subscribe(_ =>
         {
@@ -105,6 +109,13 @@ public class PointMover : UI_Base
             _targetOffset = Vector2.zero;
 
             CheckCarInsideEye();
+        })
+        .AddTo(this);
+
+        Contexts.InGame.OnLevelUp
+        .Subscribe(_=>
+        {
+            ApplyLevelStats();
         })
         .AddTo(this);
 
@@ -196,7 +207,6 @@ public class PointMover : UI_Base
     }
 
 
-
     private void HandleForwardApproachRepel(Vector2 inputDir, float dt)
     {
         Vector2 stormPos = _randomPos; // 차(0,0) 기준 폭풍의 눈 위치
@@ -207,7 +217,7 @@ public class PointMover : UI_Base
         }
 
         Vector2 inputNorm = inputDir.normalized;
-        Vector2 carToStorm = stormPos.normalized; // 차 -> 폭풍의 눈 방향
+        Vector2 carToStorm = stormPos.normalized;
         float dot = Vector2.Dot(inputNorm, carToStorm);
 
         if (_directionThreshold < dot)
@@ -333,4 +343,27 @@ public class PointMover : UI_Base
 
         return dir;
     }
+
+    private float EvaluateLevelCurve(AnimationCurve curve)
+    {
+        float t = Mathf.Clamp01((float)(Contexts.InGame.Level - 1) / (Contexts.InGame.MaxLevel - 1));
+        return curve.Evaluate(t);
+    }
+
+    private void ApplyLevelStats()
+    {
+        float spdMul = EvaluateLevelCurve(_speedCurve);
+        float pullMul = EvaluateLevelCurve(_pullCurve);
+        float appMul = EvaluateLevelCurve(_approachCurve);
+        float repMul = EvaluateLevelCurve(_repelCurve);
+
+        _randomMoveSpeed *= spdMul;
+        _inputPullFactor *= pullMul;
+        _approachSpeed *= appMul;
+        _repelSpeed *= repMul;
+        _sideApproachSpeed *= appMul;
+        _sideRepelSpeed *= repMul;
+    }
+
+
 }

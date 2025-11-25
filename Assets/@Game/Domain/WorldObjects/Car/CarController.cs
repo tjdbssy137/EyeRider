@@ -219,7 +219,7 @@ public partial class CarController : BaseObject
         else if (Contexts.InGame.SKey)
         {
             // 후진 가속
-            target = -_maxAcceleration * 0.5f * scale;
+            target = -_maxAcceleration * 0.3f * scale;
         }
         else
         {

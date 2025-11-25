@@ -18,6 +18,12 @@ public partial class InGameContext
     public Car Car { get; set; }
 
 
+    public int Level { get; set; }
+    public int MaxLevel = 10;
+
+    public Subject<Unit> OnLevelUp { get; private set; } = new Subject<Unit>();
+
+
     // Map Generate
     public Subject<bool> OnSuccessGeneratedMapPath = new Subject<bool>();
     public MapPlanner MapPlanner { get; set; }

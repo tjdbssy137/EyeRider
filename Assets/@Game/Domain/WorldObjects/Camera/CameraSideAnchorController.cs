@@ -83,5 +83,4 @@ public class CameraSideAnchorController : BaseObject
         transform.localPosition = lp;
     }
 
-
 }

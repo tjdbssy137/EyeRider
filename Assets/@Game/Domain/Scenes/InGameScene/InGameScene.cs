@@ -44,6 +44,12 @@ public class InGameScene : BaseScene
         })
         .AddTo(_disposables);
 
+        Contexts.InGame.OnLevelUp
+        .Subscribe(_ => // 임시
+        {
+            Contexts.InGame.Level++;
+        }).AddTo(_disposables);
+
         LoadResources();
         return true;
     }
