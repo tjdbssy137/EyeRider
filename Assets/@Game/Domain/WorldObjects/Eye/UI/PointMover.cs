@@ -41,7 +41,6 @@ public class PointMover : UI_Base
     private Vector2 _inputOffset;
     private Vector2 _targetOffset;
 
-    
     private AnimationCurve _speedCurve = AnimationCurve.Linear(0, 1, 1, 2);
     private AnimationCurve _pullCurve = AnimationCurve.Linear(0, 0.5f, 1, 1.2f);
     private AnimationCurve _approachCurve = AnimationCurve.Linear(0, 1, 1, 2);
