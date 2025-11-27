@@ -43,13 +43,24 @@ public class UI_Portrait : UI_Base
 		return true;
     }
 
-    public void SetInfo(bool can)
+    public void SetInfo()
     {
-        if(!can)
+        _animator = this.GetComponentInChildren<Animator>();
+        if (_animator == null)
         {
-            return;
+            Debug.LogWarning("_animator is NULL");
         }
-        
+
+        this.UpdateAsObservable()
+        .Subscribe(_=>
+        {   
+            if(Contexts.InGame.IsGameOver)
+            {
+                _animator.SetTrigger("Faint");
+                return;
+            }
+            UpdatePortrait();
+        }).AddTo(this);       
 
     }
 
@@ -68,7 +79,7 @@ public class UI_Portrait : UI_Base
             _center = 0;
         }
 
-        
+
         _animator.SetFloat("Center", _center);
         _animator.SetFloat("Panic", _panic);
         // switch(_state)
