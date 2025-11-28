@@ -43,27 +43,6 @@ public class UI_Portrait : UI_Base
 		return true;
     }
 
-    public void SetInfo()
-    {
-        _animator = this.GetComponentInChildren<Animator>();
-        if (_animator == null)
-        {
-            Debug.LogWarning("_animator is NULL");
-        }
-
-        this.UpdateAsObservable()
-        .Subscribe(_=>
-        {   
-            if(Contexts.InGame.IsGameOver)
-            {
-                _animator.SetTrigger("Faint");
-                return;
-            }
-            UpdatePortrait();
-        }).AddTo(this);       
-
-    }
-
     private void UpdatePortrait()
     {
         if(Contexts.InGame.AKey)
