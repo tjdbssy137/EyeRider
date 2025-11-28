@@ -33,7 +33,6 @@ public partial class CarController : BaseObject
     private float _lastDistance = 0f;
 
     private Vector3 _center;
-
     private Vector3 _worldForward;
     private Vector3 _worldRight;
 
@@ -124,7 +123,8 @@ public partial class CarController : BaseObject
             .Subscribe(dist =>
             {
                 _isOutside = true;
-                _lastDistance = dist;
+                _lastDistance= dist;
+                Contexts.InGame.PanicPoint = Mathf.Clamp01(_lastDistance/100);
             })
             .AddTo(_disposables);
 
@@ -132,6 +132,7 @@ public partial class CarController : BaseObject
             .Subscribe(_ =>
             {
                 _isOutside = false;
+                _lastDistance = 0;
                 _animator.SetFloat("Distance", 0f);
             })
             .AddTo(_disposables);
@@ -175,6 +176,12 @@ public partial class CarController : BaseObject
             })
             .AddTo(_disposables);
 
+        Contexts.InGame.OnCollisionObstacle
+        .Subscribe(_=>
+        {
+            float point = Mathf.Clamp01(_lastDistance/100);
+            Contexts.InGame.PanicPoint = point + 0.2f;
+        }).AddTo(_disposables);
         return true;
     }
 
@@ -297,7 +304,7 @@ public partial class CarController : BaseObject
 
     private void UpdateRotation()
     {
-        if (false == _isRotating)
+        if (!_isRotating)
         {
             return;
         }
@@ -323,8 +330,10 @@ public partial class CarController : BaseObject
 
     private void ApplyCornerCorrection()
     {
-        if (_disableCorrectionTimer > 0f)
+        if (0f < _disableCorrectionTimer)
+        {
             return;
+        }
 
         float distSide = Vector3.Dot(_rigidbody.position - _center, _worldRight);
         float clamped = Mathf.Clamp(distSide, -40f, 40f);

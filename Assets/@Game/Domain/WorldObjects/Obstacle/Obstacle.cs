@@ -36,7 +36,10 @@ public class Obstacle : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                
+                Contexts.InGame.OnCollisionObstacle.OnNext(Unit.Default);
+                // 차의 속도를 80% 깎기
+                //bomb! particle
+                //Managers.Resource.Destroy(gameObject);
             })
             .AddTo(_disposables);
 
@@ -44,6 +47,10 @@ public class Obstacle : BaseObject
         this.UpdateAsObservable()
             .Subscribe(_=>
             {
+                if(!this.gameObject.activeSelf)
+                {
+                    return;
+                }
                 Vector3 toObstacle = transform.position - car.position;
 
                 float dot = Vector3.Dot(car.forward, toObstacle);

@@ -58,6 +58,7 @@ public class UI_Portrait : UI_Base
             _center = 0;
         }
 
+        _panic = Contexts.InGame.PanicPoint;
 
         _animator.SetFloat("Center", _center);
         _animator.SetFloat("Panic", _panic);
