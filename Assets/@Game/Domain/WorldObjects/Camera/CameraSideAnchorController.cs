@@ -68,7 +68,7 @@ public class CameraSideAnchorController : BaseObject
         );
 
         float speed = Contexts.Car.VerticalAccelerationSpeed;
-        float targetZ = speed * _forwardAmplitude;
+        float targetZ = -speed * _forwardAmplitude;
 
         _currentLocalZ = Mathf.SmoothDamp(
             _currentLocalZ,

@@ -5,40 +5,37 @@ using System;
 
 public partial class CarController : BaseObject
 {
+    // 앞뒤 이동
     [Range(10, 120)] public float _verticalDefaultSpeed = 40;
-    
     public float _maxAcceleration = 30f;
     public float _accelPerSec = 30f;
     public float _decelPerSec = 40f;
 
+    // 좌우 이동
     [Range(10, 120)] public float _horizontalSpeed = 15;
-    [Range(10, 120)] public float _reverseSpeed = 20;
-    [Range(10, 120)] public float _turnSpeed = 100;
 
+    // 기본
+    public Rigidbody _rigidbody;
+    public ParticleSystem _RLWParticleSystem;
+    public ParticleSystem _RRWParticleSystem;
+
+    // 폭풍의 눈
+    private bool _isOutside = false;
+    private float _lastDistance = 0f;
+
+    // 자동차 이동 방향
+    private Vector3 _center;
+    private Vector3 _worldForward;
+    private Vector3 _worldRight;
+
+    // 코너 회전
     private bool _isRotating = false;
     private float _rotLerpTime = 0f;
     private float _rotDuration = 1f;
     private float _startYaw = 0f;
     private float _targetYaw = 0f;
-
-    public Rigidbody _rigidbody;
-    public GameObject _frontLeftMesh;
-    public GameObject _frontRightMesh;
-
-    private Quaternion _currentWheelRotation = Quaternion.identity;
-    public ParticleSystem _RLWParticleSystem;
-    public ParticleSystem _RRWParticleSystem;
-
-    private bool _isOutside = false;
-    private float _lastDistance = 0f;
-
-    private Vector3 _center;
-    private Vector3 _worldForward;
-    private Vector3 _worldRight;
-
     private bool _pendingRotation = false;
     private float _pendingDegrees = 0f;
-    private float _disableCorrectionTimer = 0f;
     private Vector3 _targetCenter;
 
 
@@ -67,6 +64,9 @@ public partial class CarController : BaseObject
         {
             return false;
         }
+
+        _isOutside = false;
+        _shakeIntensity = 0f;
 
         Contexts.InGame.WorldRightDir
             .Subscribe(r => _worldRight = r)
@@ -148,9 +148,6 @@ public partial class CarController : BaseObject
             })
             .AddTo(_disposables);
 
-        _isOutside = false;
-        _shakeIntensity = 0f;
-
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -161,10 +158,6 @@ public partial class CarController : BaseObject
                 if (true == Contexts.InGame.IsPaused)
                 {
                     return;
-                }
-                if (0f < _disableCorrectionTimer)
-                {
-                    _disableCorrectionTimer -= Time.fixedDeltaTime;
                 }
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
@@ -193,7 +186,8 @@ public partial class CarController : BaseObject
         {
             horizontal = -1f;
         }
-        else if (Contexts.InGame.DKey)
+        
+        if (Contexts.InGame.DKey)
         {
             horizontal = 1f;
         }
@@ -297,7 +291,6 @@ public partial class CarController : BaseObject
 
         _startYaw = _rigidbody.rotation.eulerAngles.y;
         _targetYaw = Mathf.Repeat(_startYaw + degrees, 360f);
-        _disableCorrectionTimer = 0.2f;
 
         WheelEffect(true);
     }
@@ -323,32 +316,13 @@ public partial class CarController : BaseObject
 
             _isRotating = false;
             WheelEffect(false);
-
-            ApplyCornerCorrection();
         }
     }
 
-    private void ApplyCornerCorrection()
-    {
-        if (0f < _disableCorrectionTimer)
-        {
-            return;
-        }
-
-        float distSide = Vector3.Dot(_rigidbody.position - _center, _worldRight);
-        float clamped = Mathf.Clamp(distSide, -40f, 40f);
-        float diff = clamped - distSide;
-
-        if (0.05f < Mathf.Abs(diff))
-        {
-            Vector3 newPos = _rigidbody.position + (_worldRight * diff);
-            _rigidbody.position = newPos;
-        }
-    }
 
     private void WheelEffect(bool drifting)
     {
-        if (true == drifting)
+        if (drifting)
         {
             _RLWParticleSystem.Play();
             _RRWParticleSystem.Play();
