@@ -44,4 +44,24 @@ public partial class CarController : BaseObject
         _controlDifficulty = normalizedValue;
         return 10 * target;
     }
+
+    private void WheelEffect(bool drifting)
+    {
+        if (drifting)
+        {
+            _RLWParticleSystem.Play();
+            _RRWParticleSystem.Play();
+        }
+        else
+        {
+            _RLWParticleSystem.Stop();
+            _RRWParticleSystem.Stop();
+        }
+    }
+
+    private void PanicPointCaculator()
+    {
+        Contexts.InGame.PanicPoint = Mathf.Clamp01(_distancePanic + _eventPanic + _conditionPanic * 0.3f + _fuelPanic * 0.3f);
+        //Debug.Log($"_distancePanic : {_distancePanic}, _eventPanic : {_eventPanic},  _conditionPanic : {_conditionPanic}, _fuelPanic : {_fuelPanic},PanicPoint : {Contexts.InGame.PanicPoint}");
+    }
 }

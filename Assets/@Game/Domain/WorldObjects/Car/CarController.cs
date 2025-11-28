@@ -16,6 +16,8 @@ public partial class CarController : BaseObject
 
     // 기본
     public Rigidbody _rigidbody;
+
+    // 파티클
     public ParticleSystem _RLWParticleSystem;
     public ParticleSystem _RRWParticleSystem;
 
@@ -38,6 +40,12 @@ public partial class CarController : BaseObject
     private float _pendingDegrees = 0f;
     private Vector3 _targetCenter;
 
+    // Panic
+    private float _distancePanic;
+    private float _eventPanic;
+    private float _conditionPanic;
+    private float _fuelPanic;
+    
 
     public override bool Init()
     {
@@ -124,7 +132,7 @@ public partial class CarController : BaseObject
             {
                 _isOutside = true;
                 _lastDistance= dist;
-                Contexts.InGame.PanicPoint = Mathf.Clamp01(_lastDistance/100);
+                _distancePanic = Mathf.Clamp01(_lastDistance/100);
             })
             .AddTo(_disposables);
 
@@ -161,7 +169,8 @@ public partial class CarController : BaseObject
                 }
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
-
+                
+                PanicPointCaculator();
                 UpdateRotation();
                 InputKeyBoard();
                 VerticalMove();
@@ -170,11 +179,34 @@ public partial class CarController : BaseObject
             .AddTo(_disposables);
 
         Contexts.InGame.OnCollisionObstacle
-        .Subscribe(_=>
+        .Subscribe(_ =>
         {
-            float point = Mathf.Clamp01(_lastDistance/100);
-            Contexts.InGame.PanicPoint = point + 0.2f;
-        }).AddTo(_disposables);
+            Contexts.InGame.IsCollisionObstacle++;
+            _eventPanic += 0.2f; // 임시값
+
+            Observable.Timer(TimeSpan.FromSeconds(1.2f))
+                .Subscribe(_ =>
+                {
+                    _eventPanic -= 0.2f;
+                    Contexts.InGame.IsCollisionObstacle--;
+                    Contexts.InGame.IsCollisionObstacle = Mathf.Max(0, Contexts.InGame.IsCollisionObstacle);
+                })
+                .AddTo(_disposables);
+        })
+        .AddTo(_disposables);
+
+        Contexts.InGame.Car.OnConditionChanged
+        .Subscribe(newCondition =>
+        {
+            _conditionPanic = Mathf.Clamp01(1 - newCondition.Item2/100);
+        }).AddTo(this);
+
+        Contexts.InGame.Car.OnFuelChanged
+        .Subscribe(newFuel =>
+        {
+            _fuelPanic = Mathf.Clamp01(1 - newFuel.Item2/100);
+        }).AddTo(this);
+
         return true;
     }
 
@@ -212,7 +244,11 @@ public partial class CarController : BaseObject
         float scale = 1f - ControlDifficulty;
         float target = 0f;
 
-        if (Contexts.InGame.WKey)
+        if(0 < Contexts.InGame.IsCollisionObstacle)
+        {
+            target = -_maxAcceleration * 1.2f * scale;
+        }
+        else if (Contexts.InGame.WKey)
         {
             // 전진 가속
             target = _maxAcceleration * scale;
@@ -224,7 +260,7 @@ public partial class CarController : BaseObject
         }
         else
         {
-            // 키 안 누르면 0 쪽으로 복귀
+            // 키 안 누르면 기본
             target = 0f;
         }
 
@@ -316,21 +352,6 @@ public partial class CarController : BaseObject
 
             _isRotating = false;
             WheelEffect(false);
-        }
-    }
-
-
-    private void WheelEffect(bool drifting)
-    {
-        if (drifting)
-        {
-            _RLWParticleSystem.Play();
-            _RRWParticleSystem.Play();
-        }
-        else
-        {
-            _RLWParticleSystem.Stop();
-            _RRWParticleSystem.Stop();
         }
     }
 }

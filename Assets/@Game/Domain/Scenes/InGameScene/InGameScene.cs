@@ -110,6 +110,8 @@ public class InGameScene : BaseScene
 
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
+
+        Contexts.InGame.PanicPoint = 0;
     }
 
     void LoadResources()

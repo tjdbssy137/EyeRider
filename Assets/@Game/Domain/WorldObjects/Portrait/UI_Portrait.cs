@@ -15,8 +15,6 @@ public class UI_Portrait : UI_Base
         Faint,
     }
     float _center = 0;
-    float _panic = 0;
-    bool _faint = false;
     private States _state = States.Fine;
     public override bool Init()
     {
@@ -45,6 +43,11 @@ public class UI_Portrait : UI_Base
 
     private void UpdatePortrait()
     {
+        if (Contexts.InGame.IsGameOver)
+        {
+            _animator.SetTrigger("Faint");
+        }
+
         if(Contexts.InGame.AKey)
         {
             _center = -1;   
@@ -58,10 +61,8 @@ public class UI_Portrait : UI_Base
             _center = 0;
         }
 
-        _panic = Contexts.InGame.PanicPoint;
-
         _animator.SetFloat("Center", _center);
-        _animator.SetFloat("Panic", _panic);
+        _animator.SetFloat("Panic", Contexts.InGame.PanicPoint);
         // switch(_state)
         // {
         //     case States.Fine:

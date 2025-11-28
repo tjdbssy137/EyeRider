@@ -62,7 +62,7 @@ public class Car : BaseObject
         Condition = 100;
         Fuel = 100;
 
-        Observable.Interval(TimeSpan.FromSeconds(1.5f))
+        Observable.Interval(TimeSpan.FromSeconds(2f))
             .Subscribe(_ => 
                 ConsumeFuel()
             ).AddTo(_disposables); 

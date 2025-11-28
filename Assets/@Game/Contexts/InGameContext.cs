@@ -47,9 +47,11 @@ public partial class InGameContext
     // {
     //     _runStartTime = Time.unscaledTime;
     // }
-    public bool IsGameOver { get; set; }
+    public bool IsGameOver { get; set; }//lose
     public bool IsPaused { get; set; }
     public int MaxRunTime { get; set; }
+    public bool IsGameWin { get; set; }// 게임 승리 종료
+
 
 
     public Subject<Vector3> CurrentMapXZ {get; set;} = new Subject<Vector3>();
@@ -57,6 +59,8 @@ public partial class InGameContext
     public BehaviorSubject<Vector3> WorldRightDir = new BehaviorSubject<Vector3>(Vector3.right);
 
     public  Subject<Unit> OnCollisionObstacle { get; private set; } = new Subject<Unit>();
+
+    public int IsCollisionObstacle { get; set; } 
     public float PanicPoint { get; set; }
 
 }
