@@ -31,11 +31,13 @@ public class DataManager
         MapDatas = Managers.Resource.LoadAllByType<MapData>().ToDictionary(x => x.DataTemplateId);
         ObstacleData = Managers.Resource.LoadAllByType<ObstacleData>().ToDictionary(x => x.DataTemplateId);
         ItemData = Managers.Resource.LoadAllByType<ItemData>().ToDictionary(x => x.DataTemplateId);
+        DifficultyDic =  LoadJson<Data.DifficultyDataLoader, int, Data.DifficultyData>("DifficultyData").MakeDict();
     }
 
 	private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
 	{
 		TextAsset textAsset = Managers.Resource.Load<TextAsset>(path);
+        Debug.Log(textAsset.text);
 		return JsonConvert.DeserializeObject<Loader>(textAsset.text);
 	}
 

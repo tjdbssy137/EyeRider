@@ -19,9 +19,7 @@ public partial class InGameContext
 
 
     public int Level { get; set; }
-    public int MaxLevel = 10;
-
-    public Subject<Unit> OnLevelUp { get; private set; } = new Subject<Unit>();
+    public int MaxLevel = 150;
 
 
     // Map Generate

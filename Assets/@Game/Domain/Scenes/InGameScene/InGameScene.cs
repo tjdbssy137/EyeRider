@@ -41,15 +41,19 @@ public class InGameScene : BaseScene
         .SelectMany(_ => this.UpdateAsObservable())
         .Subscribe(_ =>
         {
+            Contexts.InGame.Level =  SecurePlayerPrefs.GetInt("Level", 1);
+            Managers.Difficulty.CurrentLevel(Contexts.InGame.Level);
             UpdateRun();
         })
         .AddTo(_disposables);
 
-        Contexts.InGame.OnLevelUp
-        .Subscribe(_ => // 임시
+        Contexts.InGame.OnEndGame
+        .Subscribe(_=>
         {
-            Contexts.InGame.Level++;
+            SecurePlayerPrefs.SetInt("Level", Contexts.InGame.Level);
+            SecurePlayerPrefs.Save();
         }).AddTo(_disposables);
+
 
         LoadResources();
         return true;

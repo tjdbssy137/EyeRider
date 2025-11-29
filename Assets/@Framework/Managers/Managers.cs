@@ -65,6 +65,7 @@ public class Managers : MonoBehaviour
             s_instance._event.Init();
             s_instance._localization.Init();
             s_instance._web.Init();
+            //s_instance._data.Init();
         }
     }
 

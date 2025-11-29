@@ -51,7 +51,7 @@ namespace Data
     [Serializable]
     public class LocalizationDataLoader : ILoader<int, LocalizationData>
     {
-        
+
         public List<LocalizationData> datas = new List<LocalizationData>();
 
         public Dictionary<int, LocalizationData> MakeDict()
@@ -68,8 +68,12 @@ namespace Data
     [Serializable]
     public class DifficultyData  : IData
     {
-        [JsonProperty("Id")]
-        public int Id { get; set; }
+        public int Id;
+
+        int IData.Id
+        {
+            get => Id;
+        }
 
         public int Level;
 

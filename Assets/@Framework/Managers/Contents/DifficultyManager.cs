@@ -13,43 +13,57 @@ public class DifficultyManager
     private float _maxTime = 80f;
     private AnimationCurve _timeCurve;
 
-    public Data.DifficultyData Current => Managers.Data.DifficultyDic[1]; // 시큐리티로 가져오기
+    public Data.DifficultyData Current { get; private set; } // 시큐리티로 가져오기
+
+    public AnimationCurve LevelCurve_Random = AnimationCurve.Linear(0, 1, 1, 1.5f);
+    public AnimationCurve LevelCurve_Approach = AnimationCurve.Linear(0, 1, 1, 1.3f);
+    public AnimationCurve LevelCurve_Repel = AnimationCurve.Linear(0, 1, 1, 1.3f);
+
+    public float CurrentLevel01 => Mathf.Clamp01((float)(Contexts.InGame.Level - 1) / (Contexts.InGame.MaxLevel - 1));
+
+    public float StormSpeed => Current.StormSpeed * TimeDifficulty;
+    public float ObstacleDensity => Current.ObstacleDensity * TimeDifficulty;
+    public float EyeSize => Current.EyeSize * (1f + TimeDifficulty * 0.1f);
+    public float PM_RandomMul => Current.RandomMoveMul * (1f + TimeDifficulty * 0.2f) * LevelCurve_Random.Evaluate(CurrentLevel01);
+    public float PM_ApproachMul => Current.ApproachMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Approach.Evaluate(CurrentLevel01);
+    public float PM_RepelMul => Current.RepelMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Repel.Evaluate(CurrentLevel01);
 
     public void TimeLevelUp()
     {
         OnTimeDifficultyUp.OnNext(Unit.Default);
     }
 
-    public float StormSpeed => Current.StormSpeed * TimeDifficulty;
-
-    public float ObstacleDensity => Current.ObstacleDensity * TimeDifficulty;
-
-    public float EyeSize => Current.EyeSize * (1f + TimeDifficulty * 0.1f);
-
-    public float PM_RandomMul => Current.RandomMoveMul * (1f + TimeDifficulty * 0.2f);
-
-    public float PM_ApproachMul => Current.ApproachMul * (1f + TimeDifficulty * 0.15f);
-
-    public float PM_RepelMul => Current.RepelMul * (1f + TimeDifficulty * 0.15f);
-
-
     public void TimeToLevelup(float time)
     {
-        if(time < 20)
+        _elapsed = time;
+        if(_elapsed < 20)
         {
             TimeLevelUp();
         }
-        else if(time < 40)
+        else if(_elapsed < 40)
         {
             TimeLevelUp();
         }
-        else if(time < 60)
+        else if(_elapsed < 60)
         {
             TimeLevelUp();
         }
-        else if(time < 75)
+        else if(_elapsed < 75)
         {
             TimeLevelUp();
         }
+    }
+
+    public void CurrentLevel(int level)
+    {
+        if(level <= 0)
+        {
+            level = 100001;
+        }
+        else
+        {
+            level += 10000;
+        }
+        Current = Managers.Data.DifficultyDic[level];
     }
 }
