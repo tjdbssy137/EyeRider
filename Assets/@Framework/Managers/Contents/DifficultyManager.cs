@@ -23,10 +23,17 @@ public class DifficultyManager
 
     public float StormSpeed => Current.StormSpeed * TimeDifficulty;
     public float ObstacleDensity => Current.ObstacleDensity * TimeDifficulty;
-    public float EyeSize => Current.EyeSize * (1f + TimeDifficulty * 0.1f);
+    public float EyeSize => Mathf.Lerp(Current.EyeSize, Current.EyeSize - 1.7f, TimeDifficulty);
     public float PM_RandomMul => Current.RandomMoveMul * (1f + TimeDifficulty * 0.2f) * LevelCurve_Random.Evaluate(CurrentLevel01);
     public float PM_ApproachMul => Current.ApproachMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Approach.Evaluate(CurrentLevel01);
     public float PM_RepelMul => Current.RepelMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Repel.Evaluate(CurrentLevel01);
+
+    public void Init()
+    {
+        _elapsed = 0f;
+        _maxTime = 80f;
+        _timeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f); // 나중에 원하는 커브로 교체
+    }
 
     public void TimeLevelUp()
     {

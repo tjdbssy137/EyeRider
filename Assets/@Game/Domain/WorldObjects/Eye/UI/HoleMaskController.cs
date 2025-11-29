@@ -38,7 +38,7 @@ public class HoleMaskController : UI_Base
         Vector2 pointPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
         Vector2 uvPos = new Vector2(pointPos.x / _canvasRect.rect.width, pointPos.y / _canvasRect.rect.height);
 
-        Vector2 pointSize = new Vector2(_point.rect.width / _canvasRect.rect.width, _point.rect.height / _canvasRect.rect.height);
+        Vector2 pointSize = new Vector2((_point.rect.width * _point.lossyScale.x) / _canvasRect.rect.width, (_point.rect.height * _point.lossyScale.y) / _canvasRect.rect.height);
 
         _backgroundImage.material.SetVector("_HolePos", uvPos);
         _backgroundImage.material.SetVector("_HoleSize", pointSize);
