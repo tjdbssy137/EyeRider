@@ -32,7 +32,7 @@ public class DifficultyManager
     {
         _elapsed = 0f;
         _maxTime = 80f;
-        _timeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f); // 나중에 원하는 커브로 교체
+        _timeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     }
 
     public void TimeLevelUp()
@@ -72,5 +72,10 @@ public class DifficultyManager
             level += 10000;
         }
         Current = Managers.Data.DifficultyDic[level];
+    }
+
+    private void TimeToEnd()
+    {
+        // 막판(80초)에 판정 후하게 해주도록 값 수정
     }
 }

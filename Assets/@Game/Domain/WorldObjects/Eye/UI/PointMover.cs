@@ -66,6 +66,14 @@ public class PointMover : UI_Base
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
+            if (true == Contexts.InGame.IsGameOver)
+            {
+                return;
+            }
+            if (true == Contexts.InGame.IsPaused)
+            {
+                return;
+            }
             Move();
             UpdateEyeSize();
             CheckCarInsideEye();
