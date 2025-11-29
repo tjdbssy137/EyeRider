@@ -14,6 +14,12 @@ public class Obstacle : BaseObject
         if (base.Init() == false)
             return false;
 
+        _collider = this.GetComponentInChildren<BoxCollider>();
+        if (_collider == null)
+        {
+            Debug.LogWarning("_collider is NULL");
+        }
+
         return true;
     }
 

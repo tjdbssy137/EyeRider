@@ -45,6 +45,15 @@ public partial class CarController : BaseObject
     private float _eventPanic;
     private float _conditionPanic;
     private float _fuelPanic;
+
+    // Damage
+    private Animator _animator;
+    private float _shakeIntensity = 0f;
+    private float _maxShakeIntensity = 1.5f;  // 흔들림 최대값
+    private float _shakeLerpSpeed = 2f;  
+    private float _controlDifficulty = 0f; 
+    public float ControlDifficulty {get { return _controlDifficulty; }}
+    
     
 
     public override bool Init()

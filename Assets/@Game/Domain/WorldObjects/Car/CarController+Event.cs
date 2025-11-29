@@ -5,7 +5,6 @@ using System;
 
 public partial class CarController : BaseObject
 {
-
     private void BindSubscriptions()
     {
         Contexts.InGame.OnEnterCorner
@@ -97,13 +96,7 @@ public partial class CarController : BaseObject
             _fuelPanic = Mathf.Clamp01(1 - newFuel.Item2/100);
         }).AddTo(this);
     }
-    private Animator _animator;
-    private float _shakeIntensity = 0f;
-    private float _maxShakeIntensity = 1.5f;  // 흔들림 최대값
-    private float _shakeLerpSpeed = 2f;  
-    private float _controlDifficulty = 0f; 
-    public float ControlDifficulty {get { return _controlDifficulty; }}
-    private float _damage;
+    
     public float DistancePenalty(float distance)
     {
         float target = 0f;
