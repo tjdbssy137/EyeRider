@@ -17,10 +17,13 @@ public class DataManager
     public Dictionary<int, MapData> MapDatas { get; private set; } = new Dictionary<int, MapData>();
     public Dictionary<int, ObstacleData> ObstacleData { get; private set; } = new Dictionary<int, ObstacleData>();
     public Dictionary<int, ItemData> ItemData { get; private set; } = new Dictionary<int, ItemData>();
+    public Dictionary<int, Data.DifficultyData> DifficultyDic { get; private set; }  = new Dictionary<int, Data.DifficultyData>();
+
 
     public void Init()
     {
         //LocalizationDic = LoadJson<Data.LocalizationDataLoader, int, Data.LocalizationData>("LocalizationData").MakeDict();
+        DifficultyDic =  LoadJson<Data.DifficultyDataLoader, int, Data.DifficultyData>("DifficultyData").MakeDict();
     }
 
     public void LoadAll()

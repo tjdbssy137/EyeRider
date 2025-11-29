@@ -16,7 +16,7 @@ public class DataTransformer : EditorWindow
 	[MenuItem("Tools/ParseExcel %#K")]
 	public static void ParseExcelDataToJson()
 	{
-        ParseExcelDataToJson<LocalizationDataLoader, LocalizationData>("LocalizationData");
+		ParseExcelDataToJson<DifficultyDataLoader, DifficultyData>("DifficultyData");
         Debug.Log("DataTransformer Completed");
 	}
 
@@ -49,7 +49,7 @@ public class DataTransformer : EditorWindow
 		field.SetValue(loader, ParseExcelDataToList<LoaderData>(filename));
 
 		string jsonStr = JsonConvert.SerializeObject(loader, Formatting.Indented);
-		File.WriteAllText($"{Application.dataPath}/@Resources/Data/JsonData/{filename}.json", jsonStr);
+		File.WriteAllText($"{Application.dataPath}/Data/JsonData/{filename}.json", jsonStr);
 		AssetDatabase.Refresh();
 	}
 
@@ -57,7 +57,7 @@ public class DataTransformer : EditorWindow
 	{
 		List<LoaderData> loaderDatas = new List<LoaderData>();
         string[] lines;
-        using (FileStream fs = new FileStream($"{Application.dataPath}/@Resources/Data/ExcelData/{filename}.csv", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+        using (FileStream fs = new FileStream($"{Application.dataPath}/Data/ExcelData/{filename}.csv", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
         {
             using (StreamReader sr = new StreamReader(fs))
             {

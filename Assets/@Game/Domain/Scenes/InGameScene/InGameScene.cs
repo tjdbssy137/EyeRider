@@ -35,6 +35,7 @@ public class InGameScene : BaseScene
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
 
+        _elapsedRunTime = 0f;
         Contexts.InGame.OnStartGame
         .Take(1)
         .SelectMany(_ => this.UpdateAsObservable())
@@ -80,26 +81,6 @@ public class InGameScene : BaseScene
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
         carSideClampAnchor.Init();
         carSideClampAnchor.OnSpawn();
-      
-        // Camera cam = Object.FindFirstObjectByType<Camera>();
-        // if (cam == null)
-        // {
-        //     Debug.LogError("cam is NULL");
-        // }
-        // CameraFollowController controller = cam.gameObject.GetOrAddComponent<CameraFollowController>();
-        // controller.OnSpawn();
-        // controller.SetInfo(0);
-
-
-        // GameObject rigObj = GameObject.Find("CameraRig");
-        // if (rigObj == null)
-        // {
-        //     Debug.LogWarning("[CameraRigFinder] CameraRig 오브젝트를 찾을 수 없습니다.");
-        //     return;
-        // }
-        // CameraRigFollowController controller = rigObj.gameObject.GetOrAddComponent<CameraRigFollowController>();
-        // controller.OnSpawn();
-        // controller.SetInfo(0);
 
         // Map Generate
         Contexts.InGame.MAP_SIZE = 100;
@@ -112,6 +93,9 @@ public class InGameScene : BaseScene
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
 
         Contexts.InGame.PanicPoint = 0;
+
+        // Game Difficulty
+
     }
 
     void LoadResources()
@@ -148,7 +132,7 @@ public class InGameScene : BaseScene
         }
 
         _elapsedRunTime += Time.unscaledDeltaTime;
-
+        Managers.Difficulty.TimeToLevelup(_elapsedRunTime);
         if (80f <= _elapsedRunTime)
         {
             Debug.Log("Contexts.InGame.IsGameOver = true;");

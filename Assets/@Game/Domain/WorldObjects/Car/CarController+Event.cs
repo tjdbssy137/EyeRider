@@ -101,6 +101,8 @@ public partial class CarController : BaseObject
     {
         float target = 0f;
         
+        distance -= + Managers.Difficulty.TimeDifficulty;
+
         if(distance <= 30)
         {
             target = 0.2f;
@@ -116,7 +118,6 @@ public partial class CarController : BaseObject
         else if(distance <= 100)
         {
             target = 0.8f;
-            
         }
         else
         {
