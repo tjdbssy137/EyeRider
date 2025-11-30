@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5f11389ad474e8d8c2fac324745a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoleMaskController
-  _backgroundAlpha: 0.199
+  _backgroundAlpha: 0.564
   _backgroundImage: {fileID: 5603408746421265207}
   _point: {fileID: 3108052317969240917}
   _canvasRect: {fileID: 1727315155817836080}

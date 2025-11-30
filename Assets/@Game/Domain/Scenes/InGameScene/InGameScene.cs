@@ -97,7 +97,8 @@ public class InGameScene : BaseScene
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
 
         Contexts.InGame.PanicPoint = 0;
-
+        Contexts.Car.MaxCondition = 100;
+        Contexts.Car.MaxFuel = 100;
         // Game Difficulty
 
     }
