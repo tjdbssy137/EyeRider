@@ -131,7 +131,11 @@ public partial class CarController : BaseObject
         _animator.SetFloat("Distance", normalizedValue);
 
         _controlDifficulty = normalizedValue;
-        return 10 * target;
+        float baseDamage = 10 * target;
+
+        // 막판엔 데미지 감소
+        baseDamage *= Managers.Difficulty.EndGamePenaltyMul;
+        return baseDamage;
     }
 
     private void WheelEffect(bool drifting)

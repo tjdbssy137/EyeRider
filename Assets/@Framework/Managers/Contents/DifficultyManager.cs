@@ -8,6 +8,8 @@ public class DifficultyManager
 
     public int LevelDifficulty { get; private set; }
     public float TimeDifficulty => _timeCurve.Evaluate(_elapsed / _maxTime);
+    private float _endGamePenaltyMul = 1f; 
+    public float EndGamePenaltyMul => _endGamePenaltyMul;
 
     private float _elapsed;
     private float _maxTime = 80f;
@@ -43,21 +45,22 @@ public class DifficultyManager
     public void TimeToLevelup(float time)
     {
         _elapsed = time;
-        if(_elapsed < 20)
+        if(20 < _elapsed)
         {
             TimeLevelUp();
         }
-        else if(_elapsed < 40)
+        else if(40 < _elapsed)
         {
             TimeLevelUp();
         }
-        else if(_elapsed < 60)
+        else if(60 < _elapsed)
         {
             TimeLevelUp();
         }
-        else if(_elapsed < 75)
+        else if(75 < _elapsed)
         {
             TimeLevelUp();
+            TimeToEnd();
         }
     }
 
@@ -76,6 +79,14 @@ public class DifficultyManager
 
     private void TimeToEnd()
     {
-        // 막판(80초)에 판정 후하게 해주도록 값 수정
+        if (75f <= _elapsed)
+    {
+        float t = Mathf.InverseLerp(75f, 80f, _elapsed);
+        _endGamePenaltyMul = Mathf.Lerp(1f, 0.6f, t);
+    }
+    else
+    {
+        _endGamePenaltyMul = 1f;
+    }
     }
 }

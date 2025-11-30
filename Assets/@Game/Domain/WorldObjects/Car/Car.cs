@@ -59,7 +59,7 @@ public class Car : BaseObject
         _carController.OnSpawn();
         _carController.SetInfo(0);
 
-        Observable.Interval(TimeSpan.FromSeconds(2f))
+        Observable.Interval(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => 
                 ConsumeFuel()
             ).AddTo(_disposables); 
@@ -77,7 +77,7 @@ public class Car : BaseObject
 
     public void ConsumeFuel()
     {
-        Fuel -= 1;
+        Fuel -= 1.2f;
     }
 
     public void RefillFuel(float fuel)
