@@ -16,36 +16,55 @@ public class HoleMaskController : UI_Base
 
     public override bool Init()
     {
-        if (base.Init() == false)
+        if (!base.Init())
             return false;
 
-        this.UpdateAsObservable().Subscribe( _ =>
-        {
-            Move();
-            RotateEyeCloud();
-        }).AddTo(this);
+        Vector2 canvasSize = new Vector2(_canvasRect.rect.width, _canvasRect.rect.height);
+        _backgroundImage.material.SetVector("_CanvasSize", canvasSize);
+
+        _backgroundImage.material.SetFloat("_BackgroundAlpha", _backgroundAlpha);
+
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                Move();
+                RotateEyeCloud();
+            })
+            .AddTo(this);
 
         return true;
     }
-    
+
     private void Move()
     {
-        if (_backgroundImage != null && _backgroundImage.material != null)
-        {
-            _backgroundImage.material.SetFloat("_BackgroundAlpha", _backgroundAlpha);
-        }
+        if (_backgroundImage.material == null)
+            return;
 
-        Vector2 pointPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
-        Vector2 uvPos = new Vector2(pointPos.x / _canvasRect.rect.width, pointPos.y / _canvasRect.rect.height);
+        Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
 
-        Vector2 pointSize = new Vector2((_point.rect.width * _point.lossyScale.x) / _canvasRect.rect.width, (_point.rect.height * _point.lossyScale.y) / _canvasRect.rect.height);
+        Vector2 localPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _canvasRect, screenPos, null, out localPos
+        );
 
-        _backgroundImage.material.SetVector("_HolePos", uvPos);
-        _backgroundImage.material.SetVector("_HoleSize", pointSize);
+        Vector2 canvasPos = localPos + _canvasRect.rect.size * 0.5f;
+
+        _backgroundImage.material.SetVector("_CenterPx", canvasPos);
+
+        float radiusPx = _point.rect.width * _point.lossyScale.x * 0.4f; 
+        _backgroundImage.material.SetFloat("_RadiusPx", radiusPx);
+
+        // float featherPx = radiusPx * 0.3f;
+        // _backgroundImage.material.SetFloat("_FeatherPx", featherPx);
+
+        _backgroundImage.material.SetVector("_HoleSize", new Vector2(1f, 1f));
     }
+
+
 
     private void RotateEyeCloud()
     {
         _eyeImages.Rotate(0f, 0f, _rotateSpeed * Time.deltaTime);
     }
+
 }

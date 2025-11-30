@@ -118,10 +118,10 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
-                if (Contexts.InGame.Car.Fuel <= 0)
-                {
-                    return;
-                }
+                // if (Contexts.InGame.Car.Fuel <= 0)
+                // {
+                //     return;
+                // }
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
                 

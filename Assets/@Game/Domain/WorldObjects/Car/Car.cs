@@ -59,9 +59,6 @@ public class Car : BaseObject
         _carController.OnSpawn();
         _carController.SetInfo(0);
 
-        Condition = Contexts.Car.MaxCondition;
-        Fuel = Contexts.Car.MaxFuel;
-
         Observable.Interval(TimeSpan.FromSeconds(2f))
             .Subscribe(_ => 
                 ConsumeFuel()
@@ -73,6 +70,9 @@ public class Car : BaseObject
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);
+
+        Condition = Contexts.Car.MaxCondition;
+        Fuel = Contexts.Car.MaxFuel;
     }
 
     public void ConsumeFuel()

@@ -2,69 +2,82 @@ Shader "UI/InverseHoleMask"
 {
     Properties
     {
-        _MainTex ("Main Texture", 2D) = "white" {}
-        _HolePos ("Hole Position", Vector) = (0.5, 0.5, 0, 0)
-        _HoleSize ("Hole Size", Vector) = (0.1, 0.1, 0, 0)
-        _BackgroundAlpha ("Background Alpha", Range(0, 1)) = 1
+        _MainTex ("Texture", 2D) = "white" {}
+        _CenterPx("Center Pixel", Vector) = (0,0,0,0)
+        _RadiusPx("Radius Pixel", Float) = 100
+        _FeatherPx("Feather Pixel", Float) = 120
+        _CanvasSize("Canvas Size", Vector) = (1080,1920,0,0)
+        _BackgroundAlpha("Background Alpha", Range(0,1)) = 1
     }
+
     SubShader
     {
-        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" "CanvasMaterial"="True" }
-        LOD 100
-
-        Cull Off
-        ZWrite Off
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
 
         Pass
         {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+            HLSLPROGRAM
+            #pragma vertex Vert
+            #pragma fragment Frag
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            float4 _HolePos;
-            float4 _HoleSize;
-            float _BackgroundAlpha;    // 추가
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
 
-            struct appdata_t
+            float4 _CenterPx;
+            float _RadiusPx;
+            float _FeatherPx;
+            float4 _CanvasSize;
+            float _BackgroundAlpha;
+
+            struct VertexInput
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f
+            struct VertexOutput
             {
-                float4 vertex : SV_POSITION;
+                float4 pos : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            v2f vert(appdata_t v)
+            VertexOutput Vert(VertexInput v)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                VertexOutput o;
+                o.pos = TransformObjectToHClip(v.vertex);
+                o.uv = v.uv;
                 return o;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            float4 Frag(VertexOutput i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                float4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
 
-                float2 diff = (i.uv - _HolePos.xy) / _HoleSize.xy;
-                float dist = length(diff);
+                float2 canvas = _CanvasSize.xy;
 
-                if (dist < 0.5)
-                    col.a = 0;
+                float2 uvPx = i.uv * canvas;
 
-                col.a *= _BackgroundAlpha;
+                float2 d = uvPx - _CenterPx.xy;
 
+                float dist = length(d);
+
+                float radiusPx = _RadiusPx;
+                float featherPx = _FeatherPx;
+
+                float alpha = smoothstep(radiusPx, radiusPx + featherPx, dist);
+                alpha *= _BackgroundAlpha;
+
+                col.a = alpha;
                 return col;
             }
-            ENDCG
+
+
+
+            ENDHLSL
         }
     }
 }

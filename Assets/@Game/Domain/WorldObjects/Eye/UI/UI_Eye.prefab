@@ -54,7 +54,7 @@ MonoBehaviour:
   _point: {fileID: 3108052317969240917}
   _canvasRect: {fileID: 1727315155817836080}
   _eyeImages: {fileID: 4764145255155773817}
-  _rotateSpeed: 15
+  _rotateSpeed: 100
 --- !u!114 &4156861199448645342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

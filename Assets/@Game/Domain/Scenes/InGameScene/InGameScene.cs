@@ -80,6 +80,11 @@ public class InGameScene : BaseScene
         _obstacleSpawner.OnSpawn();
         _obstacleSpawner.SetInfo(0);
         
+
+        Contexts.InGame.PanicPoint = 0;
+        Contexts.Car.MaxCondition = 100;
+        Contexts.Car.MaxFuel = 100;
+        
         _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
@@ -96,9 +101,6 @@ public class InGameScene : BaseScene
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
 
-        Contexts.InGame.PanicPoint = 0;
-        Contexts.Car.MaxCondition = 100;
-        Contexts.Car.MaxFuel = 100;
         // Game Difficulty
 
     }
