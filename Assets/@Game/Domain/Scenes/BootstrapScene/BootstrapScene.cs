@@ -15,8 +15,9 @@ public class BootstrapScene : BaseScene
     public async void OnResourceLoaded()
     {
         Managers.Data.LoadAll();
-        Managers.UI.ShowSceneUI<UI_BootstrapScene>();
-        Managers.Scene.LoadScene(EScene.InGameScene);
+        //Managers.UI.ShowSceneUI<UI_BootstrapScene>();
+        Debug.Log("로딩 완료");
+        Managers.Scene.LoadScene(EScene.MainMenuScene);
     }
 
     void LoadResources()

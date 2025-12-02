@@ -4,7 +4,9 @@ public static partial class Define
     public enum EScene
     {
         Unknown,
-        InGameScene
+        InGameScene,
+        MainMenuScene,
+        BootstrapScene,
     }
 
     public enum EJoystickState
