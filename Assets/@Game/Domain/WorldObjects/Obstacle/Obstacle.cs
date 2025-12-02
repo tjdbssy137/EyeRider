@@ -8,6 +8,7 @@ public class Obstacle : BaseObject
     public BoxCollider _collider;
     public ObstacleData _data;
     public float _destroyDistance = 80;
+    public GameObject _particle;
     
     public override bool Init()
     {
@@ -20,6 +21,11 @@ public class Obstacle : BaseObject
             Debug.LogWarning("_collider is NULL");
         }
 
+        if(_particle == null)
+        {
+            Debug.LogWarning("_particle is NULL");
+        }
+
         return true;
     }
 
@@ -30,18 +36,18 @@ public class Obstacle : BaseObject
             return false;
         }
 
-        _collider.OnCollisionExitAsObservable()
+        _collider.OnTriggerExitAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
-                
             })
             .AddTo(_disposables);
 
-        _collider.OnCollisionEnterAsObservable()
+        _collider.OnTriggerEnterAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
+                Managers.Object.Spawn<ParticleObject>($"{_particle.name}", this.transform.position , 0, 0);
                 Contexts.InGame.OnCollisionObstacle.OnNext(Unit.Default);
                 // 차의 속도를 80% 깎기
                 //bomb! particle

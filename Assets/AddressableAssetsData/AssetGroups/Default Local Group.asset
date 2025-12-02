@@ -63,6 +63,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71547324413f448398a21188b26ae96e
+    m_Address: Crash
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e67256c8112d4edd8594fc728e3f722
     m_Address: RoadCorner_1
     m_ReadOnly: 0
@@ -119,6 +125,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d06429c4c533d46f7af84bec0b7812ce
     m_Address: RoadProbs_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dae256eee4ae74720b4249bc74fbd5f5
+    m_Address: Boom
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

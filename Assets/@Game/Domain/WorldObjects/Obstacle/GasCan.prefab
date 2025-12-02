@@ -48,6 +48,7 @@ MonoBehaviour:
   _collider: {fileID: 3031249222456455290}
   _data: {fileID: 0}
   _destroyDistance: 100
+  _particle: {fileID: 2633857672221425680, guid: 71547324413f448398a21188b26ae96e, type: 3}
 --- !u!1001 &2628215780990168168
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8623255917265869155}
@@ -159,3 +159,4 @@ MonoBehaviour:
   _collider: {fileID: 7157031911468553415}
   _data: {fileID: 0}
   _destroyDistance: 80
+  _particle: {fileID: 1076963282973720617, guid: dae256eee4ae74720b4249bc74fbd5f5, type: 3}
