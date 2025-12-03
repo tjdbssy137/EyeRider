@@ -57,22 +57,31 @@ Shader "UI/InverseHoleMask"
             {
                 float4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
 
+                // 세로비
                 float2 canvas = _CanvasSize.xy;
-
-                float2 uvPx = i.uv * canvas;
-
-                float2 d = uvPx - _CenterPx.xy;
-
+                float2 uvPx = float2(i.uv.x * canvas.x, i.uv.y * canvas.y);
+                float2 centerPx = _CenterPx.xy;
+                float2 d = uvPx - centerPx;
                 float dist = length(d);
-
                 float radiusPx = _RadiusPx;
                 float featherPx = _FeatherPx;
-
                 float alpha = smoothstep(radiusPx, radiusPx + featherPx, dist);
                 alpha *= _BackgroundAlpha;
-
                 col.a = alpha;
                 return col;
+
+
+                // 가로비
+                // float2 canvas = _CanvasSize.xy;
+                // float2 uvPx = i.uv * canvas;
+                // float2 d = uvPx - _CenterPx.xy;
+                // float dist = length(d);
+                // float radiusPx = _RadiusPx;
+                // float featherPx = _FeatherPx;
+                // float alpha = smoothstep(radiusPx, radiusPx + featherPx, dist);
+                // alpha *= _BackgroundAlpha;
+                // col.a = alpha;
+                // return col;
             }
 
 
