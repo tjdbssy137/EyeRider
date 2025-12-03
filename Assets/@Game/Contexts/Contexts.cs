@@ -11,6 +11,9 @@ public partial class Contexts
 
     private InGameContext _inGame = new InGameContext();
     public static InGameContext InGame { get { return Instance?._inGame; } }
+
+    private GameProfileContext _gameProfile = new GameProfileContext();
+    public static GameProfileContext GameProfile { get { return Instance?._gameProfile; } }
     
     #endregion
     private static void Init_Game()

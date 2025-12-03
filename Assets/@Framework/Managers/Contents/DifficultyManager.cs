@@ -21,7 +21,7 @@ public class DifficultyManager
     public AnimationCurve LevelCurve_Approach = AnimationCurve.Linear(0, 1, 1, 1.3f);
     public AnimationCurve LevelCurve_Repel = AnimationCurve.Linear(0, 1, 1, 1.3f);
 
-    public float CurrentLevel01 => Mathf.Clamp01((float)(Contexts.InGame.Level - 1) / (Contexts.InGame.MaxLevel - 1));
+    public float CurrentLevel01 => Mathf.Clamp01((float)(Contexts.GameProfile.CurrentLevel - 1) / (Contexts.InGame.MaxLevel - 1));
 
     public float StormSpeed => Current.StormSpeed * TimeDifficulty;
     public float ObstacleDensity => Current.ObstacleDensity * TimeDifficulty;

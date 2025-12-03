@@ -57,6 +57,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5293c55c3a04c4af1a82a09de2863b81
+    m_Address: UI_LevelCell
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62649d33c4afe4ea693d60a1c6ba2d7f
     m_Address: Eye
     m_ReadOnly: 0

@@ -41,8 +41,8 @@ public class InGameScene : BaseScene
         .SelectMany(_ => this.UpdateAsObservable())
         .Subscribe(_ =>
         {
-            Contexts.InGame.Level =  SecurePlayerPrefs.GetInt("Level", 1);
-            Managers.Difficulty.CurrentLevel(Contexts.InGame.Level);
+            Contexts.GameProfile.CurrentLevel =  SecurePlayerPrefs.GetInt("Level", 1);
+            Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
             UpdateRun();
         })
         .AddTo(_disposables);
@@ -50,7 +50,7 @@ public class InGameScene : BaseScene
         Contexts.InGame.OnEndGame
         .Subscribe(_=>
         {
-            SecurePlayerPrefs.SetInt("Level", Contexts.InGame.Level);
+            SecurePlayerPrefs.SetInt("Level", Contexts.GameProfile.CurrentLevel);
             SecurePlayerPrefs.Save();
         }).AddTo(_disposables);
 
@@ -67,6 +67,7 @@ public class InGameScene : BaseScene
 
      public void SettingSceneObject()
     {
+        Contexts.InGame.MaxLevel = Managers.Data.DifficultyDic.Count;
         UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
         ui_InGameScene.SetInfo();
         

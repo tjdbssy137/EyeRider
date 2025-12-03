@@ -17,9 +17,7 @@ public partial class InGameContext
 
     public Car Car { get; set; }
 
-
-    public int Level { get; set; }
-    public int MaxLevel = 150;
+    public int MaxLevel { get; set; }
 
 
     // Map Generate
