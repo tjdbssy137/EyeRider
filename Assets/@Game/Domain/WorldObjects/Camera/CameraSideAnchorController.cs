@@ -18,6 +18,10 @@ public class CameraSideAnchorController : BaseObject
     private float _forwardDamping = 0.7f;
     private float _forwardAmplitude = 0.8f;
 
+    private float _followFactor = 0.5f;
+    private float _edgeFalloffPower = 1.5f; // limit 근처에서 감쇠되는 정도
+
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -58,11 +62,15 @@ public class CameraSideAnchorController : BaseObject
     private void CaculateDistance()
     {
         float lateral = Vector3.Dot((_center - _parentTransform.position), _parentTransform.right);
-        float clampedX = Mathf.Clamp(lateral, -_sideLimit, _sideLimit);
+
+        float t = Mathf.Clamp01(Mathf.Abs(lateral) / _sideLimit);
+        float edgeFalloff = Mathf.Pow(1f - t, _edgeFalloffPower); //중심에서 1, limit 근처 0 에 가까워짐
+
+        float targetX = lateral * _followFactor * edgeFalloff;
 
         _currentLocalX = Mathf.SmoothDamp(
             _currentLocalX,
-            clampedX,
+            targetX,
             ref _smoothVel,
             1f / _damping
         );
