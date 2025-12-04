@@ -48,3 +48,14 @@ The following packages were updated:
   com.unity.test-framework from version 1.4.2 to 1.6.0
   com.unity.timeline from version 1.8.6 to 1.8.9
   com.unity.visualscripting from version 1.9.1 to 1.9.8
+
+=== Thu Dec  4 22:30:00 2025
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.addressables from version 2.7.4 to 2.7.6
+  com.unity.collab-proxy from version 2.10.0 to 2.10.2
+  com.unity.inputsystem from version 1.14.2 to 1.16.0
+  com.unity.nuget.newtonsoft-json from version 3.2.0 to 3.2.1

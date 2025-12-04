@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\@Framework",
+    "\\@Framework\\Managers",
+    "\\@Framework\\Managers\\Contents",
+    "\\@Framework\\Managers\\Core",
+    "\\@Game",
+    "\\@Game\\Domain"
+  ],
+  "SelectedNode": "\\@Framework\\Managers\\Contents\\DataManager.cs",
+  "PreviewInSolutionExplorer": false
+}

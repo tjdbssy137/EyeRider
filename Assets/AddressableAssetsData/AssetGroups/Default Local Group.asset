@@ -111,6 +111,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92d73f17aea952f46a77c8909a12522a
+    m_Address: DifficultyData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 98a297198a371466d992563be3591913
     m_Address: TrafficCone
     m_ReadOnly: 0
