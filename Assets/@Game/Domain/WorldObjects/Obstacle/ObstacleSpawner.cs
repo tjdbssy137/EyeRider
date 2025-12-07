@@ -43,6 +43,7 @@ public class ObstacleSpawner : BaseObject
         int randomZ = Random.Range((int)transform.position.z - _allowedRange,(int)transform.position.z + _allowedRange);
         Vector3 pos = new Vector3(randomX, transform.position.y, randomZ);
         Obstacle item = Managers.Object.Spawn<Obstacle>(data.ObstaclePrefab.name, pos, 0, data.DataTemplateId);
+
         float y = Random.Range(0, 180);
         item.transform.rotation = Quaternion.Euler(0, y, 0);
     }

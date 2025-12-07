@@ -35,6 +35,7 @@ public class Obstacle : BaseObject
         {
             return false;
         }
+        //Debug.Log("Obstacle OnSpawn");
 
         _collider.OnTriggerExitAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
@@ -47,9 +48,10 @@ public class Obstacle : BaseObject
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
+                //Debug.Log($"collision : {other.name}");
                 Managers.Object.Spawn<ParticleObject>($"{_particle.name}", this.transform.position , 0, 0);
                 Contexts.InGame.OnCollisionObstacle.OnNext(Unit.Default);
-                // 차의 속도를 80% 깎기
+                //// 차의 속도를 80% 깎기
                 //bomb! particle
                 //Managers.Resource.Destroy(gameObject);
             })

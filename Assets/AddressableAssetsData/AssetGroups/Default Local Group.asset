@@ -129,12 +129,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cdd1cf74e76cd41248fcea5eaba8f67f
-    m_Address: DifficultyData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d06429c4c533d46f7af84bec0b7812ce
     m_Address: RoadProbs_2
     m_ReadOnly: 0

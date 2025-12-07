@@ -190,11 +190,7 @@ MonoBehaviour:
   _accelPerSec: 30
   _decelPerSec: 40
   _horizontalSpeed: 15
-  _reverseSpeed: 20
-  _turnSpeed: 100
   _rigidbody: {fileID: 3468946713126771305}
-  _frontLeftMesh: {fileID: 1809680092916083784}
-  _frontRightMesh: {fileID: 758898244989294742}
   _RLWParticleSystem: {fileID: 4797338009255447573}
   _RRWParticleSystem: {fileID: 2548040168009579835}
 --- !u!54 &3468946713126771305
@@ -380,11 +376,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4576455070683133571}
   - component: {fileID: 7175549572972918409}
-  - component: {fileID: 884746562490077482}
   - component: {fileID: 6577736989063631086}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,28 +407,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2431959106949381551}
   m_Mesh: {fileID: -3298800115395149385, guid: 8ef3dc744ab293d4ea87fd4c59a15afd, type: 3}
---- !u!64 &884746562490077482
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2431959106949381551}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3298800115395149385, guid: 8ef3dc744ab293d4ea87fd4c59a15afd, type: 3}
 --- !u!65 &6577736989063631086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -453,7 +426,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4413264, z: 5.0724216}
+  m_Size: {x: 2, y: 1.4413264, z: 5.0724216}
   m_Center: {x: 0, y: 0.7252841, z: -0.023798026}
 --- !u!1 &2908970089787539886
 GameObject:
