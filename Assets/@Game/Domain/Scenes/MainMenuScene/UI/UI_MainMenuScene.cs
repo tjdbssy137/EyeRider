@@ -15,7 +15,10 @@ public class UI_MainMenuScene : UI_Scene
 
         BindImages(typeof(Images));
         GetImage((int)Images.GameStart_Button).gameObject.BindEvent(OnClick_GameStartButton, EUIEvent.Click);
-		return true;
+        UI_LevelCellPanel panel = Managers.UI.ShowBaseUI<UI_LevelCellPanel>();
+        panel.SetInfo();
+
+        return true;
     }
 
     private void OnClick_GameStartButton(PointerEventData eventData)

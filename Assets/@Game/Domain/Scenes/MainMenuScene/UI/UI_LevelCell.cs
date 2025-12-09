@@ -1,9 +1,10 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DG.Tweening;
+using UnityEngine.UI;
 using static Define;
 
 public class UI_LevelCell : UI_Base
@@ -23,7 +24,8 @@ public class UI_LevelCell : UI_Base
 
     public Sprite _star;
     public Sprite _emptyStar;
-    
+    private RectTransform _offsetRoot;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -47,9 +49,12 @@ public class UI_LevelCell : UI_Base
         }
 
         this.gameObject.BindEvent(OnClick_LevelCell, EUIEvent.Click);
-
-
-		return true;
+        _offsetRoot = GetComponent<RectTransform>();
+        if( _offsetRoot == null )
+        {
+            Debug.Log("_offsetRoot is NULL");
+        }
+        return true;
     }
 
     public void SetInfo(int level, int score)
@@ -65,11 +70,19 @@ public class UI_LevelCell : UI_Base
 
     private void OnClick_LevelCell(PointerEventData eventData)
     {
-        this.transform.DOScale(0.9f, 0.7f).SetEase(Ease.OutQuad)
+        this.transform.DOScale(0.9f, 0.15f).SetEase(Ease.OutQuad)
              .OnComplete(() =>
              {
-                 transform.DOScale(1f, 0.7f).SetEase(Ease.OutQuad);
+                 transform.DOScale(1f, 0.15f).SetEase(Ease.OutQuad);
              });
         // show popup
+    }
+
+    public void SetOffsetX(float x)
+    {
+        //Debug.Log("SetOffsetX");
+        var pos = _offsetRoot.anchoredPosition;
+        pos.x += x;
+        _offsetRoot.anchoredPosition = pos;
     }
 }

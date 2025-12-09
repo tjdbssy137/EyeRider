@@ -107,6 +107,7 @@
     <Compile Include="Assets\@Framework\Managers\Managers.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\PoolManager.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\UI\UI_LevelCellPanel.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\UI\ScrollRectDrag.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Camera\XXX_CameraFollowController.cs" />
     <Compile Include="Assets\PROMETEO - Car Controller\Scripts\PrometeoCarController.cs" />
     <Compile Include="Assets\@Framework\UI\Scene\UI_Scene.cs" />

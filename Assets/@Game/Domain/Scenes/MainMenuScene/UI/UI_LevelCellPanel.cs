@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -13,7 +14,10 @@ public class UI_LevelCellPanel : UI_Base
     
     private ScrollRect _scrollRect;
     private Transform _levelCellRoot = null;
+    private VerticalLayoutGroup _layoutGroup;
     private List<GameObject> _itemList = new List<GameObject>();
+    public float _amplitude = 200f;
+    public float _frequency = 0.6f;
 
     public override bool Init()
     {
@@ -24,16 +28,16 @@ public class UI_LevelCellPanel : UI_Base
         BindObjects(typeof(GameObjects));
         _levelCellRoot = GetObject((int)GameObjects.LevelCellRoot).transform;
         
-        // ScrollRect 컴포넌트 찾기 (Level Panel 하위에 있다고 가정)
         _scrollRect = GetComponentInChildren<ScrollRect>();
-        
+        _layoutGroup = GetComponentInChildren<VerticalLayoutGroup>();
         return true;
     }
     
-    private void OnEnable()
+    public void SetInfo()
     {
         // 아이템이 세팅된 후 스크롤 위치 조정
-        //StartCoroutine(DelayedScrollToTarget());
+       // Debug.Log($"setInfo");
+        SetLevelCells();
     }
     
     private void SetLevelCells()
@@ -41,12 +45,20 @@ public class UI_LevelCellPanel : UI_Base
         AllPush();
         
         foreach (var item in Managers.Data.DifficultyDic.Values)
-        { 
+        {
+            //Debug.Log($"item : {item.Id}");
             SpawnItem(item.Level);
         }
-        
+
         // 아이템 생성 직후 스크롤 위치 조정
-        //ScrollToCurrentEvolutionLevel();
+        Observable.NextFrame()
+        .Subscribe(_ =>
+        {
+            Canvas.ForceUpdateCanvases();
+            _scrollRect.verticalNormalizedPosition = 0f;
+            ApplyWave();
+        })
+        .AddTo(this);
     }
 
     private void AllPush()
@@ -65,90 +77,28 @@ public class UI_LevelCellPanel : UI_Base
         item.SetInfo(level, score);
         _itemList.Add(item.gameObject);
     }
-    
-    // private void ScrollToCurrentEvolutionLevel()
-    // {
-    //     if (_scrollRect == null) 
-    //     {
-    //         return;
-    //     }
-    //     // 이전 스크롤 코루틴이 있다면 중지
-    //     if (_scrollCoroutine != null)
-    //     {
-    //         StopCoroutine(_scrollCoroutine);
-    //     }
-        
-    //     // 새로운 스크롤 코루틴 시작
-    //     _scrollCoroutine = StartCoroutine(ScrollToTargetCoroutine());
-    // }
-    
-    // private IEnumerator DelayedScrollToTarget()
-    // {
-    //     yield return null;
-    //     ScrollToCurrentEvolutionLevel();
-    // }
-    // private IEnumerator ScrollToTargetCoroutine()
-    // {
-    //     yield return null;
-        
-    //     // 현재 유저의 진화 레벨
-    //     int currentLevel = Managers.Game.UserInfo.EvolutionSetLevel;
-        
-    //     // 아이템이 역순으로 정렬되어 있으므로 인덱스 계산을 변경
-    //     // 총 아이템 개수 - 현재 레벨 - 1
-    //     int totalItems = _scrollRect.content.childCount;
-    //     int targetIndex = totalItems - currentLevel - 1;
-        
-    //     RectTransform content = _scrollRect.content;
-        
-    //     if (targetIndex >= 0 && targetIndex < content.childCount)
-    //     {
-    //         RectTransform targetItem = content.GetChild(targetIndex).GetComponent<RectTransform>();
 
-    //         float targetPosition = CalculateTargetPosition(targetItem, content);
-            
-    //         float startPosition = _scrollRect.verticalNormalizedPosition;
-            
-    //         float elapsedTime = 0f;
-    //         float duration = 0.3f;
-            
-    //         while (elapsedTime < duration)
-    //         {
-    //             elapsedTime += Time.deltaTime;
-    //             float t = elapsedTime / duration;
-                
-    //             float smoothT = t * t * (3f - 2f * t);
-                
-    //             float newPosition = Mathf.Lerp(startPosition, targetPosition, smoothT);
-    //             _scrollRect.verticalNormalizedPosition = newPosition;
-                
-    //             yield return null;
-    //         }
-    //         _scrollRect.verticalNormalizedPosition = targetPosition;
-    //     }
-    // }
-    
-    // private float CalculateTargetPosition(RectTransform targetItem, RectTransform content)
-    // {
-    //     float contentHeight = content.rect.height;
-        
-    //     float viewportHeight = _scrollRect.viewport.rect.height;
-        
-    //     float scrollableHeight = contentHeight - viewportHeight;
-        
-    //     if (scrollableHeight <= 0) 
-    //     {
-    //         return 0f;
-    //     }
-        
-    //     float targetPositionFromTop = -targetItem.anchoredPosition.y;
-        
-    //     float targetCenter = targetPositionFromTop - (viewportHeight / 2) + (targetItem.rect.height / 2);
-        
-    //     float normalizedPosition = 1 - (targetCenter / scrollableHeight);
-        
-    //     normalizedPosition = Mathf.Clamp01(normalizedPosition);
-        
-    //     return normalizedPosition;
-    // }
+    private void ApplyWave()
+    {
+        int index = 0;
+        foreach (Transform t in _levelCellRoot)
+        {
+            if (!t.gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            UI_LevelCell cell = t.GetComponent<UI_LevelCell>();
+            if (cell == null)
+            {
+                continue;
+            }
+
+            float x = Mathf.Sin(index * _frequency) * _amplitude;
+            cell.SetOffsetX(x);
+            index++;
+        }
+    }
+
+
 }
