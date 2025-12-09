@@ -69,8 +69,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b27a0ea644321e4f8b3f06043b9671d
+    m_Address: UI_ResultPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 62649d33c4afe4ea693d60a1c6ba2d7f
     m_Address: Eye
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67724f4a5dc931c43ba3ec596391138e
+    m_Address: UI_TryAgainPopup
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

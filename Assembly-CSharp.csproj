@@ -72,6 +72,7 @@
     <Compile Include="Assets\@Game\Domain\WorldObjects\Eye\Eye.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Car\CarController+Event.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Camera\XXX_VehicleCamera.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\ResultScreen\UI_TryAgainPopup.cs" />
     <Compile Include="Assets\@Framework\UI\UI_Base.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\MapData.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\ObstacleData.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\Input_InGameScene.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Camera\CameraSideAnchorController.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\SoundManager.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\ResultScreen\UI_ResultPopup.cs" />
     <Compile Include="Assets\@Framework\UI\UI_EventHandler.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\InGameScene.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\BootstrapScene\BootstrapScene.cs" />

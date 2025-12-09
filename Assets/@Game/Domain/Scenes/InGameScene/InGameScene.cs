@@ -50,8 +50,11 @@ public class InGameScene : BaseScene
         Contexts.InGame.OnEndGame
         .Subscribe(_=>
         {
+            Contexts.GameProfile.CurrentLevel++;
             SecurePlayerPrefs.SetInt("Level", Contexts.GameProfile.CurrentLevel);
             SecurePlayerPrefs.Save();
+            Contexts.InGame.IsGameOver = true;
+            Managers.UI.ShowPopupUI<UI_ResultPopup>();
         }).AddTo(_disposables);
 
 
@@ -144,8 +147,7 @@ public class InGameScene : BaseScene
         if (80f <= _elapsedRunTime)
         {
             Debug.Log("Contexts.InGame.IsGameOver = true;");
-            //Contexts.InGame.OnEndGame.OnNext(Unit.Default);
-            //Contexts.InGame.IsGameOver = true;
+            Contexts.InGame.OnEndGame.OnNext(Unit.Default);
             //ShowGameOverUI();
         }
     }

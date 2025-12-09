@@ -59,4 +59,6 @@ public partial class InGameContext
     public int IsCollisionObstacle { get; set; } 
     public float PanicPoint { get; set; }
 
+    public int GameScore { get; set; }
+
 }

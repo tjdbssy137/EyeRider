@@ -87,12 +87,20 @@ public partial class CarController : BaseObject
         Contexts.InGame.Car.OnConditionChanged
         .Subscribe(newCondition =>
         {
+            if (newCondition.Item2 <= 0)
+            {
+                Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
+            }
             _conditionPanic = Mathf.Clamp01(1 - newCondition.Item2/100);
         }).AddTo(this);
 
         Contexts.InGame.Car.OnFuelChanged
         .Subscribe(newFuel =>
         {
+            if(newFuel.Item2 <= 0)
+            {
+                Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
+            }
             _fuelPanic = Mathf.Clamp01(1 - newFuel.Item2/100);
         }).AddTo(this);
     }
