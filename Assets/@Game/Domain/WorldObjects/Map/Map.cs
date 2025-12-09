@@ -8,6 +8,7 @@ public class Map : BaseObject
 {
     public BoxCollider _collider;
     private MapData _data;
+    private Car _car;
 
     // ★ 추가 — 이 맵이 가진 방향값 (0=+Z,1=+X,2=-Z,3=-X)
     public int DirectionIndex { get; private set; }
@@ -34,22 +35,26 @@ public class Map : BaseObject
             return false;
         }
 
-        _collider.OnCollisionExitAsObservable()
-            .Where(collision => collision.gameObject.CompareTag("Player"))
-            .Subscribe(_ =>
-            {
-                //Debug.Log($"OnCollisionExitAsObservable map={this.name}, pos={transform.position}");
-                
-                Managers.Resource.Destroy(this.gameObject);
-                Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-            })
-            .AddTo(_disposables);
+        //_collider.OnCollisionExitAsObservable()
+        //    .Where(collision => collision.gameObject.CompareTag("Player"))
+        //    .Subscribe(_ =>
+        //    {                
+        //        Managers.Resource.Destroy(this.gameObject);
+        //        Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+        //    })
+        //    .AddTo(_disposables);
+
+        this.UpdateAsObservable()
+            .Where(_ => this.gameObject.activeSelf)
+           .Subscribe(_ => CheckDistance())
+           .AddTo(_disposables);
 
         _collider.OnCollisionEnterAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>
             {
                 //Debug.Log($"OnCollisionEnterAsObservable map={this.name}, pos={transform.position}");
+                _car = Contexts.InGame.Car;
 
                 Contexts.InGame.CurrentMapXZ.OnNext(this.transform.position);
 
@@ -94,6 +99,26 @@ public class Map : BaseObject
             case 1: return Vector3.right; // +X
             case 2: return Vector3.back; // -Z
             default: return Vector3.left; // -X
+        }
+    }
+
+    private void CheckDistance()
+    {
+        if (_car == null)
+        {
+            return;
+        }
+
+        Vector3 toRoad = transform.position - _car.transform.position;
+
+        bool isBehind = Vector3.Dot(_car.transform.forward, toRoad) < 0;
+
+        float dist = toRoad.magnitude;
+
+        if (isBehind && 100f <= dist)
+        {
+            Managers.Resource.Destroy(this.gameObject);
+            Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
         }
     }
 }
