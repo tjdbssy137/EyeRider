@@ -34,6 +34,12 @@ public class PointMover : UI_Base
     private Vector2 _inputOffset;
     private Vector2 _targetOffset;
 
+    [Header("난류")]
+    public float _driftStrength = 60f; // 강도
+    public float _driftFrequencyX = 0.3f; // 좌우 주기
+    public float _driftFrequencyY = 0.2f; // 상하 주기
+
+
     private float CurrentRandomSpeed => _randomMoveSpeed * Managers.Difficulty.PM_RandomMul * (1f + Managers.Difficulty.StormSpeed * 0.2f);
 
     private float CurrentApproachSpeed => _approachSpeed * Managers.Difficulty.PM_ApproachMul;
@@ -85,10 +91,14 @@ public class PointMover : UI_Base
         .Subscribe(_ =>
         {
             if (_camera == null)
+            {
                 _camera = Object.FindFirstObjectByType<Camera>();
+            }
 
             if (_car == null)
+            {
                 _car = Contexts.InGame.Car.GetComponent<Transform>();
+            }
 
             Vector3 carScreen = _camera.WorldToScreenPoint(_car.position);
 
@@ -129,6 +139,7 @@ public class PointMover : UI_Base
         float dt = Time.deltaTime;
 
         UpdateRandomPosition(dt);
+        ApplyEnvironmentalDrift(dt);
 
         Vector2 inputDir = ReadInputDirection();
 
@@ -153,6 +164,16 @@ public class PointMover : UI_Base
             _randomTarget,
             CurrentRandomSpeed * dt
         );
+    }
+    private void ApplyEnvironmentalDrift(float dt)
+    {
+        // 자동차 속도와 무관. 시간 기반 난류
+        float driftX = Mathf.Sin(Time.time * _driftFrequencyX) * _driftStrength;
+        float driftY = Mathf.Cos(Time.time * _driftFrequencyY) * _driftStrength;
+
+        Vector2 drift = new Vector2(driftX, driftY);
+
+        _randomPos += drift * dt;
     }
 
     private bool _wasInside = false;

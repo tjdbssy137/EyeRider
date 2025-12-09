@@ -54,7 +54,7 @@ public partial class InGameContext
     public BehaviorSubject<Vector3> WorldForwardDir = new BehaviorSubject<Vector3>(Vector3.forward);
     public BehaviorSubject<Vector3> WorldRightDir = new BehaviorSubject<Vector3>(Vector3.right);
 
-    public  Subject<Unit> OnCollisionObstacle { get; private set; } = new Subject<Unit>();
+    public  Subject<float> OnCollisionObstacle { get; private set; } = new Subject<float>();
 
     public int IsCollisionObstacle { get; set; } 
     public float PanicPoint { get; set; }

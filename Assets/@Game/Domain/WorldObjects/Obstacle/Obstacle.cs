@@ -50,10 +50,9 @@ public class Obstacle : BaseObject
             {
                 //Debug.Log($"collision : {other.name}");
                 Managers.Object.Spawn<ParticleObject>($"{_particle.name}", this.transform.position , 0, 0);
-                Contexts.InGame.OnCollisionObstacle.OnNext(Unit.Default);
                 //// 차의 속도를 80% 깎기
-                //bomb! particle
-                //Managers.Resource.Destroy(gameObject);
+                Contexts.InGame.OnCollisionObstacle.OnNext(_data.CrashDamage);
+                Managers.Resource.Destroy(gameObject);
             })
             .AddTo(_disposables);
 

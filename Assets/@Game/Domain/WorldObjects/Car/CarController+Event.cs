@@ -68,11 +68,11 @@ public partial class CarController : BaseObject
             .AddTo(_disposables);
 
         Contexts.InGame.OnCollisionObstacle
-        .Subscribe(_ =>
+        .Subscribe(damage =>
         {
             Contexts.InGame.IsCollisionObstacle++;
             _eventPanic += 0.2f; // 임시값
-
+            Contexts.InGame.Car.DamageCondition(damage);
             Observable.Timer(TimeSpan.FromSeconds(1.2f))
                 .Subscribe(_ =>
                 {

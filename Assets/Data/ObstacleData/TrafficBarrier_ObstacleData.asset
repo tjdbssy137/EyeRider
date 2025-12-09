@@ -15,5 +15,6 @@ MonoBehaviour:
   DataTemplateId: 0
   ObstaclePrefab: {fileID: 5110123005330564873, guid: 9254c724e110f4516b794f952de7c8fe, type: 3}
   Type: 1
+  CrashDamage: 0
   Items: []
   ItemWeights: []
