@@ -54,6 +54,7 @@
     <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\UI\UI_LevelCell.cs" />
     <Compile Include="Assets\@Framework\Utils\PriorityQueue.cs" />
     <Compile Include="Assets\PROMETEO - Car Controller\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_FilledObject.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\ItemData.cs" />
     <Compile Include="Assets\@Framework\Controllers\EventHandler\GO_EventHandler.cs" />
     <Compile Include="Assets\@Framework\Utils\Define.Core.cs" />
@@ -95,10 +96,12 @@
     <Compile Include="Assets\@Game\Domain\WorldObjects\Map\MapSpawner.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\EventManager.cs" />
     <Compile Include="Assets\@Game\Contexts\GameProfileContext.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_Topbar.cs" />
     <Compile Include="Assets\Layer Lab\GUI Pro-CasualGame\Extensions\UIParticle\UIParticleSystem.cs" />
     <Compile Include="Assets\@Framework\Managers\Contents\DataManager.cs" />
     <Compile Include="Assets\@Framework\Controllers\BaseObject.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\Input_InGameScene.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_FilledPanel.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Camera\CameraSideAnchorController.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\SoundManager.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\ResultScreen\UI_ResultPopup.cs" />

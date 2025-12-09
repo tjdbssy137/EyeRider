@@ -64,7 +64,7 @@ public class Car : BaseObject
                 ConsumeFuel()
             ).AddTo(_disposables); 
 
-        this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
+        //this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
         return true;
     }
     public override void SetInfo(int dataTemplate)

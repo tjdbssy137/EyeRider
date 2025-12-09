@@ -147,6 +147,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc2d50b28574168449d604d90da36785
+    m_Address: UI_Topbar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d06429c4c533d46f7af84bec0b7812ce
     m_Address: RoadProbs_2
     m_ReadOnly: 0

@@ -15,7 +15,9 @@ public class UI_InGameScene : UI_Scene
     public void SetInfo()
     {
         Managers.UI.ShowBaseUI<UI_Portrait>();
+        Managers.UI.ShowBaseUI<UI_Topbar>();
         Managers.UI.ShowBaseUI<UI_Eye>();
+
     }
 
 

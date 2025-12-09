@@ -71,8 +71,6 @@ public class InGameScene : BaseScene
      public void SettingSceneObject()
     {
         Contexts.InGame.MaxLevel = Managers.Data.DifficultyDic.Count;
-        UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
-        ui_InGameScene.SetInfo();
         
         GameObject mapSpawner = new GameObject("@MapSpawner");
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
@@ -105,8 +103,9 @@ public class InGameScene : BaseScene
         // GameStart Time Check
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
 
-        // Game Difficulty
-
+        // Game UI
+        UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
+        ui_InGameScene.SetInfo();
     }
 
     void LoadResources()
