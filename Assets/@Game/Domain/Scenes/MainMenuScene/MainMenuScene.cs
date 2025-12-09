@@ -14,6 +14,15 @@ public class MainMenuScene : BaseScene
     public async void OnResourceLoaded()
     {
         Managers.Data.LoadAll();
+        Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
+        if(Contexts.GameProfile.CurrentLevel <= 1)
+        {
+            Contexts.GameProfile.NextLevel = Contexts.GameProfile.CurrentLevel;
+        }
+        else
+        {
+            Contexts.GameProfile.NextLevel = Contexts.GameProfile.CurrentLevel + 1;
+        }
         Managers.UI.ShowSceneUI<UI_MainMenuScene>();
     }
 

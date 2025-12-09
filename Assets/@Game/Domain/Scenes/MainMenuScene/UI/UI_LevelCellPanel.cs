@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -16,8 +17,8 @@ public class UI_LevelCellPanel : UI_Base
     private Transform _levelCellRoot = null;
     private VerticalLayoutGroup _layoutGroup;
     private List<GameObject> _itemList = new List<GameObject>();
-    public float _amplitude = 200f;
-    public float _frequency = 0.6f;
+    private float _amplitude = 200f;
+    private float _frequency = 0.6f;
 
     public override bool Init()
     {
@@ -55,7 +56,8 @@ public class UI_LevelCellPanel : UI_Base
         .Subscribe(_ =>
         {
             Canvas.ForceUpdateCanvases();
-            _scrollRect.verticalNormalizedPosition = 0f;
+            ScrollToTargetCoroutine();
+            //_scrollRect.verticalNormalizedPosition = 0f;
             ApplyWave();
         })
         .AddTo(this);
@@ -100,5 +102,57 @@ public class UI_LevelCellPanel : UI_Base
         }
     }
 
+     private void ScrollToTargetCoroutine()
+    {
+        // 현재 유저 도전 단계
+        //Debug.Log($"Contexts.GameProfile.NextLevel : {Contexts.GameProfile.NextLevel}");
+        int targetIndex = Contexts.GameProfile.NextLevel;
 
+        RectTransform content = _scrollRect.content;
+        
+        if (0 <= targetIndex && targetIndex < content.childCount)
+        {
+            RectTransform targetItem = content.GetChild(targetIndex).GetComponent<RectTransform>();
+
+            float targetPosition = CalculateTargetPosition(targetItem, content);
+            float startPosition = _scrollRect.verticalNormalizedPosition;
+            float duration = 0.3f;
+            float startTime = Time.time;
+
+            Observable.EveryUpdate()
+                .TakeWhile(_ => Time.time - startTime < duration)
+                .Subscribe(_ =>
+                {
+                    float t = (Time.time - startTime) / duration;
+                    float smooth = t * t * (3 - 2 * t);
+                    _scrollRect.verticalNormalizedPosition = Mathf.Lerp(startPosition, targetPosition, smooth);
+                },
+                () => _scrollRect.verticalNormalizedPosition = targetPosition)
+                .AddTo(this);
+        }
+    }
+    
+    private float CalculateTargetPosition(RectTransform targetItem, RectTransform content)
+    {
+        float contentHeight = content.rect.height;
+        
+        float viewportHeight = _scrollRect.viewport.rect.height;
+        
+        float scrollableHeight = contentHeight - viewportHeight;
+        
+        if (scrollableHeight <= 0) 
+        {
+            return 0f;
+        }
+        
+        float targetPositionFromTop = -targetItem.anchoredPosition.y;
+        
+        float targetCenter = targetPositionFromTop - (viewportHeight / 2) + (targetItem.rect.height / 2);
+        
+        float normalizedPosition = 1 - (targetCenter / scrollableHeight);
+        
+        normalizedPosition = Mathf.Clamp01(normalizedPosition);
+        
+        return normalizedPosition;
+    }
 }

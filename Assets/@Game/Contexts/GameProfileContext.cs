@@ -4,7 +4,7 @@ using UniRx;
 public partial class GameProfileContext
 {
     public int CurrentLevel  { get; set; }
-
+    public int NextLevel { get; set; }
     public int CarId  { get; set; }
 
 }
