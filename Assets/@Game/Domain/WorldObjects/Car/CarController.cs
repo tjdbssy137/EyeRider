@@ -127,6 +127,7 @@ public partial class CarController : BaseObject
                 
                 PanicPointCaculator();
                 UpdateRotation();
+                SnapRotation(Time.fixedDeltaTime);
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
@@ -280,4 +281,36 @@ public partial class CarController : BaseObject
             WheelEffect(false);
         }
     }
+
+    private void SnapRotation(float dt)
+    {
+        if (_isRotating)
+        {
+            return; // 코너 회전 중이면 스냅 금지
+        }
+        // 수평 입력이 없을 때만 스냅
+        bool noInput = !Contexts.InGame.AKey && !Contexts.InGame.DKey;
+
+        if (!noInput)
+        {
+            return;
+        }
+
+        float y = _rigidbody.rotation.eulerAngles.y;
+        float targetY = Mathf.Round(y / 90f) * 90f;
+
+        float diff = Mathf.DeltaAngle(y, targetY);
+
+        if (Mathf.Abs(diff) < 0.5f)
+        {
+            return;
+        }
+
+        float snapSpeed = 5f;
+        float newY = Mathf.MoveTowardsAngle(y, targetY, snapSpeed * dt);
+
+        Quaternion q = Quaternion.Euler(0f, newY, 0f);
+        _rigidbody.MoveRotation(q);
+    }
+
 }
