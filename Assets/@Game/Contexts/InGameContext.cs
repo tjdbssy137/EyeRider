@@ -61,4 +61,6 @@ public partial class InGameContext
 
     public int GameScore { get; set; }
 
+    public float Metre { get; set; }
+
 }

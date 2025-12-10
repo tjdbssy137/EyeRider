@@ -63,43 +63,4 @@ namespace Data
             return dict;
         }
     }
-
-
-    [Serializable]
-    public class DifficultyData  : IData
-    {
-        public int Id;
-
-        int IData.Id
-        {
-            get => Id;
-        }
-
-        public int Level;
-
-        public float DamagePerSec;
-        public float StormSpeed;
-        public float EyeSize;
-        public float ObstacleDensity;
-
-        public float RandomMoveMul;
-        public float PullMul;
-        public float ApproachMul;
-        public float RepelMul;
-    }
-
-    [Serializable]
-    public class DifficultyDataLoader : ILoader<int, DifficultyData>
-    {
-        public List<DifficultyData> datas = new List<DifficultyData>();
-
-        public Dictionary<int, DifficultyData> MakeDict()
-        {
-            Dictionary<int, DifficultyData> dict = new Dictionary<int, DifficultyData>();
-            foreach (DifficultyData data in datas)
-                dict.Add(data.Id, data);
-
-            return dict;
-        }
-    }
 }

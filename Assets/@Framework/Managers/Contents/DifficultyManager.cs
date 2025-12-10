@@ -42,7 +42,7 @@ public class DifficultyManager
         OnTimeDifficultyUp.OnNext(Unit.Default);
     }
 
-    public void TimeToLevelup(float time)
+    public void TimeToLevelup(float time) // 여기 수정해야함
     {
         _elapsed = time;
         if(20 < _elapsed)

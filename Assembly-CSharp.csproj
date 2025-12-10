@@ -130,6 +130,7 @@
     <Compile Include="Assets\PROMETEO - Car Controller\Scripts\PrometeoCarController.cs" />
     <Compile Include="Assets\@Framework\UI\Scene\UI_Scene.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\LocalizationManager.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\UI_MetrePopup\UI_MetrePopup.cs" />
     <Compile Include="Assets\@Framework\Utils\SecureKeyProvider.cs" />
     <Compile Include="Assets\@Framework\Input\IInputSystem.cs" />
     <Compile Include="Assets\@Framework\UI\Popup\UI_ToastPopup.cs" />
@@ -1466,6 +1467,7 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj" />
     <ProjectReference Include="UniRx.csproj" />
+    <ProjectReference Include="DamageNumbersPro.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

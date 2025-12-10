@@ -10,7 +10,8 @@
       "RandomMoveMul": 1.0,
       "PullMul": 0.5,
       "ApproachMul": 1.0,
-      "RepelMul": 1.0
+      "RepelMul": 1.0,
+      "DistanceM": 800.0
     },
     {
       "Id": 10002,
@@ -22,7 +23,8 @@
       "RandomMoveMul": 1.007,
       "PullMul": 0.505,
       "ApproachMul": 1.007,
-      "RepelMul": 1.007
+      "RepelMul": 1.007,
+      "DistanceM": 800.0
     },
     {
       "Id": 10003,
@@ -34,7 +36,8 @@
       "RandomMoveMul": 1.013,
       "PullMul": 0.509,
       "ApproachMul": 1.013,
-      "RepelMul": 1.013
+      "RepelMul": 1.013,
+      "DistanceM": 800.0
     },
     {
       "Id": 10004,
@@ -46,7 +49,8 @@
       "RandomMoveMul": 1.02,
       "PullMul": 0.514,
       "ApproachMul": 1.02,
-      "RepelMul": 1.02
+      "RepelMul": 1.02,
+      "DistanceM": 800.0
     },
     {
       "Id": 10005,
@@ -58,7 +62,8 @@
       "RandomMoveMul": 1.027,
       "PullMul": 0.519,
       "ApproachMul": 1.027,
-      "RepelMul": 1.027
+      "RepelMul": 1.027,
+      "DistanceM": 800.0
     },
     {
       "Id": 10006,
@@ -70,7 +75,8 @@
       "RandomMoveMul": 1.034,
       "PullMul": 0.524,
       "ApproachMul": 1.034,
-      "RepelMul": 1.034
+      "RepelMul": 1.034,
+      "DistanceM": 800.0
     },
     {
       "Id": 10007,
@@ -82,7 +88,8 @@
       "RandomMoveMul": 1.04,
       "PullMul": 0.528,
       "ApproachMul": 1.04,
-      "RepelMul": 1.04
+      "RepelMul": 1.04,
+      "DistanceM": 800.0
     },
     {
       "Id": 10008,
@@ -94,7 +101,8 @@
       "RandomMoveMul": 1.047,
       "PullMul": 0.533,
       "ApproachMul": 1.047,
-      "RepelMul": 1.047
+      "RepelMul": 1.047,
+      "DistanceM": 800.0
     },
     {
       "Id": 10009,
@@ -106,7 +114,8 @@
       "RandomMoveMul": 1.054,
       "PullMul": 0.538,
       "ApproachMul": 1.054,
-      "RepelMul": 1.054
+      "RepelMul": 1.054,
+      "DistanceM": 800.0
     },
     {
       "Id": 10010,
@@ -118,7 +127,8 @@
       "RandomMoveMul": 1.06,
       "PullMul": 0.542,
       "ApproachMul": 1.06,
-      "RepelMul": 1.06
+      "RepelMul": 1.06,
+      "DistanceM": 800.0
     },
     {
       "Id": 10011,
@@ -130,7 +140,8 @@
       "RandomMoveMul": 1.067,
       "PullMul": 0.547,
       "ApproachMul": 1.067,
-      "RepelMul": 1.067
+      "RepelMul": 1.067,
+      "DistanceM": 800.0
     },
     {
       "Id": 10012,
@@ -142,7 +153,8 @@
       "RandomMoveMul": 1.074,
       "PullMul": 0.552,
       "ApproachMul": 1.074,
-      "RepelMul": 1.074
+      "RepelMul": 1.074,
+      "DistanceM": 800.0
     },
     {
       "Id": 10013,
@@ -154,7 +166,8 @@
       "RandomMoveMul": 1.081,
       "PullMul": 0.557,
       "ApproachMul": 1.081,
-      "RepelMul": 1.081
+      "RepelMul": 1.081,
+      "DistanceM": 800.0
     },
     {
       "Id": 10014,
@@ -166,7 +179,8 @@
       "RandomMoveMul": 1.088,
       "PullMul": 0.562,
       "ApproachMul": 1.088,
-      "RepelMul": 1.088
+      "RepelMul": 1.088,
+      "DistanceM": 800.0
     },
     {
       "Id": 10015,
@@ -178,7 +192,8 @@
       "RandomMoveMul": 1.094,
       "PullMul": 0.566,
       "ApproachMul": 1.094,
-      "RepelMul": 1.094
+      "RepelMul": 1.094,
+      "DistanceM": 800.0
     },
     {
       "Id": 10016,
@@ -190,7 +205,8 @@
       "RandomMoveMul": 1.101,
       "PullMul": 0.571,
       "ApproachMul": 1.101,
-      "RepelMul": 1.101
+      "RepelMul": 1.101,
+      "DistanceM": 800.0
     },
     {
       "Id": 10017,
@@ -202,7 +218,8 @@
       "RandomMoveMul": 1.108,
       "PullMul": 0.576,
       "ApproachMul": 1.108,
-      "RepelMul": 1.108
+      "RepelMul": 1.108,
+      "DistanceM": 800.0
     },
     {
       "Id": 10018,
@@ -214,7 +231,8 @@
       "RandomMoveMul": 1.114,
       "PullMul": 0.58,
       "ApproachMul": 1.114,
-      "RepelMul": 1.114
+      "RepelMul": 1.114,
+      "DistanceM": 800.0
     },
     {
       "Id": 10019,
@@ -226,7 +244,8 @@
       "RandomMoveMul": 1.121,
       "PullMul": 0.585,
       "ApproachMul": 1.121,
-      "RepelMul": 1.121
+      "RepelMul": 1.121,
+      "DistanceM": 800.0
     },
     {
       "Id": 10020,
@@ -238,7 +257,8 @@
       "RandomMoveMul": 1.128,
       "PullMul": 0.59,
       "ApproachMul": 1.128,
-      "RepelMul": 1.128
+      "RepelMul": 1.128,
+      "DistanceM": 800.0
     },
     {
       "Id": 10021,
@@ -250,7 +270,8 @@
       "RandomMoveMul": 1.134,
       "PullMul": 0.595,
       "ApproachMul": 1.134,
-      "RepelMul": 1.134
+      "RepelMul": 1.134,
+      "DistanceM": 800.0
     },
     {
       "Id": 10022,
@@ -262,7 +283,8 @@
       "RandomMoveMul": 1.141,
       "PullMul": 0.599,
       "ApproachMul": 1.141,
-      "RepelMul": 1.141
+      "RepelMul": 1.141,
+      "DistanceM": 800.0
     },
     {
       "Id": 10023,
@@ -274,7 +296,8 @@
       "RandomMoveMul": 1.148,
       "PullMul": 0.604,
       "ApproachMul": 1.148,
-      "RepelMul": 1.148
+      "RepelMul": 1.148,
+      "DistanceM": 800.0
     },
     {
       "Id": 10024,
@@ -286,7 +309,8 @@
       "RandomMoveMul": 1.154,
       "PullMul": 0.609,
       "ApproachMul": 1.154,
-      "RepelMul": 1.154
+      "RepelMul": 1.154,
+      "DistanceM": 800.0
     },
     {
       "Id": 10025,
@@ -298,7 +322,8 @@
       "RandomMoveMul": 1.161,
       "PullMul": 0.614,
       "ApproachMul": 1.161,
-      "RepelMul": 1.161
+      "RepelMul": 1.161,
+      "DistanceM": 800.0
     },
     {
       "Id": 10026,
@@ -310,7 +335,8 @@
       "RandomMoveMul": 1.168,
       "PullMul": 0.619,
       "ApproachMul": 1.168,
-      "RepelMul": 1.168
+      "RepelMul": 1.168,
+      "DistanceM": 800.0
     },
     {
       "Id": 10027,
@@ -322,7 +348,8 @@
       "RandomMoveMul": 1.174,
       "PullMul": 0.623,
       "ApproachMul": 1.174,
-      "RepelMul": 1.174
+      "RepelMul": 1.174,
+      "DistanceM": 800.0
     },
     {
       "Id": 10028,
@@ -334,7 +361,8 @@
       "RandomMoveMul": 1.181,
       "PullMul": 0.628,
       "ApproachMul": 1.181,
-      "RepelMul": 1.181
+      "RepelMul": 1.181,
+      "DistanceM": 800.0
     },
     {
       "Id": 10029,
@@ -346,7 +374,8 @@
       "RandomMoveMul": 1.188,
       "PullMul": 0.633,
       "ApproachMul": 1.188,
-      "RepelMul": 1.188
+      "RepelMul": 1.188,
+      "DistanceM": 800.0
     },
     {
       "Id": 10030,
@@ -358,7 +387,8 @@
       "RandomMoveMul": 1.195,
       "PullMul": 0.638,
       "ApproachMul": 1.195,
-      "RepelMul": 1.195
+      "RepelMul": 1.195,
+      "DistanceM": 800.0
     },
     {
       "Id": 10031,
@@ -370,7 +400,8 @@
       "RandomMoveMul": 1.201,
       "PullMul": 0.642,
       "ApproachMul": 1.201,
-      "RepelMul": 1.201
+      "RepelMul": 1.201,
+      "DistanceM": 800.0
     },
     {
       "Id": 10032,
@@ -382,7 +413,8 @@
       "RandomMoveMul": 1.208,
       "PullMul": 0.647,
       "ApproachMul": 1.208,
-      "RepelMul": 1.208
+      "RepelMul": 1.208,
+      "DistanceM": 800.0
     },
     {
       "Id": 10033,
@@ -394,7 +426,8 @@
       "RandomMoveMul": 1.215,
       "PullMul": 0.652,
       "ApproachMul": 1.215,
-      "RepelMul": 1.215
+      "RepelMul": 1.215,
+      "DistanceM": 800.0
     },
     {
       "Id": 10034,
@@ -406,7 +439,8 @@
       "RandomMoveMul": 1.221,
       "PullMul": 0.657,
       "ApproachMul": 1.221,
-      "RepelMul": 1.221
+      "RepelMul": 1.221,
+      "DistanceM": 800.0
     },
     {
       "Id": 10035,
@@ -418,7 +452,8 @@
       "RandomMoveMul": 1.228,
       "PullMul": 0.661,
       "ApproachMul": 1.228,
-      "RepelMul": 1.228
+      "RepelMul": 1.228,
+      "DistanceM": 800.0
     },
     {
       "Id": 10036,
@@ -430,7 +465,8 @@
       "RandomMoveMul": 1.235,
       "PullMul": 0.666,
       "ApproachMul": 1.235,
-      "RepelMul": 1.235
+      "RepelMul": 1.235,
+      "DistanceM": 800.0
     },
     {
       "Id": 10037,
@@ -442,7 +478,8 @@
       "RandomMoveMul": 1.242,
       "PullMul": 0.671,
       "ApproachMul": 1.242,
-      "RepelMul": 1.242
+      "RepelMul": 1.242,
+      "DistanceM": 800.0
     },
     {
       "Id": 10038,
@@ -454,7 +491,8 @@
       "RandomMoveMul": 1.249,
       "PullMul": 0.676,
       "ApproachMul": 1.249,
-      "RepelMul": 1.249
+      "RepelMul": 1.249,
+      "DistanceM": 800.0
     },
     {
       "Id": 10039,
@@ -466,7 +504,8 @@
       "RandomMoveMul": 1.255,
       "PullMul": 0.681,
       "ApproachMul": 1.255,
-      "RepelMul": 1.255
+      "RepelMul": 1.255,
+      "DistanceM": 800.0
     },
     {
       "Id": 10040,
@@ -478,7 +517,8 @@
       "RandomMoveMul": 1.262,
       "PullMul": 0.685,
       "ApproachMul": 1.262,
-      "RepelMul": 1.262
+      "RepelMul": 1.262,
+      "DistanceM": 800.0
     },
     {
       "Id": 10041,
@@ -490,7 +530,8 @@
       "RandomMoveMul": 1.269,
       "PullMul": 0.69,
       "ApproachMul": 1.269,
-      "RepelMul": 1.269
+      "RepelMul": 1.269,
+      "DistanceM": 800.0
     },
     {
       "Id": 10042,
@@ -502,7 +543,8 @@
       "RandomMoveMul": 1.275,
       "PullMul": 0.695,
       "ApproachMul": 1.275,
-      "RepelMul": 1.275
+      "RepelMul": 1.275,
+      "DistanceM": 800.0
     },
     {
       "Id": 10043,
@@ -514,7 +556,8 @@
       "RandomMoveMul": 1.282,
       "PullMul": 0.7,
       "ApproachMul": 1.282,
-      "RepelMul": 1.282
+      "RepelMul": 1.282,
+      "DistanceM": 800.0
     },
     {
       "Id": 10044,
@@ -526,7 +569,8 @@
       "RandomMoveMul": 1.289,
       "PullMul": 0.705,
       "ApproachMul": 1.289,
-      "RepelMul": 1.289
+      "RepelMul": 1.289,
+      "DistanceM": 800.0
     },
     {
       "Id": 10045,
@@ -538,7 +582,8 @@
       "RandomMoveMul": 1.296,
       "PullMul": 0.709,
       "ApproachMul": 1.296,
-      "RepelMul": 1.296
+      "RepelMul": 1.296,
+      "DistanceM": 800.0
     },
     {
       "Id": 10046,
@@ -550,7 +595,8 @@
       "RandomMoveMul": 1.302,
       "PullMul": 0.714,
       "ApproachMul": 1.302,
-      "RepelMul": 1.302
+      "RepelMul": 1.302,
+      "DistanceM": 800.0
     },
     {
       "Id": 10047,
@@ -562,7 +608,8 @@
       "RandomMoveMul": 1.309,
       "PullMul": 0.719,
       "ApproachMul": 1.309,
-      "RepelMul": 1.309
+      "RepelMul": 1.309,
+      "DistanceM": 800.0
     },
     {
       "Id": 10048,
@@ -574,7 +621,8 @@
       "RandomMoveMul": 1.316,
       "PullMul": 0.724,
       "ApproachMul": 1.316,
-      "RepelMul": 1.316
+      "RepelMul": 1.316,
+      "DistanceM": 800.0
     },
     {
       "Id": 10049,
@@ -586,7 +634,8 @@
       "RandomMoveMul": 1.322,
       "PullMul": 0.728,
       "ApproachMul": 1.322,
-      "RepelMul": 1.322
+      "RepelMul": 1.322,
+      "DistanceM": 800.0
     },
     {
       "Id": 10050,
@@ -598,7 +647,8 @@
       "RandomMoveMul": 1.329,
       "PullMul": 0.733,
       "ApproachMul": 1.329,
-      "RepelMul": 1.329
+      "RepelMul": 1.329,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10051,
@@ -610,7 +660,8 @@
       "RandomMoveMul": 1.336,
       "PullMul": 0.738,
       "ApproachMul": 1.336,
-      "RepelMul": 1.336
+      "RepelMul": 1.336,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10052,
@@ -622,7 +673,8 @@
       "RandomMoveMul": 1.342,
       "PullMul": 0.743,
       "ApproachMul": 1.342,
-      "RepelMul": 1.342
+      "RepelMul": 1.342,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10053,
@@ -634,7 +686,8 @@
       "RandomMoveMul": 1.349,
       "PullMul": 0.747,
       "ApproachMul": 1.349,
-      "RepelMul": 1.349
+      "RepelMul": 1.349,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10054,
@@ -646,7 +699,8 @@
       "RandomMoveMul": 1.356,
       "PullMul": 0.752,
       "ApproachMul": 1.356,
-      "RepelMul": 1.356
+      "RepelMul": 1.356,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10055,
@@ -658,7 +712,8 @@
       "RandomMoveMul": 1.362,
       "PullMul": 0.757,
       "ApproachMul": 1.362,
-      "RepelMul": 1.362
+      "RepelMul": 1.362,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10056,
@@ -670,7 +725,8 @@
       "RandomMoveMul": 1.369,
       "PullMul": 0.762,
       "ApproachMul": 1.369,
-      "RepelMul": 1.369
+      "RepelMul": 1.369,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10057,
@@ -682,7 +738,8 @@
       "RandomMoveMul": 1.376,
       "PullMul": 0.766,
       "ApproachMul": 1.376,
-      "RepelMul": 1.376
+      "RepelMul": 1.376,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10058,
@@ -694,7 +751,8 @@
       "RandomMoveMul": 1.383,
       "PullMul": 0.771,
       "ApproachMul": 1.383,
-      "RepelMul": 1.383
+      "RepelMul": 1.383,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10059,
@@ -706,7 +764,8 @@
       "RandomMoveMul": 1.389,
       "PullMul": 0.776,
       "ApproachMul": 1.389,
-      "RepelMul": 1.389
+      "RepelMul": 1.389,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10060,
@@ -718,7 +777,8 @@
       "RandomMoveMul": 1.396,
       "PullMul": 0.781,
       "ApproachMul": 1.396,
-      "RepelMul": 1.396
+      "RepelMul": 1.396,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10061,
@@ -730,7 +790,8 @@
       "RandomMoveMul": 1.403,
       "PullMul": 0.786,
       "ApproachMul": 1.403,
-      "RepelMul": 1.403
+      "RepelMul": 1.403,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10062,
@@ -742,7 +803,8 @@
       "RandomMoveMul": 1.409,
       "PullMul": 0.79,
       "ApproachMul": 1.409,
-      "RepelMul": 1.409
+      "RepelMul": 1.409,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10063,
@@ -754,7 +816,8 @@
       "RandomMoveMul": 1.416,
       "PullMul": 0.795,
       "ApproachMul": 1.416,
-      "RepelMul": 1.416
+      "RepelMul": 1.416,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10064,
@@ -766,7 +829,8 @@
       "RandomMoveMul": 1.423,
       "PullMul": 0.8,
       "ApproachMul": 1.423,
-      "RepelMul": 1.423
+      "RepelMul": 1.423,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10065,
@@ -778,7 +842,8 @@
       "RandomMoveMul": 1.43,
       "PullMul": 0.805,
       "ApproachMul": 1.43,
-      "RepelMul": 1.43
+      "RepelMul": 1.43,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10066,
@@ -790,7 +855,8 @@
       "RandomMoveMul": 1.436,
       "PullMul": 0.81,
       "ApproachMul": 1.436,
-      "RepelMul": 1.436
+      "RepelMul": 1.436,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10067,
@@ -802,7 +868,8 @@
       "RandomMoveMul": 1.443,
       "PullMul": 0.814,
       "ApproachMul": 1.443,
-      "RepelMul": 1.443
+      "RepelMul": 1.443,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10068,
@@ -814,7 +881,8 @@
       "RandomMoveMul": 1.45,
       "PullMul": 0.819,
       "ApproachMul": 1.45,
-      "RepelMul": 1.45
+      "RepelMul": 1.45,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10069,
@@ -826,7 +894,8 @@
       "RandomMoveMul": 1.456,
       "PullMul": 0.824,
       "ApproachMul": 1.456,
-      "RepelMul": 1.456
+      "RepelMul": 1.456,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10070,
@@ -838,7 +907,8 @@
       "RandomMoveMul": 1.463,
       "PullMul": 0.829,
       "ApproachMul": 1.463,
-      "RepelMul": 1.463
+      "RepelMul": 1.463,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10071,
@@ -850,7 +920,8 @@
       "RandomMoveMul": 1.47,
       "PullMul": 0.833,
       "ApproachMul": 1.47,
-      "RepelMul": 1.47
+      "RepelMul": 1.47,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10072,
@@ -862,7 +933,8 @@
       "RandomMoveMul": 1.477,
       "PullMul": 0.838,
       "ApproachMul": 1.477,
-      "RepelMul": 1.477
+      "RepelMul": 1.477,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10073,
@@ -874,7 +946,8 @@
       "RandomMoveMul": 1.483,
       "PullMul": 0.843,
       "ApproachMul": 1.483,
-      "RepelMul": 1.483
+      "RepelMul": 1.483,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10074,
@@ -886,7 +959,8 @@
       "RandomMoveMul": 1.49,
       "PullMul": 0.848,
       "ApproachMul": 1.49,
-      "RepelMul": 1.49
+      "RepelMul": 1.49,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10075,
@@ -898,7 +972,8 @@
       "RandomMoveMul": 1.497,
       "PullMul": 0.852,
       "ApproachMul": 1.497,
-      "RepelMul": 1.497
+      "RepelMul": 1.497,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10076,
@@ -910,7 +985,8 @@
       "RandomMoveMul": 1.503,
       "PullMul": 0.857,
       "ApproachMul": 1.503,
-      "RepelMul": 1.503
+      "RepelMul": 1.503,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10077,
@@ -922,7 +998,8 @@
       "RandomMoveMul": 1.51,
       "PullMul": 0.862,
       "ApproachMul": 1.51,
-      "RepelMul": 1.51
+      "RepelMul": 1.51,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10078,
@@ -934,7 +1011,8 @@
       "RandomMoveMul": 1.517,
       "PullMul": 0.867,
       "ApproachMul": 1.517,
-      "RepelMul": 1.517
+      "RepelMul": 1.517,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10079,
@@ -946,7 +1024,8 @@
       "RandomMoveMul": 1.523,
       "PullMul": 0.871,
       "ApproachMul": 1.523,
-      "RepelMul": 1.523
+      "RepelMul": 1.523,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10080,
@@ -958,7 +1037,8 @@
       "RandomMoveMul": 1.53,
       "PullMul": 0.876,
       "ApproachMul": 1.53,
-      "RepelMul": 1.53
+      "RepelMul": 1.53,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10081,
@@ -970,7 +1050,8 @@
       "RandomMoveMul": 1.537,
       "PullMul": 0.881,
       "ApproachMul": 1.537,
-      "RepelMul": 1.537
+      "RepelMul": 1.537,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10082,
@@ -982,7 +1063,8 @@
       "RandomMoveMul": 1.544,
       "PullMul": 0.886,
       "ApproachMul": 1.544,
-      "RepelMul": 1.544
+      "RepelMul": 1.544,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10083,
@@ -994,7 +1076,8 @@
       "RandomMoveMul": 1.55,
       "PullMul": 0.89,
       "ApproachMul": 1.55,
-      "RepelMul": 1.55
+      "RepelMul": 1.55,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10084,
@@ -1006,7 +1089,8 @@
       "RandomMoveMul": 1.557,
       "PullMul": 0.895,
       "ApproachMul": 1.557,
-      "RepelMul": 1.557
+      "RepelMul": 1.557,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10085,
@@ -1018,7 +1102,8 @@
       "RandomMoveMul": 1.564,
       "PullMul": 0.9,
       "ApproachMul": 1.564,
-      "RepelMul": 1.564
+      "RepelMul": 1.564,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10086,
@@ -1030,7 +1115,8 @@
       "RandomMoveMul": 1.57,
       "PullMul": 0.905,
       "ApproachMul": 1.57,
-      "RepelMul": 1.57
+      "RepelMul": 1.57,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10087,
@@ -1042,7 +1128,8 @@
       "RandomMoveMul": 1.577,
       "PullMul": 0.91,
       "ApproachMul": 1.577,
-      "RepelMul": 1.577
+      "RepelMul": 1.577,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10088,
@@ -1054,7 +1141,8 @@
       "RandomMoveMul": 1.584,
       "PullMul": 0.914,
       "ApproachMul": 1.584,
-      "RepelMul": 1.584
+      "RepelMul": 1.584,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10089,
@@ -1066,7 +1154,8 @@
       "RandomMoveMul": 1.591,
       "PullMul": 0.919,
       "ApproachMul": 1.591,
-      "RepelMul": 1.591
+      "RepelMul": 1.591,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10090,
@@ -1078,7 +1167,8 @@
       "RandomMoveMul": 1.597,
       "PullMul": 0.924,
       "ApproachMul": 1.597,
-      "RepelMul": 1.597
+      "RepelMul": 1.597,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10091,
@@ -1090,7 +1180,8 @@
       "RandomMoveMul": 1.604,
       "PullMul": 0.929,
       "ApproachMul": 1.604,
-      "RepelMul": 1.604
+      "RepelMul": 1.604,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10092,
@@ -1102,7 +1193,8 @@
       "RandomMoveMul": 1.611,
       "PullMul": 0.933,
       "ApproachMul": 1.611,
-      "RepelMul": 1.611
+      "RepelMul": 1.611,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10093,
@@ -1114,7 +1206,8 @@
       "RandomMoveMul": 1.617,
       "PullMul": 0.938,
       "ApproachMul": 1.617,
-      "RepelMul": 1.617
+      "RepelMul": 1.617,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10094,
@@ -1126,7 +1219,8 @@
       "RandomMoveMul": 1.624,
       "PullMul": 0.943,
       "ApproachMul": 1.624,
-      "RepelMul": 1.624
+      "RepelMul": 1.624,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10095,
@@ -1138,7 +1232,8 @@
       "RandomMoveMul": 1.631,
       "PullMul": 0.948,
       "ApproachMul": 1.631,
-      "RepelMul": 1.631
+      "RepelMul": 1.631,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10096,
@@ -1150,7 +1245,8 @@
       "RandomMoveMul": 1.638,
       "PullMul": 0.952,
       "ApproachMul": 1.638,
-      "RepelMul": 1.638
+      "RepelMul": 1.638,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10097,
@@ -1162,7 +1258,8 @@
       "RandomMoveMul": 1.644,
       "PullMul": 0.957,
       "ApproachMul": 1.644,
-      "RepelMul": 1.644
+      "RepelMul": 1.644,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10098,
@@ -1174,7 +1271,8 @@
       "RandomMoveMul": 1.651,
       "PullMul": 0.962,
       "ApproachMul": 1.651,
-      "RepelMul": 1.651
+      "RepelMul": 1.651,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10099,
@@ -1186,7 +1284,8 @@
       "RandomMoveMul": 1.658,
       "PullMul": 0.967,
       "ApproachMul": 1.658,
-      "RepelMul": 1.658
+      "RepelMul": 1.658,
+      "DistanceM": 1000.0
     },
     {
       "Id": 10100,
@@ -1198,7 +1297,8 @@
       "RandomMoveMul": 1.664,
       "PullMul": 0.971,
       "ApproachMul": 1.664,
-      "RepelMul": 1.664
+      "RepelMul": 1.664,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10101,
@@ -1210,7 +1310,8 @@
       "RandomMoveMul": 1.671,
       "PullMul": 0.976,
       "ApproachMul": 1.671,
-      "RepelMul": 1.671
+      "RepelMul": 1.671,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10102,
@@ -1222,7 +1323,8 @@
       "RandomMoveMul": 1.678,
       "PullMul": 0.981,
       "ApproachMul": 1.678,
-      "RepelMul": 1.678
+      "RepelMul": 1.678,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10103,
@@ -1234,7 +1336,8 @@
       "RandomMoveMul": 1.685,
       "PullMul": 0.986,
       "ApproachMul": 1.685,
-      "RepelMul": 1.685
+      "RepelMul": 1.685,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10104,
@@ -1246,7 +1349,8 @@
       "RandomMoveMul": 1.691,
       "PullMul": 0.99,
       "ApproachMul": 1.691,
-      "RepelMul": 1.691
+      "RepelMul": 1.691,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10105,
@@ -1258,7 +1362,8 @@
       "RandomMoveMul": 1.698,
       "PullMul": 0.995,
       "ApproachMul": 1.698,
-      "RepelMul": 1.698
+      "RepelMul": 1.698,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10106,
@@ -1270,7 +1375,8 @@
       "RandomMoveMul": 1.705,
       "PullMul": 1.0,
       "ApproachMul": 1.705,
-      "RepelMul": 1.705
+      "RepelMul": 1.705,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10107,
@@ -1282,7 +1388,8 @@
       "RandomMoveMul": 1.711,
       "PullMul": 1.005,
       "ApproachMul": 1.711,
-      "RepelMul": 1.711
+      "RepelMul": 1.711,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10108,
@@ -1294,7 +1401,8 @@
       "RandomMoveMul": 1.718,
       "PullMul": 1.01,
       "ApproachMul": 1.718,
-      "RepelMul": 1.718
+      "RepelMul": 1.718,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10109,
@@ -1306,7 +1414,8 @@
       "RandomMoveMul": 1.725,
       "PullMul": 1.014,
       "ApproachMul": 1.725,
-      "RepelMul": 1.725
+      "RepelMul": 1.725,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10110,
@@ -1318,7 +1427,8 @@
       "RandomMoveMul": 1.732,
       "PullMul": 1.019,
       "ApproachMul": 1.732,
-      "RepelMul": 1.732
+      "RepelMul": 1.732,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10111,
@@ -1330,7 +1440,8 @@
       "RandomMoveMul": 1.738,
       "PullMul": 1.024,
       "ApproachMul": 1.738,
-      "RepelMul": 1.738
+      "RepelMul": 1.738,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10112,
@@ -1342,7 +1453,8 @@
       "RandomMoveMul": 1.745,
       "PullMul": 1.029,
       "ApproachMul": 1.745,
-      "RepelMul": 1.745
+      "RepelMul": 1.745,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10113,
@@ -1354,7 +1466,8 @@
       "RandomMoveMul": 1.752,
       "PullMul": 1.033,
       "ApproachMul": 1.752,
-      "RepelMul": 1.752
+      "RepelMul": 1.752,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10114,
@@ -1366,7 +1479,8 @@
       "RandomMoveMul": 1.758,
       "PullMul": 1.038,
       "ApproachMul": 1.758,
-      "RepelMul": 1.758
+      "RepelMul": 1.758,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10115,
@@ -1378,7 +1492,8 @@
       "RandomMoveMul": 1.765,
       "PullMul": 1.043,
       "ApproachMul": 1.765,
-      "RepelMul": 1.765
+      "RepelMul": 1.765,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10116,
@@ -1390,7 +1505,8 @@
       "RandomMoveMul": 1.772,
       "PullMul": 1.048,
       "ApproachMul": 1.772,
-      "RepelMul": 1.772
+      "RepelMul": 1.772,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10117,
@@ -1402,7 +1518,8 @@
       "RandomMoveMul": 1.779,
       "PullMul": 1.052,
       "ApproachMul": 1.779,
-      "RepelMul": 1.779
+      "RepelMul": 1.779,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10118,
@@ -1414,7 +1531,8 @@
       "RandomMoveMul": 1.785,
       "PullMul": 1.057,
       "ApproachMul": 1.785,
-      "RepelMul": 1.785
+      "RepelMul": 1.785,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10119,
@@ -1426,7 +1544,8 @@
       "RandomMoveMul": 1.792,
       "PullMul": 1.062,
       "ApproachMul": 1.792,
-      "RepelMul": 1.792
+      "RepelMul": 1.792,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10120,
@@ -1438,7 +1557,8 @@
       "RandomMoveMul": 1.799,
       "PullMul": 1.067,
       "ApproachMul": 1.799,
-      "RepelMul": 1.799
+      "RepelMul": 1.799,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10121,
@@ -1450,7 +1570,8 @@
       "RandomMoveMul": 1.805,
       "PullMul": 1.071,
       "ApproachMul": 1.805,
-      "RepelMul": 1.805
+      "RepelMul": 1.805,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10122,
@@ -1462,7 +1583,8 @@
       "RandomMoveMul": 1.812,
       "PullMul": 1.076,
       "ApproachMul": 1.812,
-      "RepelMul": 1.812
+      "RepelMul": 1.812,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10123,
@@ -1474,7 +1596,8 @@
       "RandomMoveMul": 1.819,
       "PullMul": 1.081,
       "ApproachMul": 1.819,
-      "RepelMul": 1.819
+      "RepelMul": 1.819,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10124,
@@ -1486,7 +1609,8 @@
       "RandomMoveMul": 1.826,
       "PullMul": 1.086,
       "ApproachMul": 1.826,
-      "RepelMul": 1.826
+      "RepelMul": 1.826,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10125,
@@ -1498,7 +1622,8 @@
       "RandomMoveMul": 1.832,
       "PullMul": 1.09,
       "ApproachMul": 1.832,
-      "RepelMul": 1.832
+      "RepelMul": 1.832,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10126,
@@ -1510,7 +1635,8 @@
       "RandomMoveMul": 1.839,
       "PullMul": 1.095,
       "ApproachMul": 1.839,
-      "RepelMul": 1.839
+      "RepelMul": 1.839,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10127,
@@ -1522,7 +1648,8 @@
       "RandomMoveMul": 1.846,
       "PullMul": 1.1,
       "ApproachMul": 1.846,
-      "RepelMul": 1.846
+      "RepelMul": 1.846,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10128,
@@ -1534,7 +1661,8 @@
       "RandomMoveMul": 1.852,
       "PullMul": 1.105,
       "ApproachMul": 1.852,
-      "RepelMul": 1.852
+      "RepelMul": 1.852,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10129,
@@ -1546,7 +1674,8 @@
       "RandomMoveMul": 1.859,
       "PullMul": 1.11,
       "ApproachMul": 1.859,
-      "RepelMul": 1.859
+      "RepelMul": 1.859,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10130,
@@ -1558,7 +1687,8 @@
       "RandomMoveMul": 1.866,
       "PullMul": 1.114,
       "ApproachMul": 1.866,
-      "RepelMul": 1.866
+      "RepelMul": 1.866,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10131,
@@ -1570,7 +1700,8 @@
       "RandomMoveMul": 1.873,
       "PullMul": 1.119,
       "ApproachMul": 1.873,
-      "RepelMul": 1.873
+      "RepelMul": 1.873,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10132,
@@ -1582,7 +1713,8 @@
       "RandomMoveMul": 1.879,
       "PullMul": 1.124,
       "ApproachMul": 1.879,
-      "RepelMul": 1.879
+      "RepelMul": 1.879,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10133,
@@ -1594,7 +1726,8 @@
       "RandomMoveMul": 1.886,
       "PullMul": 1.129,
       "ApproachMul": 1.886,
-      "RepelMul": 1.886
+      "RepelMul": 1.886,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10134,
@@ -1606,7 +1739,8 @@
       "RandomMoveMul": 1.893,
       "PullMul": 1.133,
       "ApproachMul": 1.893,
-      "RepelMul": 1.893
+      "RepelMul": 1.893,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10135,
@@ -1618,7 +1752,8 @@
       "RandomMoveMul": 1.899,
       "PullMul": 1.138,
       "ApproachMul": 1.899,
-      "RepelMul": 1.899
+      "RepelMul": 1.899,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10136,
@@ -1630,7 +1765,8 @@
       "RandomMoveMul": 1.906,
       "PullMul": 1.143,
       "ApproachMul": 1.906,
-      "RepelMul": 1.906
+      "RepelMul": 1.906,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10137,
@@ -1642,7 +1778,8 @@
       "RandomMoveMul": 1.913,
       "PullMul": 1.148,
       "ApproachMul": 1.913,
-      "RepelMul": 1.913
+      "RepelMul": 1.913,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10138,
@@ -1654,7 +1791,8 @@
       "RandomMoveMul": 1.919,
       "PullMul": 1.152,
       "ApproachMul": 1.919,
-      "RepelMul": 1.919
+      "RepelMul": 1.919,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10139,
@@ -1666,7 +1804,8 @@
       "RandomMoveMul": 1.926,
       "PullMul": 1.157,
       "ApproachMul": 1.926,
-      "RepelMul": 1.926
+      "RepelMul": 1.926,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10140,
@@ -1678,7 +1817,8 @@
       "RandomMoveMul": 1.933,
       "PullMul": 1.162,
       "ApproachMul": 1.933,
-      "RepelMul": 1.933
+      "RepelMul": 1.933,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10141,
@@ -1690,7 +1830,8 @@
       "RandomMoveMul": 1.94,
       "PullMul": 1.167,
       "ApproachMul": 1.94,
-      "RepelMul": 1.94
+      "RepelMul": 1.94,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10142,
@@ -1702,7 +1843,8 @@
       "RandomMoveMul": 1.946,
       "PullMul": 1.171,
       "ApproachMul": 1.946,
-      "RepelMul": 1.946
+      "RepelMul": 1.946,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10143,
@@ -1714,7 +1856,8 @@
       "RandomMoveMul": 1.953,
       "PullMul": 1.176,
       "ApproachMul": 1.953,
-      "RepelMul": 1.953
+      "RepelMul": 1.953,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10144,
@@ -1726,7 +1869,8 @@
       "RandomMoveMul": 1.96,
       "PullMul": 1.181,
       "ApproachMul": 1.96,
-      "RepelMul": 1.96
+      "RepelMul": 1.96,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10145,
@@ -1738,7 +1882,8 @@
       "RandomMoveMul": 1.966,
       "PullMul": 1.186,
       "ApproachMul": 1.966,
-      "RepelMul": 1.966
+      "RepelMul": 1.966,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10146,
@@ -1750,7 +1895,8 @@
       "RandomMoveMul": 1.973,
       "PullMul": 1.19,
       "ApproachMul": 1.973,
-      "RepelMul": 1.973
+      "RepelMul": 1.973,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10147,
@@ -1762,7 +1908,8 @@
       "RandomMoveMul": 1.98,
       "PullMul": 1.195,
       "ApproachMul": 1.98,
-      "RepelMul": 1.98
+      "RepelMul": 1.98,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10148,
@@ -1774,7 +1921,8 @@
       "RandomMoveMul": 1.987,
       "PullMul": 1.2,
       "ApproachMul": 1.987,
-      "RepelMul": 1.987
+      "RepelMul": 1.987,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10149,
@@ -1786,7 +1934,8 @@
       "RandomMoveMul": 1.993,
       "PullMul": 1.205,
       "ApproachMul": 1.993,
-      "RepelMul": 1.993
+      "RepelMul": 1.993,
+      "DistanceM": 1200.0
     },
     {
       "Id": 10150,
@@ -1798,7 +1947,8 @@
       "RandomMoveMul": 2.0,
       "PullMul": 1.21,
       "ApproachMul": 2.0,
-      "RepelMul": 2.0
+      "RepelMul": 2.0,
+      "DistanceM": 1200.0
     }
   ]
 }
