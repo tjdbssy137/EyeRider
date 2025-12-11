@@ -46,6 +46,15 @@ public class Input_InGameScene : IInputSystem
     
     public void OnKeyAction()
     {
+        if (Contexts.InGame.IsGameOver)
+        {
+            return;
+        }
+
+        if (Contexts.InGame.IsPaused)
+        {
+            return;
+        }
         Contexts.InGame.WKey = Keyboard.current.wKey.isPressed;
         Contexts.InGame.AKey = Keyboard.current.aKey.isPressed;
         Contexts.InGame.SKey = Keyboard.current.sKey.isPressed;

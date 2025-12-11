@@ -221,7 +221,7 @@ public partial class CarController : BaseObject
         Vector3 currentPos = _rigidbody.position;
         
         float delta = Vector3.Distance(currentPos, _lastDistancePos);
-        Debug.Log($"CAR pos = {_rigidbody.position}, _lastDistancePos = {_lastDistancePos} ");
+        //Debug.Log($"CAR pos = {_rigidbody.position}, _lastDistancePos = {_lastDistancePos} ");
 
         if (0f < delta)
         {

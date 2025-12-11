@@ -1,9 +1,10 @@
-using Unity.Cinemachine;
-using UnityEngine;
 using System.Collections;
-using UnityEditor.Rendering.LookDev;
-using UniRx.Triggers;
 using UniRx;
+using UniRx.Triggers;
+using Unity.Cinemachine;
+using UnityEditor.Rendering.LookDev;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InGameScene : BaseScene
 {
@@ -17,8 +18,6 @@ public class InGameScene : BaseScene
     private int _plannerGridH = 100;
     private int _desiredBlueprintLength = 200;
     private int _startDir = 0; // 0 = +Z
-
-    private float _elapsedRunTime = 0f;
 
     public override bool Init()
     {
@@ -35,16 +34,20 @@ public class InGameScene : BaseScene
         this.InputSystem = new Input_InGameScene();
         this.InputSystem.Init();
 
-        _elapsedRunTime = 0f;
         Contexts.InGame.OnStartGame
         .Take(1)
         .SelectMany(_ => this.UpdateAsObservable())
         .Subscribe(_ =>
         {
-            Contexts.GameProfile.CurrentLevel =  SecurePlayerPrefs.GetInt("Level", 1);
-            Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
-            Contexts.InGame.IsPaused = false;
-            //UpdateRun();
+            if(Contexts.InGame.IsPaused || Contexts.InGame.IsGameOver)
+            {
+                Contexts.InGame.Metre = 0f;
+                Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
+                //Debug.Log($"Contexts.GameProfile.CurrentLevel : {Contexts.GameProfile.CurrentLevel}");
+                Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
+                Contexts.InGame.IsPaused = false;
+                //UpdateRun();
+            }
         })
         .AddTo(_disposables);
 
@@ -73,18 +76,19 @@ public class InGameScene : BaseScene
     {
         Contexts.InGame.IsPaused = true;
         Contexts.InGame.MaxLevel = Managers.Data.DifficultyDic.Count;
-        
+
+
         GameObject mapSpawner = new GameObject("@MapSpawner");
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
-        
+
+
         GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
         _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
         _obstacleSpawner.OnSpawn();
         _obstacleSpawner.SetInfo(0);
         
-
         Contexts.InGame.PanicPoint = 0;
         Contexts.Car.MaxCondition = 100;
         Contexts.Car.MaxFuel = 100;
@@ -103,17 +107,12 @@ public class InGameScene : BaseScene
         bool ok = Contexts.InGame.MapPlanner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
         Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
 
-        // GameStart Time Check
-        Managers.Difficulty.SetDifficult();
-        Contexts.InGame.Metre = 0f;
-
         // Game UI
         UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
         ui_InGameScene.SetInfo();
 
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
-
-    }
+     }
 
     void LoadResources()
     {
@@ -136,17 +135,10 @@ public class InGameScene : BaseScene
         });
     }
 
-    private void UpdateRun()
+    private void ResetGame()
     {
-        if (Contexts.InGame.IsGameOver)
-        {
-            return;
-        }
+        
 
-        if (Contexts.InGame.IsPaused)
-        {
-            return;
-        }
     }
 
 }

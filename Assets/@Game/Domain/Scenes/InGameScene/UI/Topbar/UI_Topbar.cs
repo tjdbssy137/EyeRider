@@ -32,6 +32,8 @@ public class UI_Topbar : UI_Base
         _fuelPanel = GetObject((int)Objects.Fuels).GetComponent<UI_FilledPanel>();
         _fuelPanel.Init();
 
+        GetSlider((int)Sliders.GameProgressBar).value = 0;
+        
         Contexts.InGame.Car.OnFuelChanged
             .Subscribe(val =>
             {
@@ -60,6 +62,7 @@ public class UI_Topbar : UI_Base
 
     public void UpdateGameProgress(float progress)
     {
+        //Debug.Log($"Context.InGame.Metre: {Contexts.InGame.Metre}");   
         float ratio = progress / Managers.Difficulty.MaxMetre;
         GetSlider((int)Sliders.GameProgressBar).value = Mathf.Clamp01(ratio);
     }

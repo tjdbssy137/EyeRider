@@ -37,6 +37,12 @@ public partial class BaseObject : InitBase
         _disposables = new CompositeDisposable();
     }
 
+    protected virtual void OnDestroy()
+    {
+        _disposables.Dispose();
+        _disposables = new CompositeDisposable();
+    }
+
     public virtual void SetInfo(int dataTemplate)
     {
         DataTemplateID = dataTemplate;

@@ -103,24 +103,6 @@ public class DifficultyManager
         _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     }
 
-    public void SetDifficult()
-    {
-        _currentMetre = 0f;
-
-        int key = Contexts.GameProfile.CurrentLevel + 10000;
-        if (Managers.Data.DifficultyDic.ContainsKey(key) == true)
-        {
-            _maxMetre = Managers.Data.DifficultyDic[key].DistanceM;
-        }
-        else
-        {
-            _maxMetre = 800f;
-        }
-
-        _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    }
-
-
     public void CurrentLevel(int level)
     {
         int key = 0;
@@ -137,14 +119,22 @@ public class DifficultyManager
         if (Managers.Data.DifficultyDic.ContainsKey(key) == true)
         {
             Current = Managers.Data.DifficultyDic[key];
+            _maxMetre = Current.DistanceM;
         }
+        else
+        {
+            _maxMetre = 2000f;
+        }
+
+        _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+
     }
 
 
     public void UpdateMetre(float metre)
     {
         _currentMetre = metre;
-        Debug.Log($"_currentMetre {_currentMetre}");
+        //Debug.Log($"_currentMetre {_currentMetre}");
         CheckLevelUp();
         CheckEndPenalty();
     }

@@ -52,7 +52,7 @@ public partial class CarController : BaseObject
             {
                 _isOutside = false;
                 _lastDistance = 0;
-                _animator.SetFloat("Distance", 0f);
+                _animator.SetFloat("Distance", 0f); 
             })
             .AddTo(_disposables);
 
