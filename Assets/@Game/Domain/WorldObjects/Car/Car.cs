@@ -61,8 +61,17 @@ public class Car : BaseObject
 
         Observable.Interval(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => 
-                ConsumeFuel()
-            ).AddTo(_disposables); 
+            {
+                if (true == Contexts.InGame.IsGameOver)
+                {
+                    return;
+                }
+                if (true == Contexts.InGame.IsPaused)
+                {
+                    return;
+                }
+                ConsumeFuel();
+            }).AddTo(_disposables); 
 
         //this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
         return true;

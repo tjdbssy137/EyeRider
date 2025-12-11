@@ -29,8 +29,13 @@ public class UI_Portrait : UI_Base
 
         this.UpdateAsObservable()
         .Subscribe(_=>
-        {   
-            if(Contexts.InGame.IsGameOver)
+        {
+            if (true == Contexts.InGame.IsPaused)
+            {
+                return;
+            }
+
+            if (Contexts.InGame.IsGameOver)
             {
                 _animator.SetTrigger("Faint");
                 return;

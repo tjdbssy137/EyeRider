@@ -36,18 +36,17 @@ public class InGameScene : BaseScene
 
         Contexts.InGame.OnStartGame
         .Take(1)
-        .SelectMany(_ => this.UpdateAsObservable())
+        .SelectMany(_ =>
+            this.UpdateAsObservable()
+                .Where(__ => Contexts.InGame.IsPaused || Contexts.InGame.IsGameOver)
+                .Take(1)
+        )
         .Subscribe(_ =>
         {
-            if(Contexts.InGame.IsPaused || Contexts.InGame.IsGameOver)
-            {
-                Contexts.InGame.Metre = 0f;
-                Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
-                //Debug.Log($"Contexts.GameProfile.CurrentLevel : {Contexts.GameProfile.CurrentLevel}");
-                Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
-                Contexts.InGame.IsPaused = false;
-                //UpdateRun();
-            }
+            Contexts.InGame.Metre = 0f;
+            Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
+            Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
+            Contexts.InGame.IsPaused = false;
         })
         .AddTo(_disposables);
 

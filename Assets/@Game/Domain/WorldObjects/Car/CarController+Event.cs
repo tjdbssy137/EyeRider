@@ -59,6 +59,14 @@ public partial class CarController : BaseObject
         Observable.Interval(TimeSpan.FromSeconds(0.2f))
             .Subscribe(_ =>
             {
+                if (true == Contexts.InGame.IsGameOver)
+                {
+                    return;
+                }
+                if (true == Contexts.InGame.IsPaused)
+                {
+                    return;
+                }
                 if (true == _isOutside)
                 {
                     float dmg = DistancePenalty(_lastDistance);

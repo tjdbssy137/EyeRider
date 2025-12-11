@@ -32,6 +32,7 @@ public class UI_Puase : UI_Popup
         GetToggle((int)Toggles.Home).gameObject.BindEvent(OnHover_HomeButton, EUIEvent.PointerEnter);
 
         Contexts.InGame.IsPaused = true;
+        Debug.Log("Game Paused");
         return true;
     }
     private void OnHover_ResumeButton(PointerEventData eventData)
@@ -40,6 +41,8 @@ public class UI_Puase : UI_Popup
     }
     private void OnClick_ResumeButton(PointerEventData eventData)
     {
+        Debug.Log("Resume Clicked");
+        Contexts.InGame.IsPaused = false;
         Managers.UI.ClosePopupUI(this);
     }
     private void OnHover_ReStartButton(PointerEventData eventData)
@@ -48,6 +51,8 @@ public class UI_Puase : UI_Popup
     }
     private void OnClick_ReStartButton(PointerEventData eventData)
     {
+        Debug.Log("ReStart Clicked");
+        Contexts.InGame.IsPaused = false;
         Managers.UI.ClosePopupUI(this);
         Managers.Scene.LoadScene(EScene.InGameScene);
     }
@@ -57,6 +62,8 @@ public class UI_Puase : UI_Popup
     }
     private void OnClick_HomeButton(PointerEventData eventData)
     {
+        Debug.Log("Home Clicked");
+        Contexts.InGame.IsPaused = false;
         Managers.UI.ClosePopupUI(this);
         Managers.Scene.LoadScene(EScene.MainMenuScene);
     }
@@ -67,7 +74,6 @@ public class UI_Puase : UI_Popup
         {
             GetToggle(i).isOn = (image == i);
         }
-        Contexts.InGame.IsPaused = false;
         var indexObj = GetImage((int)Images.Index).rectTransform;
         float targetY = GetToggle(image).gameObject.transform.position.y;
 
