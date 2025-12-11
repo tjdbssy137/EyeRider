@@ -65,6 +65,7 @@
     <Compile Include="Assets\@Framework\Data\Data.Core.cs.cs" />
     <Compile Include="Assets\@Game\Contexts\MapContext.cs" />
     <Compile Include="Assets\@Framework\Utils\Extension.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\DamageEffect\DamageEffect.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\particle\ParticleObject.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Map\MapPlanner.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_Topbar.cs" />
     <Compile Include="Assets\Layer Lab\GUI Pro-CasualGame\Extensions\UIParticle\UIParticleSystem.cs" />
     <Compile Include="Assets\@Framework\Managers\Contents\DataManager.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\HealEffect\HealEffect.cs" />
     <Compile Include="Assets\@Framework\Controllers\BaseObject.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\Input_InGameScene.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_FilledPanel.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Assets\@Framework\Managers\Contents\ObjectManager.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\MainMenuScene.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\UI\UI_MainMenuScene.cs" />
+    <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\puase\UI_Puase.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\InputManagerEx.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXProjectileScript.cs" />
     <Compile Include="Assets\@Framework\Contexts\Contexts.cs" />

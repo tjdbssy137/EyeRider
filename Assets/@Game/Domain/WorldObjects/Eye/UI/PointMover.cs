@@ -67,8 +67,17 @@ public class PointMover : UI_Base
         _targetOffset = Vector2.zero;
 
         Observable.Interval(System.TimeSpan.FromSeconds(_randomTargetInterval))
-            .Subscribe(_ => SetRandomTarget())
-            .AddTo(this);
+            .Subscribe(_ =>{
+                if (true == Contexts.InGame.IsGameOver)
+                {
+                    return;
+                }
+                if (true == Contexts.InGame.IsPaused)
+                {
+                    return;
+                }
+                SetRandomTarget();
+            }).AddTo(this);
 
         this.UpdateAsObservable().Subscribe(_ =>
         {

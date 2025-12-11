@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputManagerEx
@@ -31,5 +32,32 @@ public class InputManagerEx
                 _mousePressed = false;
             }
         }
+
+        //if (!Mouse.current.leftButton.isPressed)
+        //{
+        //    bool isHover = false;
+
+        //    if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        //    {
+        //        isHover = true;
+        //    }
+        //    else
+        //    {
+        //        Camera cam = Camera.main;
+        //        if (cam != null)
+        //        {
+        //            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        //            if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+        //            {
+        //                isHover = true;
+        //            }
+        //        }
+        //    }
+
+        //    if (isHover)
+        //    {
+        //        MouseAction.Invoke(Define.EMouseEvent.Hover);
+        //    }
+        //}
     }
 }

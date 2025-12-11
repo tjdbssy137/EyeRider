@@ -65,7 +65,7 @@ public class UI_Base : InitBase
 	{
 		UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
 
-		switch (type)
+        switch (type)
 		{
 			case Define.EUIEvent.Click:
 				evt.OnClickHandler -= action;
@@ -93,6 +93,14 @@ public class UI_Base : InitBase
 				evt.OnEndDragHandler -= action;
 				evt.OnEndDragHandler += action;
 				break;
-		}
+            case Define.EUIEvent.PointerEnter:
+                evt.OnPointerEnterHandler -= action;
+                evt.OnPointerEnterHandler += action;
+                break;
+            case Define.EUIEvent.PointerExit:
+                evt.OnPointerExitHandler -= action;
+                evt.OnPointerExitHandler += action;
+                break;
+        }
 	}
 }

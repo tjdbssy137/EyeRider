@@ -20,6 +20,8 @@ public static partial class Define
 		BeginDrag,
 		Drag,
 		EndDrag,
+        PointerEnter,
+        PointerExit,
     }
 
     public enum EGOEvent
@@ -48,7 +50,8 @@ public static partial class Define
 	{
 		Press,
         Click,
-	}
+        Hover,
+    }
 
 
 	//Unity Tool Layer와 동일한 내용

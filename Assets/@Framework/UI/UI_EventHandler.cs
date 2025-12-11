@@ -12,7 +12,8 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IPointerDown
 	public event Action<PointerEventData> OnBeginDragHandler = null;
 	public event Action<PointerEventData> OnDragHandler = null;
 	public event Action<PointerEventData> OnEndDragHandler = null;
-
+    public event Action<PointerEventData> OnPointerEnterHandler = null;
+    public event Action<PointerEventData> OnPointerExitHandler = null;
     public void OnPointerClick(PointerEventData eventData)
 	{
 		OnClickHandler?.Invoke(eventData);
@@ -41,5 +42,15 @@ public class UI_EventHandler : MonoBehaviour, IPointerClickHandler, IPointerDown
     public void OnEndDrag(PointerEventData eventData)
     {
         OnEndDragHandler?.Invoke(eventData);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnPointerEnterHandler?.Invoke(eventData);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnPointerExitHandler?.Invoke(eventData);
     }
 }
