@@ -70,10 +70,10 @@ public class UI_Puase : UI_Popup
 
     private void SoftMoveIndex(int image)
     {
-        for(int i = 0; i < 3; i++)
-        {
-            GetToggle(i).isOn = (image == i);
-        }
+        //for(int i = 0; i < 3; i++)
+        //{
+        //    GetToggle(i).isOn = (image == i);
+        //}
         var indexObj = GetImage((int)Images.Index).rectTransform;
         float targetY = GetToggle(image).gameObject.transform.position.y;
 
