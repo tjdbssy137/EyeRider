@@ -53,8 +53,9 @@ public partial class CarController : BaseObject
     private float _shakeLerpSpeed = 2f;  
     private float _controlDifficulty = 0f; 
     public float ControlDifficulty {get { return _controlDifficulty; }}
-    
-    
+    private Vector3 _lastDistancePos;
+
+
 
     public override bool Init()
     {
@@ -118,22 +119,18 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
-                // if (Contexts.InGame.Car.Fuel <= 0)
-                // {
-                //     return;
-                // }
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
-                
+
                 PanicPointCaculator();
                 UpdateRotation();
                 SnapRotation(Time.fixedDeltaTime);
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
+                UpdateMetreDistance(); // 이동거리 계산
             })
             .AddTo(_disposables);
-
         return true;
     }
 
@@ -211,6 +208,25 @@ public partial class CarController : BaseObject
         Vector3 move = (_rigidbody.rotation * Vector3.forward) * finalSpeed * Time.fixedDeltaTime;
 
         _rigidbody.MovePosition(_rigidbody.position + move);
+    }
+    private void UpdateMetreDistance()
+    {
+        Vector3 currentPos = _rigidbody.position;
+        if(_lastDistancePos == Vector3.zero)
+        {
+            _lastDistancePos = currentPos;
+            return;
+        }
+        float delta = Vector3.Distance(currentPos, _lastDistancePos);
+        
+        if (0f < delta)
+        {
+            Contexts.InGame.Metre += delta;
+            Managers.Difficulty.UpdateMetre(Contexts.InGame.Metre);
+        }
+        _lastDistancePos = currentPos;
+        Debug.Log($"lastDistancePos {_lastDistancePos}");
+
     }
 
     private void HorizontalMove(float dir)

@@ -8,6 +8,11 @@ public class UI_Topbar : UI_Base
         Conditions,
         Fuels,
     }
+    private enum Sliders
+    {
+        GameProgressBar
+    }
+
 
     private UI_FilledPanel _conditionPanel;
     private UI_FilledPanel _fuelPanel;
@@ -20,7 +25,7 @@ public class UI_Topbar : UI_Base
         }
 
         BindObjects(typeof(Objects));
-
+        BindSliders(typeof(Sliders));
         _conditionPanel = GetObject((int)Objects.Conditions).GetComponent<UI_FilledPanel>();
         _conditionPanel.Init();
 
@@ -44,7 +49,18 @@ public class UI_Topbar : UI_Base
                 _conditionPanel.UpdateValue(current, max);
             })
             .AddTo(this);
-
+        Observable.EveryUpdate()
+            .Subscribe(_ =>
+            {
+                //Debug.Log("EveryUpdate");
+                UpdateGameProgress(Contexts.InGame.Metre);
+            }).AddTo(this);
         return true;
+    }
+
+    public void UpdateGameProgress(float progress)
+    {
+        float ratio = 1 - (Managers.Difficulty.MaxMetre / progress);
+        GetSlider((int)Sliders.GameProgressBar).value = Mathf.Clamp01(ratio);
     }
 }

@@ -171,6 +171,7 @@
     <None Include="Assets\Layer Lab\GUI Pro-CasualGame\Extensions\UIParticle\hidden particle.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\@Resources\Fonts\Caveat_Brush,Just_Another_Hand\Just_Another_Hand\LICENSE.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Layer Lab\GUI Pro-CasualGame\ResourcesData\Shader &amp; Materials\UIAdditive.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
@@ -188,6 +189,7 @@
     <None Include="Assets\Data\Epic Toon FX\Upgrade\URP Compatibility.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\@Resources\Fonts\Caveat_Brush,Just_Another_Hand\Caveat_Brush\OFL.txt" />
     <None Include="Assets\Layer Lab\GUI Pro-CasualGame\ResourcesData\Shader &amp; Materials\MobileAdditive.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

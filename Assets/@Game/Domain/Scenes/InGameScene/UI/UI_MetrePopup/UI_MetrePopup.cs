@@ -22,7 +22,7 @@ public class UI_MetrePopup : UI_Popup
     }
     public void SetInfo()
     {
-        GetText((int)Texts.Metre).text = $"{Contexts.InGame.Metre} M";
+        GetText((int)Texts.Metre).text = $"{(int)Contexts.InGame.Metre} M";
     }
 
 }

@@ -4,89 +4,197 @@ using System;
 
 public class DifficultyManager
 {
-    public Subject<Unit> OnTimeDifficultyUp = new Subject<Unit>();
+    public Subject<Unit> OnMetreDifficultyUp = new Subject<Unit>();
 
-    public int LevelDifficulty { get; private set; }
-    public float TimeDifficulty => _timeCurve.Evaluate(_elapsed / _maxTime);
-    private float _endGamePenaltyMul = 1f; 
-    public float EndGamePenaltyMul => _endGamePenaltyMul;
+    private float _currentMetre;
+    private float _maxMetre;
+    public float MaxMetre 
+    {
+        get { return _maxMetre; }
+    }
+    private AnimationCurve _metreCurve;
 
-    private float _elapsed;
-    private float _maxTime = 80f;
-    private AnimationCurve _timeCurve;
+    private float _endGamePenaltyMul = 1f;
+    public float EndGamePenaltyMul
+    {
+        get { return _endGamePenaltyMul; }
+    }
 
-    public Data.DifficultyData Current { get; private set; } // 시큐리티로 가져오기
+    public Data.DifficultyData Current { get; private set; }
 
-    public AnimationCurve LevelCurve_Random = AnimationCurve.Linear(0, 1, 1, 1.5f);
-    public AnimationCurve LevelCurve_Approach = AnimationCurve.Linear(0, 1, 1, 1.3f);
-    public AnimationCurve LevelCurve_Repel = AnimationCurve.Linear(0, 1, 1, 1.3f);
+    public AnimationCurve LevelCurve_Random = AnimationCurve.Linear(0f, 1f, 1f, 1.5f);
+    public AnimationCurve LevelCurve_Approach = AnimationCurve.Linear(0f, 1f, 1f, 1.3f);
+    public AnimationCurve LevelCurve_Repel = AnimationCurve.Linear(0f, 1f, 1f, 1.3f);
 
-    public float CurrentLevel01 => Mathf.Clamp01((float)(Contexts.GameProfile.CurrentLevel - 1) / (Contexts.InGame.MaxLevel - 1));
+    public float CurrentLevel01
+    {
+        get
+        {
+            return Mathf.Clamp01((float)(Contexts.GameProfile.CurrentLevel - 1) / (Contexts.InGame.MaxLevel - 1));
+        }
+    }
 
-    public float StormSpeed => Current.StormSpeed * TimeDifficulty;
-    public float ObstacleDensity => Current.ObstacleDensity * TimeDifficulty;
-    public float EyeSize => Mathf.Lerp(Current.EyeSize, Current.EyeSize - 1.7f, TimeDifficulty);
-    public float PM_RandomMul => Current.RandomMoveMul * (1f + TimeDifficulty * 0.2f) * LevelCurve_Random.Evaluate(CurrentLevel01);
-    public float PM_ApproachMul => Current.ApproachMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Approach.Evaluate(CurrentLevel01);
-    public float PM_RepelMul => Current.RepelMul * (1f + TimeDifficulty * 0.15f) * LevelCurve_Repel.Evaluate(CurrentLevel01);
+    public float Metre01
+    {
+        get
+        {
+            if (_maxMetre <= 0f)
+            {
+                return 0f;
+            }
+            return Mathf.Clamp01(_currentMetre / _maxMetre);
+        }
+    }
+
+    public float MetreDifficulty
+    {
+        get { return _metreCurve.Evaluate(Metre01); }
+    }
+
+    public float StormSpeed
+    {
+        get { return Current.StormSpeed * MetreDifficulty; }
+    }
+
+    public float ObstacleDensity
+    {
+        get { return Current.ObstacleDensity * MetreDifficulty; }
+    }
+
+    public float EyeSize
+    {
+        get { return Mathf.Lerp(Current.EyeSize, Current.EyeSize - 1.7f, MetreDifficulty); }
+    }
+
+    public float PM_RandomMul
+    {
+        get
+        {
+            return Current.RandomMoveMul
+                * (1f + MetreDifficulty * 0.2f)
+                * LevelCurve_Random.Evaluate(CurrentLevel01);
+        }
+    }
+
+    public float PM_ApproachMul
+    {
+        get
+        {
+            return Current.ApproachMul
+                * (1f + MetreDifficulty * 0.15f)
+                * LevelCurve_Approach.Evaluate(CurrentLevel01);
+        }
+    }
+
+    public float PM_RepelMul
+    {
+        get
+        {
+            return Current.RepelMul
+                * (1f + MetreDifficulty * 0.15f)
+                * LevelCurve_Repel.Evaluate(CurrentLevel01);
+        }
+    }
+
 
     public void Init()
     {
-        _elapsed = 0f;
-        _maxTime = 80f;
-        _timeCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+        _currentMetre = 0f;
+        _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     }
 
-    public void TimeLevelUp()
+    public void SetDifficult()
     {
-        OnTimeDifficultyUp.OnNext(Unit.Default);
-    }
+        _currentMetre = 0f;
 
-    public void TimeToLevelup(float time) // 여기 수정해야함
-    {
-        _elapsed = time;
-        if(20 < _elapsed)
+        int key = Contexts.GameProfile.CurrentLevel + 10000;
+        if (Managers.Data.DifficultyDic.ContainsKey(key) == true)
         {
-            TimeLevelUp();
-        }
-        else if(40 < _elapsed)
-        {
-            TimeLevelUp();
-        }
-        else if(60 < _elapsed)
-        {
-            TimeLevelUp();
-        }
-        else if(75 < _elapsed)
-        {
-            TimeLevelUp();
-            TimeToEnd();
-        }
-    }
-
-    public void CurrentLevel(int level)
-    {
-        if(level <= 0)
-        {
-            level = 100001;
+            _maxMetre = Managers.Data.DifficultyDic[key].DistanceM;
         }
         else
         {
-            level += 10000;
+            _maxMetre = 800f;
         }
-        Current = Managers.Data.DifficultyDic[level];
+
+        _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     }
 
-    private void TimeToEnd()
+
+    public void CurrentLevel(int level)
     {
-        if (75f <= _elapsed)
-    {
-        float t = Mathf.InverseLerp(75f, 80f, _elapsed);
-        _endGamePenaltyMul = Mathf.Lerp(1f, 0.6f, t);
+        int key = 0;
+
+        if (level <= 0)
+        {
+            key = 100001;
+        }
+        else
+        {
+            key = level + 10000;
+        }
+
+        if (Managers.Data.DifficultyDic.ContainsKey(key) == true)
+        {
+            Current = Managers.Data.DifficultyDic[key];
+        }
     }
-    else
+
+
+    public void UpdateMetre(float metre)
     {
-        _endGamePenaltyMul = 1f;
+        _currentMetre = metre;
+        Debug.Log($"_currentMetre {_currentMetre}");
+        //CheckLevelUp();
+        //CheckEndPenalty();
     }
+
+
+    private void CheckLevelUp()
+    {
+        float p = Metre01;
+
+        if (0.25f <= p)
+        {
+            OnMetreDifficultyUp.OnNext(Unit.Default);
+        }
+
+        if (0.50f <= p)
+        {
+            OnMetreDifficultyUp.OnNext(Unit.Default);
+        }
+
+        if (0.75f <= p)
+        {
+            OnMetreDifficultyUp.OnNext(Unit.Default);
+        }
+
+        if (0.93f <= p)
+        {
+            OnMetreDifficultyUp.OnNext(Unit.Default);
+        }
+
+        if (1.0f <= p)
+        {
+            Debug.Log("Contexts.InGame.IsGameOver = true;");
+            Contexts.InGame.OnEndGame.OnNext(Unit.Default);
+            Managers.UI.ShowPopupUI<UI_ResultPopup>();
+        }
+    }
+
+
+    private void CheckEndPenalty()
+    {
+        float p = Metre01;
+
+        if (0.93f <= p)
+        {
+            float t = Mathf.InverseLerp(0.93f, 1f, p);
+            _endGamePenaltyMul = Mathf.Lerp(1f, 0.6f, t);
+        }
+        else
+        {
+            _endGamePenaltyMul = 1f;
+        }
     }
 }

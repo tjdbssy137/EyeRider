@@ -6,13 +6,12 @@ public class UI_TryAgainPopup : UI_Popup
 {
     private enum Buttons
     {
-        Yellow,
-        Blue
+        Home,
+        Retry
     }
     private enum Texts
     {
-        GameOver,
-        Stage,
+        //Stage,
         Score,
         Compensation
     }
@@ -27,8 +26,8 @@ public class UI_TryAgainPopup : UI_Popup
         BindButtons(typeof(Buttons));
         BindTexts(typeof(Texts));
 
-        GetButton((int)Buttons.Yellow).gameObject.BindEvent(OnClick_YellowButton, EUIEvent.Click);
-        GetButton((int)Buttons.Blue).gameObject.BindEvent(OnClick_BlueButton, EUIEvent.Click);
+        GetButton((int)Buttons.Home).gameObject.BindEvent(OnClick_HomeButton, EUIEvent.Click);
+        GetButton((int)Buttons.Retry).gameObject.BindEvent(OnClick_RetryButton, EUIEvent.Click);
         Time.timeScale = 0;
 
         return true;
@@ -36,12 +35,12 @@ public class UI_TryAgainPopup : UI_Popup
 
     public void SetInfo()
     {
-        GetText((int)Texts.Stage).text = $"Stage {Contexts.GameProfile.CurrentLevel}";
+        //GetText((int)Texts.Stage).text = $"Stage {Contexts.GameProfile.CurrentLevel}";
         GetText((int)Texts.Score).text = $"Score {Contexts.InGame.GameScore}";
         GetText((int)Texts.Compensation).text = $"{100}";
     }
 
-    private void OnClick_YellowButton(PointerEventData eventData)
+    private void OnClick_HomeButton(PointerEventData eventData)
     {
         Time.timeScale = 1;
         Managers.UI.ClosePopupUI(this);
@@ -51,7 +50,7 @@ public class UI_TryAgainPopup : UI_Popup
         Managers.Scene.LoadScene(EScene.MainMenuScene);
     }
 
-    private void OnClick_BlueButton(PointerEventData eventData)
+    private void OnClick_RetryButton(PointerEventData eventData)
     {
         Time.timeScale = 1;
         Managers.UI.ClosePopupUI(this);

@@ -101,7 +101,9 @@ public class InGameScene : BaseScene
         Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
 
         // GameStart Time Check
+        Managers.Difficulty.SetDifficult();
         Contexts.InGame.OnStartGame.OnNext(Unit.Default);
+
 
         // Game UI
         UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
@@ -139,15 +141,6 @@ public class InGameScene : BaseScene
         if (Contexts.InGame.IsPaused)
         {
             return;
-        }
-
-        _elapsedRunTime += Time.unscaledDeltaTime;
-        Managers.Difficulty.TimeToLevelup(_elapsedRunTime);
-        if (80f <= _elapsedRunTime)
-        {
-            Debug.Log("Contexts.InGame.IsGameOver = true;");
-            //Contexts.InGame.OnEndGame.OnNext(Unit.Default);
-            //ShowGameOverUI();
         }
     }
 

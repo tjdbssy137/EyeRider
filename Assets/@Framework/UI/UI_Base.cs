@@ -40,6 +40,7 @@ public class UI_Base : InitBase
 	protected void BindToggles(Type type) { Bind<Toggle>(type); }
     protected void BindInputFields(Type type) { Bind<TMP_InputField>(type); }
     protected void BindRectTransforms(Type type) { Bind<RectTransform>(type); }
+	protected void BindSliders(Type type) { Bind<Slider>(type); }
 
     protected T Get<T>(int idx) where T : UnityEngine.Object
 	{
@@ -57,6 +58,8 @@ public class UI_Base : InitBase
 	protected Toggle GetToggle(int idx) { return Get<Toggle>(idx); }
     protected TMP_InputField GetInputField(int idx) { return Get<TMP_InputField>(idx); }
     protected RectTransform GetRectTransform(int idx) { return Get<RectTransform>(idx); }
+    protected Slider GetSlider(int idx) { return Get<Slider>(idx); }
+
 
     public static void BindEvent(GameObject go, Action<PointerEventData> action = null, Define.EUIEvent type = Define.EUIEvent.Click)
 	{

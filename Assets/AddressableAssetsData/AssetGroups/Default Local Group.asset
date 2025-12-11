@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c0d3add48ea72449915c29fe36eef0e
+    m_Address: UI_MetrePopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 46498d84130fe4ef1b81608939029229
     m_Address: Assets/Data/ObstacleData
     m_ReadOnly: 0
