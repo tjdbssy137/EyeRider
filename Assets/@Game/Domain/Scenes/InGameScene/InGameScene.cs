@@ -43,7 +43,8 @@ public class InGameScene : BaseScene
         {
             Contexts.GameProfile.CurrentLevel =  SecurePlayerPrefs.GetInt("Level", 1);
             Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
-            UpdateRun();
+            Contexts.InGame.IsPaused = false;
+            //UpdateRun();
         })
         .AddTo(_disposables);
 
@@ -70,6 +71,7 @@ public class InGameScene : BaseScene
 
      public void SettingSceneObject()
     {
+        Contexts.InGame.IsPaused = true;
         Contexts.InGame.MaxLevel = Managers.Data.DifficultyDic.Count;
         
         GameObject mapSpawner = new GameObject("@MapSpawner");
@@ -86,8 +88,9 @@ public class InGameScene : BaseScene
         Contexts.InGame.PanicPoint = 0;
         Contexts.Car.MaxCondition = 100;
         Contexts.Car.MaxFuel = 100;
-        
-        _car = Managers.Object.Spawn<Car>(_spawnPoint.transform.position, 0, 0);
+
+        Contexts.InGame.SpawnPosition = _spawnPoint.transform.position;
+        _car = Managers.Object.Spawn<Car>(Contexts.InGame.SpawnPosition, 0, 0);
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
         carSideClampAnchor.Init();
@@ -102,12 +105,14 @@ public class InGameScene : BaseScene
 
         // GameStart Time Check
         Managers.Difficulty.SetDifficult();
-        Contexts.InGame.OnStartGame.OnNext(Unit.Default);
-
+        Contexts.InGame.Metre = 0f;
 
         // Game UI
         UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
         ui_InGameScene.SetInfo();
+
+        Contexts.InGame.OnStartGame.OnNext(Unit.Default);
+
     }
 
     void LoadResources()

@@ -145,8 +145,8 @@ public class DifficultyManager
     {
         _currentMetre = metre;
         Debug.Log($"_currentMetre {_currentMetre}");
-        //CheckLevelUp();
-        //CheckEndPenalty();
+        CheckLevelUp();
+        CheckEndPenalty();
     }
 
 

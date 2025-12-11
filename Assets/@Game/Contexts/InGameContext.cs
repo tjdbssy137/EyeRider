@@ -18,7 +18,7 @@ public partial class InGameContext
     public Car Car { get; set; }
 
     public int MaxLevel { get; set; }
-
+    public Vector3 SpawnPosition { get; set; }
 
     // Map Generate
     public Subject<bool> OnSuccessGeneratedMapPath = new Subject<bool>();

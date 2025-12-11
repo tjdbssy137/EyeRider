@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\ui\\popup\\ui_popup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\ui\\popup\\ui_popup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\managers\\core\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\managers\\core\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\domain\\scenes\\ingamescene\\ui\\topbar\\ui_topbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@game\\domain\\scenes\\ingamescene\\ui\\topbar\\ui_topbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\domain\\scenes\\ingamescene\\ui\\resultscreen\\ui_resultpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@game\\domain\\scenes\\ingamescene\\ui\\resultscreen\\ui_resultpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\managers\\core\\resourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\managers\\core\\resourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\managers\\managers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,10 +55,6 @@
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\utils\\util.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\managers\\core\\resourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\managers\\core\\resourcemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\domain\\scenes\\ingamescene\\ui\\ui_metrepopup\\ui_metrepopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@game\\domain\\scenes\\ingamescene\\ui\\ui_metrepopup\\ui_metrepopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -49,14 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\domain\\worldobjects\\car\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@game\\domain\\worldobjects\\car\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@framework\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@framework\\ui\\ui_base.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\domain\\scenes\\ingamescene\\ui\\topbar\\ui_topbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\@game\\domain\\scenes\\ingamescene\\ui\\topbar\\ui_topbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\github\\eyerider\\assets\\@game\\contexts\\gameprofilecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,19 +87,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UI_Popup.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\UI\\Popup\\UI_Popup.cs",
+              "RelativeDocumentMoniker": "Assets\\@Framework\\UI\\Popup\\UI_Popup.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\UI\\Popup\\UI_Popup.cs",
+              "RelativeToolTip": "Assets\\@Framework\\UI\\Popup\\UI_Popup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:26:34.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Core\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\@Framework\\Managers\\Core\\UIManager.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Core\\UIManager.cs",
+              "RelativeToolTip": "Assets\\@Framework\\Managers\\Core\\UIManager.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAswDsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:27:06.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "UI_ResultPopup.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_ResultPopup.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_ResultPopup.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_ResultPopup.cs",
               "RelativeToolTip": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_ResultPopup.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAA9wEoAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T10:50:44.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "UI_LoadingPopup.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\UI\\Popup\\UI_LoadingPopup.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\UI\\Popup\\UI_LoadingPopup.cs",
@@ -95,12 +133,11 @@
               "RelativeToolTip": "Assets\\@Framework\\UI\\Popup\\UI_LoadingPopup.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAUwBUAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T10:50:37.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T10:50:37.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "Util.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Utils\\Util.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\Utils\\Util.cs",
@@ -108,25 +145,24 @@
               "RelativeToolTip": "Assets\\@Framework\\Utils\\Util.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T10:50:34.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T10:50:34.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "ResourceManager.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Core\\ResourceManager.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\Managers\\Core\\ResourceManager.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Core\\ResourceManager.cs",
               "RelativeToolTip": "Assets\\@Framework\\Managers\\Core\\ResourceManager.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAswDsAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwDsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T10:50:31.905Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "UI_MetrePopup.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\UI_MetrePopup\\UI_MetrePopup.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\UI_MetrePopup\\UI_MetrePopup.cs",
@@ -134,25 +170,24 @@
               "RelativeToolTip": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\UI_MetrePopup\\UI_MetrePopup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T10:08:23.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T10:08:23.813Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "UI_Base.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\UI\\UI_Base.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\UI\\UI_Base.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\UI\\UI_Base.cs",
               "RelativeToolTip": "Assets\\@Framework\\UI\\UI_Base.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAwA4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAUwAgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T10:03:36.203Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
               "Title": "UI_Topbar.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\Topbar\\UI_Topbar.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\Topbar\\UI_Topbar.cs",
@@ -165,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Managers.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Managers.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\Managers\\Managers.cs",
@@ -173,12 +208,11 @@
               "RelativeToolTip": "Assets\\@Framework\\Managers\\Managers.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwBgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:40:54.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:40:54.433Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "InGameScene.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\InGameScene.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\InGameScene.cs",
@@ -186,12 +220,11 @@
               "RelativeToolTip": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\InGameScene.cs",
               "ViewState": "AgIAAIAAAAAAAAAAAAAIwI8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:24.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:24.272Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "DifficultyManager.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Framework\\Managers\\Contents\\DifficultyManager.cs",
               "RelativeDocumentMoniker": "Assets\\@Framework\\Managers\\Contents\\DifficultyManager.cs",
@@ -199,12 +232,11 @@
               "RelativeToolTip": "Assets\\@Framework\\Managers\\Contents\\DifficultyManager.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAIwJcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:49.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:49.084Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "InGameContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Contexts\\InGameContext.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Contexts\\InGameContext.cs",
@@ -212,12 +244,11 @@
               "RelativeToolTip": "Assets\\@Game\\Contexts\\InGameContext.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAYwD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:37.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:37.378Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "GameProfileContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Contexts\\GameProfileContext.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Contexts\\GameProfileContext.cs",
@@ -225,12 +256,11 @@
               "RelativeToolTip": "Assets\\@Game\\Contexts\\GameProfileContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:32.534Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:32.534Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "CarController\u002BEvent.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController\u002BEvent.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController\u002BEvent.cs",
@@ -238,12 +268,11 @@
               "RelativeToolTip": "Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController\u002BEvent.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:18.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:18.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "CarController.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController.cs",
@@ -251,12 +280,11 @@
               "RelativeToolTip": "Assets\\@Game\\Domain\\WorldObjects\\Car\\CarController.cs",
               "ViewState": "AgIAAM4AAAAAAAAAAAAUwNYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:17.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-11T09:34:17.923Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "Car.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\WorldObjects\\Car\\Car.cs",
               "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\WorldObjects\\Car\\Car.cs",
@@ -264,7 +292,19 @@
               "RelativeToolTip": "Assets\\@Game\\Domain\\WorldObjects\\Car\\Car.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvzwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T09:34:17.385Z",
+              "WhenOpened": "2025-12-11T09:34:17.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UI_TryAgainPopup.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs",
+              "RelativeDocumentMoniker": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\EyeRider\\Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs",
+              "RelativeToolTip": "Assets\\@Game\\Domain\\Scenes\\InGameScene\\UI\\ResultScreen\\UI_TryAgainPopup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T11:26:29.249Z",
               "EditorCaption": ""
             }
           ]

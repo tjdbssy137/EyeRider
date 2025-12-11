@@ -60,7 +60,7 @@ public class UI_Topbar : UI_Base
 
     public void UpdateGameProgress(float progress)
     {
-        float ratio = 1 - (Managers.Difficulty.MaxMetre / progress);
+        float ratio = progress / Managers.Difficulty.MaxMetre;
         GetSlider((int)Sliders.GameProgressBar).value = Mathf.Clamp01(ratio);
     }
 }

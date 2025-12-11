@@ -97,6 +97,7 @@ public partial class CarController : BaseObject
         Contexts.InGame.CurrentMapXZ
            .Subscribe(pos =>
            {
+               Debug.Log($"CurrentMapXZ = {pos}");
                _targetCenter = pos;
            })
            .AddTo(_disposables);
@@ -107,6 +108,12 @@ public partial class CarController : BaseObject
         }
 
         BindSubscriptions();
+        
+        Contexts.InGame.OnStartGame
+        .Subscribe(_ =>
+        {
+            _lastDistancePos = Contexts.InGame.SpawnPosition;
+        }).AddTo(_disposables);
 
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
@@ -212,21 +219,17 @@ public partial class CarController : BaseObject
     private void UpdateMetreDistance()
     {
         Vector3 currentPos = _rigidbody.position;
-        if(_lastDistancePos == Vector3.zero)
-        {
-            _lastDistancePos = currentPos;
-            return;
-        }
-        float delta = Vector3.Distance(currentPos, _lastDistancePos);
         
+        float delta = Vector3.Distance(currentPos, _lastDistancePos);
+        Debug.Log($"CAR pos = {_rigidbody.position}, _lastDistancePos = {_lastDistancePos} ");
+
         if (0f < delta)
         {
             Contexts.InGame.Metre += delta;
             Managers.Difficulty.UpdateMetre(Contexts.InGame.Metre);
         }
         _lastDistancePos = currentPos;
-        Debug.Log($"lastDistancePos {_lastDistancePos}");
-
+        //Debug.Log($"lastDistancePos {_lastDistancePos}");
     }
 
     private void HorizontalMove(float dir)
