@@ -97,7 +97,7 @@ public partial class CarController : BaseObject
         Contexts.InGame.CurrentMapXZ
            .Subscribe(pos =>
            {
-               Debug.Log($"CurrentMapXZ = {pos}");
+               //Debug.Log($"CurrentMapXZ = {pos}");
                _targetCenter = pos;
            })
            .AddTo(_disposables);
@@ -118,7 +118,7 @@ public partial class CarController : BaseObject
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
-                if (true == Contexts.InGame.IsGameOver)
+                if (true == Contexts.InGame.IsEnd)
                 {
                     return;
                 }

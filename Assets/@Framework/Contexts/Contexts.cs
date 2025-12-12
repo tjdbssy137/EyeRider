@@ -63,14 +63,11 @@ public partial class Contexts
             SKey = false,
             DKey = false,
 
-            IsGameOver = false,
+            IsEnd = false,
             IsPaused = false,
-            IsGameWin = false,
-            MaxRunTime = 0,
 
             IsCollisionObstacle = 0,
             PanicPoint = 0f,
-            GameScore = 0,
             Metre = 0f
         };
     }

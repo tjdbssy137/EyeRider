@@ -5,13 +5,23 @@ using System;
 public partial class InGameContext
 {
     public Subject<Unit> OnStartGame { get; private set; } = new Subject<Unit>();
-    public Subject<Unit> OnEndGame { get; private set; } = new Subject<Unit>();
+    public enum GameEndType
+    {
+        None,
+        Win,
+        Lose
+    }
+    public Subject<GameEndType> OnEndGame { get; private set; } = new Subject<GameEndType>();
+
+    // Game State
+    public bool IsEnd { get; set; }
+    public bool IsPaused { get; set; }
 
     // EYE
     public Subject<float> OnExitEye { get; private set; } = new Subject<float>();
     public Subject<Unit> OnEnterEye { get; private set; } = new Subject<Unit>();
 
-
+    // CORNER
     public Subject<float> OnEnterCorner { get; private set; } = new Subject<float>();   
     public Subject<Unit> OnExitCorner { get; private set; } = new Subject<Unit>();   
 
@@ -32,22 +42,6 @@ public partial class InGameContext
     public bool SKey { get; set; }
     public bool DKey { get; set; }
 
-    // play Timer
-    // private float _runStartTime = 0f;
-    // public float RunStartTime
-    // {
-    //     get { return _runStartTime; }
-    //     private set { _runStartTime = value; }
-    // }
-    // public void StartGame()
-    // {
-    //     _runStartTime = Time.unscaledTime;
-    // }
-    public bool IsGameOver { get; set; }//lose
-    public bool IsPaused { get; set; }
-    public int MaxRunTime { get; set; }
-    public bool IsGameWin { get; set; }// 게임 승리 종료
-
 
 
     public Subject<Vector3> CurrentMapXZ {get; set;} = new Subject<Vector3>();
@@ -55,12 +49,11 @@ public partial class InGameContext
     public BehaviorSubject<Vector3> WorldRightDir = new BehaviorSubject<Vector3>(Vector3.right);
 
     public  Subject<float> OnCollisionObstacle { get; private set; } = new Subject<float>();
+    public int IsCollisionObstacle { get; set; }
 
-    public int IsCollisionObstacle { get; set; } 
+
+    // Game Score
     public float PanicPoint { get; set; }
-
-    public int GameScore { get; set; }
-
     public float Metre { get; set; }
 
 }

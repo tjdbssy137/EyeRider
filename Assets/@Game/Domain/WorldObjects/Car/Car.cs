@@ -62,7 +62,7 @@ public class Car : BaseObject
         Observable.Interval(TimeSpan.FromSeconds(1f))
             .Subscribe(_ => 
             {
-                if (true == Contexts.InGame.IsGameOver)
+                if (true == Contexts.InGame.IsEnd)
                 {
                     return;
                 }

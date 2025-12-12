@@ -1,6 +1,7 @@
-using UnityEngine;
-using UniRx;
 using System;
+using UniRx;
+using UnityEngine;
+using static InGameContext;
 
 public class DifficultyManager
 {
@@ -167,8 +168,7 @@ public class DifficultyManager
         if (1.0f <= p)
         {
             Debug.Log("Contexts.InGame.IsGameOver = true;");
-            Contexts.InGame.OnEndGame.OnNext(Unit.Default);
-            Managers.UI.ShowPopupUI<UI_ResultPopup>();
+            Contexts.InGame.OnEndGame.OnNext(GameEndType.Win);
         }
     }
 

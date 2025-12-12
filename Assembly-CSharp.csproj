@@ -57,6 +57,7 @@
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\Topbar\UI_FilledObject.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\ItemData.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXSpriteBouncer.cs" />
+    <Compile Include="Assets\@Framework\Managers\Contents\ScoreManager.cs" />
     <Compile Include="Assets\@Framework\Controllers\EventHandler\GO_EventHandler.cs" />
     <Compile Include="Assets\@Framework\Utils\Define.Core.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Map\WorldMover.cs" />

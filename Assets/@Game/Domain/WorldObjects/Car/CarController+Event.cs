@@ -59,7 +59,7 @@ public partial class CarController : BaseObject
         Observable.Interval(TimeSpan.FromSeconds(0.2f))
             .Subscribe(_ =>
             {
-                if (true == Contexts.InGame.IsGameOver)
+                if (true == Contexts.InGame.IsEnd)
                 {
                     return;
                 }
@@ -97,7 +97,7 @@ public partial class CarController : BaseObject
         {
             if (newCondition.Item2 <= 0)
             {
-                Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
+                Contexts.InGame.OnEndGame.OnNext(InGameContext.GameEndType.Lose);
             }
             _conditionPanic = Mathf.Clamp01(1 - newCondition.Item2/100);
         }).AddTo(this);
@@ -107,7 +107,7 @@ public partial class CarController : BaseObject
         {
             if(newFuel.Item2 <= 0)
             {
-                Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
+                Contexts.InGame.OnEndGame.OnNext(InGameContext.GameEndType.Lose);
             }
             _fuelPanic = Mathf.Clamp01(1 - newFuel.Item2/100);
         }).AddTo(this);

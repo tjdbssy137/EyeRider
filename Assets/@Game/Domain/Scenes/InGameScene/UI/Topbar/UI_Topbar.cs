@@ -78,7 +78,7 @@ public class UI_Topbar : UI_Base
 
     private void OnClick_PuaseButton(PointerEventData eventData)
     {
-        Sequence seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence().SetLink(GetImage((int)Images.PuaseButton).gameObject);
 
         seq.Append(GetImage((int)Images.PuaseButton).gameObject.transform.DOScale(0.9f, 0.05f).SetEase(Ease.OutQuad));
         seq.Append(GetImage((int)Images.PuaseButton).gameObject.transform.DOScale(1f, 0.05f).SetEase(Ease.OutQuad));

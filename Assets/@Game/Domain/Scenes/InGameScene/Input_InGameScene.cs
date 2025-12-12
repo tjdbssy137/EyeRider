@@ -46,7 +46,7 @@ public class Input_InGameScene : IInputSystem
     
     public void OnKeyAction()
     {
-        if (Contexts.InGame.IsGameOver)
+        if (Contexts.InGame.IsEnd)
         {
             return;
         }

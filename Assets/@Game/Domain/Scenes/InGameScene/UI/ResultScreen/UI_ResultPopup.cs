@@ -37,22 +37,21 @@ public class UI_ResultPopup : UI_Popup
 
         GetButton((int)Buttons.Home).gameObject.BindEvent(OnClick_HomeButton, EUIEvent.Click);
         GetButton((int)Buttons.Next).gameObject.BindEvent(OnClick_NextButton, EUIEvent.Click);
-        Time.timeScale = 0;
 
         for (int i = 0; i < 3; i++)
         {
             GetImage((int)Images.Star1 + i).sprite = _starOff;
         }
-
         return true;
     }
 
     public void SetInfo()
     {
+        Contexts.InGame.IsEnd = true;
         //GetText((int)Texts.Stage).text = $"Stage {Contexts.GameProfile.CurrentLevel}";
-        GetText((int)Texts.Score).text = $"Score {Contexts.InGame.GameScore}";
-        GetText((int)Texts.Compensation).text = $"{100}";
-        for(int i =0; i<3; i++)
+        GetText((int)Texts.Score).text = $"Score {Managers.Score.FinalScore}";
+        GetText((int)Texts.Compensation).text = $"{Managers.Score.FinalGold}";
+        for(int i = 0; i < Managers.Score.Star; i++)
         {
             GetImage((int)Images.Star1 + i).sprite = _starOn;
         }
@@ -60,7 +59,7 @@ public class UI_ResultPopup : UI_Popup
 
     private void OnClick_HomeButton(PointerEventData eventData)
     {
-        Time.timeScale = 1;
+        Contexts.InGame.IsEnd = false;
         Managers.UI.ClosePopupUI(this);
         var loadingComplete = UI_LoadingPopup.Show();
 
@@ -70,7 +69,7 @@ public class UI_ResultPopup : UI_Popup
 
     private void OnClick_NextButton(PointerEventData eventData)
     {
-        Time.timeScale = 1;
+        Contexts.InGame.IsEnd = false;
         Managers.UI.ClosePopupUI(this);
         var loadingComplete = UI_LoadingPopup.Show();
         loadingComplete.Value = true;

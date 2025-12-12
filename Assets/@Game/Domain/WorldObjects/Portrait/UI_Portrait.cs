@@ -35,7 +35,7 @@ public class UI_Portrait : UI_Base
                 return;
             }
 
-            if (Contexts.InGame.IsGameOver)
+            if (Contexts.InGame.IsEnd)
             {
                 _animator.SetTrigger("Faint");
                 return;
@@ -48,7 +48,7 @@ public class UI_Portrait : UI_Base
 
     private void UpdatePortrait()
     {
-        if (Contexts.InGame.IsGameOver)
+        if (Contexts.InGame.IsEnd)
         {
             _animator.SetTrigger("Faint");
         }

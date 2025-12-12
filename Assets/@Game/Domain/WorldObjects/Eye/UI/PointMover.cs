@@ -68,7 +68,7 @@ public class PointMover : UI_Base
 
         Observable.Interval(System.TimeSpan.FromSeconds(_randomTargetInterval))
             .Subscribe(_ =>{
-                if (true == Contexts.InGame.IsGameOver)
+                if (true == Contexts.InGame.IsEnd)
                 {
                     return;
                 }
@@ -81,7 +81,7 @@ public class PointMover : UI_Base
 
         this.UpdateAsObservable().Subscribe(_ =>
         {
-            if (true == Contexts.InGame.IsGameOver)
+            if (true == Contexts.InGame.IsEnd)
             {
                 return;
             }

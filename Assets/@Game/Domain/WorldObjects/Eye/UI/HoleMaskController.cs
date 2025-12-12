@@ -27,7 +27,7 @@ public class HoleMaskController : UI_Base
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                if (true == Contexts.InGame.IsGameOver)
+                if (true == Contexts.InGame.IsEnd)
                 {
                     return;
                 }

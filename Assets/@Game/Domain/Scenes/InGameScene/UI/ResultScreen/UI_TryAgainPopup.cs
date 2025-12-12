@@ -28,21 +28,20 @@ public class UI_TryAgainPopup : UI_Popup
 
         GetButton((int)Buttons.Home).gameObject.BindEvent(OnClick_HomeButton, EUIEvent.Click);
         GetButton((int)Buttons.Retry).gameObject.BindEvent(OnClick_RetryButton, EUIEvent.Click);
-        Time.timeScale = 0;
-
         return true;
     }
 
     public void SetInfo()
     {
+        Contexts.InGame.IsEnd = true;
         //GetText((int)Texts.Stage).text = $"Stage {Contexts.GameProfile.CurrentLevel}";
-        GetText((int)Texts.Score).text = $"Score {Contexts.InGame.GameScore}";
-        GetText((int)Texts.Compensation).text = $"{100}";
+        GetText((int)Texts.Score).text = $"Score {Managers.Score.FinalScore}";
+        GetText((int)Texts.Compensation).text = $"{Managers.Score.FinalGold}";
     }
 
     private void OnClick_HomeButton(PointerEventData eventData)
     {
-        Time.timeScale = 1;
+        Contexts.InGame.IsEnd = false;
         Managers.UI.ClosePopupUI(this);
         var loadingComplete = UI_LoadingPopup.Show();
 
@@ -52,7 +51,7 @@ public class UI_TryAgainPopup : UI_Popup
 
     private void OnClick_RetryButton(PointerEventData eventData)
     {
-        Time.timeScale = 1;
+        Contexts.InGame.IsEnd = false;
         Managers.UI.ClosePopupUI(this);
         var loadingComplete = UI_LoadingPopup.Show();
         loadingComplete.Value = true;

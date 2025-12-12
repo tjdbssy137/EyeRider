@@ -8,11 +8,12 @@ public class Managers : MonoBehaviour
     private GameManager _game = new GameManager();
     private ObjectManager _object = new ObjectManager();
     private DifficultyManager _difficulty = new DifficultyManager();
-
+    private ScoreManager _score = new ScoreManager();
 
     public static GameManager Game { get { return Instance?._game; } }
     public static ObjectManager Object { get { return Instance?._object; } }
     public static DifficultyManager Difficulty { get { return Instance?._difficulty; } }
+    public static ScoreManager Score { get { return Instance?._score; } }
 
     #endregion
 
@@ -66,6 +67,7 @@ public class Managers : MonoBehaviour
             s_instance._localization.Init();
             s_instance._web.Init();
             s_instance._difficulty.Init();
+            s_instance._score.Init();
         }
     }
 

@@ -5,6 +5,7 @@ using Unity.Cinemachine;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static InGameContext;
 
 public class InGameScene : BaseScene
 {
@@ -38,7 +39,7 @@ public class InGameScene : BaseScene
         .Take(1)
         .SelectMany(_ =>
             this.UpdateAsObservable()
-                .Where(__ => Contexts.InGame.IsPaused || Contexts.InGame.IsGameOver)
+                .Where(__ => Contexts.InGame.IsPaused || Contexts.InGame.IsEnd)
                 .Take(1)
         )
         .Subscribe(_ =>
@@ -51,13 +52,26 @@ public class InGameScene : BaseScene
         .AddTo(_disposables);
 
         Contexts.InGame.OnEndGame
-        .Subscribe(_=>
+        .Subscribe(type =>
         {
-            Contexts.GameProfile.CurrentLevel++;
-            SecurePlayerPrefs.SetInt("Level", Contexts.GameProfile.CurrentLevel);
-            SecurePlayerPrefs.Save();
-            Contexts.InGame.IsGameOver = true;
-            Managers.UI.ShowPopupUI<UI_ResultPopup>();
+            if(type == GameEndType.Lose)
+            {
+                Debug.Log("Game Over");
+                Contexts.InGame.IsEnd = true;
+                UI_TryAgainPopup ui = Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
+                ui.SetInfo();
+            }
+            else if(type == GameEndType.Win)
+            {
+                Debug.Log("Level Clear");
+                Contexts.InGame.IsEnd = true;
+                Contexts.GameProfile.CurrentLevel++;
+                SecurePlayerPrefs.SetInt("Level", Contexts.GameProfile.CurrentLevel);
+                SecurePlayerPrefs.Save();
+                UI_ResultPopup ui =  Managers.UI.ShowPopupUI<UI_ResultPopup>();
+                ui.SetInfo();
+            }
+            
         }).AddTo(_disposables);
 
 
