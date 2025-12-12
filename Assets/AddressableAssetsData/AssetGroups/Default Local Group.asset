@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3adeac6fa218ae34e852ac5fa75589b5
+    m_Address: Waterdrop
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b5c9cd8cc7e5430c876b75cb9495013
     m_Address: UI_MainMenuScene
     m_ReadOnly: 0

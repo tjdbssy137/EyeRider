@@ -138,6 +138,7 @@
     <Compile Include="Assets\@Framework\Input\IInputSystem.cs" />
     <Compile Include="Assets\@Framework\UI\Popup\UI_ToastPopup.cs" />
     <Compile Include="Assets\@Framework\Utils\Define.Contents.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\Waterdrop\Waterdrop.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\WebManager.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Scripts\ETFXLightFade.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Car\CarController.cs" />
