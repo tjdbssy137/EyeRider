@@ -99,6 +99,7 @@
     <Compile Include="Assets\@Framework\Managers\Core\SceneManagerEx.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Eye\UI\UI_Eye.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\UIManager.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\Waterdrop\WaterdropSpawner.cs" />
     <Compile Include="Assets\@Framework\UI\Popup\UI_Popup.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Scripts\ETFXPitchRandomizer.cs" />
     <Compile Include="Assets\@Game\Contexts\InGameContext.cs" />

@@ -55,5 +55,5 @@ public partial class InGameContext
     // Game Score
     public float PanicPoint { get; set; }
     public float Metre { get; set; }
-
+    
 }

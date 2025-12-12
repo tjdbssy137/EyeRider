@@ -150,28 +150,28 @@ public class DifficultyManager
         {
             _metreStep++;
             Debug.Log("Level Up 25%");
-            LevelUp();
+            OnMetreDifficultyUp.OnNext(Unit.Default);
         }
 
         if (_metreStep == 1 && 0.50f <= p)
         {
             _metreStep++;
             Debug.Log("Level Up 50%");
-            LevelUp();
+            OnMetreDifficultyUp.OnNext(Unit.Default);
         }
 
         if (_metreStep == 2 && 0.75f <= p)
         {
             _metreStep++;
             Debug.Log("Level Up 75%");
-            LevelUp();
+            OnMetreDifficultyUp.OnNext(Unit.Default);
         }
 
         if (_metreStep == 3 && 0.93f <= p)
         {
             _metreStep++;
             Debug.Log("Level Up 93%");
-            LevelUp();
+            OnMetreDifficultyUp.OnNext(Unit.Default);
         }
 
         if (1.0f <= p)
@@ -194,37 +194,5 @@ public class DifficultyManager
         {
             _endGamePenaltyMul = 1f;
         }
-    }
-
-    private void LevelUp()
-    {
-        OnMetreDifficultyUp.OnNext(Unit.Default);
-        Rain();
-    }
-
-    private CompositeDisposable _rainDisposable = new CompositeDisposable();
-    private readonly Vector2 _baseDir = new Vector2(-0.4f, -1f).normalized;
-    private void Rain()
-    {
-        _rainDisposable.Clear();
-
-        Observable.Interval(TimeSpan.FromSeconds(0.05f))
-            .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(2f))) // 2ÃÊ
-            .Subscribe(_ =>
-            {
-                SpawnRainDrop();
-            })
-            .AddTo(_rainDisposable);
-    }
-    // Canvas ÇÊ¿ä
-    private void SpawnRainDrop()
-    {
-        Vector2 spawnPos = new Vector2(UnityEngine.Random.Range(-400f, 400f), 750f);
-        Waterdrop drop = Managers.Object.Spawn<Waterdrop>(spawnPos, 0, 0);
-        RectTransform rt = drop.transform as RectTransform;
-
-        float speed = UnityEngine.Random.Range(900f, 1300f);
-
-        drop.SetInfo(_baseDir, speed);
     }
 }

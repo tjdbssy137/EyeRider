@@ -55,6 +55,11 @@ public class Input_InGameScene : IInputSystem
         {
             return;
         }
+
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            Managers.Difficulty.OnMetreDifficultyUp.OnNext(Unit.Default);
+        }
         Contexts.InGame.WKey = Keyboard.current.wKey.isPressed;
         Contexts.InGame.AKey = Keyboard.current.aKey.isPressed;
         Contexts.InGame.SKey = Keyboard.current.sKey.isPressed;

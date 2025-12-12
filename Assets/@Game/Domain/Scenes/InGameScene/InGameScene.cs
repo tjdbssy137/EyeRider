@@ -120,6 +120,8 @@ public class InGameScene : BaseScene
         bool ok = Contexts.InGame.MapPlanner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
         Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
 
+        Managers.Object.Spawn<WaterdropSpawner>(Vector3.zero, 0, 0);
+
         // Game UI
         UI_InGameScene ui_InGameScene = Managers.UI.ShowSceneUI<UI_InGameScene>();
         ui_InGameScene.SetInfo();
