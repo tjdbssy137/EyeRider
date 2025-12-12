@@ -76,6 +76,10 @@ public class Car : BaseObject
         //this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
         return true;
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
     public override void SetInfo(int dataTemplate)
     {
         base.SetInfo(dataTemplate);

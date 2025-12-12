@@ -117,7 +117,12 @@ public class ScoreManager : MonoBehaviour
         Star = 0;
         FinalGold = 0;
     }
-
+    public void GetResult()
+    {
+        CalculateFinalScore();
+        CalculateStar();
+        CalculateFinalGold();
+    }
     private void CalculateFinalScore()
     {
         float metre = Contexts.InGame.Metre;

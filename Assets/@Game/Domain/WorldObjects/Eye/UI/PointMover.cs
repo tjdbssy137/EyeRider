@@ -1,6 +1,6 @@
-using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using UnityEngine;
 
 public class PointMover : UI_Base
 {
@@ -131,7 +131,6 @@ public class PointMover : UI_Base
 
         return true;
     }
-
     private void SetRandomTarget()
     {
         float halfWidth = _canvasRect.rect.width * 0.5f;

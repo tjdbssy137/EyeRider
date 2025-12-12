@@ -10,7 +10,10 @@ public class MainMenuScene : BaseScene
         LoadResources();
         return true;
     }
-
+    public override void Clear()
+    {
+        _disposables.Dispose();
+    }
     public async void OnResourceLoaded()
     {
         Managers.Data.LoadAll();

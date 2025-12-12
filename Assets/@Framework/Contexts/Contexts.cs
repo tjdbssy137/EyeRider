@@ -40,7 +40,8 @@ public partial class Contexts
         {
             VerticalAccelerationSpeed = 0f,
             MaxFuel = 0f,
-            MaxCondition = 0f
+            MaxCondition = 0f,
+            LastDistancePos = Vector3.zero
         };
 
         Instance._gameProfile = new GameProfileContext

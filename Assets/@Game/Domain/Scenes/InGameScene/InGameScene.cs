@@ -57,16 +57,24 @@ public class InGameScene : BaseScene
             if(type == GameEndType.Lose)
             {
                 Debug.Log("Game Over");
+                Managers.Score.GetResult();
                 Contexts.InGame.IsEnd = true;
+                Contexts.GameProfile.Gold += Managers.Score.FinalGold;
+                SecurePlayerPrefs.SetInt("Gold", Contexts.GameProfile.Gold);
+                SecurePlayerPrefs.Save();
                 UI_TryAgainPopup ui = Managers.UI.ShowPopupUI<UI_TryAgainPopup>();
                 ui.SetInfo();
             }
             else if(type == GameEndType.Win)
             {
                 Debug.Log("Level Clear");
+                Managers.Score.GetResult();
                 Contexts.InGame.IsEnd = true;
                 Contexts.GameProfile.CurrentLevel++;
                 SecurePlayerPrefs.SetInt("Level", Contexts.GameProfile.CurrentLevel);
+                SecurePlayerPrefs.Save();
+                Contexts.GameProfile.Gold += Managers.Score.FinalGold;
+                SecurePlayerPrefs.SetInt("Gold", Contexts.GameProfile.Gold);
                 SecurePlayerPrefs.Save();
                 UI_ResultPopup ui =  Managers.UI.ShowPopupUI<UI_ResultPopup>();
                 ui.SetInfo();
@@ -78,14 +86,17 @@ public class InGameScene : BaseScene
         LoadResources();
         return true;
     }
-
+    public override void Clear()
+    {
+        _disposables.Dispose();
+    }
     public async void OnResourceLoaded()
     {
         Managers.Data.LoadAll();
         SettingSceneObject();
     }
 
-     public void SettingSceneObject()
+    public void SettingSceneObject()
     {
         Contexts.InGame.IsPaused = true;
         Contexts.InGame.MaxLevel = Managers.Data.DifficultyDic.Count;
@@ -95,7 +106,6 @@ public class InGameScene : BaseScene
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
-
 
         GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
         _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
@@ -107,6 +117,8 @@ public class InGameScene : BaseScene
         Contexts.Car.MaxFuel = 100;
 
         Contexts.InGame.SpawnPosition = _spawnPoint.transform.position;
+        Contexts.Car.LastDistancePos = Contexts.InGame.SpawnPosition;
+
         _car = Managers.Object.Spawn<Car>(Contexts.InGame.SpawnPosition, 0, 0);
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;

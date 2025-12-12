@@ -73,6 +73,10 @@ public class MapSpawner : BaseObject
 
         return true;
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 
     public override void SetInfo(int dataTemplate)
     {

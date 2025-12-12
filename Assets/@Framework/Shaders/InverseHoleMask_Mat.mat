@@ -120,7 +120,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
-    - _RadiusPx: 0.15639463
+    - _RadiusPx: 261.2092
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -134,7 +134,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CanvasSize: {r: 1080, g: 1920, b: 0, a: 0}
-    - _CenterPx: {r: 621.73987, g: 889.99786, b: 0, a: 0}
+    - _CenterPx: {r: 539.3965, g: 954.66077, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HolePos: {r: 0.9450115, g: 0.73224705, b: 0, a: 0}

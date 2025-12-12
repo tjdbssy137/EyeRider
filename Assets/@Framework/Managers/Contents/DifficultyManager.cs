@@ -26,6 +26,7 @@ public class DifficultyManager
     public AnimationCurve LevelCurve_Random = AnimationCurve.Linear(0f, 1f, 1f, 1.5f);
     public AnimationCurve LevelCurve_Approach = AnimationCurve.Linear(0f, 1f, 1f, 1.3f);
     public AnimationCurve LevelCurve_Repel = AnimationCurve.Linear(0f, 1f, 1f, 1.3f);
+    private int _metreStep = 0; // 0,1,2,3,4
 
     public float CurrentLevel01
     {
@@ -101,6 +102,8 @@ public class DifficultyManager
     public void Init()
     {
         _currentMetre = 0f;
+        _metreStep = 0;
+        Contexts.InGame.Metre = 0f;
         _metreCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     }
 
@@ -135,12 +138,11 @@ public class DifficultyManager
     public void UpdateMetre(float metre)
     {
         _currentMetre = metre;
-        //Debug.Log($"_currentMetre {_currentMetre}");
+        Debug.Log($"_currentMetre {_currentMetre}");
         CheckLevelUp();
         CheckEndPenalty();
     }
 
-    private int _metreStep = 0; // 0,1,2,3,4
 
     private void CheckLevelUp()
     {

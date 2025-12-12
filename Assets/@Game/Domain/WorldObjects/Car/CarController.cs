@@ -53,9 +53,6 @@ public partial class CarController : BaseObject
     private float _shakeLerpSpeed = 2f;  
     private float _controlDifficulty = 0f; 
     public float ControlDifficulty {get { return _controlDifficulty; }}
-    private Vector3 _lastDistancePos;
-
-
 
     public override bool Init()
     {
@@ -82,6 +79,7 @@ public partial class CarController : BaseObject
         {
             return false;
         }
+        Debug.Log($"CarController Spawned : {GetInstanceID()}");
 
         _isOutside = false;
         _shakeIntensity = 0f;
@@ -109,12 +107,6 @@ public partial class CarController : BaseObject
 
         BindSubscriptions();
         
-        Contexts.InGame.OnStartGame
-        .Subscribe(_ =>
-        {
-            _lastDistancePos = Contexts.InGame.SpawnPosition;
-        }).AddTo(_disposables);
-
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
@@ -139,6 +131,10 @@ public partial class CarController : BaseObject
             })
             .AddTo(_disposables);
         return true;
+    }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
     }
 
     private void InputKeyBoard()
@@ -218,9 +214,14 @@ public partial class CarController : BaseObject
     }
     private void UpdateMetreDistance()
     {
+        //if (Contexts.InGame.IsPaused)
+        //{
+        //    Contexts.Car.LastDistancePos = _rigidbody.position;
+        //    return;
+        //}
         Vector3 currentPos = _rigidbody.position;
         
-        float delta = Vector3.Distance(currentPos, _lastDistancePos);
+        float delta = Vector3.Distance(currentPos, Contexts.Car.LastDistancePos);
         //Debug.Log($"CAR pos = {_rigidbody.position}, _lastDistancePos = {_lastDistancePos} ");
 
         if (0f < delta)
@@ -228,7 +229,7 @@ public partial class CarController : BaseObject
             Contexts.InGame.Metre += delta;
             Managers.Difficulty.UpdateMetre(Contexts.InGame.Metre);
         }
-        _lastDistancePos = currentPos;
+        Contexts.Car.LastDistancePos = currentPos;
         //Debug.Log($"lastDistancePos {_lastDistancePos}");
     }
 

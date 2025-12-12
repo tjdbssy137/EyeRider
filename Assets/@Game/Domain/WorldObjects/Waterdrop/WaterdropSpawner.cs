@@ -43,6 +43,10 @@ public class WaterdropSpawner : BaseObject
 
         return true;
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 
     private void SpawnRainDrop()
     {

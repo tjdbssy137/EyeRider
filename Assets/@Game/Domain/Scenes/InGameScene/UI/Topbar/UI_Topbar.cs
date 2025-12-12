@@ -64,6 +64,14 @@ public class UI_Topbar : UI_Base
             .Subscribe(_ =>
             {
                 //Debug.Log("EveryUpdate");
+                if (true == Contexts.InGame.IsEnd)
+                {
+                    return;
+                }
+                if (true == Contexts.InGame.IsPaused)
+                {
+                    return;
+                }
                 UpdateGameProgress(Contexts.InGame.Metre);
             }).AddTo(this);
         return true;

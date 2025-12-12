@@ -42,6 +42,10 @@ public class Waterdrop : BaseObject
         }).AddTo(this.gameObject);
         return true;
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 
     public void SetInfo(Vector2 spawnPos, Vector2 baseDir,float speed)
     {

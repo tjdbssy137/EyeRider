@@ -27,7 +27,11 @@ public class Map : BaseObject
         }
         return true;
     }
-    
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+
     public override bool OnSpawn()
     {
         if (false == base.OnSpawn())

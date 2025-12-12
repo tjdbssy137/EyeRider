@@ -10,5 +10,6 @@ public partial class CarContext
     //public float Condition = Contexts.InGame.Car.Condition;
     public float VerticalAccelerationSpeed { get; set; } 
     public float MaxFuel { get; set; } 
-    public float MaxCondition { get; set; } 
+    public float MaxCondition { get; set; }
+    public Vector3 LastDistancePos { get; set; }
 }

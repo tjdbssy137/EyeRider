@@ -29,6 +29,10 @@ public class ParticleObject : BaseObject
         .AddTo(_disposables);
         return true;
     }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
 
     public override void SetInfo(int dataTemplate)
     {
