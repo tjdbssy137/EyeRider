@@ -66,7 +66,6 @@
     <Compile Include="Assets\@Framework\Data\Data.Core.cs.cs" />
     <Compile Include="Assets\@Game\Contexts\MapContext.cs" />
     <Compile Include="Assets\@Framework\Utils\Extension.cs" />
-    <Compile Include="Assets\@Game\Domain\Scenes\MainMenuScene\DamageEffect\DamageEffect.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\particle\ParticleObject.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Map\MapPlanner.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\ResultScreen\UI_TryAgainPopup.cs" />
     <Compile Include="Assets\@Framework\UI\UI_Base.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\MapData.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\DamageEffect\DamageEffect.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Scripts\ETFXRotation.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\ObstacleData.cs" />
     <Compile Include="Assets\@Game\Contexts\CarContext.cs" />

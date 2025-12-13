@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5166268641407832199}
   - component: {fileID: 1271956124921186937}
   - component: {fileID: 1587292475873838839}
-  - component: {fileID: 3685435469659364794}
+  - component: {fileID: 4567129125133970296}
   m_Layer: 0
   m_Name: HealEffect
   m_TagString: Untagged
@@ -476,7 +476,7 @@ MonoBehaviour:
   enablePooling: 0
   poolSize: 50
   disableOnSceneLoad: 1
-  editorLastFont: Poison-Thin3D
+  editorLastFont: Saw-Glow3D
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &1587292475873838839
 SortingGroup:
@@ -490,7 +490,7 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1000
   m_SortAtRoot: 0
---- !u!114 &3685435469659364794
+--- !u!114 &4567129125133970296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -499,9 +499,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4298522550449706624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9001c318252444e40a67d711f9a88f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 015db377de648a7468efe54805673bbb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealEffect
 --- !u!1 &7165116957676079406
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,10 +555,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8637183786855169142, guid: 138bc14d0d67104469245bad10338323, type: 2}
+  - {fileID: 7416220725609056392, guid: 85b1b6bad86995045b8b3eaf45399683, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -576,6 +578,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -645,10 +648,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8637183786855169142, guid: 138bc14d0d67104469245bad10338323, type: 2}
+  - {fileID: 7416220725609056392, guid: 85b1b6bad86995045b8b3eaf45399683, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -666,6 +671,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -692,15 +698,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: +123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 138bc14d0d67104469245bad10338323, type: 2}
-  m_sharedMaterial: {fileID: -8637183786855169142, guid: 138bc14d0d67104469245bad10338323, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85b1b6bad86995045b8b3eaf45399683, type: 2}
+  m_sharedMaterial: {fileID: 7416220725609056392, guid: 85b1b6bad86995045b8b3eaf45399683, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279774015
+  m_fontColor: {r: 0.24528301, g: 0.16852494, b: 0.09603061, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -728,6 +734,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -817,10 +824,12 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8637183786855169142, guid: 138bc14d0d67104469245bad10338323, type: 2}
+  - {fileID: 7416220725609056392, guid: 85b1b6bad86995045b8b3eaf45399683, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -838,6 +847,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

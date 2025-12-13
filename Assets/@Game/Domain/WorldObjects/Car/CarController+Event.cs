@@ -79,6 +79,8 @@ public partial class CarController : BaseObject
         .Subscribe(damage =>
         {
             Contexts.InGame.IsCollisionObstacle++;
+            DamageEffect effect = Managers.Object.Spawn<DamageEffect>($"DamageEffect", Contexts.InGame.Car.transform.position, 0, 0);
+            effect.SetDamage(damage);
             _eventPanic += 0.2f; // 임시값
             Contexts.InGame.Car.DamageCondition(damage);
             Observable.Timer(TimeSpan.FromSeconds(1.2f))
