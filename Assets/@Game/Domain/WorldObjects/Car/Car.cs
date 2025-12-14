@@ -100,6 +100,9 @@ public class Car : BaseObject
 
     public void DamageCondition(float damage)
     {
+        Vector3 spawnPos = this.transform.position + new Vector3(0, 5, 0);
+        DamageEffect effect = Managers.Object.Spawn<DamageEffect>($"DamageEffect", spawnPos, 0, 0);
+        effect.SetDamage(damage);
         Condition -= damage;
     }
     public void RepairCondition(float recover)

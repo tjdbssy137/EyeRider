@@ -26,7 +26,7 @@ public partial class CarController : BaseObject
     private float _lastDistance = 0f;
 
     // 자동차 이동 방향
-    private Vector3 _center;
+    private Vector3 _center = Vector3.zero;
     private Vector3 _worldForward;
     private Vector3 _worldRight;
 
@@ -80,10 +80,11 @@ public partial class CarController : BaseObject
             return false;
         }
         Debug.Log($"CarController Spawned : {GetInstanceID()}");
-
+        
+        _rigidbody.angularVelocity = Vector3.zero;
         _isOutside = false;
         _shakeIntensity = 0f;
-
+        
         Contexts.InGame.WorldRightDir
             .Subscribe(r => _worldRight = r)
             .AddTo(_disposables);
@@ -110,6 +111,9 @@ public partial class CarController : BaseObject
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
+                //Debug.Log($"Car, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
+                Debug.Log($"Transform = {transform.position}, RB = {_rigidbody.position}");
+
                 if (true == Contexts.InGame.IsEnd)
                 {
                     return;
@@ -118,6 +122,7 @@ public partial class CarController : BaseObject
                 {
                     return;
                 }
+                //Debug.Log($"Car, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
 
@@ -214,23 +219,18 @@ public partial class CarController : BaseObject
     }
     private void UpdateMetreDistance()
     {
-        //if (Contexts.InGame.IsPaused)
-        //{
-        //    Contexts.Car.LastDistancePos = _rigidbody.position;
-        //    return;
-        //}
         Vector3 currentPos = _rigidbody.position;
         
         float delta = Vector3.Distance(currentPos, Contexts.Car.LastDistancePos);
-        //Debug.Log($"CAR pos = {_rigidbody.position}, _lastDistancePos = {_lastDistancePos} ");
+        Debug.Log($"CAR pos = {_rigidbody.position}, LastDistancePos = {Contexts.Car.LastDistancePos} ");
 
-        if (0f < delta)
+        if (0f < delta && delta < 50f) // 임시 막음. _rigidbody의 좌표가 (-344,0,1960)? 으로 생성될때가 있음.
         {
             Contexts.InGame.Metre += delta;
+            Debug.Log($"delta : {delta}, Contexts.InGame.Metres {Contexts.InGame.Metre}");
             Managers.Difficulty.UpdateMetre(Contexts.InGame.Metre);
+            Contexts.Car.LastDistancePos = currentPos;
         }
-        Contexts.Car.LastDistancePos = currentPos;
-        //Debug.Log($"lastDistancePos {_lastDistancePos}");
     }
 
     private void HorizontalMove(float dir)

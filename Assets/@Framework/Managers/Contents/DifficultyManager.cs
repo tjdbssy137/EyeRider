@@ -138,7 +138,7 @@ public class DifficultyManager
     public void UpdateMetre(float metre)
     {
         _currentMetre = metre;
-        Debug.Log($"_currentMetre {_currentMetre}");
+        //Debug.Log($"_currentMetre {_currentMetre}");
         CheckLevelUp();
         CheckEndPenalty();
     }

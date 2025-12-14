@@ -40,16 +40,18 @@ public class InGameScene : BaseScene
         .SelectMany(_ =>
             this.UpdateAsObservable()
                 .Where(__ => Contexts.InGame.IsPaused || Contexts.InGame.IsEnd)
-                .Take(1)
-        )
-        .Subscribe(_ =>
-        {
-            Contexts.InGame.Metre = 0f;
-            Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
-            Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
-            Contexts.InGame.IsPaused = false;
-        })
-        .AddTo(_disposables);
+                .Take(1))
+                .Subscribe(_ =>
+                {
+                    //Debug.Log($"Game Start, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
+                    Contexts.InGame.Metre = 0f;
+                    Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
+                    Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
+                    Contexts.InGame.IsPaused = false;
+                    //Debug.Log($"Game Start, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
+
+                })
+                .AddTo(_disposables);
 
         Contexts.InGame.OnEndGame
         .Subscribe(type =>
@@ -107,6 +109,13 @@ public class InGameScene : BaseScene
         _mapSpawner.OnSpawn();
         _mapSpawner.SetInfo(0);
 
+        // Map Generate
+        Contexts.InGame.MAP_SIZE = 100;
+        Contexts.InGame.MapPlanner = new MapPlanner(_plannerGridW, _plannerGridH, Contexts.InGame.MAP_SIZE);
+        Vector2Int startCell = new Vector2Int(_plannerGridW / 2, _plannerGridH / 2);
+        bool ok = Contexts.InGame.MapPlanner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
+        Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
+
         GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
         _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
         _obstacleSpawner.OnSpawn();
@@ -118,19 +127,13 @@ public class InGameScene : BaseScene
 
         Contexts.InGame.SpawnPosition = _spawnPoint.transform.position;
         Contexts.Car.LastDistancePos = Contexts.InGame.SpawnPosition;
+        Debug.Log($"[SettingSceneObject] LastDistancePos : {Contexts.Car.LastDistancePos}");
 
         _car = Managers.Object.Spawn<Car>(Contexts.InGame.SpawnPosition, 0, 0);
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
         carSideClampAnchor.Init();
         carSideClampAnchor.OnSpawn();
-
-        // Map Generate
-        Contexts.InGame.MAP_SIZE = 100;
-        Contexts.InGame.MapPlanner = new MapPlanner(_plannerGridW, _plannerGridH, Contexts.InGame.MAP_SIZE);
-        Vector2Int startCell = new Vector2Int(_plannerGridW / 2, _plannerGridH / 2);
-        bool ok = Contexts.InGame.MapPlanner.GeneratePath(startCell, _startDir, _desiredBlueprintLength);
-        Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(ok);
 
         Managers.Object.Spawn<WaterdropSpawner>(Vector3.zero, 0, 0);
 

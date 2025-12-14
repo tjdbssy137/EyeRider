@@ -26,24 +26,55 @@ public class ObjectManager
     public T Spawn<T>(Vector3 position, int objectId, int templateID) where T : BaseObject
     {
         string prefabName = typeof(T).Name;
-
-        GameObject go = Managers.Resource.Instantiate(prefabName, pooling: true);
-        go.name = prefabName;
-        go.transform.position = position;
-
-        BaseObject obj = go.GetComponent<BaseObject>();
-
-        if ( 0 == objectId )
+        if (prefabName == "Car")
         {
-            objectId = ++_objectIndexer;
+            GameObject go = Managers.Resource.Instantiate(prefabName, pooling: true);
+            go.name = prefabName;
+            go.transform.position = position;
+
+            Rigidbody rb = go.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            rb.position = position;
+            rb.angularVelocity = Vector3.zero;
+
+            rb.isKinematic = false;
+
+            BaseObject obj = go.GetComponent<BaseObject>();
+
+            if (0 == objectId)
+            {
+                objectId = ++_objectIndexer;
+            }
+
+            obj.ObjectId = objectId;
+            obj.SetInfo(templateID);
+
+            ObjectDic.Add(objectId, obj);
+
+            return obj as T;
         }
+        else
+        {
+            GameObject go = Managers.Resource.Instantiate(prefabName, pooling: true);
+            go.name = prefabName;
+            go.transform.position = position;
 
-        obj.ObjectId = objectId;
-        obj.SetInfo(templateID);
+            BaseObject obj = go.GetComponent<BaseObject>();
 
-        ObjectDic.Add(objectId, obj);
+            if (0 == objectId)
+            {
+                objectId = ++_objectIndexer;
+            }
 
-        return obj as T;
+            obj.ObjectId = objectId;
+            obj.SetInfo(templateID);
+
+            ObjectDic.Add(objectId, obj);
+
+            return obj as T;
+        }
+        return null;
     }
 
     public T Spawn<T>(string prefabName, Vector3 position, int objectId, int templateID) where T : BaseObject

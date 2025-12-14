@@ -99,6 +99,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 658d21c8184cdfc489e03e27e90188d7
+    m_Address: DamageEffect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 673b2aacdd50c794ca7eb2aad34e9d8f
+    m_Address: HealEffect
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67724f4a5dc931c43ba3ec596391138e
     m_Address: UI_TryAgainPopup
     m_ReadOnly: 0
