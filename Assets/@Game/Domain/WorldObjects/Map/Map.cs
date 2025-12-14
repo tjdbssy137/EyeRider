@@ -9,8 +9,9 @@ public class Map : BaseObject
     public BoxCollider _collider;
     private MapData _data;
     private Car _car;
-
-    // ★ 추가 — 이 맵이 가진 방향값 (0=+Z,1=+X,2=-Z,3=-X)
+    private Vector3 _mapForward;
+    private bool _isCollided = false;
+    // (0=+Z,1=+X,2=-Z,3=-X)
     public int DirectionIndex { get; private set; }
     public void SetDirection(int dir)
     {
@@ -27,29 +28,34 @@ public class Map : BaseObject
         }
         return true;
     }
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-    }
-
     public override bool OnSpawn()
     {
         if (false == base.OnSpawn())
         {
             return false;
         }
+        _isCollided = false;
+        _collider.OnCollisionExitAsObservable()
+            .Where(collision => collision.gameObject.CompareTag("Player"))
+            .Subscribe(_ =>
+            {
+                _isCollided = true;
+            })
+            .AddTo(_disposables);
 
-        //_collider.OnCollisionExitAsObservable()
-        //    .Where(collision => collision.gameObject.CompareTag("Player"))
-        //    .Subscribe(_ =>
-        //    {                
-        //        Managers.Resource.Destroy(this.gameObject);
-        //        Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
-        //    })
-        //    .AddTo(_disposables);
+        Observable.Timer(TimeSpan.FromSeconds(3))
+            .Subscribe(_ =>
+            {
+                if(_isCollided)
+                {
+                    Managers.Resource.Destroy(gameObject);
+                    Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
+                }
+            })
+            .AddTo(_disposables);
 
-        this.UpdateAsObservable()
-            .Where(_ => this.gameObject.activeSelf)
+        this.FixedUpdateAsObservable()
+            .Where(_ => this.gameObject.activeSelf && _isCollided)
            .Subscribe(_ => CheckDistance())
            .AddTo(_disposables);
 
@@ -63,6 +69,8 @@ public class Map : BaseObject
                 Contexts.InGame.CurrentMapXZ.OnNext(this.transform.position);
 
                 Vector3 forward = DirIndexToVector(DirectionIndex);
+                _mapForward = forward;
+
                 Vector3 right = new Vector3(forward.z, 0f, -forward.x);
 
                 Contexts.InGame.WorldForwardDir.OnNext(forward);
@@ -85,6 +93,14 @@ public class Map : BaseObject
             .AddTo(_disposables);
 
         return true;
+    }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
     }
 
     public override void SetInfo(int dataTemplate)
@@ -113,15 +129,14 @@ public class Map : BaseObject
             return;
         }
 
-        Vector3 toRoad = transform.position - _car.transform.position;
+        Vector3 carPos = _car.transform.position;
+        Vector3 mapPos = this.transform.position;
 
-        bool isBehind = Vector3.Dot(_car.transform.forward, toRoad) < 0;
+        float signedDist = Vector3.Dot(mapPos - carPos, _mapForward);
 
-        float dist = toRoad.magnitude;
-
-        if (isBehind && 100f <= dist)
+        if (signedDist < -80f)
         {
-            Managers.Resource.Destroy(this.gameObject);
+            Managers.Resource.Destroy(gameObject);
             Contexts.Map.OnDeSpawnRoad.OnNext(Unit.Default);
         }
     }
