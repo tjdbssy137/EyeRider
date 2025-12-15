@@ -188,17 +188,35 @@ public class PointMover : UI_Base
     private void CheckCarInsideEye() // 범위 계산 다시 필요
     {
         if (_car == null)
+        {
             _car = Contexts.InGame.Car.transform;
+        }
 
-        Vector2 carScreen = _camera.WorldToScreenPoint(_car.position);
+        Camera mainCam = Camera.main;
+        if (mainCam == null) return;
 
-        Vector2 eyeScreen = RectTransformUtility.WorldToScreenPoint(_camera, _point.position);
+        // 1. Car 위치를 화면 좌표로 변환 (Camera.main 기준)
+        Vector2 carScreen = mainCam.WorldToScreenPoint(_car.position);
 
-        float radius = (_point.rect.width * 0.5f) * _point.lossyScale.x;
+        // 2. Eye(Point) 위치를 화면 좌표로 변환 (Camera.main 기준)
+        Vector2 eyeScreen = mainCam.WorldToScreenPoint(_point.position); // RectTransformUtility 대신 Camera 함수 사용
+
+        // 3. Radius를 픽셀 기반으로 정확하게 계산 (HoleMaskController와 동일 로직)
+
+        // _point의 로컬 폭의 절반을 나타내는 로컬 좌표
+        Vector3 rightEdgeLocal = new Vector3(_point.rect.width * 0.5f, 0f, 0f);
+        Vector3 rightEdgeWorld = _point.TransformPoint(rightEdgeLocal);
+
+        // 오른쪽 모서리 지점의 스크린 좌표
+        Vector3 rightEdgeScreen = mainCam.WorldToScreenPoint(rightEdgeWorld);
+
+        // 중앙에서 모서리까지의 픽셀 거리 = 화면상의 실제 반경 (Radius)
+        float radius = Vector3.Distance(new Vector3(eyeScreen.x, eyeScreen.y, 0f), rightEdgeScreen);
 
         float dist = Vector2.Distance(carScreen, eyeScreen);
         bool nowInside = dist <= radius;
 
+        //Debug.Log($"Eye Check: Dist={dist}, Radius={radius}, Inside={nowInside}");
         if (_wasInside && !nowInside)
         {
             Contexts.InGame.OnExitEye.OnNext(Mathf.Abs(dist - radius));
