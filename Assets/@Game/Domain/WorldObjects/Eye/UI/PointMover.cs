@@ -115,7 +115,7 @@ public class PointMover : UI_Base
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 _canvasRect,
                 new Vector2(carScreen.x, carScreen.y),
-                null,
+                _camera,
                 out uiPos
             );
 
@@ -185,24 +185,23 @@ public class PointMover : UI_Base
     }
 
     private bool _wasInside = false;
-    private void CheckCarInsideEye()
+    private void CheckCarInsideEye() // 범위 계산 다시 필요
     {
         if (_car == null)
-            _car = Contexts.InGame.Car.GetComponent<Transform>();
+            _car = Contexts.InGame.Car.transform;
 
-        Vector3 carScreen = _camera.WorldToScreenPoint(_car.position);
-        Vector2 carPos = new Vector2(carScreen.x, carScreen.y);
-        Vector2 eyeScreenPos = RectTransformUtility.WorldToScreenPoint(null, _point.position);
+        Vector2 carScreen = _camera.WorldToScreenPoint(_car.position);
+
+        Vector2 eyeScreen = RectTransformUtility.WorldToScreenPoint(_camera, _point.position);
 
         float radius = (_point.rect.width * 0.5f) * _point.lossyScale.x;
 
-        float dist = Vector2.Distance(carPos, eyeScreenPos);
+        float dist = Vector2.Distance(carScreen, eyeScreen);
         bool nowInside = dist <= radius;
 
         if (_wasInside && !nowInside)
         {
-            float resultDistance = Mathf.Abs(dist - radius);
-            Contexts.InGame.OnExitEye.OnNext(resultDistance);
+            Contexts.InGame.OnExitEye.OnNext(Mathf.Abs(dist - radius));
         }
         else if (!_wasInside && nowInside)
         {
@@ -211,6 +210,7 @@ public class PointMover : UI_Base
 
         _wasInside = nowInside;
     }
+
 
     private void HandleForwardApproachRepel(Vector2 inputDir, float dt)
     {

@@ -18,7 +18,10 @@ public class UI_Eye : UI_Base
         _pointMover.Init();
         _holeMaskController = GetObject((int)GameObjects.Controller).GetComponent<HoleMaskController>();
         _holeMaskController.Init();
+        Canvas canvas = GetComponent<Canvas>();
+        canvas.worldCamera = Camera.main;
+        canvas.planeDistance = 5f;
 
-		return true;
+        return true;
     }
 }

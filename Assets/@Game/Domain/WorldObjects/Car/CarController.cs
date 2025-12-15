@@ -112,7 +112,7 @@ public partial class CarController : BaseObject
             .Subscribe(_ =>
             {
                 //Debug.Log($"Car, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
-                Debug.Log($"Transform = {transform.position}, RB = {_rigidbody.position}");
+                //Debug.Log($"Transform = {transform.position}, RB = {_rigidbody.position}");
 
                 if (true == Contexts.InGame.IsEnd)
                 {
@@ -222,12 +222,12 @@ public partial class CarController : BaseObject
         Vector3 currentPos = _rigidbody.position;
         
         float delta = Vector3.Distance(currentPos, Contexts.Car.LastDistancePos);
-        Debug.Log($"CAR pos = {_rigidbody.position}, LastDistancePos = {Contexts.Car.LastDistancePos} ");
+        //Debug.Log($"CAR pos = {_rigidbody.position}, LastDistancePos = {Contexts.Car.LastDistancePos} ");
 
         if (0f < delta && delta < 50f) // 임시 막음. _rigidbody의 좌표가 (-344,0,1960)? 으로 생성될때가 있음.
         {
             Contexts.InGame.Metre += delta;
-            Debug.Log($"delta : {delta}, Contexts.InGame.Metres {Contexts.InGame.Metre}");
+            //Debug.Log($"delta : {delta}, Contexts.InGame.Metres {Contexts.InGame.Metre}");
             Managers.Difficulty.UpdateMetre(Contexts.InGame.Metre);
             Contexts.Car.LastDistancePos = currentPos;
         }

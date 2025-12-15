@@ -32,7 +32,7 @@ public class WaterdropSpawner : BaseObject
 
         Managers.Difficulty.OnMetreDifficultyUp.Subscribe(_ =>
         {
-            Observable.Interval(TimeSpan.FromSeconds(0.035f))
+            Observable.Interval(TimeSpan.FromSeconds(0.025f))
                 .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(2f)))
                 .Subscribe(_ =>
                 {
