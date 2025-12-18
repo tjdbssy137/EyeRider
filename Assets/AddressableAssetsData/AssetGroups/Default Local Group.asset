@@ -81,6 +81,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5001a1787b9fbc745b14e9a4e6c07124
+    m_Address: UI_MissileIndicator
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5293c55c3a04c4af1a82a09de2863b81
     m_Address: UI_LevelCell
     m_ReadOnly: 0
@@ -208,7 +214,7 @@ MonoBehaviour:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ee30c3fb09fc536489c7edb40f689fef
-    m_Address: Missaile
+    m_Address: Missile
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

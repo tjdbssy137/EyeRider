@@ -21,11 +21,6 @@ public class HoleMaskController : UI_Base
             return false;
 
         _canvasCamera = Camera.main;
-        if (_canvasCamera != null)
-        {
-            Debug.Log($"_canvasCamera is NULL");
-        }
-
         Vector2 canvasSize = new Vector2(_canvasRect.rect.width, _canvasRect.rect.height);
         _backgroundImage.material.SetVector("_CanvasSize", canvasSize);
 

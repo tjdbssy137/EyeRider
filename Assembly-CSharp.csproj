@@ -88,6 +88,7 @@
     <Compile Include="Assets\Data\ScriptableObjects\ObstacleData.cs" />
     <Compile Include="Assets\@Game\Contexts\CarContext.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Eye\UI\HoleMaskController.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\Missile\UI\UI_MissileIndicator.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\VFX Library\PEButtonScript.cs" />
     <Compile Include="Assets\@Framework\Managers\Core\TimeManager.cs" />
     <Compile Include="Assets\@Game\Data\Data.Contents.cs" />

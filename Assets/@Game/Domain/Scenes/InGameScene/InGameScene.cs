@@ -85,7 +85,10 @@ public class InGameScene : BaseScene
 
         Contexts.InGame.OnSpawnMissile.Subscribe(_ =>
         {
-            Vector3 spawnPos = Contexts.InGame.Car.transform.position + new Vector3(30, 0, 0);
+            int randX = Random.Range(-30, 30);
+            int randZ = Random.Range(-30, 30);
+
+            Vector3 spawnPos = Contexts.InGame.Car.transform.position + new Vector3(randX, 0, randZ);
             Missile missile = Managers.Object.Spawn<Missile>(spawnPos, 0, 0);
         }).AddTo(this);
 
