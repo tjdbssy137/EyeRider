@@ -55,5 +55,11 @@ public partial class InGameContext
     // Game Score
     public float PanicPoint { get; set; }
     public float Metre { get; set; }
-    
+
+
+    //Missaile Event
+    public Subject<Unit> OnSpawnMissile { get; private set; } = new Subject<Unit>();
+    public Subject<float> OnCollisionMissile { get; private set; } = new Subject<float>();
+
+
 }

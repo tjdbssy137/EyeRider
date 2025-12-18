@@ -111,6 +111,19 @@ public partial class CarController : BaseObject
             }
             _fuelPanic = Mathf.Clamp01(1 - newFuel.Item2/100);
         }).AddTo(this);
+
+        Contexts.InGame.OnCollisionMissile
+            .Subscribe(damage =>
+            {
+                _eventPanic += 0.3f; // 임시값
+                Contexts.InGame.Car.DamageCondition(damage);
+                Observable.Timer(TimeSpan.FromSeconds(1.5f))
+                    .Subscribe(_ =>
+                    {
+                        _eventPanic -= 0.3f;
+                    })
+                    .AddTo(_disposables);
+            }).AddTo(_disposables);
     }
     
     public float DistancePenalty(float distance)

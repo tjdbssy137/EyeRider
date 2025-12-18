@@ -37,12 +37,12 @@ public class Obstacle : BaseObject
         }
         //Debug.Log("Obstacle OnSpawn");
 
-        _collider.OnTriggerExitAsObservable()
-            .Where(collision => collision.gameObject.CompareTag("Player"))
-            .Subscribe(_ =>
-            {
-            })
-            .AddTo(_disposables);
+        //_collider.OnTriggerExitAsObservable()
+        //    .Where(collision => collision.gameObject.CompareTag("Player"))
+        //    .Subscribe(_ =>
+        //    {
+        //    })
+        //    .AddTo(_disposables);
 
         _collider.OnTriggerEnterAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))

@@ -66,6 +66,7 @@
     <Compile Include="Assets\@Framework\Data\Data.Core.cs.cs" />
     <Compile Include="Assets\@Game\Contexts\MapContext.cs" />
     <Compile Include="Assets\@Framework\Utils\Extension.cs" />
+    <Compile Include="Assets\@Game\Domain\WorldObjects\Missile\Missile.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\particle\ParticleObject.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXLoopScript.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\Map\MapPlanner.cs" />

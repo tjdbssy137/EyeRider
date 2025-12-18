@@ -56,9 +56,13 @@ public class Input_InGameScene : IInputSystem
             return;
         }
 
+
+
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            Debug.Log($"Score.FinalScore : {Managers.Score.FinalScore}, Score.Star : {Managers.Score.Star}, Score.FinalGold : {Managers.Score.FinalGold}");
+            Contexts.InGame.OnSpawnMissile.OnNext(Unit.Default);
+
+            //Debug.Log($"Score.FinalScore : {Managers.Score.FinalScore}, Score.Star : {Managers.Score.Star}, Score.FinalGold : {Managers.Score.FinalGold}");
             //Managers.Difficulty.OnMetreDifficultyUp.OnNext(Unit.Default);
         }
         Contexts.InGame.WKey = Keyboard.current.wKey.isPressed;

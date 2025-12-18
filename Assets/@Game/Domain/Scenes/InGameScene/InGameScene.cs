@@ -81,8 +81,14 @@ public class InGameScene : BaseScene
                 UI_ResultPopup ui =  Managers.UI.ShowPopupUI<UI_ResultPopup>();
                 ui.SetInfo();
             }
-            
         }).AddTo(_disposables);
+
+        Contexts.InGame.OnSpawnMissile.Subscribe(_ =>
+        {
+            Vector3 spawnPos = Contexts.InGame.Car.transform.position + new Vector3(30, 0, 0);
+            Missile missile = Managers.Object.Spawn<Missile>(spawnPos, 0, 0);
+        }).AddTo(this);
+
 
 
         LoadResources();
