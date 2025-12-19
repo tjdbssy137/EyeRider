@@ -45,3 +45,18 @@ Desktop.ini
 # Environment / personal settings
 *.env
 
+# ============ 추가 해결 (Visual Studio & Unity) ============
+# .vsidx, .suo 등 Visual Studio 캐시 및 설정 전체 차단
+.vs/
+*.vsidx
+
+# 유니티 사용자 레이아웃 및 설정 차단 (UserSettings 폴더 전체)
+UserSettings/
+
+# DOTween 설정 파일 (개인 설정이므로 보통 제외)
+Assets/Resources/DOTweenSettings.asset
+
+# 가끔 생기는 임시 파일들
+.gradle/
+/Logs/
+/MemoryCaptures/
