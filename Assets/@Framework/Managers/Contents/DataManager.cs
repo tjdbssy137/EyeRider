@@ -18,6 +18,7 @@ public class DataManager
     public Dictionary<int, ObstacleData> ObstacleData { get; private set; } = new Dictionary<int, ObstacleData>();
     public Dictionary<int, ItemData> ItemData { get; private set; } = new Dictionary<int, ItemData>();
     public Dictionary<int, Data.DifficultyData> DifficultyDic { get; private set; }  = new Dictionary<int, Data.DifficultyData>();
+    public Dictionary<Define.ESound, SoundData> SoundDic { get; private set; } = new Dictionary<Define.ESound, SoundData>();
 
 
     public void Init()
@@ -32,6 +33,7 @@ public class DataManager
         ObstacleData = Managers.Resource.LoadAllByType<ObstacleData>().ToDictionary(x => x.DataTemplateId);
         ItemData = Managers.Resource.LoadAllByType<ItemData>().ToDictionary(x => x.DataTemplateId);
         DifficultyDic =  LoadJson<Data.DifficultyDataLoader, int, Data.DifficultyData>("DifficultyData").MakeDict();
+        SoundDic = Managers.Resource.LoadAllByType<SoundData>().ToDictionary(x => x.SoundType);
     }
 
 	private Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

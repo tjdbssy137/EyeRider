@@ -78,6 +78,7 @@ public partial class CarController : BaseObject
         Contexts.InGame.OnCollisionObstacle
         .Subscribe(damage =>
         {
+            Managers.Sound.Play(Define.ESound.Hit, 0.5f, 0.8f);
             Contexts.InGame.IsCollisionObstacle++;
             _eventPanic += 0.2f; // 임시값
             Contexts.InGame.Car.DamageCondition(damage);
@@ -85,6 +86,10 @@ public partial class CarController : BaseObject
                 .Subscribe(_ =>
                 {
                     _eventPanic -= 0.2f;
+                    if (_eventPanic < 0)
+                    {
+                        _eventPanic = 0f;
+                    }
                     Contexts.InGame.IsCollisionObstacle--;
                     Contexts.InGame.IsCollisionObstacle = Mathf.Max(0, Contexts.InGame.IsCollisionObstacle);
                 })
@@ -115,56 +120,71 @@ public partial class CarController : BaseObject
         Contexts.InGame.OnCollisionMissile
             .Subscribe(damage =>
             {
-                _eventPanic += 0.3f; // 임시값
+                Managers.Sound.Play(Define.ESound.Hit, 0.5f, 0.8f);
+                _eventPanic += 0.5f;
                 Contexts.InGame.Car.DamageCondition(damage);
-                Observable.Timer(TimeSpan.FromSeconds(1.5f))
+                Observable.Timer(TimeSpan.FromSeconds(1.0f))
                     .Subscribe(_ =>
                     {
-                        _eventPanic -= 0.3f;
+                        _eventPanic -= 0.5f;
+                        if (_eventPanic < 0)
+                        {
+                            _eventPanic = 0f;
+                        }
                     })
                     .AddTo(_disposables);
             }).AddTo(_disposables);
     }
     
-    public float DistancePenalty(float distance)
+    private float GetDistanceStep(float distance)
     {
-        float target = 0f;
-        
-        //distance -= + Managers.Difficulty.TimeDifficulty;
-
-        if(distance <= 30)
+        if (distance <= 30)
         {
-            target = 0.2f;
+            return 0.2f;
         }
-        else if(distance <= 70)
+        else if (distance <= 70)
         {
-            target = 0.4f;
+            return 0.4f;
         }
-        else if(distance <= 90)
+        else if (distance <= 90)
         {
-            target = 0.6f;
+            return 0.6f;
         }
-        else if(distance <= 100)
+        else if (distance <= 100)
         {
-            target = 0.8f;
+            return 0.8f;
         }
         else
         {
-            target = 1f;
+            return 1f;
         }
-        target = Mathf.Clamp(target, 0f, _maxShakeIntensity);
+    }
+    public float DistancePenalty(float distance)
+    {
+        float step = GetDistanceStep(distance);
 
-        _shakeIntensity = Mathf.Lerp(_shakeIntensity, target, Time.deltaTime * _shakeLerpSpeed);
+        _controlDifficulty = step;
 
-        float normalizedValue = Mathf.InverseLerp(0f, 1f, target);
-        _animator.SetFloat("Distance", normalizedValue);
-
-        _controlDifficulty = normalizedValue;
-        float baseDamage = 10 * target;
-
-        // 막판엔 데미지 감소
+        float baseDamage = 10 * step;
         baseDamage *= Managers.Difficulty.EndGamePenaltyMul;
+
         return baseDamage;
+    }
+    private void UpdateShakeAnimation()
+    {
+        // 거리로 인한 흔들림
+        float distanceShake = _isOutside ? GetDistanceStep(_lastDistance) : 0f;
+
+        // 흔들림 타겟 = 거리 흔들림 + 충돌 패닉 이벤트
+        // _eventPanic이 UI용이라도, "충돌해서 패닉이 온 상황"이면 차가 흔들리는 게 자연스럽습니다.
+        // 만약 너무 심하게 흔들리면 * 0.5f 등으로 조절
+        float targetShake = distanceShake + _eventPanic;
+
+        targetShake = Mathf.Clamp(targetShake, 0f, _maxShakeIntensity);
+        _shakeIntensity = Mathf.Lerp(_shakeIntensity, targetShake, Time.deltaTime * _shakeLerpSpeed);
+
+        float normalizedValue = Mathf.InverseLerp(0f, 1f, targetShake); // 혹은 그냥 targetShake 사용 (이미 0~1 범위 비슷하므로)
+        _animator.SetFloat("Distance", normalizedValue);
     }
 
     private void WheelEffect(bool drifting)

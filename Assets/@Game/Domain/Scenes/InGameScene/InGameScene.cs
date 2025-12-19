@@ -44,6 +44,8 @@ public class InGameScene : BaseScene
                 .Subscribe(_ =>
                 {
                     //Debug.Log($"Game Start, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
+                    Managers.Sound.Play(Define.ESound.Bgm, 0.7f, 0.7f); // 눈 밖으로 나갈 수록 커지게?
+
                     Contexts.InGame.Metre = 0f;
                     Contexts.GameProfile.CurrentLevel = SecurePlayerPrefs.GetInt("Level", 1);
                     Managers.Difficulty.CurrentLevel(Contexts.GameProfile.CurrentLevel);
@@ -59,6 +61,8 @@ public class InGameScene : BaseScene
             if(type == GameEndType.Lose)
             {
                 Debug.Log("Game Over");
+                Managers.Sound.Play(Define.ESound.Fail);
+
                 Managers.Score.GetResult();
                 Contexts.InGame.IsEnd = true;
                 Contexts.GameProfile.Gold += Managers.Score.FinalGold;
@@ -70,6 +74,7 @@ public class InGameScene : BaseScene
             else if(type == GameEndType.Win)
             {
                 Debug.Log("Level Clear");
+                Managers.Sound.Play(Define.ESound.Success);
                 Managers.Score.GetResult();
                 Contexts.InGame.IsEnd = true;
                 Contexts.GameProfile.CurrentLevel++;

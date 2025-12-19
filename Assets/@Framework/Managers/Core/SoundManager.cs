@@ -43,7 +43,8 @@ public class SoundManager
 	public void Play(Define.ESound type)
 	{
 		AudioSource audioSource = _audioSources[(int)type];
-		audioSource.Play();
+        audioSource.pitch = 1.0f;
+        audioSource.Play();
 	}
 
 	public void Play(Define.ESound type, string key, float pitch = 1.0f)
@@ -52,9 +53,14 @@ public class SoundManager
 
 		if (type == Define.ESound.Bgm)
 		{
+
 			LoadAudioClip(key, (audioClip) =>
 			{
-				if (audioSource.isPlaying)
+                if (audioSource.clip == audioClip && audioSource.isPlaying)
+                {
+                    return;
+                }
+                if (audioSource.isPlaying)
 					audioSource.Stop();
 
 				audioSource.clip = audioClip;
@@ -77,7 +83,11 @@ public class SoundManager
 
 		if (type == Define.ESound.Bgm)
 		{
-			if (audioSource.isPlaying)
+            if (audioSource.clip == audioClip && audioSource.isPlaying)
+			{
+                return;
+            }
+            if (audioSource.isPlaying)
 				audioSource.Stop();
 
 			audioSource.clip = audioClip;
@@ -90,13 +100,61 @@ public class SoundManager
 		}
 	}
 
-	public void Stop(Define.ESound type)
+    public void Play(Define.ESound type, float minPitch, float maxPitch = 1.0f)
+    {
+        if (Managers.Data.SoundDic.TryGetValue(type, out var data) == false)
+        {
+            Debug.LogWarning($"[Sound] {type} 타입의 데이터가 설정되지 않았습니다.");
+            return;
+        }
+
+        AudioSource audioSource = _audioSources[(int)type];
+
+        if (data.Clips == null || data.Clips.Count == 0)
+		{
+            return;
+        }
+        AudioClip clip = data.Clips[UnityEngine.Random.Range(0, data.Clips.Count)];
+        float pitch = UnityEngine.Random.Range(minPitch, maxPitch);
+        if (type == Define.ESound.Bgm)
+        {
+            if (audioSource.clip == clip && audioSource.isPlaying)
+            {
+                return;
+            }
+            if (audioSource.isPlaying)
+                audioSource.Stop();
+
+            audioSource.pitch = pitch;
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.pitch = pitch;
+            audioSource.PlayOneShot(clip);
+        }
+    }
+
+    public void Stop(Define.ESound type)
 	{
 		AudioSource audioSource = _audioSources[(int)type];
 		audioSource.Stop();
 	}
 
-	private void LoadAudioClip(string key, Action<AudioClip> callback)
+    public void Pause(Define.ESound type)
+    {
+        AudioSource audioSource = _audioSources[(int)type];
+        audioSource.Pause();
+    }
+
+    public void Resume(Define.ESound type)
+    {
+        AudioSource audioSource = _audioSources[(int)type];
+        audioSource.UnPause();
+    }
+
+    private void LoadAudioClip(string key, Action<AudioClip> callback)
 	{
 		AudioClip audioClip = null;
 		if (_audioClips.TryGetValue(key, out audioClip))

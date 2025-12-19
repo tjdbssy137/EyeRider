@@ -16,6 +16,9 @@ public partial class InGameContext
     // Game State
     public bool IsEnd { get; set; }
     public bool IsPaused { get; set; }
+    //public Subject<Unit> OnPaused { get; private set; } = new Subject<Unit>();
+    //public Subject<Unit> OnResume { get; private set; } = new Subject<Unit>();
+
 
     // EYE
     public Subject<float> OnExitEye { get; private set; } = new Subject<float>();

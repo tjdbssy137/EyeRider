@@ -101,6 +101,7 @@ public class Car : BaseObject
     public void DamageCondition(float damage)
     {
         Vector3 spawnPos = this.transform.position + new Vector3(0, 5, 0);
+        //Managers.Sound.Play(Define.ESound.Effect, "Hit1");
         DamageEffect effect = Managers.Object.Spawn<DamageEffect>($"DamageEffect", spawnPos, 0, 0);
         effect.SetDamage(damage);
         Condition -= damage;

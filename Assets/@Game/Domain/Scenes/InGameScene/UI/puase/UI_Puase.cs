@@ -32,6 +32,7 @@ public class UI_Puase : UI_Popup
         GetToggle((int)Toggles.Home).gameObject.BindEvent(OnHover_HomeButton, EUIEvent.PointerEnter);
 
         Contexts.InGame.IsPaused = true;
+        Managers.Sound.Pause(Define.ESound.Bgm);
         Debug.Log("Game Paused");
         return true;
     }
@@ -43,6 +44,7 @@ public class UI_Puase : UI_Popup
     {
         Debug.Log("Resume Clicked");
         Contexts.InGame.IsPaused = false;
+        Managers.Sound.Resume(Define.ESound.Bgm);
         Managers.UI.ClosePopupUI(this);
     }
     private void OnHover_ReStartButton(PointerEventData eventData)
@@ -53,6 +55,7 @@ public class UI_Puase : UI_Popup
     {
         Debug.Log("ReStart Clicked");
         Contexts.InGame.IsPaused = false;
+        Managers.Sound.Resume(Define.ESound.Bgm);
         Managers.UI.ClosePopupUI(this);
         Managers.Scene.LoadScene(EScene.InGameScene);
     }
@@ -64,6 +67,7 @@ public class UI_Puase : UI_Popup
     {
         Debug.Log("Home Clicked");
         Contexts.InGame.IsPaused = false;
+        Managers.Sound.Resume(Define.ESound.Bgm);
         Managers.UI.ClosePopupUI(this);
         Managers.Scene.LoadScene(EScene.MainMenuScene);
     }

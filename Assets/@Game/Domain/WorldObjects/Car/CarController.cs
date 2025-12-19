@@ -107,32 +107,38 @@ public partial class CarController : BaseObject
         }
 
         BindSubscriptions();
-        
+
+        this.UpdateAsObservable()
+        .Subscribe(_ =>
+        {
+            if (Contexts.InGame.IsPaused || Contexts.InGame.IsEnd)
+            {
+                return;
+            }
+
+            UpdateShakeAnimation();
+            PanicPointCaculator();
+        })
+        .AddTo(_disposables);
+
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
-                //Debug.Log($"Car, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
-                //Debug.Log($"Transform = {transform.position}, RB = {_rigidbody.position}");
-
-                if (true == Contexts.InGame.IsEnd)
+                if (Contexts.InGame.IsPaused || Contexts.InGame.IsEnd)
                 {
                     return;
                 }
-                if (true == Contexts.InGame.IsPaused)
-                {
-                    return;
-                }
-                //Debug.Log($"Car, Contexts.InGame.IsPaused : {Contexts.InGame.IsPaused}");
 
                 _center = Vector3.Lerp(_center, _targetCenter, Time.fixedDeltaTime * 5f);
 
-                PanicPointCaculator();
                 UpdateRotation();
                 SnapRotation(Time.fixedDeltaTime);
+
+                // 물리 기반 이동 로직들
                 InputKeyBoard();
                 VerticalMove();
                 Accelerate();
-                UpdateMetreDistance(); // 이동거리 계산
+                UpdateMetreDistance();// 이동거리 계산
             })
             .AddTo(_disposables);
         return true;

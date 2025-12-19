@@ -68,6 +68,7 @@ public class Managers : MonoBehaviour
             s_instance._web.Init();
             s_instance._difficulty.Init();
             s_instance._score.Init();
+            s_instance._sound.Init();
         }
     }
 

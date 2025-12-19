@@ -81,6 +81,7 @@
     <Compile Include="Assets\@Game\Domain\WorldObjects\Camera\XXX_VehicleCamera.cs" />
     <Compile Include="Assets\Data\Epic Toon FX\Demo\Scripts\ETFXEffectCycler.cs" />
     <Compile Include="Assets\@Game\Domain\Scenes\InGameScene\UI\ResultScreen\UI_TryAgainPopup.cs" />
+    <Compile Include="Assets\Data\ScriptableObjects\SoundData.cs" />
     <Compile Include="Assets\@Framework\UI\UI_Base.cs" />
     <Compile Include="Assets\Data\ScriptableObjects\MapData.cs" />
     <Compile Include="Assets\@Game\Domain\WorldObjects\DamageEffect\DamageEffect.cs" />

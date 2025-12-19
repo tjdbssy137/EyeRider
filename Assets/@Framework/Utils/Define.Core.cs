@@ -43,6 +43,11 @@ public static partial class Define
 	{
 		Bgm,
 		Effect,
+		Hit,
+		Rain,
+		Success,
+		Fail,
+        Button,
 		Max,
 	}
 
