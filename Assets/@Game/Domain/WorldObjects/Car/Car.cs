@@ -101,7 +101,6 @@ public class Car : BaseObject
     public void DamageCondition(float damage)
     {
         Vector3 spawnPos = this.transform.position + new Vector3(0, 5, 0);
-        //Managers.Sound.Play(Define.ESound.Effect, "Hit1");
         DamageEffect effect = Managers.Object.Spawn<DamageEffect>($"DamageEffect", spawnPos, 0, 0);
         effect.SetDamage(damage);
         Condition -= damage;
@@ -109,5 +108,16 @@ public class Car : BaseObject
     public void RepairCondition(float recover)
     {
         Condition += recover;
+    }
+
+    public void RepairUsingFuel()
+    {
+        if (40f <= Fuel && Condition < 100f)
+        {
+            Fuel -= 30f;
+            RepairCondition(40f); // 임시 기름 30으로 40 수리
+
+            Debug.Log("기름을 사용하여 수리");
+        }
     }
 }

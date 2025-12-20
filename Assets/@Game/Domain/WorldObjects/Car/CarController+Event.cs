@@ -100,10 +100,11 @@ public partial class CarController : BaseObject
         Contexts.InGame.Car.OnConditionChanged
         .Subscribe(newCondition =>
         {
-            if (newCondition.Item2 <= 0)
-            {
-                Contexts.InGame.OnEndGame.OnNext(InGameContext.GameEndType.Lose);
-            }
+            float condition = newCondition.Item2;
+            ToggleParticle(_rightLightParticleSystem, condition <= 80);
+            ToggleParticle(_leftLightParticleSystem, condition <= 60);
+            ToggleParticle(_hoodParticleSystem, condition < 50);
+
             _conditionPanic = Mathf.Clamp01(1 - newCondition.Item2/100);
         }).AddTo(this);
 
@@ -205,5 +206,21 @@ public partial class CarController : BaseObject
     {
         Contexts.InGame.PanicPoint = Mathf.Clamp01(_distancePanic + _eventPanic + _conditionPanic * 0.3f + _fuelPanic * 0.3f);
         //Debug.Log($"_distancePanic : {_distancePanic}, _eventPanic : {_eventPanic},  _conditionPanic : {_conditionPanic}, _fuelPanic : {_fuelPanic},PanicPoint : {Contexts.InGame.PanicPoint}");
+    }
+    private void ToggleParticle(ParticleSystem ps, bool shouldPlay)
+    {
+        if (ps == null)
+        {
+            return;
+        }
+
+        if (shouldPlay && !ps.isPlaying)
+        {
+            ps.Play();
+        }
+        else if (!shouldPlay && ps.isPlaying)
+        {
+            ps.Stop();
+        }
     }
 }

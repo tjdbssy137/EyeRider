@@ -10,6 +10,7 @@ public class UI_Topbar : UI_Base
     {
         //Conditions,
         Fuels,
+        Repair,
     }
     private enum Sliders
     {
@@ -17,7 +18,7 @@ public class UI_Topbar : UI_Base
     }
     private enum Images
     {
-        PuaseButton
+        PuaseButton,
     }
 
     private UI_FilledPanel _conditionPanel;
@@ -43,6 +44,9 @@ public class UI_Topbar : UI_Base
         GetSlider((int)Sliders.GameProgressBar).value = 0;
         GetImage((int)Images.PuaseButton).gameObject.BindEvent(OnClick_PuaseButton, EUIEvent.Click);
 
+        GetObject((int)Objects.Repair).gameObject.BindEvent(OnClick_RepairButton, EUIEvent.Click);
+        GetObject((int)Objects.Repair).gameObject.SetActive(false);
+
         Contexts.InGame.Car.OnFuelChanged
             .Subscribe(val =>
             {
@@ -52,14 +56,29 @@ public class UI_Topbar : UI_Base
             })
             .AddTo(this);
 
-        //Contexts.InGame.Car.OnConditionChanged
-        //    .Subscribe(val =>
-        //    {
-        //        float current = val.Item2;
-        //        float max = Contexts.Car.MaxCondition;
-        //        _conditionPanel.UpdateValue(current, max);
-        //    })
-        //    .AddTo(this);
+        Contexts.InGame.Car.OnConditionChanged
+            .Subscribe(val =>
+            {
+                if(Contexts.InGame.Car.Fuel <= 0)
+                {
+                    GetObject((int)Objects.Repair).gameObject.SetActive(false);
+                    return;
+                }
+
+                if(val.Item2 <= 50)
+                {
+                    GetObject((int)Objects.Repair).gameObject.SetActive(true);
+                }
+                else
+                {
+                    GetObject((int)Objects.Repair).gameObject.SetActive(false);
+                }
+                //float current = val.Item2;
+                //float max = Contexts.Car.MaxCondition;
+                //_conditionPanel.UpdateValue(current, max);
+            })
+            .AddTo(this);
+
         Observable.EveryUpdate()
             .Subscribe(_ =>
             {
@@ -95,6 +114,10 @@ public class UI_Topbar : UI_Base
         {
             Managers.UI.ShowPopupUI<UI_Puase>();
         });
+    }
 
+    private void OnClick_RepairButton(PointerEventData eventData)
+    {
+        Contexts.InGame.Car.RepairUsingFuel();
     }
 }

@@ -20,6 +20,10 @@ public partial class CarController : BaseObject
     // 파티클
     public ParticleSystem _RLWParticleSystem;
     public ParticleSystem _RRWParticleSystem;
+    public ParticleSystem _forwardParticleSystem;
+    public ParticleSystem _leftLightParticleSystem;
+    public ParticleSystem _rightLightParticleSystem;
+    public ParticleSystem _hoodParticleSystem;
 
     // 폭풍의 눈
     private bool _isOutside = false;
@@ -179,16 +183,16 @@ public partial class CarController : BaseObject
 
     private void Accelerate()
     {
-        float scale = 1f - ControlDifficulty;
+        float conditionPenalty = 1f - (_conditionPanic * 0.5f);
+        float scale = (1f - ControlDifficulty) * conditionPenalty;
         float target = 0f;
 
-        if(0 < Contexts.InGame.IsCollisionObstacle)
+        if (0 < Contexts.InGame.IsCollisionObstacle)
         {
             target = -_maxAcceleration * 1.2f * scale;
         }
         else if (Contexts.InGame.WKey)
         {
-            // 전진 가속
             target = _maxAcceleration * scale;
         }
         else if (Contexts.InGame.SKey)
@@ -210,6 +214,21 @@ public partial class CarController : BaseObject
         }
 
         Contexts.Car.VerticalAccelerationSpeed = Mathf.MoveTowards(Contexts.Car.VerticalAccelerationSpeed, target, rate * Time.fixedDeltaTime);
+
+        if (Contexts.InGame.WKey)
+        {
+            if (!_forwardParticleSystem.isPlaying)
+            {
+                _forwardParticleSystem.Play();
+            }
+        }
+        else
+        {
+            if (_forwardParticleSystem.isPlaying)
+            {
+                _forwardParticleSystem.Stop();
+            }
+        }
     }
 
 
