@@ -24,28 +24,28 @@ public class UI_FilledPanel : UI_Base
 
     public void UpdateValue(float current, float max)
     {
-        float unit = max / 5f; // 각 칸이 담당하는 양
+        float unit = max / 5f;
 
         for (int i = 0; i < 5; i++)
         {
             var obj = GetObject(i);
             if (obj == null)
             {
-                Debug.LogError($"FilledObject{i + 1} 없음");
                 continue;
             }
 
             var cell = obj.GetComponent<UI_FilledObject>();
 
-            float start = unit * i;
-            float end = unit * (i + 1);
+            int reverseIndex = 4 - i;
+            float start = unit * reverseIndex;
+            float end = unit * (reverseIndex + 1);
 
             float fill;
             if (current <= start)
             {
                 fill = 0f;
             }
-            else if (current >= end)
+            else if (end <= current)
             {
                 fill = 1f;
             }
@@ -53,6 +53,7 @@ public class UI_FilledPanel : UI_Base
             {
                 fill = (current - start) / unit;
             }
+
             cell.SetFill(fill);
         }
     }

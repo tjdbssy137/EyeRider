@@ -8,7 +8,7 @@ public class UI_Topbar : UI_Base
 {
     private enum Objects
     {
-        Conditions,
+        //Conditions,
         Fuels,
     }
     private enum Sliders
@@ -34,8 +34,8 @@ public class UI_Topbar : UI_Base
         BindSliders(typeof(Sliders));
         BindImages(typeof(Images));
 
-        _conditionPanel = GetObject((int)Objects.Conditions).GetComponent<UI_FilledPanel>();
-        _conditionPanel.Init();
+        //_conditionPanel = GetObject((int)Objects.Conditions).GetComponent<UI_FilledPanel>();
+        //_conditionPanel.Init();
 
         _fuelPanel = GetObject((int)Objects.Fuels).GetComponent<UI_FilledPanel>();
         _fuelPanel.Init();
@@ -52,14 +52,14 @@ public class UI_Topbar : UI_Base
             })
             .AddTo(this);
 
-        Contexts.InGame.Car.OnConditionChanged
-            .Subscribe(val =>
-            {
-                float current = val.Item2;
-                float max = Contexts.Car.MaxCondition;
-                _conditionPanel.UpdateValue(current, max);
-            })
-            .AddTo(this);
+        //Contexts.InGame.Car.OnConditionChanged
+        //    .Subscribe(val =>
+        //    {
+        //        float current = val.Item2;
+        //        float max = Contexts.Car.MaxCondition;
+        //        _conditionPanel.UpdateValue(current, max);
+        //    })
+        //    .AddTo(this);
         Observable.EveryUpdate()
             .Subscribe(_ =>
             {
