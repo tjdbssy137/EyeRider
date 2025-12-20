@@ -106,7 +106,10 @@ public class MapPlanner
             Debug.Log($"[MapPlanner] GeneratePath attempt {retry + 1}/{maxRetries}, seed={seed}, targetLength={attemptLength}");
 
             bool ok = GeneratePathOnce(startCell, startDir, attemptLength, maxBacktrackSteps);
-            if (ok) return true;
+            if (ok)
+            {
+                return true;
+            }
 
             // Reduce the target length slightly and retry
             attemptLength = Mathf.Max(4, (int)(attemptLength * 0.88f));
