@@ -24,6 +24,10 @@ public class UI_RepairPopup : UI_Popup
             return;
         }
         Contexts.InGame.Car.RepairUsingFuel();
+        if (Contexts.InGame.Car.Condition <= 50)
+        {
+            return;
+        }
         Managers.UI.ClosePopupUI(this);
     }
 }

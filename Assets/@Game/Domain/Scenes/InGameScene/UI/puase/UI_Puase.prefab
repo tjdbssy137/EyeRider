@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 8905284969273171253}
   - component: {fileID: 7292736675145273807}
   - component: {fileID: 2946021257772144300}
+  - component: {fileID: 5086960172803072384}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -461,6 +462,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
+--- !u!114 &5086960172803072384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902146868804571478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &1917204315042915046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1196,7 @@ GameObject:
   - component: {fileID: 2002433233577407219}
   - component: {fileID: 5871131000175476780}
   - component: {fileID: 4205542006490488678}
+  - component: {fileID: 8409220422432898766}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -1271,6 +1285,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
+--- !u!114 &8409220422432898766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208293172152517256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &5468008767613445891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1629,7 @@ GameObject:
   - component: {fileID: 6170171608574099452}
   - component: {fileID: 4100971283467808764}
   - component: {fileID: 2419274173451656120}
+  - component: {fileID: 543538991235369768}
   m_Layer: 5
   m_Name: ReStart
   m_TagString: Untagged
@@ -1691,6 +1718,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
+--- !u!114 &543538991235369768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759403012487487000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &7823682915142353608
 GameObject:
   m_ObjectHideFlags: 0

@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 4988822996147448238}
   - component: {fileID: 3241442508958914562}
   - component: {fileID: 2420790527787256812}
+  - component: {fileID: 2524843355552228275}
   m_Layer: 5
   m_Name: UI_RepairPopup
   m_TagString: Untagged
@@ -465,6 +466,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991a0e972dab7ac4abf493c21916815c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_RepairPopup
+--- !u!114 &2524843355552228275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574749510164064108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &4638264833529483856
 GameObject:
   m_ObjectHideFlags: 0

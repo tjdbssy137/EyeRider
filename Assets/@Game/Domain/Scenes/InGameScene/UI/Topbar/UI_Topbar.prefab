@@ -1038,6 +1038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7041414962324784414}
   - component: {fileID: 4268557519574777332}
+  - component: {fileID: 1596427241409612319}
   m_Layer: 5
   m_Name: PuaseButton
   m_TagString: Untagged
@@ -1077,6 +1078,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
+--- !u!114 &1596427241409612319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913815572246818511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &3625600625868325274
 GameObject:
   m_ObjectHideFlags: 0

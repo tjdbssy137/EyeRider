@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager
 {
@@ -153,7 +154,18 @@ public class SoundManager
         AudioSource audioSource = _audioSources[(int)type];
         audioSource.UnPause();
     }
+  //  public void PlayClickSound(Define.ESound type)
+  //  {
+  //      if (Managers.Data.SoundDic.TryGetValue(type, out var data) == false)
+  //      {
+  //          Debug.LogWarning($"[Sound] {type} 타입의 데이터가 설정되지 않았습니다.");
+  //          return;
+  //      }
 
+  //      AudioSource audioSource = _audioSources[(int)type];
+		//AudioClip clip = data.Clips[UnityEngine.Random.Range(0, data.Clips.Count)];
+  //      audioSource.PlayOneShot(clip);
+  //  }
     private void LoadAudioClip(string key, Action<AudioClip> callback)
 	{
 		AudioClip audioClip = null;

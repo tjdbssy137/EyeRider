@@ -74,20 +74,17 @@ public class UI_Topbar : UI_Base
 
     private void OnClick_PuaseButton(PointerEventData eventData)
     {
-        var btnTransform = GetObject((int)Objects.PuaseButton).transform;
+        var btnObj = GetObject((int)Objects.PuaseButton).gameObject;
+        var btnTransform = btnObj.transform;
 
-        // 1. 기존 트윈 즉시 종료 및 스케일 초기화
         btnTransform.DOKill();
         btnTransform.localScale = Vector3.one;
 
-        Sequence seq = DOTween.Sequence().SetLink(GetObject((int)Objects.PuaseButton).gameObject).SetUpdate(true); ;
-
-        seq.Append(btnTransform.DOScale(0.8f, 0.05f).SetEase(Ease.OutQuad));
-        seq.Append(btnTransform.DOScale(1f, 0.05f).SetEase(Ease.OutQuad));
-
-        seq.OnComplete(() =>
-        {
-            Managers.UI.ShowPopupUI<UI_Puase>();
-        });
+        btnTransform.DOPunchScale(new Vector3(-0.2f, -0.2f, 0), 0.1f, vibrato: 1)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                Managers.UI.ShowPopupUI<UI_Puase>();
+            });
     }
 }

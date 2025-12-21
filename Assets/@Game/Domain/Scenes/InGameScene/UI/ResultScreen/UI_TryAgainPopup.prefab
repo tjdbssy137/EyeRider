@@ -770,6 +770,7 @@ GameObject:
   - component: {fileID: 2439042661839711447}
   - component: {fileID: 3097323789304320351}
   - component: {fileID: 2282196895239009994}
+  - component: {fileID: 8132405769629761168}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -895,6 +896,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
+--- !u!114 &8132405769629761168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490266660785732075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &4634502975407122308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1893,7 @@ GameObject:
   - component: {fileID: 918767956964566686}
   - component: {fileID: 4028478842507337453}
   - component: {fileID: 6082990698001814858}
+  - component: {fileID: 6040801010127637243}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -2005,6 +2019,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
+--- !u!114 &6040801010127637243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359318621389702405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &8735204195299848403
 GameObject:
   m_ObjectHideFlags: 0

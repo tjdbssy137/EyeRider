@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -68.4}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &131877134469891426
 CanvasRenderer:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f2c53980022d3d40a018091603ab9af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e086e9c165f4e7b4b8ee37b6ffef904a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 981b4d190db26bb4f8cf3d9914a286a4, type: 2}
-  m_sharedMaterial: {fileID: 3317207096487363624, guid: 981b4d190db26bb4f8cf3d9914a286a4, type: 2}
+  m_sharedMaterial: {fileID: -8144419975022348201, guid: 981b4d190db26bb4f8cf3d9914a286a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -680,6 +680,7 @@ GameObject:
   - component: {fileID: 3841029962022204855}
   - component: {fileID: 1318381723894267975}
   - component: {fileID: 2139117272687861230}
+  - component: {fileID: 1730121986623565682}
   m_Layer: 5
   m_Name: UI_LevelCell
   m_TagString: Untagged
@@ -733,6 +734,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
+--- !u!114 &1730121986623565682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456836059087598732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d49a2175f86b094ea1a71195c41c2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSoundEffect
 --- !u!1 &5675939180769630259
 GameObject:
   m_ObjectHideFlags: 0
