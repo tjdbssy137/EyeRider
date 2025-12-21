@@ -3,20 +3,20 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using DG.Tweening;
+using NUnit.Framework;
 
 public class UI_Car : UI_Base
 {
     private enum Images
     {
-        In_Condition,
-        In_Fuel,
+        Warning_Condition,
     }
 
     private Canvas _worldCanvas;
     private Camera _mainCam;
 
-    private Tween _conditionTween;
-    private Tween _fuelTween;
+    public Sprite _turnOff;
+    public Sprite _turnOn;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -42,21 +42,20 @@ public class UI_Car : UI_Base
         {
             return;
         }
-        Contexts.InGame.Car.OnConditionChanged
-        .Subscribe(newCondition =>
-        {
-            float target = newCondition.Item2 / 100f;
-            _conditionTween?.Kill();
-            _conditionTween = GetImage((int)Images.In_Condition).DOFillAmount(target, 0.5f).SetEase(Ease.OutCubic);
-        }).AddTo(this);
 
-        Contexts.InGame.Car.OnFuelChanged
-        .Subscribe(newFuel =>
-        {
-            float target = newFuel.Item2 / 100f;
-            _fuelTween?.Kill();
-            _fuelTween = GetImage((int)Images.In_Fuel).DOFillAmount(target, 0.5f).SetEase(Ease.OutCubic);
-        }).AddTo(this);
+        Contexts.Car.IsCritical
+            .DistinctUntilChanged()
+            .Where(isCritical => isCritical == true) // true가 된 순간만 필터링
+            .Subscribe(_ => 
+            {
+                var warningImg = GetImage((int)Images.Warning_Condition);
+
+                Observable.Interval(System.TimeSpan.FromSeconds(0.5f))
+                    .TakeUntilDisable(this)
+                    .Subscribe(x => {
+                        warningImg.sprite = (x % 2 == 0) ? _turnOn : _turnOff;
+                    }).AddTo(this);
+            }).AddTo(this);
     }
 
 

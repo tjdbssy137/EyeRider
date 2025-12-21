@@ -9,7 +9,7 @@ public class Car : BaseObject
     private float _fuelConsumptionRate = 50;
     public Subject<(float, float)> OnConditionChanged { get; private set; } = new Subject<(float, float)>();
     public Subject<(float, float)> OnFuelChanged { get; private set; } = new Subject<(float, float)>();
-
+    private UI_Car _ui;
     public float Condition
     {
         get => _condition;
@@ -71,9 +71,20 @@ public class Car : BaseObject
                     return;
                 }
                 ConsumeFuel();
-            }).AddTo(_disposables); 
+            }).AddTo(_disposables);
 
-        //this.GetComponentInChildren<UI_Car>().SetInfo(Contexts.InGame.Car != null);
+
+        _ui = this.GetComponentInChildren<UI_Car>();
+        _ui.SetInfo(Contexts.InGame.Car != null);
+
+        Contexts.Car.IsCritical
+            .DistinctUntilChanged()
+            .Subscribe(isCritical =>
+            {
+                _ui.gameObject.SetActive(isCritical);
+            }).AddTo(this);
+
+        
         return true;
     }
     protected override void OnDestroy()

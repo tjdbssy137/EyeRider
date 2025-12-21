@@ -147,6 +147,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 886fc13f8cf6a9e4e88d20a1b322c3f5
+    m_Address: UI_RepairPopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8985373d894d64987abcab5cd7fe34dd
     m_Address: UI_InGameScene
     m_ReadOnly: 0

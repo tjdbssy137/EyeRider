@@ -12,4 +12,6 @@ public partial class CarContext
     public float MaxFuel { get; set; } 
     public float MaxCondition { get; set; }
     public Vector3 LastDistancePos { get; set; }
+
+    public ReactiveProperty<bool> IsCritical = new ReactiveProperty<bool>(false);
 }

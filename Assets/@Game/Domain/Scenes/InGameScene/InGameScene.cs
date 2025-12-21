@@ -97,6 +97,13 @@ public class InGameScene : BaseScene
             Missile missile = Managers.Object.Spawn<Missile>(spawnPos, 0, 0);
         }).AddTo(this);
 
+        Contexts.Car.IsCritical
+            .DistinctUntilChanged() // 값이 이전과 달라졌을 때만 통과
+            .Where(isCritical => isCritical == true) // true가 된 순간만 필터링
+            .Subscribe(_ =>
+            {
+                Managers.UI.ShowPopupUI<UI_RepairPopup>();
+            }).AddTo(this);
 
 
         LoadResources();

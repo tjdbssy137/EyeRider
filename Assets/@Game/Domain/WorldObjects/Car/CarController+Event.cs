@@ -105,6 +105,8 @@ public partial class CarController : BaseObject
             ToggleParticle(_leftLightParticleSystem, condition <= 60);
             ToggleParticle(_hoodParticleSystem, condition < 50);
 
+            Contexts.Car.IsCritical.Value = (condition <= 50);
+
             _conditionPanic = Mathf.Clamp01(1 - newCondition.Item2/100);
         }).AddTo(this);
 
