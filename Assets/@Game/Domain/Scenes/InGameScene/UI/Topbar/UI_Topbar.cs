@@ -10,14 +10,11 @@ public class UI_Topbar : UI_Base
     {
         //Conditions,
         Fuels,
+        PuaseButton
     }
     private enum Sliders
     {
         GameProgressBar
-    }
-    private enum Images
-    {
-        PuaseButton,
     }
 
     private UI_FilledPanel _conditionPanel;
@@ -32,7 +29,6 @@ public class UI_Topbar : UI_Base
 
         BindObjects(typeof(Objects));
         BindSliders(typeof(Sliders));
-        BindImages(typeof(Images));
 
         //_conditionPanel = GetObject((int)Objects.Conditions).GetComponent<UI_FilledPanel>();
         //_conditionPanel.Init();
@@ -41,7 +37,7 @@ public class UI_Topbar : UI_Base
         _fuelPanel.Init();
 
         GetSlider((int)Sliders.GameProgressBar).value = 0;
-        GetImage((int)Images.PuaseButton).gameObject.BindEvent(OnClick_PuaseButton, EUIEvent.Click);
+        GetObject((int)Objects.PuaseButton).gameObject.BindEvent(OnClick_PuaseButton, EUIEvent.Click);
 
         Contexts.InGame.Car.OnFuelChanged
             .Subscribe(val =>
@@ -78,10 +74,16 @@ public class UI_Topbar : UI_Base
 
     private void OnClick_PuaseButton(PointerEventData eventData)
     {
-        Sequence seq = DOTween.Sequence().SetLink(GetImage((int)Images.PuaseButton).gameObject);
+        var btnTransform = GetObject((int)Objects.PuaseButton).transform;
 
-        seq.Append(GetImage((int)Images.PuaseButton).gameObject.transform.DOScale(0.9f, 0.05f).SetEase(Ease.OutQuad));
-        seq.Append(GetImage((int)Images.PuaseButton).gameObject.transform.DOScale(1f, 0.05f).SetEase(Ease.OutQuad));
+        // 1. 기존 트윈 즉시 종료 및 스케일 초기화
+        btnTransform.DOKill();
+        btnTransform.localScale = Vector3.one;
+
+        Sequence seq = DOTween.Sequence().SetLink(GetObject((int)Objects.PuaseButton).gameObject).SetUpdate(true); ;
+
+        seq.Append(btnTransform.DOScale(0.8f, 0.05f).SetEase(Ease.OutQuad));
+        seq.Append(btnTransform.DOScale(1f, 0.05f).SetEase(Ease.OutQuad));
 
         seq.OnComplete(() =>
         {

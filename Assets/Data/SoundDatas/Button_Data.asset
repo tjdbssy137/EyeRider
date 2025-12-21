@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 859891c5c57c613489bf7a27f461f998, type: 3}
-  m_Name: Hit_Data
+  m_Name: Button_Data
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
-  DataTemplateId: 2
-  SoundType: 2
+  DataTemplateId: 0
+  SoundType: 6
   Clips:
-  - {fileID: 8300000, guid: 9930d5b4be15bb04c9d0a6fa0d7e6b2e, type: 3}
-  - {fileID: 8300000, guid: 5ff823f546b52574a931e1d9b44290a6, type: 3}
-  - {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
-  - {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
+  - {fileID: 8300000, guid: 340d5138a8bd12241a8a6a7a8893fd4a, type: 3}
+  - {fileID: 8300000, guid: 2456fc1cb040314408d64d6cfcd86cc1, type: 3}

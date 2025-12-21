@@ -1028,6 +1028,55 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2913815572246818511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7041414962324784414}
+  - component: {fileID: 4268557519574777332}
+  m_Layer: 5
+  m_Name: PuaseButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7041414962324784414
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913815572246818511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7009997219865777877}
+  m_Father: {fileID: 669151683067234638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -98.85785, y: -146.19385}
+  m_SizeDelta: {x: 127.4517, y: 148.3877}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4268557519574777332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913815572246818511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
 --- !u!1 &3625600625868325274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1113,7 @@ RectTransform:
   - {fileID: 2653010428795296562}
   - {fileID: 8597975349752465560}
   - {fileID: 8264339771551966889}
-  - {fileID: 7009997219865777877}
+  - {fileID: 7041414962324784414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1158,10 +1207,9 @@ GameObject:
   - component: {fileID: 7009997219865777877}
   - component: {fileID: 5855759236053169522}
   - component: {fileID: 2800680830963796880}
-  - component: {fileID: 4732909808339435175}
   - component: {fileID: 7402615900190421438}
   m_Layer: 5
-  m_Name: PuaseButton
+  m_Name: Puase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,17 +1222,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3727451787586095563}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8, y: 1.5599998, z: 2.3999999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6560171217011454796}
-  m_Father: {fileID: 669151683067234638}
+  m_Father: {fileID: 7041414962324784414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5855759236053169522
@@ -1225,18 +1273,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4732909808339435175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727451787586095563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0793ca8f6f91c46bb219bf87093b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GO_EventHandler
 --- !u!114 &7402615900190421438
 MonoBehaviour:
   m_ObjectHideFlags: 0

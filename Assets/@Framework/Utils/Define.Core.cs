@@ -48,7 +48,8 @@ public static partial class Define
 		Success,
 		Fail,
         Button,
-		Max,
+        Fuel,
+        Max,
 	}
 
 	public enum EMouseEvent

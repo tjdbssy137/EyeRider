@@ -127,6 +127,7 @@ public class Car : BaseObject
         {
             Fuel -= 30f;
             RepairCondition(40f); // 임시 기름 30으로 40 수리
+            Managers.Sound.Play(Define.ESound.Fuel, 0.5f, 0.8f);
 
             Debug.Log("기름을 사용하여 수리");
         }

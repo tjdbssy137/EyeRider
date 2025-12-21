@@ -38,6 +38,7 @@ public class UI_Puase : UI_Popup
     }
     private void OnHover_ResumeButton(PointerEventData eventData)
     {
+        Debug.Log("Resume Hovered");
         SoftMoveIndex((int)Toggles.Resume);
     }
     private void OnClick_ResumeButton(PointerEventData eventData)
@@ -49,6 +50,7 @@ public class UI_Puase : UI_Popup
     }
     private void OnHover_ReStartButton(PointerEventData eventData)
     {
+        Debug.Log("ReStart Hovered");
         SoftMoveIndex((int)Toggles.ReStart);
     }
     private void OnClick_ReStartButton(PointerEventData eventData)
@@ -61,6 +63,7 @@ public class UI_Puase : UI_Popup
     }
     private void OnHover_HomeButton(PointerEventData eventData)
     {
+        Debug.Log("Home Hovered");
         SoftMoveIndex((int)Toggles.Home);
     }
     private void OnClick_HomeButton(PointerEventData eventData)
@@ -74,15 +77,14 @@ public class UI_Puase : UI_Popup
 
     private void SoftMoveIndex(int image)
     {
-        //for(int i = 0; i < 3; i++)
-        //{
-        //    GetToggle(i).isOn = (image == i);
-        //}
+        for (int i = 0; i < 3; i++)
+        {
+            GetToggle(i).isOn = (image == i);
+        }
         var indexObj = GetImage((int)Images.Index).rectTransform;
         float targetY = GetToggle(image).gameObject.transform.position.y;
 
         indexObj.DOKill();
-
-        indexObj.DOMoveY(targetY, 0.2f).SetEase(Ease.OutQuint);
+        indexObj.DOMoveY(targetY, 0.2f).SetEase(Ease.OutQuint).SetUpdate(true);
     }
 }

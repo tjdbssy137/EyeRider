@@ -32,6 +32,8 @@ public class WaterdropSpawner : BaseObject
 
         Managers.Difficulty.OnMetreDifficultyUp.Subscribe(_ =>
         {
+            Managers.Sound.Play(Define.ESound.Rain, 0.8f, 1.0f);
+
             Observable.Interval(TimeSpan.FromSeconds(0.025f))
                 .TakeUntil(Observable.Timer(TimeSpan.FromSeconds(2f)))
                 .Subscribe(_ =>
