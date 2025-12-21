@@ -1,6 +1,9 @@
-using UnityEngine;
-using UniRx;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UniRx;
+using UnityEditor.Search;
+using UnityEngine;
 
 public partial class InGameContext
 {
@@ -61,8 +64,9 @@ public partial class InGameContext
 
 
     //Missaile Event
-    public Subject<Unit> OnSpawnMissile { get; private set; } = new Subject<Unit>();
+    public Subject<ObstacleData> OnSpawnMissile { get; private set; } = new Subject<ObstacleData>();
     public Subject<float> OnCollisionMissile { get; private set; } = new Subject<float>();
-
+    public Subject<ObstacleData> OnEnterObstacle { get; private set; } = new Subject<ObstacleData>();
+    public Queue<UI_Obstacle> ObstacleQueue { get; set; } = new Queue<UI_Obstacle>();
 
 }

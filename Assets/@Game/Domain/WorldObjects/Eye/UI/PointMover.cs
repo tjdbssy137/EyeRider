@@ -39,6 +39,9 @@ public class PointMover : UI_Base
     public float _driftFrequencyX = 0.3f; // 좌우 주기
     public float _driftFrequencyY = 0.2f; // 상하 주기
 
+    [Header("장애물 포획 설정")]
+    public float _captureRadiusWorld = 200f; // 월드 기준 포획 반경
+    public LayerMask _obstacleLayer;
 
     private float CurrentRandomSpeed => _randomMoveSpeed * Managers.Difficulty.PM_RandomMul * (1f + Managers.Difficulty.StormSpeed * 0.2f);
 
@@ -92,6 +95,7 @@ public class PointMover : UI_Base
             Move();
             UpdateEyeSize();
             CheckCarInsideEye();
+            CheckObstacleCapture();
         }).AddTo(this);
 
         _camera = Object.FindFirstObjectByType<Camera>();
@@ -228,7 +232,34 @@ public class PointMover : UI_Base
 
         _wasInside = nowInside;
     }
+    private void CheckObstacleCapture()
+    {
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(_camera, _point.position);
 
+        Ray ray = _camera.ScreenPointToRay(screenPoint);
+
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        if (groundPlane.Raycast(ray, out float enter))
+        {
+            Vector3 eyeWorldPos = ray.GetPoint(enter);
+
+            Debug.DrawLine(ray.origin, eyeWorldPos, Color.cyan);
+
+            Collider[] obstacles = Physics.OverlapSphere(eyeWorldPos, _captureRadiusWorld, _obstacleLayer, QueryTriggerInteraction.Collide);
+
+            foreach (var col in obstacles)
+            {
+                var obs = col.GetComponent<Obstacle>();
+                if (obs != null && !obs._isCaptured)
+                {
+                    Contexts.InGame.OnEnterObstacle.OnNext(obs._data);
+                    obs._isCaptured = true;
+                    Managers.Resource.Destroy(obs.gameObject);
+                }
+            }
+        }
+    }
 
     private void HandleForwardApproachRepel(Vector2 inputDir, float dt)
     {

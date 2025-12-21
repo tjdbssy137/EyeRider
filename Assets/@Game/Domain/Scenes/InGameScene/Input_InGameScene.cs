@@ -60,7 +60,7 @@ public class Input_InGameScene : IInputSystem
 
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            Contexts.InGame.OnSpawnMissile.OnNext(Unit.Default);
+            //Contexts.InGame.OnSpawnMissile.OnNext(Unit.Default);
 
             //Debug.Log($"Score.FinalScore : {Managers.Score.FinalScore}, Score.Star : {Managers.Score.Star}, Score.FinalGold : {Managers.Score.FinalGold}");
             //Managers.Difficulty.OnMetreDifficultyUp.OnNext(Unit.Default);

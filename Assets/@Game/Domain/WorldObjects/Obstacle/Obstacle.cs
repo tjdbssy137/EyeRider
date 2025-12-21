@@ -9,7 +9,7 @@ public class Obstacle : BaseObject
     public ObstacleData _data;
     public float _destroyDistance = 80;
     public GameObject _particle;
-    
+    public bool _isCaptured = false;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -43,7 +43,7 @@ public class Obstacle : BaseObject
         //    {
         //    })
         //    .AddTo(_disposables);
-
+        _isCaptured = false;
         _collider.OnTriggerEnterAsObservable()
             .Where(collision => collision.gameObject.CompareTag("Player"))
             .Subscribe(_ =>

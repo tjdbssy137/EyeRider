@@ -7,6 +7,7 @@ public class ObstacleData : ScriptableObject
     public int DataTemplateId;
     public GameObject ObstaclePrefab;
     public float CrashDamage;
+    public Sprite Sprite;
     public ObstacleType Type = ObstacleType.None;
     public ItemData[] Items;
     public float[] ItemWeights;
@@ -53,6 +54,7 @@ public class ObstacleDataEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("DataTemplateId"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ObstaclePrefab"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("CrashDamage"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("Sprite"));
 
         // 아이템 박스일 때만 노출
         if ((ObstacleType)typeProp.enumValueIndex == ObstacleType.ItemBox)

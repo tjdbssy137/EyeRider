@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2926341081508818201}
   - component: {fileID: 3700438729820819787}
   - component: {fileID: 7157031911468553415}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrafficCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8623255917265869155}
   - component: {fileID: 8157844115628564100}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TrafficCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,3 +160,4 @@ MonoBehaviour:
   _data: {fileID: 0}
   _destroyDistance: 80
   _particle: {fileID: 1076963282973720617, guid: dae256eee4ae74720b4249bc74fbd5f5, type: 3}
+  _isCaptured: 0

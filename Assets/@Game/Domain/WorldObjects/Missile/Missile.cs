@@ -13,6 +13,7 @@ public class Missile : BaseObject
     public GameObject _particle;
     private float _damage = 20f;
     private float _lifeTime = 8f;
+    private GameObject _missile;
 
     // UI
     UI_MissileIndicator _missileIndicator;
@@ -21,12 +22,6 @@ public class Missile : BaseObject
         if(base.Init() == false)
         {
             return false;
-        }
-
-        _collider = GetComponent<Collider>();
-        if (_collider == null)
-        {
-            Debug.LogError("Collider is Null");
         }
 
         GameObject car = Contexts.InGame.Car.gameObject;
@@ -80,6 +75,22 @@ public class Missile : BaseObject
         _missileIndicator.SetTargetMissile(this.transform);
 
         return true;
+    }
+
+    public void SetInfo(ObstacleData data)
+    {
+        if (data == null)
+        {
+            Debug.LogWarning("Missile SetInfo data is NULL");
+            return;
+        }
+        _damage = data.CrashDamage;
+        _missile = data.ObstaclePrefab;
+        _collider = GetComponent<Collider>();
+        if (_collider == null)
+        {
+            Debug.LogError("Collider is Null");
+        }
     }
     public override void OnDespawn()
     {

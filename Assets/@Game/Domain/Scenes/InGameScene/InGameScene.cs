@@ -88,13 +88,14 @@ public class InGameScene : BaseScene
             }
         }).AddTo(_disposables);
 
-        Contexts.InGame.OnSpawnMissile.Subscribe(_ =>
+        Contexts.InGame.OnSpawnMissile.Subscribe(Data =>
         {
             int randX = Random.Range(-30, 30);
             int randZ = Random.Range(-30, 30);
 
             Vector3 spawnPos = Contexts.InGame.Car.transform.position + new Vector3(randX, 0, randZ);
             Missile missile = Managers.Object.Spawn<Missile>(spawnPos, 0, 0);
+            missile.SetInfo(Data);
         }).AddTo(this);
 
         Contexts.Car.IsCritical
@@ -134,6 +135,11 @@ public class InGameScene : BaseScene
 
         _car = Managers.Object.Spawn<Car>(Contexts.InGame.SpawnPosition, 0, 0);
 
+        GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
+        _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
+        _obstacleSpawner.OnSpawn();
+        _obstacleSpawner.SetInfo(0);
+
         GameObject mapSpawner = new GameObject("@MapSpawner");
         _mapSpawner = mapSpawner.GetOrAddComponent<MapSpawner>();
         _mapSpawner.OnSpawn();
@@ -167,12 +173,6 @@ public class InGameScene : BaseScene
 
         // 성공 알림 및 이후 배치 진행
         Contexts.InGame.OnSuccessGeneratedMapPath.OnNext(true);
-
-        GameObject obstacleSpawner = new GameObject("@ObstacleSpawner");
-        _obstacleSpawner = obstacleSpawner.GetOrAddComponent<ObstacleSpawner>();
-        _obstacleSpawner.OnSpawn();
-        _obstacleSpawner.SetInfo(0);
-        
 
         CameraSideAnchorController carSideClampAnchor = _car.transform.Find("CameraAnchor").GetComponent<CameraSideAnchorController>();
         _camera.Target.TrackingTarget = carSideClampAnchor.gameObject.transform;
