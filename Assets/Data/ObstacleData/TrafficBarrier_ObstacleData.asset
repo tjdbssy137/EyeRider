@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrafficBarrier_ObstacleData
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
   DataTemplateId: 1
-  ObstaclePrefab: {fileID: 5110123005330564873, guid: 9254c724e110f4516b794f952de7c8fe, type: 3}
+  ObstaclePrefab: {fileID: 21454573398572981, guid: 9254c724e110f4516b794f952de7c8fe, type: 3}
   CrashDamage: 10
   Sprite: {fileID: 21300000, guid: b8313bacf3096f64bbcf9b53abcba3ef, type: 3}
   Type: 1
