@@ -96,6 +96,8 @@ public class InGameScene : BaseScene
             Vector3 spawnPos = Contexts.InGame.Car.transform.position + new Vector3(randX, 0, randZ);
             Missile missile = Managers.Object.Spawn<Missile>(spawnPos, 0, 0);
             missile.SetInfo(Data);
+            UI_MissileIndicator indicator = Managers.UI.ShowBaseUI<UI_MissileIndicator>();
+            indicator.SetTargetMissile(missile.transform);
         }).AddTo(this);
 
         Contexts.Car.IsCritical

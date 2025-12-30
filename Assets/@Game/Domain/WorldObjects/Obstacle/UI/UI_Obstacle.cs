@@ -3,13 +3,14 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class UI_Obstacle : UI_Popup
+public class UI_Obstacle : UI_Base
 {
     private enum Images
     {
         ObstacleIcon
     }
     private ObstacleData _obstacleData;
+    public ObstacleData ObstacleData => _obstacleData;
     private float _accumulatedAngle = 0f;
     private float _startOffsetAngle = 0f;
     private bool _isLaunched = false;
@@ -20,14 +21,6 @@ public class UI_Obstacle : UI_Popup
         
         BindImages(typeof(Images));
         
-        Contexts.InGame.OnSpawnMissile
-            .Subscribe(_ => 
-            {
-                Contexts.InGame.ObstacleQueue.Enqueue(this);
-                Managers.UI.ClosePopupUI(this);
-                //Managers.Resource.Destroy(gameObject);
-            }).AddTo(this);
-
         Observable.EveryUpdate().Subscribe(_ =>
         {
             if (Contexts.InGame.IsPaused)
@@ -39,7 +32,7 @@ public class UI_Obstacle : UI_Popup
                 return;
             }
             float dt = Time.deltaTime;
-            UpdateOrbit(transform.parent.position, 60f, 100f, dt);
+            UpdateOrbit(60f, 100f, dt);
         }).AddTo(this);
         return true;
     }
@@ -57,26 +50,32 @@ public class UI_Obstacle : UI_Popup
         _accumulatedAngle = 0f;
     }
 
-    public bool UpdateOrbit(Vector2 centerPos, float radius, float speed, float dt)
+    public void UpdateOrbit(float radius, float speed, float dt)
     {
-        _accumulatedAngle = speed * dt;
+        if (_isLaunched)
+        {
+            return;
+        }
+        _accumulatedAngle += speed * dt;
 
         float currentAngle = _startOffsetAngle + _accumulatedAngle;
         float rad = currentAngle * Mathf.Deg2Rad;
 
+        // »ï°¢ÇÔ¼ö¸¦ ÀÌ¿ëÇÑ ±Ëµµ ÁÂÇ¥ °è»ê
         Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
-        (transform as RectTransform).anchoredPosition = centerPos + offset;
+
+        (transform as RectTransform).anchoredPosition = offset;
 
         if (1440f <= _accumulatedAngle)
         {
-            if(_isLaunched)
-            {
-                return false;
-            }
             _isLaunched = true;
-            Contexts.InGame.OnSpawnMissile.OnNext(_obstacleData);
-            return true;
+            Contexts.InGame.OnSpawnMissile.OnNext(ObstacleData);
+            if (0 < Contexts.InGame.ObstacleQueue.Count)
+            {
+                Contexts.InGame.ObstacleQueue.Dequeue();
+            }
+            Managers.Resource.Destroy(this.gameObject);
         }
-        return false;
     }
+
 }

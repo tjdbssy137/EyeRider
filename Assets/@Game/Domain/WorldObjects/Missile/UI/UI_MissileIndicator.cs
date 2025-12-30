@@ -1,7 +1,7 @@
 using UniRx;
 using UnityEngine;
 
-public class UI_MissileIndicator : UI_Popup
+public class UI_MissileIndicator : UI_Base
 {
     private Transform _missile;
     private RectTransform _indicatorRect;
@@ -25,9 +25,9 @@ public class UI_MissileIndicator : UI_Popup
         Observable.EveryUpdate()
             .Subscribe(_ =>
             {
-                if (_missile == null)
+                if (_missile == null || !_missile.gameObject.activeInHierarchy)
                 {
-                    Managers.UI.ClosePopupUI(this);
+                    Managers.Resource.Destroy(this.gameObject);
                     return;
                 }
 
@@ -47,16 +47,11 @@ public class UI_MissileIndicator : UI_Popup
                 {
                     _indicatorRect.gameObject.SetActive(false);
                 }
+
             })
             .AddTo(this);
         return true;
     }
-    public void DestroyIndicator()
-    {
-        _missile = null;
-        Managers.UI.ClosePopupUI(this);
-    }
-
     public void SetTargetMissile(Transform missileTransform)
     {
         _missile = missileTransform;

@@ -15,8 +15,6 @@ public class Missile : BaseObject
     private float _lifeTime = 8f;
     private GameObject _missile;
 
-    // UI
-    UI_MissileIndicator _missileIndicator;
     public override bool Init()
     {
         if(base.Init() == false)
@@ -50,17 +48,14 @@ public class Missile : BaseObject
             {
                 Managers.Object.Spawn<ParticleObject>($"{_particle.name}", this.transform.position, 0, 0);
                 Contexts.InGame.OnCollisionMissile.OnNext(_damage);
-                _missileIndicator.DestroyIndicator();
                 Managers.Resource.Destroy(this.gameObject);
             }).AddTo(_disposables);
 
         Observable.Timer(System.TimeSpan.FromSeconds(_lifeTime))
             .Subscribe(_ =>
             {
-                _missileIndicator.DestroyIndicator();
                 Managers.Resource.Destroy(this.gameObject);
             }).AddTo(_disposables);
-
         return true;
     }
 
@@ -70,9 +65,6 @@ public class Missile : BaseObject
         {
             return false;
         }
-
-        _missileIndicator = Managers.UI.ShowPopupUI<UI_MissileIndicator>();
-        _missileIndicator.SetTargetMissile(this.transform);
 
         return true;
     }
@@ -91,6 +83,7 @@ public class Missile : BaseObject
         {
             Debug.LogError("Collider is Null");
         }
+
     }
     public override void OnDespawn()
     {

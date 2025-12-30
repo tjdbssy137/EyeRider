@@ -35,7 +35,7 @@ public class UI_Eye : UI_Base
                 {
                     return;
                 }
-                UI_Obstacle obstacle = Managers.UI.ShowPopupUI<UI_Obstacle>();
+                UI_Obstacle obstacle = Managers.UI.ShowBaseUI<UI_Obstacle>();
                 obstacle.transform.SetParent(_obstacleContainer.transform, false);
                 obstacle.SetInfo(Data);
                 Contexts.InGame.ObstacleQueue.Enqueue(obstacle);
